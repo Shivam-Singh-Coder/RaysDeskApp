@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Registration Form</title>
+    <link rel="icon" href="repllogo.png">
+    <style>
+        html{
+            font-size: 10px;
+        }
+        body{
+            margin: 0;
+            overflow-x: hidden;
+        }
+        #main{
+            width: 100%;
+            height: auto;
+            overflow-x: hidden;
+        }
+        #d1{
+            height: 7rem;
+            background-color: rgb(77, 169, 244);
+        }
+        #hm{
+            height: 7rem;
+            width: auto;
+            display: flex;
+            align-items: center;
+            float: left;
+        }
+        #d1 a{
+            text-decoration: none;
+            margin:3rem;
+        }
+        #tog{
+            margin: 1.5rem 3rem;
+            height: 4rem;
+            width: 20rem;
+            display: flex;
+            float: right;
+        }
+        #togx{
+            position: absolute;
+            height: 4rem;
+            width: 10rem;
+            background-color: white;
+            transition: .3s;
+            /* margin-left: 10rem; */
+            border-radius: 1rem 0 0 1rem;
+            /* box-shadow: 2px 2px 10px rgb(249, 65, 237); */
+        }
+        #tog p{
+            margin: 0;
+            position: relative;
+            height: 100%;
+            width: 50%;
+            cursor: pointer;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            font-size: 2rem;
+        }
+        #b1{
+            border-radius: 1rem 0 0 1rem;
+        }
+        #b2{
+            border-radius:0 1rem 1rem 0;
+        }
+        #body{
+            width: 200%;
+            transition: .5s;
+        }
+        #ent,#ser{
+            height: auto;
+            width: 50%;
+            float: left;
+        }
+        #d2{
+            background-color: rgb(179, 229, 243);
+            display: flex;
+            height: 5rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        #table1,#table2{
+            width: 95%;
+            margin: 3rem 2.5%;
+            border-collapse:collapse;
+        }
+        #table1 td,#table2 td{
+            height: 8rem;
+            text-align: center;
+        }
+        #table1 #td1{
+            width: 33%;
+        }
+        #table1 #td2{
+            width: 14%;
+        }
+        select{
+            height: 4.5rem;
+            width:91%;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        #table1{
+            align-items: center;
+        }
+        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#from,#to,#t11,#t12,#t13,#t14,#t15,#t16,#t17,#t18{
+            width: 70%;
+            height: 4rem;
+            padding-left: 1rem;
+            font-size: 1.8rem;
+        }
+        #t17,#t18{
+            border: solid 2px red;
+            padding: 2rem;
+        }
+        #t9,#t13,#t14{
+            width: 92.5%;
+        }
+        #from,#to{
+            width: 41%;
+            font-size: 1.5rem;
+        }
+        #to{
+            margin-left: 5%;
+        }
+        #r{
+            float: left;
+            font-size: 1.8rem;
+            margin-left: 0.5rem;
+        }
+        .radio{
+            float: left;
+            margin-left: 1rem;
+        }
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l10,#l9,#l11,#l12,#lf,#lt,#l13,#l14,#l15,#l16,#l17,#l41,#l51,#l52{
+            position: absolute;
+            font-size: 1.8rem;
+            margin: -1rem 4rem;
+            background-color: white;
+        }
+        #l3,#l4,#l41,#l6,#l7,#l11,#l12,#l51,#l52{
+            visibility: hidden;
+        }
+        #lt{
+            margin-left: 3%;
+        }
+        textarea{
+            resize: none;
+            width: 70%;
+            height: 4rem;
+            padding: 1rem 0 0 1rem;
+            font-size: 1.8rem;
+        }
+        #l14,#l13{
+            margin-left: 40rem;
+        }
+        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6,#ll7,#ll8,#ll9,#ll10,#ll11,#ll12,#ll13,#ll14{
+            color: red;
+            font-size: 1.6rem;
+            float:left;
+            margin-left: 3rem;
+        }
+        #b3,#b4,#b5,#b6,#b7{
+            font-weight: bolder;
+            font-size: 1.7rem;
+            height: 4rem;
+            width: 13rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            background-color: green;
+            color: white;
+        }
+        /* #d4{
+            text-align: right;
+        } */
+        #b7{
+            background:blue;
+            margin-left: 7rem;
+        }
+        .fa-search{
+            position: absolute;
+            font-size: 1.7rem;
+            color:white;
+            margin: 1.2rem 1.3%;
+        }
+        #b4,#b6{
+            background: red;
+            margin-left: 7rem;
+        }
+        /* ------------ Service ----------------- */
+        #table2 td{
+            width: 33%;
+        }
+        #table2 #sr{
+            text-align: center;
+        }
+        #d5{
+            height: 30rem;
+            overflow-y: auto;
+            margin-top: 3rem;
+        }
+        #table3{
+            width: 90%;
+            margin-left: 5%;
+            text-align: center;
+            font-size: 1.8rem;
+            border-collapse:collapse;
+        }
+        #table3 .tr1:hover{
+            background-color: rgb(167, 167, 247);
+            color: white;
+        }
+        #del{
+            color: red;
+            font-weight: bold;
+        }
+        #upd{
+            color: black;
+            font-weight: bold;
+        }
+        #prt{
+            color: rgb(4, 32, 83);
+            font-weight: bold;
+        }
+        #del:hover,#upd:hover,#prt:hover{
+            cursor: pointer;
+            scale: 1.5;
+            transition: .3s;
+
+        }
+        #table3 th,#table3 td{
+            height: 3rem;
+            border: .1rem solid black;
+        }
+        #table3 th{
+            position: sticky;
+            top: 0;
+            background-color:antiquewhite;
+        }
+        #table3 #sn1,#table3 .sn{
+            display: none;
+        }
+        #table3 input{
+            border: none;
+            outline: none;
+        }
+        #sa1{
+            height: 100%;
+            width: 100%;
+            border: none;
+            outline: none;
+        }
+        #table3 tr:nth-child(odd){
+            background-color: rgb(184, 182, 182);
+        }
+        @media (max-width:998px) {
+            html{
+                font-size: 55%;
+            }
+        }
+        @media (max-width:768px) {
+
+            html{
+                font-size: 45%;
+            }
+            #table1 #td1{
+                width: 100%;
+            }
+            #table1 #td2{
+                display: none;
+            }
+            #table3 th{
+                display: none;
+            }
+            #table1 td,#table2 td,#table3 td{
+                display: block;
+            }
+            #table2 td{
+                width: 100%;
+            }
+            #lt{
+                margin-left: 9%;
+            }
+            /* #d4{
+                display: flex;
+                flex-wrap:wrap;
+                justify-content: space-around;
+                margin-left: 2rem;
+            } */
+            #b5{
+                margin-left: 0;
+            }
+            #table2 #sr{
+                text-align: center;
+            }
+            .fa-search{
+                margin: 1rem 2rem;
+            }
+            #d5{
+                height: auto;
+            }
+            #table3 .sn{
+                display: block;
+                background-color: antiquewhite;
+            }
+            #table3 td{
+                text-align: right;
+            }
+            #table3 td::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                color: black;
+            }
+            #sa1{
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="d1">
+                <div id="hm"><a href="#" id="home"><font size="4rem">&#x1F3E0; &nbsp; HOME</font></a></div>
+                <div id="tog"><div id="togx"></div><p id="b1"><b>Entry</b></p><p id="b2"><b>Service</b></p></div>
+        </div>
+        <div id="body">
+            <div id="ent">
+                <div id="d2"><b>Registration &nbsp; Entry</b></div>
+                <form>
+                    <table id="table1">
+                        <tr>
+                            <td id="td1"><label id="l1">Reg. Form No</label><input type="text" id="t1" placeholder="Reg. Form No" readonly></td>
+                            <td id="td1"><label id="l2">Reg. Date</label><input type="date" id="t2" placeholder="Reg. Date"></td>
+                            <td id="td1"><label id="l3">Student Name<font style="color: red;">*</font></label><input type="text" id="t3" placeholder="Student Name*" oninput="input('#t3','#l3')"><br><label id="ll1"></label></td>
+                        </tr>
+                        <tr>
+                            <td><label id="l4">Father's Name<font style="color: red;">*</font></label><input type="text" id="t4" placeholder="Father's Name*" oninput="input('#t4','#l4')"><br><label id="ll2"></label></td>
+                            <td><label id="l41">Mother's Name<font style="color: red;">*</font></label><input type="text" id="t5" placeholder="Mother's Name*" oninput="input('#t5','#l41')"><br><label id="ll3"></label></td>
+                            <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t6"><br><label id="ll4"></label></td>
+                        </tr>
+                        <tr>
+                            <td><label id="l6">Email ID</label><input type="text" id="t7" placeholder="Email ID"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
+                            <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Contact No.*"><br><label id="ll6"></label></td>
+                            <td><label id="l8" hidden>Blood Grp.</label><select style="height: 4.5rem;width: 74%;" id="t9">
+                                <option value="" selected disabled>----- Select Any Blood Group -----</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="O">O</option>
+                                <option value="A-">A-</option>
+                                <option value="B-">B-</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O-">O-</option>
+                            </select><br><label id="ll7"></label></td>
+                        </tr>
+                        <tr>
+                            <td><label style="font-size: 2rem;float: left;margin-left: 5.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio"><label for="dr3" id="r">Binary</label></td>
+                            <td><label id="l51">College Name<font style="color: red;">*</font></label><input type="text" id="t11" placeholder="College Name*"><br><label id="ll8"></label></td>
+                            <td><label id="l52">Program Name<font style="color: red;">*</font></label><input type="text" id="t12" placeholder="Program Name*"><br><label id="ll9"></label></td>
+                        </tr>
+                        <tr>
+                            <td><label id="l9" hidden>State<font style="color: red;">*</font></label><select style="height: 4.5rem;width: 74%;" id="t13">
+                                <option value="" selected disabled>----- Select Any State -----</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Chattisgarh">Chattisgarh</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="jammu & Kashmir">Jammu & Kashmir</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Lakshadweep">Lakshadweep</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Andaman & Nicobar">Andaman & Nicobar</option>
+                                <option value="Dadra & Nagar Haveli and Daman & Diu">Dadra & Nagar Haveli and Daman & Diu</option>
+                                <option value="Pondicherry">Pondicherry</option>
+                                <option value="Nagaland"> Nagaland</option>
+                            </select><br><label id="ll10"></label></td>
+                            <td><label id="l10" hidden>District<font style="color: red;">*</font></label><select style="height: 4.5rem;width: 74%;" id="t14" disabled><option value="" selected disabled>----- Select Any District -----</option></select><br><label id="ll11"></label></td>
+                            <td><label id="l11">Permanent Add.<font style="color: red;">*</font></label><textarea placeholder="Permanent Add.*"></textarea><br><label id="ll12"></label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" id="rd_chk"><label for="rd_chk">check</label><label id="l12">Correspondence Add.</label><textarea placeholder="Correspondence Add."></textarea><br><label id="ll13"></label></td>
+                            <td><label id="l13">Student Pic</label><input type="file" src="" id="t15" alt="" style="padding-top: 0.5rem;border: solid 1px;"><br><label id="l15">Student Pic</label><img src="rayslogo1-1.png" alt="" id="t17" style="height: 10rem;width: 10rem;"><br></td>
+                            <td><label id="l14">Adhaar Pic</label><input type="file" src="" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;"><br><label id="l16">Adhaar Pic</label><img src="repllogo.png" alt="" id="t18" style="height: 10rem;width: 60%;"><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div id="ser">
+                <div id="d2"><b>Registration &nbsp; Service</b></div>
+                <table id="table2">
+                    <tr>
+                        <td><label id="l17">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Contact">Contact No.</option><option value="Name">Student Name</option><option value="Blood Grp">Blood Group</option><option value="Prog">Program Name</option><option value="College">College Name</option></select><br><label id="ll14">Choice</label></td>
+                        <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select></td>
+                        <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
+                    </tr>
+                    <tr>
+                        <td id="sr" colspan="3" ><i class="fa fa-search" hidden></i><input type="button" value=" &nbsp; Search" id="b5"><input type="button" value="&#x21bb;&nbsp; Refresh" id="b6"><input type="button" class="fa" value="&#xf019;&nbsp; Download" id="b7"></td>
+                    </tr>
+                </table>
+                <div id="d3">
+                    <div id="d5">
+                        <table id="table3">
+                            <tr><th id="sn">Sn</th><th>Registration No</th><th>Admission Date</th><th>Registration No</th><th>Course Applied</th><th>Course Fee</th><th>Discount</th><th colspan="3">Check</th></tr>
+                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Registration No">P001</td><td data-label="Admission Date">Ord0001</td><td data-label="Registration No">UPI</td><td data-label="Course Applied">22-07-2001</td><td data-label="Course Fee">15000</td><td data-label="Discount">5000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>
+                        </table>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <script>
+        var reg_no,bcode;
+        sessionStorage.setItem('bcode','BR01');
+        bcode=sessionStorage.getItem('bcode');
+        // -------------Date---------
+        function date(){
+            var b=new Date();
+            yy=b.getFullYear()
+            dd=b.getDate()
+            mm=b.getMonth()+1
+            if(mm<10)
+                mm="0"+mm
+            if(dd<10)
+                dd="0"+dd
+            $('#t2').val(yy+'-'+mm+'-'+dd)
+            $('#t6').val(yy+'-'+mm+'-'+dd)
+            $('#t6').attr('max',yy+'-'+mm+'-'+dd)
+        }
+        // --------------Auto Id-------------
+        $(document).ready(function(){
+            date();
+            auto();
+            
+        })
+        function auto(){
+            $.ajax({
+                url:'rays_desk.py',
+                method:'post',
+                data:{
+                    cond:'auto_reg'
+                },
+                success:function(data){
+                    var j=data.split(',,,')
+                    $('#t1').val(j[0])
+                    reg_no=j[1]
+                }
+            })
+        }
+        // ----------------Input Name-------------
+        function input(d,l){
+            jk=$(d).val()
+            if(jk!='')
+                $(l).css('visibility','visible')
+            else
+                $(l).css('visibility','hidden')
+        }
+        // ====================== Animation ===============================
+        $('#b2').click(function(){
+            $('#togx').css({'margin-left':'10rem','border-radius':'0 1rem 1rem 0'});
+            $('#body').css('margin-left','-100%');
+            $('#lf,#lt,.fa-search').show();
+        })
+        $('#b1').click(function(){
+            $('#togx').css({'margin-left':'0rem','border-radius':'1rem 0 0 1rem'});
+            $('#body').css('margin-left','0%');
+            $('#lf,#lt,.fa-search').hide();
+            $('#d3').html('');
+        })
+        // --------------------------------------------------------------------
+       // ======================== Mandatory ===========================
+        var flag=true;
+        function ch2(t,l){
+            a=$(t).val();
+            if(a==null){
+                $(t).css('border','2px solid red');
+                $(l).html('Select any One!');
+                flag=false;
+            }
+        }
+        function ch3(t,l){
+            $(t).css('border','1px solid black');
+            $(l).html('');
+        }
+        // -----------------------------------------
+        // ======================= Download==========================
+        
+        $(document).on('click','#b7',function(){
+            $("#table3").table2excel({
+                exclude: ".sn,#sn,#chk",
+                filename: $('#s1').val()+"_exp.xls"
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Course Details Form</title>
+    <link rel="icon" href="repllogo.png">
+    <style>
+        html{
+            font-size: 10px;
+        }
+        body{
+            margin: 0;
+            overflow-x: hidden;
+        }
+        #main{
+            width: 100%;
+            height: auto;
+            overflow-x: hidden;
+        }
+        #d1{
+            height: 7rem;
+            background-color: rgb(77, 169, 244);
+        }
+        #hm{
+            height: 7rem;
+            width: auto;
+            display: flex;
+            align-items: center;
+            float: left;
+        }
+        #d1 a{
+            text-decoration: none;
+            margin:3rem;
+        }
+        #tog{
+            margin: 1.5rem 3rem;
+            height: 4rem;
+            width: 20rem;
+            display: flex;
+            float: right;
+        }
+        #togx{
+            position: absolute;
+            height: 4rem;
+            width: 10rem;
+            background-color: white;
+            transition: .3s;
+            /* margin-left: 10rem; */
+            border-radius: 1rem 0 0 1rem;
+            /* box-shadow: 2px 2px 10px rgb(249, 65, 237); */
+        }
+        #tog p{
+            margin: 0;
+            position: relative;
+            height: 100%;
+            width: 50%;
+            cursor: pointer;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            font-size: 2rem;
+        }
+        #b1{
+            border-radius: 1rem 0 0 1rem;
+        }
+        #b2{
+            border-radius:0 1rem 1rem 0;
+        }
+        #body{
+            width: 200%;
+            transition: .5s;
+        }
+        #ent,#ser{
+            height: auto;
+            width: 50%;
+            float: left;
+        }
+        #d2{
+            background-color: rgb(179, 229, 243);
+            display: flex;
+            height: 5rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        #table1,#table2{
+            width: 95%;
+            margin: 3rem 2.5%;
+            border-collapse:collapse;
+        }
+        #table1 td,#table2 td{
+            height: 8rem;
+            text-align: center;
+        }
+        #table1 #td1{
+            width: 43%;
+        }
+        #table1 #td2{
+            width: 14%;
+        }
+        select{
+            height: 4.5rem;
+            width:91%;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        #t1,#t2,#t3,#t4,#t6,#t5,#t7{
+            width: 90%;
+            height: 4rem;
+            padding-left: 1rem;
+            font-size: 1.8rem;
+        }
+        #t4,#t5{
+            width: 42%;
+            font-size: 1.8rem;
+        }
+        #t5{
+            margin-left: 5%;
+        }
+        #t6,#t7{
+            width: 15%;
+            font-size: 1.8rem;
+        }
+        #t7{
+            margin-left: 5%;
+        }
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7{
+            position: absolute;
+            font-size: 1.8rem;
+            margin: -1rem 4rem;
+            background-color: white;
+        }
+        #l3,#l2,#l4{
+            visibility:hidden;
+        }
+        #l6{
+            margin-left: 4rem;
+        }
+        #l5{
+            margin-left: 1rem;
+        }
+        #ll1,#ll2,#ll3,#ll6{
+            color: red;
+            font-size: 1.6rem;
+            float:left;
+            margin-left: 3rem;
+        }
+        #ll4,#ll5{
+            position: absolute;
+            color: red;
+            font-size: 1.6rem;
+        }
+        #ll5{
+            margin-left: 14rem;
+        }
+        #b3,#b4,#b5,#b6,#b7{
+            font-weight: bolder;
+            font-size: 1.7rem;
+            height: 4rem;
+            width: 13rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            background-color: green;
+            color: white;
+        }
+        #b7{
+            background:blue;
+            margin-left: 7rem;
+            display: none;
+        }
+        .fa-search{
+            position: absolute;
+            font-size: 1.7rem;
+            color:white;
+            margin: 1.2rem 1.5%;
+        }
+        #b4,#b6{
+            background: red;
+            margin-left: 7rem;
+        }
+        /* ------------ Service ----------------- */
+        #table2 td{
+            width: 33%;
+        }
+        #table2 #sr{
+            text-align: center;
+        }
+        #d5{
+            height: 30rem;
+            overflow-y: auto;
+            margin-top: 3rem;
+        }
+        #table3{
+            width: 90%;
+            margin-left: 5%;
+            text-align: center;
+            font-size: 1.8rem;
+            border-collapse:collapse;
+        }
+       
+        #table3 .tr1:hover{
+            background-color: rgb(167, 167, 247);
+            color: white;
+        }
+        #del{
+            color: red;
+            font-weight: bold;
+        }
+        #upd{
+            color: black;
+            font-weight: bold;
+        }
+        #del:hover,#upd:hover{
+            cursor: pointer;
+            scale: 1.5;
+            transition: .3s;
+
+        }
+        #table3 th,#table3 td{
+            height: 3rem;
+            border: .1rem solid black;
+        }
+        #table3 th{
+            position: sticky;
+            top: 0;
+            background-color:antiquewhite;
+        }
+        #table3 .sn{
+            display: none;
+        }
+        #table3 input{
+            border: none;
+            outline: none;
+        }
+        #table3 tr:nth-child(odd){
+            background-color: rgb(184, 182, 182);
+        }
+        #sa1{
+            height: 100%;
+            width: 100%;
+            border: none;
+            outline: none;
+        }
+        @media (max-width:998px) {
+            html{
+                font-size: 55%;
+            }
+        }
+        @media (max-width:768px) {
+
+            html{
+                font-size: 45%;
+            }
+            #table1 #td1{
+                width: 100%;
+            }
+            #table1 #td2{
+                display: none;
+            }
+            #table3 th{
+                display: none;
+            }
+            #table1 td,#table2 td,#table3 td{
+                display: block;
+            }
+            #table2 td{
+                width: 100%;
+            }
+            #lt{
+                margin-left: 9%;
+            }
+            #d4{
+                display: flex;
+                flex-wrap:wrap;
+                justify-content: space-around;
+                margin-left: 2rem;
+            }
+            #b5{
+                margin-left: 0;
+            }
+            #table2 #sr{
+                text-align: center;
+            }
+            .fa-search{
+                margin: 1rem 2rem;
+            }
+            #d5{
+                height: auto;
+            }
+            #table3 .sn{
+                display: block;
+                background-color: antiquewhite;
+            }
+            #table3 td{
+                text-align: right;
+            }
+            #table3 td::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                color: black;
+            }
+            #sa1{
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="d1">
+                <div id="hm"><a href="#" id="home"><font size="4rem">&#x1F3E0; &nbsp; HOME</font></a></div>
+                <div id="tog"><div id="togx"></div><p id="b1"><b>Entry</b></p><p id="b2"><b>Service</b></p></div>
+        </div>
+        <div id="body">
+            <div id="ent">
+                <div id="d2"><b>Course &nbsp; Entry</b></div>
+                <span style="color: red;float: right;margin-right: 5rem;font-size: 2rem;">*&nbsp;Field is Mandatory!</span>
+                <form>
+                    <table id="table1">
+                        <tr>
+                            <td id="td1" class="cid"><label id="l1">Course ID</label><input type="text" id="t1" placeholder="Course ID" readonly></td>
+                            <td id="td1"><label id="l2">Course Name<font style="color: red;">*</font></label><input type="text" id="t2" placeholder="Course Name*" style="text-transform: capitalize;" onkeydown="keychk('#t2','#ll1')" oninput="input('#t2','#l2')" onfocus="ch3('#t2')" onfocusout="ch2('#t2')"><br><label id="ll1"></label></td>
+                        </tr>
+                        <tr>
+                            <td><label id="l3">Course Fee<font style="color: red;">*</font></label><input type="text" id="t3" placeholder="Course Fee*" onkeydown="keychk('#t3','#ll2')" oninput="input('#t3','#l3')" onfocus="ch3('#t3')" onfocusout="ch2('#t3')"><br><label id="ll2"></label></td>
+                            <td><label id="l4">Course Dur.<font style="color: red;">*</font></label><input type="text" placeholder="Course Dur.*" id="t4" onkeydown="keychk('#t4','#ll3')" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')"><select style="height: 4.5rem;" id="t5"><option value="Hrs" selected>Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts">Months</option></select><br><label id="ll3"></label></td>
+                        </tr>
+                        <tr>
+                            <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-top: 1rem;">One Time Payment (OTP)</label><label id="l5">Disc. in %</label><input type="text" name="" id="t6" maxlength="2" value="0" onkeydown="keychk('#t6','#ll4')"><label id="l6">Disc. in &#x20B9;</label><input type="text" name="" id="t7" value="0" onkeydown="keychk('#t7','#ll5')"><br><label id="ll4"></label><label id="ll5"></label></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div id="ser">
+                <div id="d2"><b>Course &nbsp; Service</b></div>
+                <table id="table2">
+                    <tr>
+                        <td><label id="l7">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="cid">Course ID</option><option value="cname">Course Name</option></select></td>
+                        <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll6"></label></td>
+                    </tr>
+                    <tr>
+                        <td id="sr" colspan="2" ><i class="fa fa-search" hidden></i><input type="button" value=" &nbsp; Search" id="b5"><input type="button" value="&#x21bb;&nbsp; Refresh" id="b6"><input type="button" class="fa" value="&#xf019;&nbsp; Download" id="b7"></td>
+                    </tr>
+                </table>
+                <div id="d3">
+                </div> 
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <script>
+        var cid,bcode;
+        sessionStorage.setItem('bcode','BR01');
+        bcode=sessionStorage.getItem('bcode');
+        // ==========================Auto Gen ID ===============================
+        $(document).ready(function(){
+            auto();
+            $('#s2').attr('disabled',true)
+        });
+        function auto(){
+            $.ajax({
+                url:'rays_desk.py',
+                method:'post',
+                success:function(data){
+                    var j=data.split(',,,');
+                    cid=j[0];
+                    $('#t1').val(j[1]);
+                    // $('.cid').html('<label id="l1">Course ID</label><input type="text" id="t1" placeholder="Course ID" readonly value="'+j[1]+'">')
+                }
+            })
+        }
+        // ====================== Animation ===============================
+        $('#b2').click(function(){
+            $('#togx').css({'margin-left':'10rem','border-radius':'0 1rem 1rem 0'});
+            $('#body').css('margin-left','-100%');
+            $('#lf,#lt,.fa-search').show();
+        })
+        $('#b1').click(function(){
+            $('#togx').css({'margin-left':'0rem','border-radius':'1rem 0 0 1rem'});
+            $('#body').css('margin-left','0%');
+            $('#lf,#lt,.fa-search').hide();
+            $('#d3').html('');
+        })
+        // ----------------Input Name-------------
+        function input(d,l){
+            jk=$(d).val()
+            if(jk!='')
+                $(l).css('visibility','visible')
+            else
+                $(l).css('visibility','hidden')
+        }
+        // --------------------------------------------------------------------
+       // ======================== Mandatory ===========================
+        var flag=true;
+        function ch2(t){
+            a=$(t).val();
+            if(a==''||a.length==0){
+                $(t).css({'border':'1px solid red','color':'red'});
+                $(t).val('*Field is Mandotary!');
+                flag=false;
+            }
+            else if($(t).val()=='*Field is Mandotary!')
+                flag=false;
+        }
+        function ch3(t){
+            $(t).css({'border':'1px solid black','color':'black'});
+            if($(t).val()=='*Field is Mandotary!')
+                $(t).val('')
+        }
+        // ====================Key Validaition=================
+        function keychk(chk, d) {
+            $(d).text("");
+            if (chk == '#t2') {
+                $(chk).on('keypress', function (a) {
+                    if (a.which == 32 && a.target.selectionStart === 0) {
+                        $(d).text("Space at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13) && $(this).val().slice(-1) === String.fromCharCode(a.which)){
+                        a.preventDefault();
+                        $(d).text("Special Character Multiple times Not Allowed!");
+                    }
+                    else
+                        $(d).text("");
+                });
+            }
+            else{
+                $(chk).on('keypress',function(a){
+                    if(a.which == 48 && a.target.selectionStart === 0){
+                        $(d).text("Zero at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57 || a.which==13)){
+                        $(d).html('Only Digit Allowed!');
+                        return false;
+                    }
+                    else
+                        $(d).text("");
+                    if(chk=='#t7'||'#t6'){
+                        if($(this).val()=='0')
+                            $(this).val('');
+                    }
+                    if(chk=='#t7'){
+                        bk=$('#t3').val()
+                        if(bk=='')
+                            bk=0
+                        if(parseInt($(this).val()+String.fromCharCode(a.which))>parseInt(bk)){
+                            $(d).text("Discount can't be greater than Course fee!");
+                            return false;
+                        }
+                    }
+                })
+            }
+        }
+        $('#t6,#t7').on('input',function(a){
+            if($(this).attr('id')=='t7')
+                $('#t6').val($(this).val()/$('#t3').val()*100)
+            else
+                $('#t7').val($(this).val()*$('#t3').val()/100)
+        })
+        $('#t7,#t6').keyup(function(){
+            if($(this).val()=='')
+                $(this).val('0');
+        })
+        $('#t7,#t6').focusout(function(){
+            if($(this).attr('id')=='t7')
+                $('#ll5').html('');
+            else if($(this).attr('id')=='t6')
+                $('#ll4').html('');
+        })
+        // ====================================Insert Data===========================
+        $('#b3').click(function(){
+            flag=true;
+            ch2('#t2')
+            ch2('#t3')
+            ch2('#t4')
+            if(flag){
+                var conf=confirm("Are you sure want to create course?")
+                if(conf){
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'ins_course',
+                            t1:$('#t1').val(),
+                            t2:$('#t2').val(),
+                            t3:$('#t3').val(),
+                            t4:$('#t4').val()+"-"+$('#t5').val(),
+                            t5:$('#t7').val(),
+                            t6:bcode,
+                            t7:cid
+                        },
+                        success:function(data){
+                            var j=data.split(',,,');
+                            alert(j[0])
+                            if(j[1]==10){
+                                reset();
+                                auto();
+                            }
+                        }
+                    })
+                }
+            }
+        })
+        $('#b4').click(function(){
+            reset();
+            auto();
+        })
+        // ===================Clear Data================
+        function reset(){
+            $('#t2').val('');
+            $('#t3').val('');
+            $('#t4').val('');
+            $('#t5').val('Hours');
+            $('#t6').val('0');
+            $('#t7').val('0');
+            ch3('#t2')
+            ch3('#t3')
+            ch3('#t4')
+            input('#t2','#l2')
+            input('#t3','#l3')
+            input('#t4','#l4')
+        }
+        // ========================Service Form=======================
+        // -----------------Combobox------------------
+        $('#s1').change(function(){
+            $.ajax({
+                url:'rays_desk.py',
+                method:'post',
+                data:{
+                    cond:'cmb_course',
+                    t1:$('#s1').val()
+                },
+                success:function(data){
+                    $('#s2').removeAttr("disabled")
+                    $('#s2').html(data)
+                }
+            })
+        })
+        $('#s2').change(function(){
+            if($(this).val()!=null)
+                $('#ll6').text('')
+        })
+        $('#b5').click(function(){
+            var flag2=true;
+            if($('#s1').val()!=null){
+                if($('#s2').val()==null){
+                    flag2=false;
+                    $('#ll6').text('Please Select this field!')
+                }
+            }
+            if(flag2){
+                $.ajax({
+                    url:'rays_desk.py',
+                    method:'post',
+                    data:{
+                        cond:'ser_course',
+                        t1:$('#s1').val(),
+                        t2:$('#s2').val()
+                    },
+                    success:function(data){
+                        if(data!=0){
+                            $('#d3').html(data);
+                            $('#b7').css('display','inline-block');
+                            $('#s2').removeAttr('disabled')
+                        }
+                        else{
+                            $('#d3').html('');
+                            alert("No Record Found!")
+                        }
+                    }
+                })
+            } 
+        })
+        $(document).on('blur','#e',function(){
+            a=$(this).text();
+            $(this).text(a+"   ");
+        });
+        $(document).on('focus','#e',function(){
+            a=$(this).text().trim();
+            $(this).text(a);
+        });
+        $(document).on('keypress','#e',function(){
+            $(this).css('color','green');
+        });
+        // --------------------Update Data--------------------
+        $(document).on('click','#upd',function(){
+            var flag=confirm("Are you sure want to Update this Record!");
+            if(flag){
+                var cell=$(this).closest('tr').children("td").text().split('   ');
+                $.ajax({
+                    url:'rays_desk.py',
+                    method:'post',
+                    data:{
+                        cond:'upd_course',
+                        t1:cell[1],
+                        t2:cell[2],
+                        t3:cell[3],
+                        t4:cell[4],
+                        t5:cell[5]
+                    },
+                    success:function(data){
+                        alert(data);
+                    }
+                })
+            }
+        })
+        // --------------Delete Data------------------
+        $(document).on('click','#del',function(){
+            var flag=confirm("Are you sure want to Delete this Record!");
+            if(flag){
+                var cell=$(this).closest('tr').children("td").text().split('   ');
+                $.ajax({
+                    url:'rays_desk.py',
+                    method:'post',
+                    data:{
+                        cond:'del_course',
+                        t1:cell[1]
+                    },
+                    success:function(data){
+                        var j=data.split(',,,')
+                        alert(j[0])
+                        if(j[1]==10){
+                            $(this).closest('tr').text()
+                        }
+                    }
+                })
+            }
+        })
+        // -----------------Refresh Page------------
+        $('#b6').click(function(){
+            $('#s1').val(null);
+            $('#d3').html('');
+            $('#s2').html('<option value="" selected disabled>----- Select Any One -----</option>')
+            $('#s2').attr('disabled',true);
+            $('#b7').css('display','none')
+            $('#ll6').text('')
+        })
+        // -----------------------------------------
+        // ======================= Download==========================
+        
+        $(document).on('click','#b7',function(){
+            var conf=confirm('Are You Sure want to Download this record!')
+            if(conf){
+                $("#table3").table2excel({
+                    exclude: "#act,#del,#upd",
+                    filename: "Course_Details.xls"
+                });
+            }
+        });
+    </script>
+</body>
+</html>
