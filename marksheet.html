@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/2c21330576.js" crossorigin="anonymous"></script>
+    <style>
+        html {
+            font-size: 10px;
+        }
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .f1 {
+            width: 793.701px;
+            height: 1122.520px;
+            background-color: white;
+            margin: auto;
+        }
+
+        .d1 {
+            width: 100%;
+            background-color: rgb(59, 18, 97);
+            padding: 1rem 0rem;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .d2 {
+            height: 7rem;
+            width: 7rem;
+            border-radius: 7rem;
+            background-color: rgb(133, 58, 246);
+        }
+
+        .d2 img {
+            height: 100%;
+            width: 100%;
+            border-radius: inherit;
+        }
+
+        .d3 {
+            width: 70%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .d3 h1 {
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        .d3 h3 {
+            color: yellow;
+            font-size: 2rem;
+            margin-left: 30%;
+        }
+
+        .d4 {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 3rem 0 3rem;
+            font-size: 1.8rem;
+        }
+
+        .d5 {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .d6 {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 3rem 0 3rem;
+            font-size: 1.5rem;
+        }
+
+        .d6_1 {
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            padding-left: 3rem;
+            font-weight: bold;
+        }
+
+        .d6_1 label {
+            height: 2.6rem;
+        }
+
+        .d6_2 {
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .d6_2 input {
+            border: none;
+            outline: none;
+            height: 2.6rem;
+            background-color: white;
+            font-weight: bold;
+        }
+
+        .d6a {
+            width: 95%;
+            font-size: 1.4rem;
+            box-shadow: 2px 2px 2px solid rgb(248, 248, 126);
+            padding: 0rem;
+            margin: auto;
+        }
+
+        .d7 {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .d7 table,
+        th,
+        tr {
+            width: 97%;
+            border: 2px solid gray;
+            border-collapse: collapse;
+        }
+
+        .d7 th {
+            width: 120px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .d7 tr {
+            text-align: center;
+
+        }
+
+        .d7 td {
+            border: 2px solid gray;
+        }
+
+        .d7 #tr1 {
+            width: 40rem;
+        }
+
+        #tr2 {
+            width: 2rem;
+        }
+
+        #ff {
+            text-align: left;
+            padding: 0 2rem;
+        }
+
+        .d8,
+        .d9 {
+            width: 100%;
+            padding-left: 3rem;
+        }
+
+        .d8 label {
+            margin-left: 5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        #i1 {
+            width: 30rem;
+            text-align: center;
+            font-size: 1.4rem;
+            border: none;
+            outline: none;
+            background-color: white;
+            font-weight: bold;
+        }
+
+        #i2 {
+            float: right;
+            text-align: center;
+            font-size: 1.4rem;
+            border: none;
+            outline: none;
+            background-color: white;
+            width: 10rem;
+            font-weight: bold;
+        }
+
+        .d9 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .d9 h2,
+        .d9 label {
+            font-weight: bold;
+        }
+
+        .d9 input {
+            border: none;
+            outline: none;
+            background-color: white;
+        }
+
+        .d9 table,
+        th,
+        tr {
+            width: 100%;
+            border: 2px solid gray;
+            border-collapse: collapse;
+        }
+
+        .d9 th {
+            width: 120px;
+        }
+
+        .d9 tr {
+            text-align: center;
+        }
+
+        .d9 td {
+            border: 2px solid gray;
+        }
+
+        .d10 {
+            width: 100%;
+            background-color: rgb(59, 18, 97);
+            height: 14rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .d10 * {
+            text-align: center;
+            padding: .7rem;
+        }
+
+        .fa {
+            font-size: 3rem;
+        }
+
+        hr {
+            border: 1px dotted black;
+        }
+
+        #tab tr:nth-child(even) {
+            background-color: rgb(252, 214, 168);
+        }
+
+        #tab tr:nth-child(odd) {
+            background-color: rgb(244, 232, 216);
+        }
+
+        #tab1 tr:nth-child(even) {
+            background-color: rgb(82, 82, 121);
+        }
+
+        #tab1 tr:nth-child(odd) {
+            background-color: rgb(93, 93, 122);
+        }
+
+        #tab {
+            margin-left: 35%;
+        }
+
+        .hr-eight {
+            overflow: visible;
+            height: 30px;
+            border-style: solid;
+            border-color: #838080;
+            border-width: 2px 0 0 0;
+            font-weight: bold;
+            border-radius: 20px;
+
+            &::before {
+                display: block;
+                content: "";
+                height: 30px;
+                margin-top: -31px;
+                border-style: solid;
+                border-color: #838080;
+                border-width: 0 0 1px 0;
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" class="f1">
+        <div class="d1">
+            <div class="d2">
+                <img src="rayslogo1-1.png" alt="logo is loading">
+            </div>
+            <div class="d3">
+                <h3>CIN:U80904BR2013TC020489</h3>
+                <h1>Rays &nbsp;Edutech &nbsp;Private &nbsp; Limited</h1>
+            </div>
+        </div><br>
+        <div class="d4">
+            <h4>Certificate Ref No: <span style="font-size: 1.4rem;">REPL/PT01/2000164</span></h4>
+            <h4>Registration No: <span style="font-size: 1.4rem;">REPL/PAT/19/0188</span></h4>
+        </div><br>
+        <div class="d5">
+            <h2 style="color: rgb(9, 80, 9);">STATEMENT OF MARKS</h2>
+        </div><br>
+        <div class="d6">
+            <div class="d6_1">
+                <label for="">This Marksheet is awarded to </label>
+                <label for="">on successfully completion of course </label>
+                <label for=""> On duration </label>
+                <label for="">Branch code </label>
+            </div>
+            <div class="d6_2">
+                <input type="text" value=": Ravi">
+                <input type="text" value=": Full stack web Development">
+                <input type="text" value=": 6 months">
+                <input type="text" value=": REPL/Br001">
+            </div>
+        </div><br>
+        <div class="d6a">
+            <h2 style="text-align: center; color: rgb(9, 80, 9) ;">MODULE COVERED</h2><br>
+            <hr class="hr-eight" /><br>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore saepe iusto, quasi debitis enim vitae
+                fugiat suscipit ipsam cupiditate! In, fuga. Atque, culpa distinctio. Odio praesentium dolorum ullam hic
+                qui.</p><br>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt adipisci odio laboriosam asperiores
+                perspiciatis, nisi harum eum eveniet beatae necessitatibus provident voluptatibus tempora magni dolor!
+                Minus perferendis optio voluptatum tempora.</p><br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, veritatis! Ipsum fugiat molestiae
+                libero alias, harum quas nemo, laboriosam ipsa aut nihil distinctio assumenda facere nam adipisci quasi
+                beatae sapiente?</p>
+        </div><br><br>
+        <div class="d6b">
+            <hr class="hr-eight" />
+        </div>
+        <div class="d7">
+            <table id="tab1">
+                <tr style="background-color: rgb(36, 46, 77);color: white;">
+                    <th rowspan="2" id="tr2">sno</th>
+                    <th rowspan="2" id="tr1" width:5rem;>MODULE NAME</th>
+                    <th colspan="3">FULL MARKS</th>
+                    <th colspan="3">MARKS OBTAINED</th>
+                </tr>
+                <tr style="background-color: rgb(82, 82, 121);color: white;">
+                    <th>THEORY</th>
+                    <th>LAB</th>
+                    <th>TOTAL</th>
+                    <th>THEORY</th>
+                    <th>LAB</th>
+                    <th>TOTAL</th>
+                </tr>
+                <tr>
+                    <th>101</th>
+                    <th id="ff">fundamentals of computers</th>
+                    <td>60</td>
+                    <td>40</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <th>102</th>
+                    <th id="ff">Ms-word</th>
+                    <td>60</td>
+                    <td>40</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <th>103</th>
+                    <th id="ff">Ms-Excel</th>
+                    <td>60</td>
+                    <td>40</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <th>104</th>
+                    <th id="ff">Ms-powerpoint</th>
+                    <td>60</td>
+                    <td>40</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <th>105</th>
+                    <th id="ff">C</th>
+                    <td>60</td>
+                    <td>40</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <th>106</th>
+                    <th id="ff">Database & Networking</th>
+                    <td>60</td>
+                    <td>40</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <th>107</th>
+                    <th id="ff">Tally Erp</th>
+                    <td>60</td>
+                    <td>40</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <th>108</th>
+                    <th id="ff">Photoshop,Canva</th>
+                    <td>60</td>
+                    <td>40</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+            </table>
+        </div><br>
+        <div class="d8">
+            <label for="">RESULT</label>
+            <input type="text" name="" id="i1" value="77%">
+            <label for="">800</label>
+            <input type="text" name="" id="i2" value="613 A"><br><br>
+            <hr class="hr-eight" /><br>
+        </div><br>
+        <div class="d9">
+            <div>
+                <table id="tab">
+                    <tr style="background-color: rgb(85, 8, 8); color: white;">
+                        <th>Grade-scale</th>
+                        <th>Grade</th>
+                        <th>Remarks</th>
+                    </tr>
+                    <tr>
+                        <th>90-100</th>
+                        <th>AA</th>
+                        <th>Outstanding</th>
+                    </tr>
+                    <tr>
+                        <th>80-89</th>
+                        <th>A+</th>
+                        <th>Excellent</th>
+                    </tr>
+                    <tr>
+                        <th>70-179</th>
+                        <th>A</th>
+                        <th>Very Good</th>
+                    </tr>
+                    <tr>
+                        <th>60-69</th>
+                        <th>B</th>
+                        <th>Good</th>
+                    </tr>
+                    <tr>
+                        <th>50-59</th>
+                        <th>C</th>
+                        <th>Satisfacoty</th>
+                    </tr>
+                    <tr>
+                        <th>40-49</th>
+                        <th>D</th>
+                        <th>Marginal</th>
+                    </tr>
+                    <tr>
+                        <th>Below 40</th>
+                        <th>X</th>
+                        <th>Disqualified</th>
+                    </tr>
+                </table>
+            </div><br><br>
+            <div style="display: flex;flex-wrap: wrap; width: 100%; justify-content: space-between;">
+                <div>
+                    <h2 style="font-weight: bold;">Issuing Authority</h2><br>
+                    <label for="">Date : </label>
+                    <input type="text" name="" id="">
+                </div>
+                <div><br><br>
+                    <h2 style="margin-right:4rem;">Verified By </h2>
+                </div>
+            </div>
+        </div>
+        <div class="d10">
+            <dir>
+                <p>
+                    <i class="fa fa-location-dot"></i><br>
+                    2nd Floor, Mithulok,west Boring <br>
+                    canal road, Near Bharat Petrol Pump. <br>
+                    Patna, Bihar- 800001
+                </p>
+            </dir>
+            <dir>
+                <p>
+                    <i class="fa fa-phone"></i><br>
+                    0612-2321928 <br>
+                    9308654075
+                </p><br>
+            </dir>
+            <dir>
+                <p>
+                    <i class="fa fa-globe"></i><br>
+                    info@raysonline.in <br>
+                    www.raysonline.in
+                </p>
+            </dir>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -39,11 +39,76 @@ create table registration
     cref_no varchar(50) ,
     cer_date date,
     reg_no varchar(50)  ,
-    sub varchar(200) ,
+    course varchar(200) ,
     sname varchar (200) ,
-    cduration varchar(100) ,
     fname varchar(200) ,
-    dob date,
+    cstart date ,
+    cend date ,
+    stu_pic blob,
+    study_c varchar(500),
+    us_id varchar(200),
+    bcode varchar (25)
+ )
+ ;
+ create table marksheet(
+   cref_no varchar(50) ,
+    mark_date date,
+    reg_no varchar(50)  ,
+    sname varchar (200) ,
+    fname varchar(200) ,
+    course varchar(200) ,
+    dur varchar(200),
+    study_c varchar(500),
+    mod_cov varchar(1500),
+    mod_name varchar(1500),
+    theory varchar(500),
+    lab varchar(500),
+    us_id varchar(200),
+    bcode varchar (25)
+ )
+ ;
+ create table internship
+ (
+    intern_no varchar(50) ,
+    int_date date,
+    sname varchar (200) ,
+    fname varchar(200) ,
+    gender varchar(200) ,
+    dob date ,
+    cont_no varchar(500),
+    email_id varchar(500),
+    coll_name varchar(500),
+    pro_tit varchar(500),
+    dur varchar(500),
+    techno varchar(500),
+    guide_name varchar(500),
+    stip_amt varchar(500),
+    stu_pic blob,
+    study_c varchar(500),
+    study_add varchar(500),
+    us_id varchar(200),
+    bcode varchar (25)
+ )
+ ;
+ create table perf_report(
+   intern_no varchar(50) ,
+    int_date date,
+    sname varchar (200) ,
+    fname varchar(200) ,
+    pro_tit varchar(500),
+    os varchar(500),
+    backend varchar(500),
+    frontend varchar(500),
+    databas varchar(500),
+    tl_name varchar(500),
+    team_meb varchar(500),
+    meb_name varchar(500),
+    dbms varchar(500),
+    interface varchar(500),
+    back varchar(500),
+    testing varchar(500),
+    documentation varchar(500),
+    us_id varchar(200),
     bcode varchar (25)
  )
  ;

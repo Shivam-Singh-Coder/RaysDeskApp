@@ -31,6 +31,33 @@ try:
         print(strr,reg_no,sep=',,,')
     elif(d=='cmb_reg'):
         print('hii')
+    
+    ######################################Internship##############
+    elif(d=='int_auto'):
+        t.execute('select int_no,int_ch from automatic')
+        rs=t.fetchall()
+        int_no=rs[0][0]+1
+        ch=rs[0][1]
+        year=date.today().year%100
+        t.execute('select max(intern_no) from internship')
+        rs1=t.fetchall()
+        if(rs1[0][0]!=None):
+            yr=rs1[0][0][11:13]
+            if(year>int(yr)):
+                int_no=1
+                ch='A'
+        if(int_no==1000):
+            ch=chr(ord(ch)+1)
+            int_no=1
+        if(int_no<10):
+            strr="REPL/"+"INTERN/"+str(year)+"/"+ch+"00"+str(int_no)
+        elif(int_no<100):
+            strr="REPL/"+"INTERN/"+str(year)+"/"+ch+"0"+str(int_no)
+        elif(int_no<1000):
+           strr="REPL/"+"INTERN/"+str(year)+"/"+ch+str(int_no)
+        print(strr,int_no,ch,sep=',,,')
+    elif(d=='int_insert'):
+        print("hii")
     #############Course Details###################
     elif(d=='ins_course'):
         d1=f.getvalue('t1')

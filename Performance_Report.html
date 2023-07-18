@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Internship Certificate Form</title>
+    <title>Performance Report Form</title>
     <link rel="icon" href="repllogo.png">
     <style>
         html{
@@ -340,20 +340,20 @@
         </div>
         <div id="body">
             <div id="ent">
-                <div id="d2"><b>Internship &nbsp; Application &nbsp; Entry</b></div>
+                <div id="d2"><b>Performance &nbsp; Report &nbsp; Entry</b></div>
                 <form>
                     <table id="table1">
                         <tr>
                             <td id="td1"><label id="l1">Internship No.</label><input type="text" id="t1" placeholder="Internship No." readonly></td>
-                            <td id="td1"><label id="l2">Applied Date</label><input type="date" id="t2"></td>
+                            <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2"></td>
                         </tr>
                         <tr>
-                            <td><label id="l5">Student Name</label><input type="text" id="t3" placeholder="Student Name" readonly></td>
-                            <td><label id="l6">Father's Name</label><input type="text" id="t4" placeholder="Father's Name" readonly></td>
+                            <td><label id="l5">Student Name</label><input type="text" id="t5" placeholder="Student Name" readonly></td>
+                            <td><label id="l6">Father's Name</label><input type="text" id="t6" placeholder="Father's Name" readonly></td>
                         </tr>
                         <tr>
                             <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-bottom: 1.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio"><label for="dr3" id="r">Binary</label></td>
-                            <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t5"><br><label id="ll4"></label></td>
+                            <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t6"><br><label id="ll4"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l6">Email ID</label><input type="email" id="t7" placeholder="Email ID"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
@@ -386,7 +386,7 @@
                 </form>
             </div>
             <div id="ser">
-                <div id="d2"><b>Internship &nbsp; Certificate &nbsp; Service</b></div>
+                <div id="d2"><b>Performance &nbsp; Report &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
                         <td><label id="l9">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Certificate">Certificate No.</option><option value="Name">Student Name</option></select></td>
@@ -440,50 +440,15 @@
             $(t).css('border','1px solid black');
             $(l).html('');
         }
-        var int_no,int_ch;
-        // ---------------------Auto Generate--------------------
-        $(document).ready(function(){
-            auto();
-            date();
-        });
-        function auto(){
-            $.ajax({
-                url:'rays_desk.py',
-                method:'post',
-                data:{
-                    cond:'int_auto'
-                },
-                success:function(data){
-                    var j=data.split(',,,');
-                    $('#t1').val(j[0]);
-                    int_no=j[1]
-                    int_ch=j[2]
-                }
-            })
-        }
-        // -------------------Date-------------
-        function date(){
-            var dt=new Date()
-            dd=dt.getDate()
-            mm=dt.getMonth()+1
-            yy=dt.getFullYear()
-            if(mm<10)
-                mm="0"+mm
-            if(dd<10)
-                dd="0"+dd
-            $('#t2,#t5').val(yy+"-"+mm+"-"+dd)
-            $('#t5').attr({'max':yy+"-"+mm+"-"+dd,'min':parseInt(yy)-50+"-"+mm+"-"+dd})
-        }
-        //==============================Insert Record==============
-        
+        // -----------------------------------------
         // ======================= Download==========================
         
-        // $(document).on('click','#b7',function(){
-        //     $("#table3").table2excel({
-        //         exclude: ".sn,#sn,#chk",
-        //         filename: $('#s1').val()+"_exp.xls"
-        //     });
-        // });
+        $(document).on('click','#b7',function(){
+            $("#table3").table2excel({
+                exclude: ".sn,#sn,#chk",
+                filename: $('#s1').val()+"_exp.xls"
+            });
+        });
     </script>
 </body>
 </html>

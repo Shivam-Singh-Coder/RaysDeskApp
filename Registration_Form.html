@@ -96,7 +96,7 @@
             text-align: center;
         }
         #table1 #td1{
-            width: 33%;
+            width: 43%;
         }
         #table1 #td2{
             width: 14%;
@@ -107,11 +107,8 @@
             font-size: 1.8rem;
             text-align: center;
         }
-        #table1{
-            align-items: center;
-        }
         #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#from,#to,#t11,#t12,#t13,#t14,#t15,#t16,#t17,#t18{
-            width: 70%;
+            width: 90%;
             height: 4rem;
             padding-left: 1rem;
             font-size: 1.8rem;
@@ -137,7 +134,7 @@
         }
         .radio{
             float: left;
-            margin-left: 1rem;
+            margin-left: 4rem;
         }
         #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l10,#l9,#l11,#l12,#lf,#lt,#l13,#l14,#l15,#l16,#l17,#l41,#l51,#l52{
             position: absolute;
@@ -153,7 +150,7 @@
         }
         textarea{
             resize: none;
-            width: 70%;
+            width: 91%;
             height: 4rem;
             padding: 1rem 0 0 1rem;
             font-size: 1.8rem;
@@ -339,17 +336,22 @@
                         <tr>
                             <td id="td1"><label id="l1">Reg. Form No</label><input type="text" id="t1" placeholder="Reg. Form No" readonly></td>
                             <td id="td1"><label id="l2">Reg. Date</label><input type="date" id="t2" placeholder="Reg. Date"></td>
-                            <td id="td1"><label id="l3">Student Name<font style="color: red;">*</font></label><input type="text" id="t3" placeholder="Student Name*" oninput="input('#t3','#l3')"><br><label id="ll1"></label></td>
+                            
                         </tr>
                         <tr>
+                            <td><label id="l3">Student Name<font style="color: red;">*</font></label><input type="text" id="t3" placeholder="Student Name*" oninput="input('#t3','#l3')"><br><label id="ll1"></label></td>
                             <td><label id="l4">Father's Name<font style="color: red;">*</font></label><input type="text" id="t4" placeholder="Father's Name*" oninput="input('#t4','#l4')"><br><label id="ll2"></label></td>
+                        </tr>
+                        <tr>
                             <td><label id="l41">Mother's Name<font style="color: red;">*</font></label><input type="text" id="t5" placeholder="Mother's Name*" oninput="input('#t5','#l41')"><br><label id="ll3"></label></td>
                             <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t6"><br><label id="ll4"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l6">Email ID</label><input type="text" id="t7" placeholder="Email ID"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
                             <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Contact No.*"><br><label id="ll6"></label></td>
-                            <td><label id="l8" hidden>Blood Grp.</label><select style="height: 4.5rem;width: 74%;" id="t9">
+                        </tr>
+                        <tr>
+                            <td><label id="l8" hidden>Blood Grp.</label><select style="height: 4.5rem;" id="t9">
                                 <option value="" selected disabled>----- Select Any Blood Group -----</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
@@ -360,14 +362,14 @@
                                 <option value="AB-">AB-</option>
                                 <option value="O-">O-</option>
                             </select><br><label id="ll7"></label></td>
+                            <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-bottom: 1.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio"><label for="dr3" id="r">Binary</label></td>
                         </tr>
                         <tr>
-                            <td><label style="font-size: 2rem;float: left;margin-left: 5.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio"><label for="dr3" id="r">Binary</label></td>
                             <td><label id="l51">College Name<font style="color: red;">*</font></label><input type="text" id="t11" placeholder="College Name*"><br><label id="ll8"></label></td>
                             <td><label id="l52">Program Name<font style="color: red;">*</font></label><input type="text" id="t12" placeholder="Program Name*"><br><label id="ll9"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l9" hidden>State<font style="color: red;">*</font></label><select style="height: 4.5rem;width: 74%;" id="t13">
+                            <td><label id="l9" hidden>State<font style="color: red;">*</font></label><select style="height: 4.5rem;" id="t13">
                                 <option value="" selected disabled>----- Select Any State -----</option>
                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -405,16 +407,24 @@
                                 <option value="Pondicherry">Pondicherry</option>
                                 <option value="Nagaland"> Nagaland</option>
                             </select><br><label id="ll10"></label></td>
-                            <td><label id="l10" hidden>District<font style="color: red;">*</font></label><select style="height: 4.5rem;width: 74%;" id="t14" disabled><option value="" selected disabled>----- Select Any District -----</option></select><br><label id="ll11"></label></td>
+                            <td><label id="l10" hidden>District<font style="color: red;">*</font></label><select style="height: 4.5rem;" id="t14" disabled><option value="" selected disabled>----- Select Any District -----</option></select><br><label id="ll11"></label></td>
+                        </tr>
+                        <tr>
                             <td><label id="l11">Permanent Add.<font style="color: red;">*</font></label><textarea placeholder="Permanent Add.*"></textarea><br><label id="ll12"></label></td>
+                            <td><label id="l12">Correspondence Add.</label><textarea placeholder="Correspondence Add."></textarea><br><label id="ll13"></label></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" id="rd_chk"><label for="rd_chk">check</label><label id="l12">Correspondence Add.</label><textarea placeholder="Correspondence Add."></textarea><br><label id="ll13"></label></td>
-                            <td><label id="l13">Student Pic</label><input type="file" src="" id="t15" alt="" style="padding-top: 0.5rem;border: solid 1px;"><br><label id="l15">Student Pic</label><img src="rayslogo1-1.png" alt="" id="t17" style="height: 10rem;width: 10rem;"><br></td>
-                            <td><label id="l14">Adhaar Pic</label><input type="file" src="" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;"><br><label id="l16">Adhaar Pic</label><img src="repllogo.png" alt="" id="t18" style="height: 10rem;width: 60%;"><br></td>
+                            <td><label id="l13">Student Pic</label><input type="file" src="" id="t15" alt="" style="padding-top: 0.5rem;border: solid 1px;"></td>
+                            <td><label id="l14">Adhaar Pic</label><input type="file" src="" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;"></td>
+                        </tr>
+                        <tr >
+                            <td style="border: solid palevioletred 2px;"><label id="l15">Student Pic</label><img src="rayslogo1-1.png" alt="" id="t17" style="height: 10rem;width: 10rem;"></td>
+                            <!-- <td></td> -->
+                            <td style="border: solid rgb(55, 233, 10) 2px;"><label id="l16">Adhaar Pic</label><img src="repllogo.png" alt="" id="t18" style="height: 10rem;width: 60%;"></td>
+                            <!-- <td></td> -->
                         </tr>
                         <tr>
-                            <td colspan="3"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
+                            <td colspan="2"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
                         </tr>
                     </table>
                 </form>
@@ -434,8 +444,8 @@
                 <div id="d3">
                     <div id="d5">
                         <table id="table3">
-                            <tr><th id="sn">Sn</th><th>Registration No</th><th>Admission Date</th><th>Registration No</th><th>Course Applied</th><th>Course Fee</th><th>Discount</th><th colspan="3">Check</th></tr>
-                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Registration No">P001</td><td data-label="Admission Date">Ord0001</td><td data-label="Registration No">UPI</td><td data-label="Course Applied">22-07-2001</td><td data-label="Course Fee">15000</td><td data-label="Discount">5000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>
+                            <tr><th id="sn">Sn</th><th>Registration No</th><th>Registration Date</th><th>Sname</th><th>Fname</th><th>Mname</th><th>Date Of Birth</th><th>Email</th><th>Cont_No</th><th>Program</th><th colspan="3">Action</th></tr>
+                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Registration No">P001</td><td data-label="Registration Date">Ord0001</td><td data-label="Sname">UPI</td><td data-label="Fname">22-07-2001</td><td data-label="Mname">15000</td><td data-label="Date Of Birth">5000</td><td data-label="Email">5000</td><td data-label="Cont_No">5000</td><td data-label="Program">5000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>
                         </table>
                     </div>
                 </div> 

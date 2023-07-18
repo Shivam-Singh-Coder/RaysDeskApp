@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Internship Certificate Form</title>
+    <title>Training Marksheet Form</title>
     <link rel="icon" href="repllogo.png">
     <style>
         html{
@@ -107,7 +107,7 @@
             font-size: 1.8rem;
             text-align: center;
         }
-        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#t10,#t11,#t41,#from,#to{
+        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#t10,#t11,#t41,#t81,#t82,#t83,#from,#to{
             width: 90%;
             height: 4rem;
             padding-left: 1rem;
@@ -119,25 +119,35 @@
         }
         #to{
             margin-left: 5%;
-        }#t41,#t51{
+        }
+        #t41,#t51{
             width: 42%;
             font-size: 1.8rem;
+        }
+        #t83,#t81,#t82{
+            width: 25%;
+        }
+        #t81,#t82{
+            margin-left: 5%;
         }
         #t51{
             margin-left: 5%;
         }
         textarea{
             resize: none;
-            width: 91%;
+            width: 95%;
             height: 4rem;
             padding: 1rem 0 0 1rem;
             font-size: 1.8rem;
         }
-        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#lf,#lt{
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#lf,#lt,#l71,#l72,#l73{
             position: absolute;
             font-size: 1.8rem;
             margin: -1rem 4rem;
             background-color: white;
+        }
+        #l72,#l73{
+            margin-left: 8%;
         }
         #l10{
             margin-left: 30%;
@@ -340,44 +350,30 @@
         </div>
         <div id="body">
             <div id="ent">
-                <div id="d2"><b>Internship &nbsp; Application &nbsp; Entry</b></div>
+                <div id="d2"><b>Training &nbsp; Marksheet &nbsp; Entry</b></div>
                 <form>
                     <table id="table1">
                         <tr>
-                            <td id="td1"><label id="l1">Internship No.</label><input type="text" id="t1" placeholder="Internship No." readonly></td>
-                            <td id="td1"><label id="l2">Applied Date</label><input type="date" id="t2"></td>
+                            <td id="td1"><label id="l1">Certificate No.</label><input type="text" id="t1" placeholder="Certificate No." readonly></td>
+                            <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2"></td>
                         </tr>
                         <tr>
-                            <td><label id="l5">Student Name</label><input type="text" id="t3" placeholder="Student Name" readonly></td>
-                            <td><label id="l6">Father's Name</label><input type="text" id="t4" placeholder="Father's Name" readonly></td>
+                            <td><label id="l5">Registration No.</label><input type="text" id="t5" placeholder="Registration No." readonly></td>
+                            <td><label id="l5">Student Name</label><input type="text" id="t5" placeholder="Student Name" readonly></td>
                         </tr>
                         <tr>
-                            <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-bottom: 1.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio"><label for="dr3" id="r">Binary</label></td>
-                            <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t5"><br><label id="ll4"></label></td>
+                            <td><label id="l6">Father's Name</label><input type="text" id="t6" placeholder="Father's Name" readonly></td>
+                            <td><label id="l6">Course Name</label><input type="text" id="t6" placeholder="Course Name" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">Email ID</label><input type="email" id="t7" placeholder="Email ID"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Contact No.*"><br><label id="ll6"></label></td>
+                            <td><label id="l6">Duration</label><input type="text" id="t7" placeholder="Duration"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
+                            <td><label id="l7">Study Centre<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Study Centre*"><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">College Name</label><input type="text" id="t7" placeholder="College Name"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Project Title<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Project Title*"><br><label id="ll6"></label></td>
+                            <td colspan="2"><label id="l11">Modules Covered<font style="color: red;">*</font></label><textarea placeholder="Modules Covered*"></textarea><br><label id="ll12"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l4">Duration<font style="color: red;">*</font></label><input type="text" placeholder="Duration*" id="t41" onkeydown="keychk('#t4','#ll3')" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')"><select style="height: 4.5rem;" id="t51"><option value="Hrs" selected>Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts">Months</option></select><br><label id="ll3"></label></td>
-                            <td><label id="l7">Technologies<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Technologies*"><br><label id="ll6"></label></td>
-                        </tr>
-                        <tr>
-                            <td><label id="l3">Guidance Name</label><input type="text" id="t3" placeholder="Guidance Name"><label id="ll1">Reg</label></td>
-                            <td><label id="l3">Stipend Amt.</label><input type="text" id="t3" placeholder="Stipend Amt."><label id="ll1">Reg</label></td>
-                        </tr>
-                        <tr>
-                            <td><label id="l9">Study Centre Name</label><input type="text" id="t9" placeholder="Study Centre Name" readonly></td>
-                            <td><label id="l11">Branch Add.<font style="color: red;">*</font></label><textarea placeholder="Branch Add.*"></textarea><br><label id="ll12"></label></td>
-                        </tr>
-                        <tr>
-                            <td style="border:rgb(49, 204, 10) solid 2px;"><label id="l10">Student Pic</label><input type="file" src="" id="t10" alt="" style="padding-top: 0.5rem;border: solid 1px;"></td>
-                            <td><img src="rayslogo1-1.png" alt="" id="t11" style="height: 10rem;width: 10rem;border: solid 2px red;"></td>
+                            <td colspan="2"><label id="l71">Module Name<font style="color: red;">*</font></label><input type="text" id="t83" placeholder="Module Name*"><label id="l72">Theory Marks<font style="color: red;">*</font></label><input type="text" id="t81" placeholder="Theory Marks*"><label id="l73">Lab Marks<font style="color: red;">*</font></label><input type="text" id="t82" placeholder="Lab Marks*"><i class="fa" style="font-size: 4rem;color: blue;">&nbsp;&nbsp;&#xf13a;</i><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="padding: 6rem;"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
@@ -386,7 +382,7 @@
                 </form>
             </div>
             <div id="ser">
-                <div id="d2"><b>Internship &nbsp; Certificate &nbsp; Service</b></div>
+                <div id="d2"><b>Training &nbsp; Marksheet &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
                         <td><label id="l9">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Certificate">Certificate No.</option><option value="Name">Student Name</option></select></td>
@@ -440,50 +436,15 @@
             $(t).css('border','1px solid black');
             $(l).html('');
         }
-        var int_no,int_ch;
-        // ---------------------Auto Generate--------------------
-        $(document).ready(function(){
-            auto();
-            date();
-        });
-        function auto(){
-            $.ajax({
-                url:'rays_desk.py',
-                method:'post',
-                data:{
-                    cond:'int_auto'
-                },
-                success:function(data){
-                    var j=data.split(',,,');
-                    $('#t1').val(j[0]);
-                    int_no=j[1]
-                    int_ch=j[2]
-                }
-            })
-        }
-        // -------------------Date-------------
-        function date(){
-            var dt=new Date()
-            dd=dt.getDate()
-            mm=dt.getMonth()+1
-            yy=dt.getFullYear()
-            if(mm<10)
-                mm="0"+mm
-            if(dd<10)
-                dd="0"+dd
-            $('#t2,#t5').val(yy+"-"+mm+"-"+dd)
-            $('#t5').attr({'max':yy+"-"+mm+"-"+dd,'min':parseInt(yy)-50+"-"+mm+"-"+dd})
-        }
-        //==============================Insert Record==============
-        
+        // -----------------------------------------
         // ======================= Download==========================
         
-        // $(document).on('click','#b7',function(){
-        //     $("#table3").table2excel({
-        //         exclude: ".sn,#sn,#chk",
-        //         filename: $('#s1').val()+"_exp.xls"
-        //     });
-        // });
+        $(document).on('click','#b7',function(){
+            $("#table3").table2excel({
+                exclude: ".sn,#sn,#chk",
+                filename: $('#s1').val()+"_exp.xls"
+            });
+        });
     </script>
 </body>
 </html>
