@@ -107,7 +107,7 @@
             font-size: 1.8rem;
             text-align: center;
         }
-        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#t10,#t11,#t41,#from,#to{
+        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#t10,#t11,#t12,#t13,#t14,#t15,#t16,#t17,#t18,#from,#to{
             width: 90%;
             height: 4rem;
             padding-left: 1rem;
@@ -119,11 +119,11 @@
         }
         #to{
             margin-left: 5%;
-        }#t41,#t51{
+        }#t10,#t11{
             width: 42%;
             font-size: 1.8rem;
         }
-        #t51{
+        #t11{
             margin-left: 5%;
         }
         textarea{
@@ -352,32 +352,32 @@
                             <td><label id="l6">Father's Name</label><input type="text" id="t4" placeholder="Father's Name" readonly></td>
                         </tr>
                         <tr>
-                            <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-bottom: 1.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio"><label for="dr3" id="r">Binary</label></td>
+                            <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-bottom: 1.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked value="Male"><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio" value="Female"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio" value="Binary"><label for="dr3" id="r">Binary</label></td>
                             <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t5"><br><label id="ll4"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">Email ID</label><input type="email" id="t7" placeholder="Email ID"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Contact No.*"><br><label id="ll6"></label></td>
+                            <td><label id="l6">Email ID</label><input type="email" id="t6" placeholder="Email ID"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
+                            <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text" id="t7" placeholder="Contact No.*"><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">College Name</label><input type="text" id="t7" placeholder="College Name"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Project Title<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Project Title*"><br><label id="ll6"></label></td>
+                            <td><label id="l6">College Name</label><input type="text" id="t8" placeholder="College Name"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
+                            <td><label id="l7">Project Title<font style="color: red;">*</font></label><input type="text" id="t9" placeholder="Project Title*"><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l4">Duration<font style="color: red;">*</font></label><input type="text" placeholder="Duration*" id="t41" onkeydown="keychk('#t4','#ll3')" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')"><select style="height: 4.5rem;" id="t51"><option value="Hrs" selected>Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts">Months</option></select><br><label id="ll3"></label></td>
-                            <td><label id="l7">Technologies<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Technologies*"><br><label id="ll6"></label></td>
+                            <td><label id="l4">Duration<font style="color: red;">*</font></label><input type="text" placeholder="Duration*" id="t10" onkeydown="keychk('#t4','#ll3')" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')"><select style="height: 4.5rem;" id="t11"><option value="Hrs" selected>Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts">Months</option></select><br><label id="ll3"></label></td>
+                            <td><label id="l7">Technologies<font style="color: red;">*</font></label><input type="text" id="t12" placeholder="Technologies*"><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l3">Guidance Name</label><input type="text" id="t3" placeholder="Guidance Name"><label id="ll1">Reg</label></td>
-                            <td><label id="l3">Stipend Amt.</label><input type="text" id="t3" placeholder="Stipend Amt."><label id="ll1">Reg</label></td>
+                            <td><label id="l3">Guidance Name</label><input type="text" id="t13" placeholder="Guidance Name"><label id="ll1">Reg</label></td>
+                            <td><label id="l3">Stipend Amt.</label><input type="text" id="t14" placeholder="Stipend Amt."><label id="ll1">Reg</label></td>
                         </tr>
                         <tr>
-                            <td><label id="l9">Study Centre Name</label><input type="text" id="t9" placeholder="Study Centre Name" readonly></td>
+                            <td><label id="l9">Study Centre Name</label><input type="text" id="t15" placeholder="Study Centre Name" readonly></td>
                             <td><label id="l11">Branch Add.<font style="color: red;">*</font></label><textarea placeholder="Branch Add.*"></textarea><br><label id="ll12"></label></td>
                         </tr>
                         <tr>
-                            <td style="border:rgb(49, 204, 10) solid 2px;"><label id="l10">Student Pic</label><input type="file" src="" id="t10" alt="" style="padding-top: 0.5rem;border: solid 1px;"></td>
-                            <td><img src="rayslogo1-1.png" alt="" id="t11" style="height: 10rem;width: 10rem;border: solid 2px red;"></td>
+                            <td style="border:rgb(49, 204, 10) solid 2px;"><label id="l10">Student Pic</label><input type="file" src="" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;"></td>
+                            <td><img src="rayslogo1-1.png" alt="" id="t17" style="height: 10rem;width: 10rem;border: solid 2px red;"></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="padding: 6rem;"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
@@ -390,7 +390,8 @@
                 <table id="table2">
                     <tr>
                         <td><label id="l9">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Certificate">Certificate No.</option><option value="Name">Student Name</option></select></td>
-                        <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll3">Choice</label></td>
+                        <td><label id="l9">Your Choice</label><input type="text" id="t18" placeholder="Your Choice" readonly></td>
+                        <!-- <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll3">Choice</label></td> -->
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
                     </tr>
                     <tr>
@@ -427,7 +428,7 @@
         })
         // --------------------------------------------------------------------
        // ======================== Mandatory ===========================
-        var flag=true;
+        var flag=true,kl;
         function ch2(t,l){
             a=$(t).val();
             if(a==null){
@@ -474,8 +475,60 @@
             $('#t2,#t5').val(yy+"-"+mm+"-"+dd)
             $('#t5').attr({'max':yy+"-"+mm+"-"+dd,'min':parseInt(yy)-50+"-"+mm+"-"+dd})
         }
+        //===================Image Validation======================
+        $('#t16').bind('change', function () {
+            if ($('#t16').val() == '') {
+                kl = null;
+                $('#t17').attr('src', '#');
+            }
+            var a = new FileReader();
+            a.readAsDataURL(document.getElementById('t16').files[0]);
+            a.onload = function (e) {
+                document.getElementById('t17').src = e.target.result;
+                kl = e.target.result;
+            }
+            if ($('#t17').attr('src') == '#')
+                $('#t16').css('border', 'none');
+        })
         //==============================Insert Record==============
-        
+        $('#b3').click(function(){
+            var conf=confirm("Are you sure want to insert this record?")
+            if(conf){
+                $.ajax({
+                    url:'rays_desk.py',
+                    method:'post',
+                    data:{
+                        cond:'int_insert',
+                        t1:$('#t1').val(),
+                        t2:$('#t2').val(),
+                        t3:$('#t3').val(),
+                        t4:$('#t4').val(),
+                        t5:$('input name[a:checked]').val(),
+                        t6:$('#t5').val(),
+                        t7:$('#t6').val(),
+                        t8:$('#t7').val(),
+                        t9:$('#t8').val(),
+                        t10:$('#t9').val(),
+                        t11:$('#t10').val()+"-"+$('#t11').val(),
+                        t12:$('#t12').val(),
+                        t13:$('#t13').val(),
+                        t14:$('#t14').val(),
+                        t15:$('#t15').val(),
+                        t16:$('textarea').val(),
+                        t17:kl,
+                        t18:int_ch,
+                        t19:int_no
+                    },
+                    success:function(data){
+                        var j=data.split(',,,');
+                        alert(j[0])
+                        if(j[1]==10){
+                            auto()
+                        }
+                    }
+                })
+            }
+        })
         // ======================= Download==========================
         
         // $(document).on('click','#b7',function(){
