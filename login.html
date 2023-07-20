@@ -126,7 +126,7 @@
         .input:focus {
             padding-bottom: 6px;
             border-width: 3px;
-            border-image: linear-gradient(to right, #00BFA6, #38d39f, #00BFA6);
+            border-image: linear-gradient(to right, rgb(0, 110, 255),  rgb(0, 110, 255), rgb(0, 110, 255));
             border-image-slice: 1;
         }
 
@@ -136,7 +136,7 @@
             display: block;
             transition: 0.2s;
             font-size: 17px;
-            color: #00BFA6;
+            color: rgb(0, 110, 255);
             font-weight: 700;
         }
 
@@ -159,7 +159,13 @@
             margin-left: 55%;
             font-size: 1.5rem;
         }
-
+        .aa{
+            position: absolute;
+            color: red;
+            font-weight: bold;
+            margin-left: 35%;
+            font-size: 1.5rem;
+        }
         .btn {
             width: 15rem;
             height: 4rem;
@@ -175,6 +181,7 @@
         #l2 {
             font-size: 1.5rem;
             cursor: pointer;
+            font-weight: bold;
         }
 
         #l2 {
@@ -193,7 +200,8 @@
         }
 
         .d2,
-        .d4,.d6 {
+        .d4,
+        .d6 {
             width: inherit;
             display: flex;
             flex-wrap: wrap;
@@ -251,7 +259,7 @@
             height: auto;
             padding: 5rem 0 3rem;
             /* border: 2px solid red; */
-            display:none;
+            display: none;
         }
 
         .con3 h1 {
@@ -277,8 +285,13 @@
                 flex-direction: column;
             }
 
-            .sub,
-            .con {
+            .sub {
+                display: none;
+            }
+
+            .con,
+            .con2,
+            .con3 {
                 width: 100%;
             }
 
@@ -294,10 +307,16 @@
 
             .hero {
                 flex-direction: column;
+
             }
 
-            .sub,
-            .con {
+            .sub {
+                display: none;
+            }
+
+            .con,
+            .con2,
+            .con3 {
                 width: 100%;
             }
 
@@ -329,15 +348,17 @@
                 </div><br>
                 <div class="inp_div field">
                     <input type="password" name="#m2" class="input" placeholder="password" required="" id="t2"
-                    onfocusout="flcheck('#t2')" onfocus="fgchk('#t2')"><i class="fa fa-eye-slash" id="e" onclick="eye('#e','#t2')"></i>
+                        onfocusout="flcheck('#t2')" onfocus="fgchk('#t2')"><i class="fa fa-eye-slash" id="e"
+                        onclick="eye('#e','#t2')"></i>
                     <label class="lab">Password</label><br>
                 </div><br><br><br><br>
-                <i class="fa-duotone fa-plus"></i><input type="button" value="LOGIN" class="btn"></i><br><br><br>
+                <i class="fa-duotone fa-plus"></i><input type="button" value="LOGIN" class="btn"
+                    id="bt2"></i><br><br><br>
                 <div class="d2">
-                    <label for="" id="l">DON'T HAVE AN ACCOUNT ?<span>&nbsp;&nbsp; Sign Up</span> </label>
+                    <label for="" id="l">Don't have an account ?<span>&nbsp;&nbsp; Sign Up</span> </label>
                     <label for="" id="l2">Forget Password ?</label></label>
                 </div><br><br>
-                <div><label for="">mfvigji</label></div>
+                <div><label for="">------------------------</label></div>
             </div>
         </div>
         <!-- =======================signup======================== -->
@@ -357,13 +378,13 @@
                 </div><br>
                 <div>
                     <label class="sq">Security Question</label><br>
-                    <select name="" id="" class="sel">
-                        <option value="" selected>-----Security Question-----</option>
-                        <option value="">what is your pet's name?</option>
-                        <option value="">what is your pet's name?</option>
-                        <option value="">what is your pet's name?</option>
-                        <option value="">what is your pet's name?</option>
-                        <option value="">what is your pet's name?</option>
+                    <select name="" id="t44" class="sel">
+                        <!-- <option value="" selected>-----Security Question-----</option> -->
+                        <option value="what is your pet's name?">what is your pet's name?</option>
+                        <option value="what is your father's name?">what is your father's name?</option>
+                        <option value="what is your favourate subject?" selected>what is your favourate subject?</option>
+                        <option value="what is your best friend's name?">what is your best friend's name?</option>
+                        <option value="what is your childhood name?">what is your childhood name?</option>
                     </select><br>
                 </div><br>
                 <div class="inp_div field">
@@ -373,8 +394,10 @@
                 </div><br>
                 <div class="inp_div field">
                     <input type="password" name="#m1" class="input" placeholder="Password " required="" id="t6"
-                        onfocusout="flcheck('#t6')" onfocus="fgchk('#t6')"><i class="fa fa-eye-slash" id="e1" onclick="eye('#e1','#t6')"></i>
+                        onfocusout="flcheck('#t6')" onfocus="fgchk('#t6')"><i class="fa fa-eye-slash" id="e1"
+                        onclick="eye('#e1','#t6')"></i>
                     <label class="lab">Password</label><br>
+                    <label for="" id="mm" class="msg"></label>
                 </div><br>
                 <div class="inp_div field">
                     <input type="password" name="#m1" class="input" placeholder="Confirm Password " required="" id="t7"
@@ -383,8 +406,8 @@
                     <label for="" id="mm1" class="msg"></label>
                 </div><br><br><br><br>
                 <div class="d4">
-                    <input type="button" class="btn" value="SIGNUP" >
-                    <input type="button" class="btn" id="bt" value="REFRESH">
+                    <input type="button" class="btn" id="bt11" value="SIGNUP">
+                    <input type="button" class="btn" id="bt" value="Go To Login">
                 </div>
             </div>
         </div>
@@ -392,45 +415,48 @@
         <div class="con3">
             <div class="logo">
                 <img src="login.jpg" alt="">
-            </div><br>
+            </div>
             <h1>FORGOT PASSWORD</h1>
             <div class="d5">
                 <div class="inp_div field">
                     <input type="input" name="#m1" class="input" placeholder="User Id " required="" id="t8"
                         onfocusout="flcheck('#t8')" onfocus="fgchk('#t8')">
-                    <label class="lab">User Name</label><br>
+                    <label class="lab">User Id</label><br>
                     <label for="" id="m1" class="msg"></label>
                 </div><br>
                 <div>
                     <label class="sq">Security Question</label><br>
-                    <select name="" id="" class="sel">
-                        <option value="" selected>-----Security Question-----</option>
-                        <option value="">what is your pet's name?</option>
-                        <option value="">what is your pet's name?</option>
-                        <option value="">what is your pet's name?</option>
-                        <option value="">what is your pet's name?</option>
-                        <option value="">what is your pet's name?</option>
+                    <select name="" id="t88" class="sel">
+                        <!-- <option value="" selected>-----Security Question-----</option> -->
+                        <option value="what is your pet's name?">what is your pet's name?</option>
+                        <option value="what is your father's name?">what is your father's name?</option>
+                        <option value="what is your favourate subject?" selected>what is your favourate subject?</option>
+                        <option value="what is your best friend's name?">what is your best friend's name?</option>
+                        <option value="what is your childhood name?">what is your childhood name?</option>
                     </select><br>
                 </div><br>
                 <div class="inp_div field">
-                    <input type="input" name="#m1" class="input" placeholder="Answer " required="" id="t9"
+                    <input type="input" name="#m1" class="input" placeholder="Answer " id="t9"
                         onfocusout="flcheck('#t9')" onfocus="fgchk('#t9')">
                     <label class="lab">Answer</label><br>
                 </div><br>
                 <div class="inp_div field">
-                    <input type="password" name="#m1" class="input" placeholder="New Password " required="" id="t10"
-                        onfocusout="flcheck('#t10')" onfocus="fgchk('#t10')"><i class="fa fa-eye-slash" id="e3" onclick="eye('#e3','#t10')"></i>
+                    <input type="password" name="#m1" class="input" placeholder="New Password " disabled id="t10"
+                        onfocusout="flcheck('#t10')" onfocus="fgchk('#t10')"><i class="fa fa-eye-slash" id="e3"
+                        onclick="eye('#e3','#t10')"></i>
                     <label class="lab">Password</label><br>
+                    <label for="" id="mmm" class="msg"></label>
                 </div><br>
                 <div class="inp_div field">
-                    <input type="password" name="#m1" class="input" placeholder="Confirm Password " required="" id="t11"
+                    <input type="password" name="#m1" class="input" placeholder="Confirm Password " disabled id="t11"
                         onfocusout="flcheck('#t11')" onfocus="fgchk('#t11')">
                     <label class="lab">Confirm Password</label><br>
-                    <label for="" id="m1" class="msg">hfkh</label>
+                    <label for="" id="mn1" class="aa"></label>
                 </div><br><br><br><br>
                 <div class="d6">
-                    <input type="button" class="btn" value="CREATE">
-                    <input type="button" class="btn" id="bt1" value="REFRESH">
+                    <input type="button" class="btn" id="bt3" value="CREATE">
+                    <input type="button" class="btn" id="bt1" value="Go to login"><br>
+                    <!-- <label for="" id="mn1" class="msg">vfkgjiorj</label> -->
                 </div><br><br>
             </div>
         </div>
@@ -477,9 +503,9 @@
             }
             $(id).css({ "color": "black", "border-bottom": ".1rem solid #9b9b9b" });
         }
-        function eye(a,b){
+        function eye(a, b) {
             c = $(a).attr('class')
-            if (c =='fa fa-eye-slash') {
+            if (c == 'fa fa-eye-slash') {
                 $(a).attr('class', 'fa fa-eye')
                 $(b).attr('type', 'text')
             }
@@ -496,15 +522,202 @@
                 return false;
             }
         });
-        $('#t7').focusout(function(){
-            a=$('#t6').val()
-            b=$('#t7').val()
+        $('#t7').focusout(function () {
+            a = $('#t6').val()
+            b = $('#t7').val()
             if ((a != b)) {
-                $('#mm1').html( "Password doesn't match!")
+                $('#mm1').html("Password doesn't match!")
                 flag = false;
-             }
+            }
             else
                 $('#mm1').html("")
+        })
+        $('#t6').on('input', function () {
+            a = $(this).val().trim()
+            b = a.match(/[0-9]/g)
+            c = a.match(/[A-z]/g)
+            d = a.match(/[!@#$%^&*`~(){}/?.>,<;:'"=_\\\[\}|]/g)
+            if (a != '') {
+                if (d && b && c) {
+                    $('#mm').css('color', 'green')
+                    $('#mm').html('Strong Password')
+                }
+                else if ((d && b) || (d && c) || (b && c)) {
+                    $('#mm').css('color', 'yellowgreen')
+                    $('#mm').html('Average Password')
+                }
+                else {
+                    $('#mm').html('Weak Password')
+                    $('#mm').css('color', 'red')
+                }
+            }
+            else
+                $('#mm').html('')
+        })
+        $('#t10').on('input', function () {
+            a = $(this).val().trim()
+            b = a.match(/[0-9]/g)
+            c = a.match(/[A-z]/g)
+            d = a.match(/[!@#$%^&*`~(){}/?.>,<;:'"=_\\\[\}|]/g)
+            if (a != '') {
+                if (d && b && c) {
+                    $('#mmm').css('color', 'green')
+                    $('#mmm').html('Strong Password')
+                }
+                else if ((d && b) || (d && c) || (b && c)) {
+                    $('#mmm').css('color', 'yellowgreen')
+                    $('#mmm').html('Average Password')
+                }
+                else {
+                    $('#mmm').html('Weak Password')
+                    $('#mmm').css('color', 'red')
+                }
+            }
+            else
+                $('#mm').html('')
+        })
+        $('#t11').focusout(function () {
+            a = $('#t10').val()
+            b = $('#t11').val()
+            if ((a != b)) {
+                $('#mn1').html("Password doesn't match!")
+                flag = false;
+            }
+            else
+                $('#mn1').html("")
+        })
+        // ----------------signin--------------
+        $('#bt11').click(function () {
+            flag = true
+            flcheck('#t3')
+            flcheck('#t4')
+            flcheck('#t5')
+            flcheck('#t6')
+            flcheck('#t7')
+            if (flag) {
+                $.ajax({
+                    url: 'login.py',
+                    method: 'post',
+                    data: {
+                        t: 'sign',
+                        t1: $('#t3').val(),
+                        t2: $('#t4').val(),
+                        t3: $('#t44').val(),
+                        t4: $('#t5').val(),
+                        t5: $('#t6').val()
+                    },
+                    success: function (data) {
+                        // alert(data)
+                        if (data == 0)
+                            alert('This User Id is already registered!')
+                        else {
+                            alert(data)
+                            location.reload()
+                        }
+                    }
+                })
+            }
+        })
+        // ==================login====================
+        $('#bt2').click(function () {
+            flag = true
+            flcheck('#t1')
+            flcheck('#t2')
+            if (flag) {
+                $.ajax({
+                    url: 'login.py',
+                    method: 'post',
+                    data: {
+                        t: 'log',
+                        t1: $('#t1').val(),
+                        t2: $('#t2').val().trim()
+                    },
+                    success: function (data) {
+                        if (data == 0)
+                            alert(" User Id or password doesn't match!")
+                        else {
+                            data = data.split(',,')
+                            alert("Login successfully!")
+                            location.reload()
+                            // localStorage.setItem('user_login',data[0])
+                            // localStorage.setItem('user_name',data[1])
+                            // window.location.href='homepage1234.html'
+                        }
+                    }
+                })
+            }
+        })
+        // ============forgot================
+        var count = 2;
+        $('#t9').focusout(function () {
+            flag = true
+            flcheck('#t8')
+            flcheck('#t9')
+            if (flag) {
+                $.ajax({
+                    url: 'login.py',
+                    method: 'post',
+                    data: {
+                        t: 'forgot',
+                        t1: $('#t8').val(),
+                        t2: $('#t88').val(),
+                        t3: $('#t9').val()
+                    },
+                    success: function (data) {
+                        // alert(data)
+                        if (data == 0) {
+                            alert("user id or security question doesn't match")
+                            if (count != 0) {
+                                $('#mn1').html('only ' + count + ' attempt remaning!')
+                                count -= 1;
+                            }
+                            else {
+
+                                $.ajax({
+                                    url: 'login.py',
+                                    method: 'post',
+                                    data: {
+                                        t: 'fgt',
+                                        t1: $('#t8').val()
+                                    },
+                                    success: function (data) {
+                                        $('#mn1').html('Sorry! you are blocked, Please contact to Super admin!')
+                                    }
+                                })
+                            }
+                        }
+                        else if (data == 1)
+                            alert('Sorry! you are blocked, Please contact to Super admin!')
+                        else
+                            $('#t10,#t11').removeAttr('disabled')
+                    }
+                })
+            }
+        })
+        $('#bt3').click(function () {
+            flag = true
+            flcheck('#t8')
+            flcheck('#t9')
+            flcheck('#t10')
+            if (flag) {
+                $.ajax({
+                    url: 'login.py',
+                    method: 'post',
+                    data: {
+                        t: 'fgt2',
+                        t1: $('#t8').val(),
+                        t2: $('#t88').val(),
+                        t3: $('#t9').val(),
+                        t4: $('#t10').val()
+
+                    },
+                    success: function (data) {
+                        alert(data)
+                        location.reload()
+                    }
+                })
+            }
+
         })
     </script>
 </body>

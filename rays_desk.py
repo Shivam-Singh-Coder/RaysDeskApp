@@ -11,7 +11,8 @@ try:
     d=f.getvalue('cond')
     ######################REGISTRATION DETAILS##############
     if(d=='auto_reg'):
-        t.execute("select reg_no from automatic")
+        t1=f.getvalue('t1')
+        t.execute("select reg_no from branch_details where bcode='"+t1+"'")
         rs=t.fetchall()
         reg_no=rs[0][0]+1
         year=date.today().year%100
@@ -41,6 +42,92 @@ try:
                         print('<option>'+b+'</option>')
         else:
             print("Invalid Choice!")
+    elif(d=='reg_insert'):
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        d6=f.getvalue('t6')
+        d7=f.getvalue('t7')
+        d8=f.getvalue('t8')
+        d9=f.getvalue('t9')
+        d10=f.getvalue('t10')
+        d11=f.getvalue('t11')
+        d12=f.getvalue('t12')
+        d13=f.getvalue('t13')
+        d14=f.getvalue('t14')
+        d15=f.getvalue('t15')
+        d16=f.getvalue('t16')
+        d17=f.getvalue('t17')
+        d18=f.getvalue('t18')
+        d19=f.getvalue('t19')
+        d20=f.getvalue('t20')
+        d21=f.getvalue('t21')
+        t.execute("select * from registration where reg_no='"+d1+"'")
+        if(t.fetchall()==[]):
+            url="insert into registration values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20))
+            t.execute("update branch_details set reg_no="+d21+" where bcode='"+d19+"'")
+            con.commit()
+            print("Successfully Inserted Record!,,,10")
+        else:
+            print("Already Inserted Record for this Registration ID!")
+    elif d=='ser_reg':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        if(d1=='Registration'):
+            url="select * from registration where reg_no='"+d2+"'"
+        elif(d1=='Contact'):
+            url="select * from registration where cont_no='"+d2+"'"
+        elif(d1=='Name'):
+            url="select * from registration where sname='"+d2+"'"
+        elif(d1=='Blood Grp'):
+            url="select * from registration where blood_grp='"+d2+"'"
+        elif(d1=='Prog'):
+            url="select * from registration where prog='"+d2+"'"
+        elif(d1=='College'):
+            url="select * from registration where clg_name='"+d2+"'"
+        else:
+            url="select * from registration"
+        t.execute(url)
+        rs=t.fetchall()
+        if rs==[]:
+            print(0)
+        else:
+            i=0
+            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Course ID</th><th>Course Name</th><th>Course Dur.</th><th>Course Fee</th><th>One Time Payment(OTP)</th><th colspan="2" style="color:blue;" id="act">Action Here</th></tr>')
+            for a in rs:
+                i=i+1
+                print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Course ID">'+str(a[0])+'   '+'</td><td data-label="Course Name" contenteditable="true" id="e">'+str(a[1])+'   '+'</td><td data-label="Course Dur." contenteditable="true" id="e">'+str(a[2])+'   '+'</td><td data-label="Course Fee" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="One Time Payment(OTP)" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td></tr>')
+            print('</table></div>')
+    elif d=='upd_reg':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        d5=f.getvalue('t6')
+        d5=f.getvalue('t7')
+        d5=f.getvalue('t8')
+        d5=f.getvalue('t9')
+        d5=f.getvalue('t10')
+        d5=f.getvalue('t11')
+        d5=f.getvalue('t12')
+        d5=f.getvalue('t13')
+        d5=f.getvalue('t14')
+        d5=f.getvalue('t15')
+        d5=f.getvalue('t16')
+        d5=f.getvalue('t17')
+        d5=f.getvalue('t18')
+        t.execute('update registration set reg_date="'+d2+'",sname="'+d3+'",fname="'+d4+'",mname="'+d5+'",sdob="'+d6+'",email="'+d7+'",cont_no="'+d8+'",prog="'+d9+'",blood_grp="'+d10+'",clg_name="'+d11+'",gender="'+d12+'",prmt_add="'+d13+'",dis="'+d14+'",stt="'+d15+'",sphoto="'+d16+'",aadhaar="'+d17+'",cor_add="'+d18+'" where reg_no="'+d1+'" ')
+        con.commit()
+        print('Successfully Updated This Record!')
+    elif d=='del_reg':
+        d1=f.getvalue('t1')
+        t.execute('delete from registration where reg_no="'+d1+'"')
+        con.commit()
+        print('Successfully Deleted This Record!,,,10')
     ######################################Internship##############
     elif(d=='int_auto'):
         t.execute('select int_no,int_ch from automatic')

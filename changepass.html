@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change password</title>
+    <script src="https://kit.fontawesome.com/2c21330576.js" crossorigin="anonymous"></script>
+    <style>
+        html {
+            font-size: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .con {
+            width: 50%;
+            height: auto;
+            padding: 5rem 0 3rem;
+            margin: auto;
+        }
+
+        .con h1 {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .logo {
+            height: 11rem;
+            width: 11rem;
+            border-radius: 11rem;
+            margin: 1rem auto;
+        }
+
+        .logo img {
+            height: 100%;
+            width: 100%;
+            border-radius: 100%;
+        }
+
+        .d1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .inp_div {
+            position: relative;
+            padding: 20px 0 0;
+            width: 70%;
+        }
+
+        .input {
+            font-family: inherit;
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #9b9b9b;
+            outline: 0;
+            font-size: 17px;
+            padding: 7px 2rem;
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+
+        .input::placeholder {
+            visibility: hidden;
+        }
+
+        .input:placeholder-shown~.lab {
+            font-size: 17px;
+            cursor: text;
+            top: 20px;
+        }
+
+        .lab {
+            position: absolute;
+            top: 0;
+            margin-left: 2rem;
+            display: block;
+            transition: 0.2s;
+            font-size: 17px;
+            color: #9b9b9b;
+            pointer-events: none;
+        }
+
+        .input:focus {
+            padding-bottom: 6px;
+            border-width: 3px;
+            border-image: linear-gradient(to right, rgb(0, 110, 255), rgb(0, 110, 255), rgb(0, 110, 255));
+            border-image-slice: 1;
+        }
+
+        .input:focus~.lab {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 17px;
+            color: rgb(0, 110, 255);
+            font-weight: 700;
+        }
+
+        .input:required,
+        .input:invalid {
+            box-shadow: none;
+        }
+
+        .btn {
+            width: 25rem;
+            height: 4rem;
+            font-weight: bold;
+            font-size: large;
+            border-radius: 1rem;
+            cursor: pointer;
+            background-color: royalblue;
+            color: white;
+        }
+
+        .fa {
+            position: absolute;
+            font-size: 2rem;
+            margin-left: -3.7rem;
+            cursor: pointer;
+        }
+
+        .msg {
+            position: absolute;
+            color: red;
+            font-weight: bold;
+            margin-left: 55%;
+            font-size: 1.5rem;
+        }
+
+        @media(max-width:998px) {
+            html {
+                font-size: 55%;
+            }
+
+            .con {
+                width: 100%;
+            }
+        }
+
+        @media(max-width:768px) {
+            html {
+                font-size: 45%;
+            }
+
+            .con {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="logo">
+            <img src="rayslogo1-1.png" alt="">
+        </div><br>
+        <h1>CHANGE PASSWORD</h1><br>
+        <div class="d1">
+            <div class="inp_div field">
+                <input type="password" name="#m1" class="input" placeholder="Current password" id="t1"
+                    onfocusout="flcheck('#t1')" onfocus="fgchk('#t1')">
+                <label class="lab">Current password</label><br>
+            </div><br>
+            <div class="inp_div field">
+                <input type="password" name="#m2" class="input" placeholder="New password" id="t2"
+                    onfocusout="flcheck('#t2')" onfocus="fgchk('#t2')"><i class="fa fa-eye-slash" id="e"
+                    onclick="eye('#e','#t2')"></i>
+                <label class="lab">New Password</label><br>
+                <label for="" id="mn" class="msg"></label>
+            </div><br>
+            <div class="inp_div field">
+                <input type="password" name="#m2" class="input" placeholder="Confirm password" id="t3"
+                    onfocusout="flcheck('#t3')" onfocus="fgchk('#t3')">
+                <label class="lab">Confirm Password</label><br>
+                <label for="" id="mn1" class="msg"></label>
+            </div><br><br><br><br>
+            <div>
+                <input type="button" value="Change password" class="btn" id="bt">
+                <input type="button" value="clear" class="btn" id="">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function flcheck(t) {
+            var a = $(t).val().trim();
+            if (a == '') {
+                if (t == '#t1' || t == '#t2' || t == '#t3') {
+                    $(t).removeAttr('type')
+                }
+                $(t).val('*Field is mandatory!')
+                $(t).css({ 'border-bottom': '2px solid red', 'color': 'red' })
+                flag = false
+            }
+            else if (a == "*Field is mandatory!") {
+                flag = false;
+            }
+        }
+        function fgchk(id) {
+            var n = $(id).val();
+            if (n == "*Field is mandatory!")
+                $(id).val('');
+            if (t == '#t1' || t == '#t2' || t == '#t3') {
+                $(id).attr('type', 'password')
+            }
+            $(id).css({ "color": "black", "border-bottom": ".1rem solid #9b9b9b" });
+        }
+        function eye(a, b) {
+            c = $(a).attr('class')
+            if (c == 'fa fa-eye-slash') {
+                $(a).attr('class', 'fa fa-eye')
+                $(b).attr('type', 'text')
+            }
+            else {
+                $(a).attr('class', 'fa fa-eye-slash')
+                $(b).attr('type', 'password')
+            }
+        }
+        $('#t3').focusout(function () {
+            a = $('#t2').val()
+            b = $('#t3').val()
+            if ((a != b)) {
+                $('#mn1').html("Password doesn't match!")
+                flag = false;
+            }
+            else
+                $('#mn1').html("")
+        })
+        $('#t2').on('input', function () {
+            a = $(this).val().trim()
+            b = a.match(/[0-9]/g)
+            c = a.match(/[A-z]/g)
+            d = a.match(/[!@#$%^&*`~(){}/?.>,<;:'"=_\\\[\}|]/g)
+            if (a != '') {
+                if (d && b && c) {
+                    $('#mn').css('color', 'green')
+                    $('#mn').html('Strong Password')
+                }
+                else if ((d && b) || (d && c) || (b && c)) {
+                    $('#mn').css('color', 'yellowgreen')
+                    $('#mn').html('Average Password')
+                }
+                else {
+                    $('#mn').html('Weak Password')
+                    $('#mn').css('color', 'red')
+                }
+            }
+            else
+                $('#mn').html('')
+        })
+
+        $('#bt').click(function(){
+            flag = true
+            flcheck('#t1')
+            flcheck('#t2')
+            flcheck('#t3')
+            if (flag) {
+                $.ajax({
+                    url: 'login.py',
+                    method: 'post',
+                    data: {
+                        t: 'change',
+                        t1: $('#t1').val(),
+                        t2: $('#t2').val()
+                    },
+                    success: function (data) {
+                        alert(data)
+                        location.reload()
+                    }
+                })
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>

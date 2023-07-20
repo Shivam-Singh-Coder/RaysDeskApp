@@ -1,0 +1,371 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="icon" href="repllogo.png">
+    <title>Dashboard-Rays</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 5%;
+            height: 150%;
+            margin-top: 3.7rem;
+            background-color: rgb(84, 175, 249);
+            float: left;
+        }
+        .main {
+            height: 3.8rem;
+            width: 100%;
+            background-color: rgb(243, 237, 237);
+            box-shadow: 9rem;
+            justify-content: flex-start;
+            border: 1px solid white;
+        }
+
+        #img {
+            position: absolute;
+            padding-left: 1rem;
+
+        }
+
+        .main p {
+            text-align: right;
+            margin: 1rem 5rem;
+
+        }
+
+        .main i {
+            font-size: 1.5rem;
+
+        }
+
+        li {
+            height: 4rem;
+            text-align: center;
+            flex-direction: column;
+            padding-top: 1.5rem;
+            font-size: 1.5rem;
+            list-style: none;
+        }
+
+        li a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        #i {
+            color: white;
+            cursor: pointer;
+
+
+        }
+
+        li:hover {
+            background-color: rgb(250, 104, 50);
+        }
+
+        .center,
+        .A,
+        .b,
+        .C, .C1,.C2{
+            height: 10rem;
+            width: 20%;
+            background-color: orange;
+            margin-top: 1rem;
+            margin-left: 4rem;
+            margin-bottom: 4rem;
+            border-radius: 1rem;
+            color: white;
+            transition: 0.5s;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 10px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px;
+        }
+        .center:hover,
+        .A:hover,
+        .b:hover,
+        .C:hover, .C1:hover,.C2:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        #box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            column-gap: 6rem;
+        }
+        .center p,
+        .A p,
+        .B p,
+        .C p ,
+        .C1 p,.C2 p{
+            padding-left: 1.2rem;
+            margin-top: 1.4rem;
+            font-size: 1.8rem;
+        }
+
+        .A {
+            background-color: rgb(240, 113, 107);
+        }
+
+        .B {
+            background-color: rgb(114, 130, 251);
+        }
+
+        .C {
+            background-color: rgb(30, 220, 12);
+        }
+        .C2 {
+            background-color: rgb(218, 221, 13);
+        }
+        #d {
+            /* margin-left: 75%; */
+            float: right;
+            position: relative;
+            font-size: 3rem;
+            color: white;
+            margin-right: 1rem;
+            margin-top: -1rem;
+        }
+
+        #a,#k,#l{
+            position: absolute;
+            z-index: 9999;
+            left: 5rem;
+            visibility: hidden;
+            font-size: 1rem;
+            background-color: aqua;
+            transition: .3s all;
+            padding: .2rem;
+            border-radius: .1rem;
+            cursor: pointer;
+            /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+        }
+        #k{
+            left: 73%;
+            top:8%;
+        }
+        #l{
+            left: 79%;
+            top:8%;
+        }
+        #a::before,#k::before,#l::before {
+            content: "";
+            width: .5rem;
+            height: .5rem;
+            background-color: aqua;
+            position: absolute;
+            top: .5rem;
+            left: -.2rem;
+            transform: rotate(45deg);
+        }
+        #k::before{
+            top:-0.2rem;
+            left: 2.9rem;
+        }
+        #l::before{
+            top:-0.2rem;
+            left: 1.3rem;
+        }
+        li:hover #a {
+            visibility: visible;
+        }
+        .fa-bell:hover #k,.fa-user-circle:hover #l{
+            cursor: pointer;
+            visibility: visible;
+        }
+        .fa-bell,.fa-user-circle{
+            cursor: pointer;
+        }
+        #a a{
+            text-decoration: none;
+            color: black;
+        }
+        @media (max-width:998px) {
+            html {
+                font-size: 55%;
+            }
+        }
+
+        @media (max-width:768px) {
+            html {
+                font-size: 45%;
+            }
+            #d{
+                margin-top: -2.7rem;
+            }
+            #img {
+                padding-left: 1rem;
+                height: 5rem;
+                width: 5rem;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul>
+            <li>
+                <a href="Certificate_Form.html"><i class="fa fa-users" id="i"></i></a>
+                <span id="a"><b><a href="Certificate_Form.html">Training Certificate</a></b></span>
+            </li>&nbsp;&nbsp;
+            <li> <a href="Training_Marksheet.html"><i class="fa fa-user" id="i"></i></a>
+                <span id="a"><b><a href="Training_Marksheet.html">Marksheet From</a></b></span>
+            </li>&nbsp;&nbsp;&nbsp;
+            <li>
+                <a href="Internship_Certificate.html"><i class="fa fa-address-card" id="i"></i></a>
+                <span id="a"><b><a href="Internship_Certificate.html">Internship Certificate</a></b></span>
+            </li>&nbsp;&nbsp;
+            <li> <a href="Performance_Report.html"><i class="fa fa-user" id="i"></i></a>
+                <span id="a"><b><a href="Performance_Report.html">Performance Report Form</a></b></span>
+            </li>&nbsp;&nbsp;&nbsp;
+            <li>
+                <a href="changepass.html"><i class="fa fa-cart-plus" id="i"></i></a>
+                <span id="a"><b><a href="changepass.html">Change Password</a></b></span>
+            </li>&nbsp;&nbsp;
+            <li><i class="fa fa-file" id="i"></i> <span id="a"><b>Analytics</b></span></li>&nbsp;&nbsp;
+            <li><i class="fa fa-power-off" id="i"></i> <span id="a"><b>Log out</b></span></li>&nbsp;&nbsp;
+        </ul>
+    </div>
+    <div class="main">
+        <img src="rayslogo1-1.png" height="50rem;" width="70rem;" id="img" style="margin-left: -4.5rem;">
+        <p><i class="fa fa-bell"><span id="k"><b>Notifications</b></span></i>
+            &nbsp; &nbsp; &nbsp;<i class="fa fa-user-circle">&nbsp; &nbsp;Rakhi singh &nbsp; &nbsp; <span id="l"><b>Profile</b></span></i>
+            <i style="display: none;" class="fa fa-bars"></i>
+        </p>
+    </div>
+    <div style="display: flex;flex-direction: column;">
+        <div id="box">
+            <div class="C1" style="background-color: rgb(9, 97, 97);">
+                <p>Branch Details</p>
+                <p>100</p>
+                <i class="fa fa-shopping-bag" id="d"></i>
+            </div>
+            <div class="center">
+                <p>Registration Form</p>
+                <p id="pp1">4,982</p>
+                <i class="fa fa-folder" id="d"></i>
+            </div>
+            <div class="A">
+                <p>Admission From</p>
+                <p id="pp2">12,098</p>
+                <i class="fa fa-users" id="d"></i>
+            </div>
+            <div class="B">
+                <p>Money Receipt</p>
+                <p id="pp3">765</p>
+                <i class="fa fa-users" id="d"></i>
+            </div>
+            <div class="C">
+                <p>Remainder</p>
+                <p>100</p>
+                <i class="fa fa-shopping-bag" id="d"></i>
+            </div>
+            <div class="C2">
+                <p>Book Details</p>
+                <p>100</p>
+                <i class="fa fa-shopping-bag" id="d"></i>
+            </div>
+        </div><br><br>
+        <div id="chartContainer" style="height: 20rem; width: 90%;margin-left: 2%;"></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+        <script>
+            // google.charts.load('current',{packages:['corechart']});
+            // google.charts.setOnLoadCallback(drawChart); 
+            // function drawChart() {
+            // // Set Data
+            // const data = google.visualization.arrayToDataTable([
+            //   ['Price', 'Size'],
+            //   [0,0],[15,25],[120,20],
+            //   [130,25],[135,10],[150,35],[175,50]
+            // ]);
+            // // Set Options
+            // const options = {
+            //   hAxis: {title: 'number of product in orders'},
+            //   vAxis: {title: 'Number of orders'},
+            //   legend: 'none'
+            // };
+            // // Draw
+            // const chart = new google.visualization.LineChart(document.getElementById('myChart'));
+            // chart.draw(data, options);
+            // }
+
+
+            window.onload = function () {
+
+                var options = {
+                    animationEnabled: true,
+                    title: {
+                        text: "Monthly Sales "
+                    },
+                    axisX: {
+                        valueFormatString: "MMM"
+                    },
+                    axisY: {
+                        title: "number of orders",
+                        // prefix: "$"
+                    },
+                    data: [{
+                        // yValueFormatString: "$#,###",
+                        // xValueFormatString: "MMMM",
+                        type: "spline",
+                        dataPoints: [
+                            { x: new Date(2017, 0), y: 45 },
+                            { x: new Date(2017, 1), y: 27 },
+                            { x: new Date(2017, 2), y: 33 },
+                            { x: new Date(2017, 3), y: 49 },
+                            { x: new Date(2017, 4), y: 40 },
+                            { x: new Date(2017, 5), y: 3 },
+                            { x: new Date(2017, 6), y: 48 },
+                            { x: new Date(2017, 7), y: 31 },
+                            { x: new Date(2017, 8), y: 35 },
+                            { x: new Date(2017, 9), y: 42 },
+                            { x: new Date(2017, 10), y: 50 },
+                            { x: new Date(2017, 11), y: 10 }
+                        ]
+                    }]
+                };
+                $("#chartContainer").CanvasJSChart(options);
+
+            }
+            //================================================================================================================
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'emp.py',
+                    method: 'post',
+                    data: {
+                        t: 'dash',
+                    },
+                    success: function (data) {
+                        data = data.split(',,,')
+                        $('#pp1').html(data[0])
+                        $('#pp2').html(data[1])
+                        $('#pp3').html(data[2])
+                    }
+                });
+            })
+
+
+
+
+
+
+
+        </script>
+</body>
+
+</html>

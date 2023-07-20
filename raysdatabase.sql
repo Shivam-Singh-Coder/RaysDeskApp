@@ -149,17 +149,23 @@ create table money_receipt
     bcode varchar (25)
 )
 ;
-create table branch_details(
-   bcode varchar (25),
-   bdate date,
-   bname varchar (300),
-   bcont_pr varchar(200),
-   email varchar(150),
-   badd varchar(350),
-   phno varchar(50),
-   dist varchar(200),
-   state1 varchar(200)
-)
+CREATE TABLE branch_details (
+  sn int NOT NULL AUTO_INCREMENT,
+  bcode varchar(250),
+  date varchar(45),
+  bname varchar(300),
+  bcont_pr varchar(200),
+  email varchar(150),
+  phno varchar(50),
+  addr varchar(200),
+  state1 varchar(200),
+  dist varchar(200),
+  reg_no int,
+  adm_no int,
+  cid int,
+  receipt_no int,
+  PRIMARY KEY (sn)
+) 
 ;
 create table state(
    ad int,

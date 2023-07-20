@@ -155,6 +155,16 @@
             font-size: 1.8rem;
         }
 
+        #t3,
+        #t4,
+        #t5,
+        #t11,
+        #t12,
+        #per_add,
+        #cor_add {
+            text-transform: capitalize;
+        }
+
         #t17,
         #t18 {
             border: solid 2px red;
@@ -520,27 +530,32 @@
                                     onfocus="ch3('#t3')" onfocusout="ch2('#t3')"
                                     onkeydown="keychk('#t3','#ll1')"><br><label id="ll1"></label></td>
                             <td><label id="l4">Father's Name<font style="color: red;">*</font></label><input type="text"
-                                    id="t4" autocomplete="off" placeholder="Father's Name*"
-                                    oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')" onkeydown="keychk('#t4','#ll2')"><br><label id="ll2"></label></td>
+                                    id="t4" autocomplete="off" placeholder="Father's Name*" oninput="input('#t4','#l4')"
+                                    onfocus="ch3('#t4')" onfocusout="ch2('#t4')"
+                                    onkeydown="keychk('#t4','#ll2')"><br><label id="ll2"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l41">Mother's Name<font style="color: red;">*</font></label><input
                                     type="text" id="t5" autocomplete="off" placeholder="Mother's Name*"
-                                    oninput="input('#t5','#l41')" onfocus="ch3('#t5')" onfocusout="ch2('#t5')" onkeydown="keychk('#t5','#ll3')"><br><label id="ll3"></label></td>
+                                    oninput="input('#t5','#l41')" onfocus="ch3('#t5')" onfocusout="ch2('#t5')"
+                                    onkeydown="keychk('#t5','#ll3')"><br><label id="ll3"></label></td>
                             <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date"
                                     id="t6"><br><label id="ll4"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l6">Email ID</label><input type="email" id="t7"
-                                    placeholder="Email ID (Optional)" autocomplete="off"
-                                    oninput="input('#t7','#l6')" onkeydown="keychk('#t7','#ll5')"><br><label id="ll5"></label></td>
+                                    placeholder="Email ID (Optional)" autocomplete="off" oninput="input('#t7','#l6')"
+                                    onfocus="ch3('#t7')" onfocusout="email()" f
+                                    onkeydown="keychk('#t7','#ll5')"><br><label id="ll5"></label></td>
                             <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text"
-                                    id="t8" placeholder="Contact No.*" autocomplete="off"
-                                    oninput="input('#t8','#l7')" onfocus="ch3('#t8')" onfocusout="ch2('#t8')" onkeydown="keychk('#t8','#ll6')"><br><label id="ll6"></label></td>
+                                    id="t8" placeholder="Contact No.*" autocomplete="off" oninput="input('#t8','#l7')"
+                                    onfocus="ch3('#t8')" onfocusout="ch2('#t8')"
+                                    onkeydown="keychk('#t8','#ll6')"><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l8">Blood Grp.<font style="color: red;">*</font></label><select
-                                    style="height: 4.5rem;" id="t9" onchange="cmbchk('#t9','#l8')">
+                                    style="height: 4.5rem;" id="t9" onchange="cmbchk('#t9','#l8')" onfocus="ch3('#t9')"
+                                    onfocusout="ch2('#t9')">
                                     <option value="" selected disabled>----- Select Any Blood Group -----</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
@@ -561,14 +576,17 @@
                         <tr>
                             <td><label id="l51">College Name<font style="color: red;">*</font></label><input type="text"
                                     id="t11" autocomplete="off" placeholder="College Name*"
-                                    oninput="input('#t11','#l51')"><br><label id="ll8"></label></td>
+                                    oninput="input('#t11','#l51')" onfocus="ch3('#t11')" onfocusout="ch2('#t11')"
+                                    onkeydown="keychk('#t11','#ll8')"><br><label id="ll8"></label></td>
                             <td><label id="l52">Program Name<font style="color: red;">*</font></label><input type="text"
                                     id="t12" autocomplete="off" placeholder="Program Name*"
-                                    oninput="input('#t12','#l52')"><br><label id="ll9"></label></td>
+                                    oninput="input('#t12','#l52')" onfocus="ch3('#t12')" onfocusout="ch2('#t12')"
+                                    onkeydown="keychk('#t12','#ll8')"><br><label id="ll9"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l9">State<font style="color: red;">*</font></label><select
-                                    style="height: 4.5rem;" id="t13" onchange="cmbchk('#t13','#l9')">
+                                    style="height: 4.5rem;" id="t13" onchange="cmbchk('#t13','#l9')"
+                                    onfocus="ch3('#t13')" onfocusout="ch2('#t13')">
                                     <option value="" selected disabled>----- Select Any State -----</option>
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -608,18 +626,23 @@
                                     <option value="Nagaland"> Nagaland</option>
                                 </select><br><label id="ll10"></label></td>
                             <td><label id="l10">District<font style="color: red;">*</font></label><select
-                                    style="height: 4.5rem;" id="t14" disabled onchange="cmbchk('#t14','#l10')">
+                                    style="height: 4.5rem;" id="t14" disabled onchange="cmbchk('#t14','#l10')"
+                                    onfocus="ch3('#t14')" onfocusout="ch2('#t14')">
                                     <option value="" selected disabled>----- Select Any District -----</option>
                                 </select><br><label id="ll11"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l11">Permanent Add.<font style="color: red;">*</font></label><textarea
                                     autocomplete="off" placeholder="Permanent Add.*" id="per_add"
-                                    oninput="input('#per_add','#l11')"></textarea><br><label id="ll12"></label></td>
-                            <td><label id="l12">Correspondence Add.</label><input type="checkbox" name="" id="chk"
-                                    value="Same"><label for="chk" id="chk_l">Same</label><textarea autocomplete="off"
-                                    placeholder="Correspondence Add." id="cor_add"
-                                    oninput="input('#cor_add','#l12')"></textarea><br><label id="ll13"></label></td>
+                                    oninput="input('#per_add','#l11')" onfocus="ch3('#per_add')"
+                                    onfocusout="ch2('#per_add')"
+                                    onkeydown="keychk('#per_add','#ll12')"></textarea><br><label id="ll12"></label></td>
+                            <td><label id="l12">Correspondence Add.<font style="color: red;">*</font></label><input
+                                    type="checkbox" disabled name="" id="chk" value="Same"><label for="chk"
+                                    id="chk_l">Same</label><textarea autocomplete="off"
+                                    placeholder="Correspondence Add.*" id="cor_add" oninput="input('#cor_add','#l12')"
+                                    onfocus="ch3('#cor_add')" onfocusout="ch2('#cor_add')"
+                                    onkeydown="keychk('#cor_add','#ll13')"></textarea><br><label id="ll13"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l13">Student Pic</label><input type="file" src="" id="t15" alt=""
@@ -738,7 +761,8 @@
                 url: 'rays_desk.py',
                 method: 'post',
                 data: {
-                    cond: 'auto_reg'
+                    cond: 'auto_reg',
+                    t1:bcode
                 },
                 success: function (data) {
                     var j = data.split(',,,')
@@ -769,10 +793,16 @@
         // ----------------Input Name-------------
         function input(d, l) {
             jk = $(d).val()
-            if (jk != '')
+            if (jk != '') {
                 $(l).css('visibility', 'visible')
-            else
+                if (d == '#per_add')
+                    $('#chk').removeAttr('disabled')
+            }
+            else {
                 $(l).css('visibility', 'hidden')
+                if (d == '#per_add')
+                    $('#chk').attr('disabled', true)
+            }
         }
         // ====================== Animation ===============================
         $('#b2').click(function () {
@@ -791,45 +821,215 @@
         var flag = true;
         function ch2(t) {
             a = $(t).val();
-            if (a == '' || a.length == 0 || a == null) {
+            if (a == null || a == '' || a.length == 0) {
                 $(t).css({ 'border': '1px solid red', 'color': 'red' });
-                if (id == '#t9') {
+                if (t == '#t9') {
                     flag = false;
                     $('#ll7').html('Please Select AnyOne!')
                 }
-                else if (id == '#t13') {
+                else if (t == '#t13') {
                     flag = false;
                     $('#ll10').html('Please Select AnyOne!')
                 }
-                else if (id == '#t14') {
+                else if (t == '#t14') {
                     flag = false;
                     $('#ll11').html('Please Select AnyOne!')
                 }
                 else {
-                    $(t).val('*Field is Mandotary!');
+                    $(t).val('*Field is Mandatory!');
                     flag = false;
                 }
             }
-            else if ($(t).val() == '*Field is Mandotary!')
+            else if ($(t).val() == '*Field is Mandatory!')
                 flag = false;
         }
         function ch3(t) {
             $(t).css({ 'border': '1px solid black', 'color': 'black' });
-            if ($(t).val() == '*Field is Mandotary!' || $(t).val() == null) {
-                if (id == '#t9') {
+            if ($(t).val() == '*Field is Mandatory!' || $(t).val() == null) {
+                if (t == '#t9') {
                     $('#ll7').html('')
                 }
-                else if (id == '#t13') {
+                else if (t == '#t13') {
                     $('#ll10').html('')
                 }
-                else if (id == '#t14') {
+                else if (t == '#t14') {
                     $('#ll11').html('')
                 }
                 else
                     $(t).val('')
             }
         }
-        // -----------------------------------------
+        // --------------------Check Button Address---------------------
+        $('#chk').click(function () {
+            if ($(this).prop('checked') && $('#cor_add').val() == '' || $('#cor_add').val() == '*Field is Mandatory!') {
+                $('#cor_add').val($('#per_add').val())
+                input('#cor_add', '#l12')
+                ch3('#cor_add')
+            }
+            else {
+                if ($('#cor_add').val().toLowerCase() == $('#per_add').val().toLowerCase())
+                    $('#cor_add').val('')
+                input('#cor_add', '#l12')
+            }
+        })
+        // -------------------------------Key Validation------------------
+        function keychk(chk, d) {
+            $(d).text("");
+            if (chk == '#t10' || chk == '#t14') {
+                $(chk).on('keypress', function (e) {
+                    if (e.which == 48 && e.target.selectionStart == 0) {
+                        $(d).text("Zero At First Not Allowed!");
+                        return false
+                    }
+                    else if (!(e.which >= 48 && e.which <= 57 || e.which == 8 || e.which == 13)) {
+                        $(d).text("Only Digit Allowed!");
+                        return false;
+                    }
+                    else {
+                        $(d).text("");
+                    }
+                });
+            }
+            else if (chk == '#t3' || chk == '#t4' || chk == '#t8' || chk == '#t9' || chk == '#t13') {
+                $(chk).on('keypress', function (e) {
+                    if (e.which == 32 && e.target.selectionStart == 0 || e.which == 46 && e.target.selectionStart == 0) {
+                        $(d).text("Space and Dot At First Not Allowed!");
+                        return false;
+                    }
+                    else if (!(e.which >= 65 && e.which <= 90 || e.which >= 97 && e.which <= 122 || e.which === 32 || e.which == 13 || e.which == 46)) {
+                        $(d).text("Only Alphabet Allowed!");
+                        return false;
+                    }
+                    else if (e.which === 32 && $(this).val().slice(-1) === ' ' || e.which === 46 && $(this).val().slice(-1) === '.') {
+                        e.preventDefault();
+                    }
+                    else {
+                        $(d).text("");
+                    }
+                });
+            }
+            else if (chk == '#t7') {
+                $(chk).on('keypress', function (e) {
+                    if (e.which === 64 && e.target.selectionStart === 0 || e.which == 46 && e.target.selectionStart == 0 || e.which == 48 && e.target.selectionStart == 0) {
+                        $(d).text("@,.,0 At First Not Allowed!");
+                        return false;
+                    }
+                    else if (!(e.which >= 65 && e.which <= 90 || e.which >= 97 && e.which <= 122 || e.which >= 48 && e.which <= 57 || e.which === 46 || e.which === 64)) {
+                        $(d).text("Only Alphabet, Digit, @ & Comma Allowed!");
+                        return false;
+                    }
+                    else if (e.which === 64 && $(this).val().slice(-1) === '@' || e.which === 46 && $(this).val().slice(-1) === '.') {
+                        e.preventDefault();
+                    }
+                    else {
+                        $(d).text("");
+                    }
+                });
+            }
+        }
+        // --------------------------Email Validation-------------
+        function email() {
+            const last = [".com", ".org", ".in", ".net", ".edu", ".gov", ".mil", ".biz", ".info", ".pro", ".name", ".coop", ".aero", ".museum", ".asia", ".cat", ".jobs", ".mobi", ".tel", ".travel", ".xxx", ".arpa", ".int", ".post", ".root", ".test"];
+            var str = $('#t7').val();
+            var emailchk = false;
+            if (str.trim().length > 0) {
+                if (str.includes(".")) {
+                    var s = str.substring(str.lastIndexOf('.'), str.length);
+                    for (var i = 0; i < last.length; i++) {
+                        if (last.includes(s)) {
+                            emailchk = true;
+                        }
+                    }
+                }
+                else {
+                    $('#ll5').html("*Please enter a valid email Id!");
+                }
+                if (emailchk) {
+                    if (str.includes("@")) {
+                        var index1 = str.indexOf("@");
+                        var index2 = str.indexOf(".");
+                        if (index2 == (index1 + 1)) {
+                            $('#t7').css("border", "solid 1px red");
+                            $('#ll5').html("*Please enter a valid email Id!");
+                        }
+                        else
+                            $('#ll5').html("");
+
+                    }
+                    else {
+                        $('#t7').css("border", "solid 1px red");
+                        $('#ll5').html("*Please enter a valid email Id!");
+                    }
+                }
+                else {
+                    $('#t7').css("border", "solid 1px red");
+                    $('#ll5').html("*Please enter a valid email Id!");
+                }
+            }
+            else
+                $('#ll5').html("");
+        }
+        //===================Insert Record=======================
+        $('#b3').click(function(){
+            var conf=confirm("Are you sure want to insert this record?")
+            if(conf){
+                $.ajax({
+                    url:'rays_desk.py',
+                    method:'post',
+                    data:{
+                        cond:'reg_insert',
+                        t1:$('#t1').val(),//reg_no
+                        t2:$('#t2').val(),//reg_date
+                        t3:$('#t3').val(),//sname
+                        t4:$('#t4').val(),//fname
+                        t5:$('input[name="rd"]:checked').val(),//mname
+                        t6:$('#t5').val(),//sdob
+                        t7:$('#t6').val(),//email
+                        t8:$('#t7').val(),//cont_no
+                        t9:$('#t8').val(),//prog
+                        t10:$('#t9').val(),//blood_grp
+                        t11:$('#t10').val()+"-"+$('#t11').val(),//clg_name
+                        t12:$('#t12').val(),//gender
+                        t13:$('#t13').val(),//permt_add
+                        t14:$('#t14').val(),//dis
+                        t15:$('#t15').val(),//stt
+                        t16:$('textarea').val(),//sphoto
+                        t17:kl,//aadhaar
+                        t18:int_ch,//cor_add
+                        t19:int_no,//bcode
+                        t20:'Raj_02',//u_id
+                        t21:reg_no,//reg update
+                    },
+                    success:function(data){
+                        var j=data.split(',,,');
+                        alert(j[0])
+                        if(j[1]==10){
+                            auto()
+                            clear()
+                        }
+                    }
+                })
+            }
+        })
+        $('#b4').click(function(){
+            clear()
+        })
+        function clear(){
+            date()
+            $('#t3').val('')
+            $('#t4').val('')
+            $('#t6').val('')
+            $('#t7').val('')
+            $('#t8').val('')
+            $('#t9').val('')
+            $('#t10').val('')
+            $('#t11').val('Mts')
+            $('#t12').val('')
+            $('#t13').val('')
+            $('#t14').val('')
+            $('#t16').val('')
+            $('#t17').attr('src','#')
+        }
         // ======================= Download==========================
 
         $(document).on('click', '#b7', function () {

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="repllogo.png">
     <title>Registration Invoice</title>
     <style>
@@ -11,9 +12,8 @@
         }
         #main{
             border: 1px solid black;
-            width: 21cm;
+            width: 20.59cm;
             height: 15cm;
-            border: solid 2px rgb(169, 226, 11);
         }
         #img1{
             height: 12rem;
@@ -81,15 +81,16 @@
             cursor: pointer;
             background-color: green;
             color: white;
-            width: 12rem;
+            width: 15rem;
             padding: 0.5rem;
             border-radius: 0.4rem;
+            border: none;
+            height: 4rem;
+            margin-left: 6rem;
+            transition: 0.5s;
         }
-        #tab2 #but{
-            padding-left: 30rem;
-        }
-        #tab2{
-            margin-bottom: 0rem;
+        #b1:hover{
+            transform: scale(1.1);
         }
         @media print{
             #b1{
@@ -122,12 +123,12 @@
             <div id="d12">
                 <label><b>Visit Us:- </b> www.raysonline.in</label><br>
                 <label><b>Mail Us:- </b> info@raysonline.in</label><br>
-                <label><b>Cell No:-</b> 7091566160, 9308654075</label>
+                <label><b>Cell No:-</b> 9308654075, 7091566160</label>
             </div>
         </div><br>
         <span id="p1"><b>2nd Floor, Mithulok, West Boring Canal Road, Near Bharat Petrol Pump, Opposite of New Tanishq,Patna, Bihar - 800001</b></span>
         <hr>
-        <p id="p2"><u>Registration Receipt</u></p>
+        <p id="p2"><u>Registration Form</u></p>
         <table id="tab1">
             <tr>
                 <td id="td1"><b>Registration No : </b></td>
@@ -137,8 +138,8 @@
                 <td id="td2">08/07/2023</td>
             </tr>
             <tr>
-                <td><b>Student Name : </b></td>
-                <td>Shivam Singh</td>
+                <td><b>Student's Name : </b></td>
+                <td id="sname">Shivam Singh</td>
                 <td></td>
                 <td><b>Father's Name : </b></td>
                 <td>Shivam Singh</td>
@@ -186,12 +187,46 @@
                 <td>Ballia, fijioer finierjhjdfhgjheghehgejhguiehuig guerhuiguerhh</td>
             </tr>
         </table><hr>
-        <table id="tab2">
+        <table id="tab2" style="margin-top: 1rem;">
             <tr>
                 <td><b>Signature....................................................................</b></td>
-                <td id="but"><button type="button" id="b1" onclick="window.print()"><b style="font-size: 1.8rem;">&#x1F5B6;&nbsp;&nbsp;PRINT</b></button></td>
+                <td><button type="button" id="b1" class="b1" onclick="toPDF()"><b style="font-size: 1.8rem;" class="fa">&#xf019;&nbsp;&nbsp;DOWNLOAD</b></button></td>
+                <td><button type="button" id="b1" class="b2" onclick=window.print() style="width: 12rem;background-color: rgb(57, 57, 235);"><b style="font-size: 1.8rem;">&#x1F5B6;&nbsp;&nbsp;PRINT</b></button></td>
             </tr>
         </table>
     </div>
+    <!-- <script>src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'</script>
+    <script>src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"</script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function toPDF(){
+          html2pdf()
+            // .set({
+            //     margin: 1,
+            //     filename: "demo.pdf",
+            //     image: { type: "jpeg", quality: 0.8 },
+            //     enableLinks : true,
+            //     jsPDF: { format: "A4", orientation: "landscape" }
+            // })
+            .from(document.body)
+            .save(document.getElementById('sname').innerHTML+"_Registration_Form.pdf");
+        }
+        </script>
+    <!-- <script>
+        window.jsPDF = window.jspdf.jsPDF;
+        var docPDF = new jsPDF();
+        function print(){
+            var elementHTML = document.querySelector("#tab1");
+            docPDF.html(elementHTML, {
+            callback: function(docPDF) {
+                docPDF.save('Registration_Form.pdf');
+            },
+            x: 15,
+            y: 15,
+            width: 170,
+            windowWidth: 650
+            });
+        }
+    </script> -->
 </body>
 </html>

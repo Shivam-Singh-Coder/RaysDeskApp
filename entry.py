@@ -1,8 +1,9 @@
-#! C:\Users\91906\AppData\Local\Programs\Python\Python311\python.exe
-print('contact-type:text/html\r\n\r\n')
+#! C:\Users\HP\AppData\Local\Programs\Python\Python311\python.exe
+
+print("Content-Type: text/html\r\n\r\n")
 import cgi
 import mysql.connector
-con=mysql.connector.connect(host="localhost",user="rays_desk",password="rays_desk",database="rays_desk")
+con=mysql.connector.connect(host='localhost', user='rays_desk', passwd='rays_desk',database='rays_desk')
 
 t=con.cursor()
 f=cgi.FieldStorage()
@@ -20,8 +21,8 @@ try:
         d9=f.getvalue('t9')
         d10=f.getvalue('t10')
         d11=f.getvalue('t11')
-        url='insert into  branch_details (bcode,date,bname,bcont_pr,email,phno,addr,state1,dist) value(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9))
+        url='insert into  branch_details (bcode,date,bname,bcont_pr,email,phno,addr,state1,dist,reg_no,adm_no,cid,receipt_no,u_id) value(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,0,0,0,0,'Raj_02'))
         t.execute('update state set '+d11+'='+d10+'')
         # print(url)
         con.commit()

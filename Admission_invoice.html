@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="repllogo.png">
     <title>Admission Invoice</title>
     <style>
@@ -11,9 +12,8 @@
         }
         #main{
             border: 1px solid black;
-            width: 21cm;
+            width: 20.5cm;
             height: 15cm;
-            border: solid 2px rgb(169, 226, 11);
         }
         #img1{
             height: 12rem;
@@ -56,9 +56,13 @@
         #tab1,#tab2{
             margin: 0rem 1rem 0rem 1rem;
         }
+        
         td{
             height: 5rem;
             font-size: 1.5rem;
+        }
+        #tab2{
+            margin-top: 3rem;
         }
         #td1{
             width: 10%;
@@ -73,19 +77,23 @@
             cursor: pointer;
             background-color: green;
             color: white;
-            width: 12rem;
+            width: 15rem;
             padding: 0.5rem;
             border-radius: 0.4rem;
+            border: none;
+            height: 4rem;
+            margin-left: 6rem;
+            transition: 0.5s;
         }
-        #tab2 #but{
-            padding-left: 30rem;
+        #b1:hover{
+            transform: scale(1.1);
         }
         @media print{
             #b1{
                 display: none;
             }
         }
-        @media (max-width:998px) {
+        /* @media (max-width:998px) {
             html{
                 font-size: 55%;
             }
@@ -97,7 +105,7 @@
             #main{
                 height: 60rem;
             }
-        }
+        } */
     </style>
 </head>
 <body>
@@ -111,7 +119,7 @@
             <div id="d12">
                 <label><b>Visit Us:- </b> www.raysonline.in</label><br>
                 <label><b>Mail Us:- </b> info@raysonline.in</label><br>
-                <label><b>Cell No:-</b> 7091566160, 9308654075</label>
+                <label><b>Cell No:-</b> 9308654075, 7091566160</label>
             </div>
         </div><br>
         <p id="p1"><b>2nd Floor, Mithulok, West Boring Canal Road, Near Bharat Petrol Pump, Opposite of New Tanishq,Patna, Bihar - 800001</b></p>
@@ -133,8 +141,8 @@
                 <td>JAVA</td>
             </tr>
             <tr>
-                <td><b>Student Name : </b></td>
-                <td>Sudhanshu Kumar</td>
+                <td><b>Student's Name : </b></td>
+                <td id="sname">Sudhanshu Kumar</td>
                 <td></td>
                 <td><b>Course Applied : </b></td>
                 <td>Python</td>
@@ -154,9 +162,18 @@
         <table id="tab2">
             <tr>
                 <td><b>Signature....................................................................</b></td>
-                <td id="but"><button type="button" id="b1" onclick="window.print()"><b style="font-size: 1.8rem;">&#x1F5B6;&nbsp;&nbsp;PRINT</b></button></td>
+                <td><button type="button" id="b1" class="b1" onclick="toPDF()"><b style="font-size: 1.8rem;" class="fa">&#xf019;&nbsp;&nbsp;DOWNLOAD</b></button></td>
+                <td><button type="button" id="b1" class="b2" style="width: 12rem;background-color: rgb(57, 57, 235);" onclick="window.print()"><b style="font-size: 1.8rem;">&#x1F5B6;&nbsp;&nbsp;PRINT</b></button></td>
             </tr>
         </table>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function toPDF(){
+          html2pdf()
+            .from(document.body)
+            .save(document.getElementById('sname').innerHTML+"_Admission_Form.pdf");
+        }
+    </script>
 </body>
 </html>
