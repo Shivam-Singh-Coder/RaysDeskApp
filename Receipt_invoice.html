@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt Invoice</title>
+    <style>
+        html{
+            font-size: 10px;
+        }
+        #main{
+            border: 1px solid black;
+            width: 80rem;
+            height: 57rem;
+        }
+        #img1{
+            height: 12rem;
+            width: 12rem;
+            position: absolute;
+        }
+        #d1{
+            margin-left: 13rem;
+            height: auto;
+            height: 7.5rem;
+            display: flex;
+        }
+        #d11,#d12{
+            width: 40%;
+            margin-top: 2rem;
+            font-size: 1.6rem;
+            line-height: 10px;
+        }
+        #d12{
+            margin-top: 1rem;
+            margin-left: 18%;
+            line-height: 20px;
+        }
+        h2{
+            font-size: 2.2rem;
+        }
+        #p1{
+            margin-left: 13rem;
+            font-size: 1.1rem;
+        }
+        #p2{
+            text-align: center;
+            font-size: 1.7rem;
+        }
+        #tab1,#tab2{
+            width: 100%;
+            /* border: 1px solid black;
+            border-collapse:collapse; */
+        }
+        td{
+            height: 3rem;
+            padding-left: 2rem;
+            font-size: 1.5rem;
+            /* border: 1px solid black; */
+        }
+            #td1{
+                width: 21%;
+            }
+            #td2{
+                width: 20%;
+            }
+            #td3{
+                width: 8%;
+            }
+        #b1{
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            width: 10rem;
+        }
+        @media print{
+            /* body {-webkit-print-color-adjust: exact;} */
+            #b1{
+                display: none;
+            }
+        }
+        @media (max-width:998px) {
+            html{
+                font-size: 55%;
+            }
+        }
+        @media (max-width:768px) {
+            html{
+                font-size: 45%;
+            }
+            #main{
+                height: 60rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <img src="rays.png" alt="loading" id="img1">
+        <div id="d1">
+            <div id="d11">
+                <label><b>CIN : </b> U80904BR2013PTC20489</label>
+                <h2><b>RAYS Edutech Pvt. Ltd.</b></h2>
+            </div>
+            <div id="d12">
+                <label><b>Visit Us:- </b> www.raysonline.in</label><br>
+                <label><b>Mail Us:- </b> info@raysonline.in</label><br>
+                <label><b>Cell No:-</b> 7091566160, 9308654075</label>
+            </div>
+        </div><br>
+        <p id="p1"><b>2nd Floor, Mithulok, West Boring Canal Road, Near Bharat Petrol Pump,Opposite of New Tanishq,Patna, Bihar - 800001</b></p>
+        <hr>
+        <p id="p2"><u>Payment Receipt</u></p>
+        <table id="tab1">
+            <tr>
+                <td id="td1"><b>Receipt No : </b></td>
+                <td id="td2">REC2301254</td>
+                <td id="td3"></td>
+                <td id="td1"><b>Date : </b></td>
+                <td id="td2">08/07/2023</td>
+            </tr>
+            <tr>
+                <td><b>Form No : </b></td>
+                <td>45562546562</td>
+                <td></td>
+                <td><b>Course Applied : </b></td>
+                <td>JAVA</td>
+            </tr>
+            <tr>
+                <td><b>Student Name : </b></td>
+                <td>Sudhanshu Kumar</td>
+                <td></td>
+                <td><b>Pre Dues Amount : </b></td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td><b>Fee : </b></td>
+                <td>4500</td>
+                <td></td>
+                <td><b>Discount : </b></td>
+                <td>1500</td>
+            </tr>
+            <tr>
+                <td><b>total Payable Fee : </b></td>
+                <td>5000</td>
+                <td></td>
+                <td><b>Installment Date : </b></td>
+                <td>08/07/2023</td>
+            </tr>
+        </table>
+        <hr>
+        <table id="tab2">
+            <tr>
+                <td colspan="2" style="width: 40%;"><b>Cas : </b> <label>1000</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b>Upi : </b> <label>1000</label></td>
+                <td id="td3"></td>
+                <td id="td1"><b>Paid Amount : </b></td>
+                <td id="td2">4000</td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>Cheque : </b><label>1000</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b>DD : </b><label>1000</label></td>
+                <td></td>
+                <td><b>Dues Amount : </b></td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>Amount in Word : </b><label>Four Thousand only</label></td>
+                <td><b>Recived From : </b></td>
+                <td>Sudhanshu Kumar</td>
+            </tr>
+            <tr><td colspan="5"></td></tr>
+            <tr>
+                <td colspan="4"><b>Sinnature..........................</b></td>
+                <td><button type="button" id="b1" onclick="window.print()"><b>&#x1F5B6;&nbsp;</b>Print</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

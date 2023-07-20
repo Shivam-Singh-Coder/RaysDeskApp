@@ -133,19 +133,22 @@
             padding: 1rem 0 0 1rem;
             font-size: 1.8rem;
         }
-        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#lf,#lt{
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#l12,#l13,#l14,#l15,#l16,#l17,#l18,#lf,#lt{
             position: absolute;
             font-size: 1.8rem;
             margin: -1rem 4rem;
             background-color: white;
         }
-        #l10{
+        #l3,#l4,#l6,#l7,#l8,#l9,#l10,#l11,#l12,#l18{
+            visibility:hidden;
+        }
+        #l16{
             margin-left: 30%;
         }
         #lt{
             margin-left: 3%;
         }
-        #ll1,#ll2,#ll3{
+        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6,#ll7,#ll8,#ll9,#ll10,#ll11,#ll12,#ll13{
             color: red;
             font-size: 1.6rem;
             float:left;
@@ -267,6 +270,9 @@
             border: none;
             outline: none;
         }
+        #t3,#t4,#t8,#t9,#t12,#t13,#t14,#t15,textarea{
+            text-transform: capitalize;
+        }
         @media (max-width:998px) {
             html{
                 font-size: 55%;
@@ -348,36 +354,36 @@
                             <td id="td1"><label id="l2">Applied Date</label><input type="date" id="t2"></td>
                         </tr>
                         <tr>
-                            <td><label id="l5">Student Name</label><input type="text" id="t3" placeholder="Student Name" readonly></td>
-                            <td><label id="l6">Father's Name</label><input type="text" id="t4" placeholder="Father's Name" readonly></td>
+                            <td><label id="l3">Student Name<font style="color: red;">*</font></label><input type="text" id="t3" autocomplete="off" placeholder="Student Name*" oninput="input('#t3','#l3')" onfocus="ch3('#t3')" onfocusout="ch2('#t3')" onkeydown="keychk('#t3','#ll1')"><br><label id="ll1"></label></td>
+                            <td><label id="l4">Father's Name<font style="color: red;">*</font></label><input type="text" id="t4" autocomplete="off" placeholder="Father's Name*" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')" onkeydown="keychk('#t4','#ll2')"><br><label id="ll2"></label></td>
                         </tr>
                         <tr>
                             <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-bottom: 1.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked value="Male"><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio" value="Female"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio" value="Binary"><label for="dr3" id="r">Binary</label></td>
-                            <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t5"><br><label id="ll4"></label></td>
+                            <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t5"><br><label id="ll3"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">Email ID</label><input type="email" id="t6" placeholder="Email ID"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text" id="t7" placeholder="Contact No.*"><br><label id="ll6"></label></td>
+                            <td><label id="l6">Email ID</label><input type="email" id="t6" placeholder="Email ID(Optional)" autocomplete="off" oninput="input('#t6','#l6')" onfocus="ch3('#t6')" onfocusout="email()" onkeydown="keychk('#t6','#ll4')"><br><label id="ll4"></label></td>
+                            <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text" id="t7" placeholder="Contact No.*" autocomplete="off" inputmode="numeric" oninput="input('#t7','#l7')" onfocus="ch3('#t7')" onfocusout="ch2('#t7')" onkeydown="keychk('#t7','#ll5')"><br><label id="ll5"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">College Name</label><input type="text" id="t8" placeholder="College Name"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Project Title<font style="color: red;">*</font></label><input type="text" id="t9" placeholder="Project Title*"><br><label id="ll6"></label></td>
+                            <td><label id="l8">College Name<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="College Name*" autocomplete="off" oninput="input('#t8','#l8')" onfocus="ch3('#t8')" onfocusout="ch2('#t8')" onkeydown="keychk('#t8','#ll6')"><br><label id="ll6"></label></td>
+                            <td><label id="l9">Project Title<font style="color: red;">*</font></label><input type="text" id="t9" placeholder="Project Title*" autocomplete="off" oninput="input('#t9','#l9')" onfocus="ch3('#t9')" onfocusout="ch2('#t9')" onkeydown="keychk('#t9','#ll7')"><br><label id="ll7"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l4">Duration<font style="color: red;">*</font></label><input type="text" placeholder="Duration*" id="t10" onkeydown="keychk('#t4','#ll3')" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')"><select style="height: 4.5rem;" id="t11"><option value="Hrs" selected>Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts">Months</option></select><br><label id="ll3"></label></td>
-                            <td><label id="l7">Technologies<font style="color: red;">*</font></label><input type="text" id="t12" placeholder="Technologies*"><br><label id="ll6"></label></td>
+                            <td><label id="l10">Duration<font style="color: red;">*</font></label><input type="text" placeholder="Duration*" autocomplete="off" inputmode="numeric" id="t10" onkeydown="keychk('#t10','#ll8')" oninput="input('#t10','#l10')" onfocus="ch3('#t10')" onfocusout="ch2('#t10')"><select style="height: 4.5rem;" id="t11"><option value="Hrs">Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts" selected>Months</option></select><br><label id="ll8"></label></td>
+                            <td><label id="l11">Technologies<font style="color: red;">*</font></label><input type="text" id="t12" placeholder="Technologies*" autocomplete="off" oninput="input('#t12','#l11')" onfocus="ch3('#t12')" onfocusout="ch2('#t12')" onkeydown="keychk('#t12','#ll9')"><br><label id="ll9"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l3">Guidance Name</label><input type="text" id="t13" placeholder="Guidance Name"><label id="ll1">Reg</label></td>
-                            <td><label id="l3">Stipend Amt.</label><input type="text" id="t14" placeholder="Stipend Amt."><label id="ll1">Reg</label></td>
+                            <td><label id="l12">Guidance Name<font style="color: red;">*</font></label><input type="text" id="t13" placeholder="Guidance Name*" autocomplete="off" oninput="input('#t13','#l12')" onfocus="ch3('#t13')" onfocusout="ch2('#t13')" onkeydown="keychk('#t13','#ll10')"><br><label id="ll10"></label></td>
+                            <td><label id="l13">Stipend Amt.</label><input type="text" id="t14" placeholder="Stipend Amt." value="0" onfocus="ch3('#t14')" autocomplete="off" onfocusout="ch2('#t14')" onkeydown="keychk('#t14','#ll11')"><br><label id="ll11"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l9">Study Centre Name</label><input type="text" id="t15" placeholder="Study Centre Name" readonly></td>
-                            <td><label id="l11">Branch Add.<font style="color: red;">*</font></label><textarea placeholder="Branch Add.*"></textarea><br><label id="ll12"></label></td>
+                            <td><label id="l14">Study Centre Name</label><input type="text" id="t15" placeholder="Study Centre Name" readonly></td>
+                            <td><label id="l15">Branch Add.</label><textarea placeholder="Branch Add." readonly></textarea></td>
                         </tr>
                         <tr>
-                            <td style="border:rgb(49, 204, 10) solid 2px;"><label id="l10">Student Pic</label><input type="file" src="" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;"></td>
-                            <td><img src="rayslogo1-1.png" alt="" id="t17" style="height: 10rem;width: 10rem;border: solid 2px red;"></td>
+                            <td><label id="l16">Student Pic</label><input type="file" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;"><br><label id="ll12"></label></td>
+                            <td style="display: none;" id="img"><img src="#" alt="Student Pic" id="t17" style="height: 10rem;width: 10rem;border: solid 2px red;"></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="padding: 6rem;"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
@@ -389,8 +395,8 @@
                 <div id="d2"><b>Internship &nbsp; Certificate &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
-                        <td><label id="l9">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Certificate">Certificate No.</option><option value="Name">Student Name</option></select></td>
-                        <td><label id="l9">Your Choice</label><input type="text" id="t18" placeholder="Your Choice" readonly></td>
+                        <td><label id="l17">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Certificate">Certificate No.</option><option value="Name">Student Name</option></select></td>
+                        <td><label id="l18">Your Choice</label><input type="text" id="t18" placeholder="Your Choice" autocomplete="off" oninput="input('#t18','#l18')" onkeydown="keychk('#t18','#ll13')"><br><label id="ll13"></label></td>
                         <!-- <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll3">Choice</label></td> -->
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
                     </tr>
@@ -426,20 +432,139 @@
             $('#lf,#lt,.fa-search').hide();
             $('#d3').html('');
         })
-        // --------------------------------------------------------------------
+        // -------------------input--------------------------------------------
+        function input(d,l){
+            if($(d).val()!='')
+                $(l).css('visibility','visible')
+            else
+                $(l).css('visibility','hidden')
+            if(d=='#t6')
+                email();
+        }
        // ======================== Mandatory ===========================
         var flag=true,kl;
-        function ch2(t,l){
+        function ch2(t){
             a=$(t).val();
-            if(a==null){
-                $(t).css('border','2px solid red');
-                $(l).html('Select any One!');
+            if(a==''||a.length==0){
+                $(t).css({'border':'1px solid red','color':'red'});
+                $(t).val('*Field is Mandotary!');
                 flag=false;
             }
+            else if($(t).val()=='*Field is Mandotary!')
+                flag=false;
         }
-        function ch3(t,l){
-            $(t).css('border','1px solid black');
-            $(l).html('');
+        function ch3(t){
+            $(t).css({'border':'1px solid black','color':'black'});
+            if($(t).val()=='*Field is Mandotary!')
+                $(t).val('')
+        }
+        // -------------------------Key Validation------------
+        function keychk(chk,d){
+                $(d).text("");
+                if(chk=='#t10'||chk=='#t14'){
+                    $(chk).on('keypress',function(e){
+                        if(e.which==48 && e.target.selectionStart==0){
+                            $(d).text("Zero At First Not Allowed!");
+                            return false
+                        }
+                        else if(!(e.which>=48 && e.which<=57||e.which==8||e.which==13)){
+                            $(d).text("Only Digit Allowed!");
+                            return false;
+                        }
+                        else{
+                            $(d).text("");
+                        }
+                        if(chk=='#t14'&& $(this).val()=='0'){
+                            $(this).val('');
+                        }
+                    });
+                }
+                else if(chk=='#t3'||chk=='#t4'||chk=='#t8'||chk=='#t9'||chk=='#t13'){
+                    $(chk).on('keypress',function(e){
+                        if(e.which==32 && e.target.selectionStart==0||e.which==46 && e.target.selectionStart==0){
+                            $(d).text("Space and Dot At First Not Allowed!");
+                            return false;
+                        }
+                        else if(!(e.which>=65 && e.which<=90 || e.which>=97 && e.which<=122 || e.which===32||e.which==13||e.which==46)){
+                            $(d).text("Only Alphabet Allowed!");
+                            return false;
+                        }
+                        else if(e.which===32 && $(this).val().slice(-1)===' '||e.which===46 && $(this).val().slice(-1)==='.'){
+                            e.preventDefault();
+                        }
+                        else{
+                            $(d).text("");
+                        }
+                    });
+                }
+                else if(chk=='#t6'){
+                    $(chk).on('keypress',function(e){
+                        if(e.which === 64 && e.target.selectionStart === 0 ||e.which==46 && e.target.selectionStart==0||e.which==48 && e.target.selectionStart==0){
+                            $(d).text("@,.,0 At First Not Allowed!");
+                            return false;
+                        }
+                        else if(!(e.which >= 65 && e.which <= 90 || e.which >= 97 && e.which <= 122 || e.which >= 48 && e.which <= 57|| e.which === 46 ||e.which===64)){
+                            $(d).text("Only Alphabet, Digit, @ & Comma Allowed!");
+                            return false;}
+                        else if(e.which===64 && $(this).val().slice(-1)==='@'||e.which===46 && $(this).val().slice(-1)==='.'){
+                            e.preventDefault();
+                        }
+                        else{
+                            $(d).text("");
+                        }
+                    });
+                }
+            }
+            $('#t14').keyup(function(){
+                if($(this).val()=='')
+                    $(this).val('0');
+            })
+        // --------------------------Email Validation-------------
+        function email(){
+            const last= [".com", ".org",".in", ".net", ".edu", ".gov", ".mil", ".biz", ".info", ".pro", ".name", ".coop", ".aero", ".museum", ".asia", ".cat", ".jobs", ".mobi", ".tel", ".travel", ".xxx", ".arpa", ".int", ".post", ".root", ".test"];
+            var str=$('#t6').val();
+            var emailchk=false;   
+            if (str.trim().length>0)
+            {
+                if(str.includes(".")){
+                    var s=str.substring(str.lastIndexOf('.'), str.length);
+                    for (var i = 0; i < last.length; i++) {
+                        if(last.includes(s)){
+                            emailchk=true;
+                        }
+                    }
+                }
+                else{
+                    $('#ll4').html("*Please enter a valid email Id!");
+                }
+                if (emailchk)
+                {
+                    if(str.includes("@"))
+                    {
+                        var index1=str.indexOf("@");
+                        var index2=str.indexOf(".");
+                        if (index2==(index1+1))
+                        {
+                            $('#t6').css("border","solid 1px red");
+                            $('#ll4').html("*Please enter a valid email Id!");
+                        }
+                        else
+                            $('#ll4').html("");
+
+                    }
+                    else
+                    {
+                        $('#t6').css("border","solid 1px red");
+                        $('#ll4').html("*Please enter a valid email Id!");
+                    }
+                }
+                else{
+                    $('#t6').css("border","solid 1px red");
+                    $('#ll4').html("*Please enter a valid email Id!");
+                }
+            }
+            else
+                $('#ll4').html("");
         }
         var int_no,int_ch;
         // ---------------------Auto Generate--------------------
@@ -480,18 +605,19 @@
             if ($('#t16').val() == '') {
                 kl = null;
                 $('#t17').attr('src', '#');
+                $('#img').css('display','none')
             }
             var a = new FileReader();
             a.readAsDataURL(document.getElementById('t16').files[0]);
             a.onload = function (e) {
                 document.getElementById('t17').src = e.target.result;
+                $('#img').css('display','block')
                 kl = e.target.result;
             }
-            if ($('#t17').attr('src') == '#')
-                $('#t16').css('border', 'none');
         })
         //==============================Insert Record==============
         $('#b3').click(function(){
+            alert($('#t1').val()+$('input[name="rd"]:checked').val()+$('#t2').val())
             var conf=confirm("Are you sure want to insert this record?")
             if(conf){
                 $.ajax({
@@ -503,7 +629,7 @@
                         t2:$('#t2').val(),
                         t3:$('#t3').val(),
                         t4:$('#t4').val(),
-                        t5:$('input name[a:checked]').val(),
+                        t5:$('input[name="rd"]:checked').val(),
                         t6:$('#t5').val(),
                         t7:$('#t6').val(),
                         t8:$('#t7').val(),
@@ -517,18 +643,40 @@
                         t16:$('textarea').val(),
                         t17:kl,
                         t18:int_ch,
-                        t19:int_no
+                        t19:int_no,
+                        t20:'Raj_02',
+                        t21:bcode
                     },
                     success:function(data){
                         var j=data.split(',,,');
                         alert(j[0])
                         if(j[1]==10){
                             auto()
+                            clear()
                         }
                     }
                 })
             }
         })
+        $('#b4').click(function(){
+            clear()
+        })
+        function clear(){
+            date()
+            $('#t3').val('')
+            $('#t4').val('')
+            $('#t6').val('')
+            $('#t7').val('')
+            $('#t8').val('')
+            $('#t9').val('')
+            $('#t10').val('')
+            $('#t11').val('Mts')
+            $('#t12').val('')
+            $('#t13').val('')
+            $('#t14').val('')
+            $('#t16').val('')
+            $('#t17').attr('src','#')
+        }
         // ======================= Download==========================
         
         // $(document).on('click','#b7',function(){

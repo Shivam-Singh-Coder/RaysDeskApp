@@ -199,6 +199,7 @@ create table state(
    dn int,
    la int)
 ;
+insert into state values(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 create table book_details
 (
    reg_no varchar(40),

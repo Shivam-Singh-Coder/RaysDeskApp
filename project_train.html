@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/2c21330576.js" crossorigin="anonymous"></script>
+    <style>
+          html {
+            font-size: 10px;
+        }
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .f1 {
+            width: 793.701px;
+            /* height: 1122.520px; */
+            background-color: white;
+            margin: auto;
+            /* border: 2px solid red; */
+        }
+        .d1{
+            width: 100%;
+            /* height: 10rem; */
+            background-color:  rgb(59, 18, 97);
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1rem;
+            /* justify-content: center; */
+        }
+        .d2{
+            margin-left: 5%;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 8rem;
+        }
+        .d2 img{
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+        }
+        .d3 {
+            margin-left: 5%;
+            width: 70%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .d3 h1 {
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        .d3 h3 {
+            color: yellow;
+            font-size: 2rem;
+            margin-left: 30%;
+        }
+        .d3a h2{
+            color: rgb(255, 106, 0);
+            font-weight: bold;
+            font-style: oblique;
+            font-size: 2rem;
+        }
+        .d4 {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 3rem 0 3rem;
+            font-size: 1.8rem;
+        }
+        .d5{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .d6{
+            width: 100%;
+            height: 10rem;
+            font-size: 2rem; 
+            /* border: 2px solid red; */
+        }
+        .d6b *{
+            text-align: center;
+        }
+        .d6a{
+            width: 10rem;
+            height: 10rem;
+            float: right;
+        }
+        .d6a img{
+            height:100%;
+            width: 100%;
+        }
+        .d7{
+            display: flex;
+            font-size: 1.3rem;
+            justify-content: center;
+            text-decoration: underline;
+        }
+        .d8 {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 3rem 0 5rem;
+            font-size: 1.5rem;
+        }
+
+        .d8_1 {
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            padding-left: 3rem;
+            font-weight: bold;
+        }
+
+        .d8_1 label {
+            height: 2.6rem;
+        }
+
+        .d8_2 {
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .d8_2 input {
+            border: none;
+            outline: none;
+            height: 2.6rem;
+            background-color: white;
+            font-weight: bold;
+        }
+        .hr-eight {
+            overflow: visible;
+            height: 30px;
+            border-style: solid;
+            border-color: #838080;
+            border-width: 2px 0 0 0;
+            font-weight: bold;
+            border-radius: 20px;
+
+            &::before {
+                display: block;
+                content: "";
+                height: 30px;
+                margin-top: -31px;
+                border-style: solid;
+                border-color: #838080;
+                border-width: 0 0 1px 0;
+                border-radius: 20px;
+            }
+        }
+        .d9{
+            width:95%;
+            margin: auto;
+        }
+        .d9 table,
+        th,
+        tr {
+            width: 100%;
+            /* border: 2px solid gray; */
+            border-collapse: collapse;
+        }
+
+        .d9 th {
+            width: 120px;
+            font-size: 2rem;
+        }
+
+        .d9 tr {
+            text-align: center;
+        }
+
+        .d9 td {
+            /* border: 2px solid gray; */
+            font-size: 1.8rem;
+        }
+        #tab tr:nth-child(even) {
+            background-color: rgb(250, 221, 168);
+        }
+
+        #tab tr:nth-child(odd) {
+            background-color: rgb(250, 221, 216);
+        }
+        .d10 {
+            width: 100%;
+            background-color: rgb(59, 18, 97);
+            height: 14rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .d10 * {
+            text-align: center;
+            padding: .7rem;
+        }
+
+        .fa {
+            font-size: 3rem;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <div class="f1">
+        <div class="d1">
+            <div class="d2">
+                <img src="rays_logo.jfif" alt="">
+            </div>
+            <div class="d3">
+                <h3>CIN:U80904BR2013TC020489</h3>
+                <h1 style="display: inline-block;">Ray &nbsp;Edutech &nbsp; Private &nbsp; Limited</h1>
+                <div class="d3a">
+                    <h2>Feel the Sensation of Your Destination</h2>
+                </div>
+            </div><br>
+        </div><br>
+        <div class="d4">
+            <h4>Certificate Ref No: <span style="font-size: 1.4rem;">REPL/PT01/2000164</span></h4>
+            <h4>Registration No: <span style="font-size: 1.4rem;">REPL/PAT/19/0188</span></h4>
+        </div><br>
+        <div class="d5">
+            <h2 style="color: rgb(9, 80, 9); display: inline-block;">PROJECT TRAINING PERFORMANCE</h2><br>
+        </div><br>
+        <div class="d6">
+            <div class="d6b" style=" width:85%;float: left;">
+            <h3 >REPORT ON</h3><br>
+            <h3 >[Electricity Management System]</h3>
+            </div>
+            <div class="d6a" style="float: left;"><img src="qrcode.svg" alt="qrcode is loading" ></div>
+        </div><br>
+        <div class="d7">
+            <h1><span style="color:red;font-style: oblique;">T</span>OOLS , <span style="color:red;font-style: oblique;">P</span>LATEFORMS , <Span style="color:red;font-style: oblique;">L</Span>ANGUAGES TO BE USED</h1>
+        </div><br>
+        <div class="d8">
+            <div class="d8_1">
+                <label for="">OPERATING SYSTEM </label>
+                <label for="">FRONT END / GUI TOOLS </label>
+                <label for=""> RDBMS / BACK END </label>
+            </div>
+            <div class="d8_2">
+                <input type="text" value=": WINDOWS 10">
+                <input type="text" value=": JAVA(JDK 1.8)">
+                <input type="text" value=": ORACLE 10G">
+            </div>
+        </div><br>
+        <hr class="hr-eight" />
+        <div class="d8">
+            <div class="d8_1">
+                <label for="">TEAM LEADER</label>
+                <label for="">TEAM MEMBERS</label>
+            </div>
+            <div class="d8_2">
+                <input type="text" value=": RAVI">
+                <input type="text" value=": RAVI, RAVI,RAVI,RAVI">
+            </div>
+        </div><br><hr class="hr-eight" /><br>
+        <div class="d9">
+            <table id="tab">
+                <tr style="background-color: rgb(250, 142, 106); color: white;">
+                    <th >Members</th>
+                    <th >Database</th>
+                    <th>Front End</th>
+                    <th > BackEnd</th>
+                    <th > Testing</th>
+                    <th >Documentation</th>
+                </tr>
+                <tr style="background-color: rgb(250, 142, 106); color: white;">
+                    <th></th>
+                    <th>(0-10)</th>
+                    <th>(0-10)</th>
+                    <th>(0-10)</th>
+                    <th>(0-10)</th>
+                    <th>(0-10)</th>
+                </tr>
+                <tr>
+                    <td>Rohit Raman</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>8.5</td>
+                    <td>9</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td>Rohit Raman</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>8.5</td>
+                    <td>9</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td>Rohit Raman</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>8.5</td>
+                    <td>9</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td>Rohit Raman</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>8.5</td>
+                    <td>9</td>
+                    <td>8.5</td>
+                </tr>
+            </table>
+        </div><br>
+        <div style="display: flex;flex-wrap: wrap; width: 100%; justify-content: space-between;padding: 3rem;">
+            <div>
+                <h1 style="font-weight: bold;">Issuing Authority</h1><br>
+                <label for="" style="font-size: 1.5rem;">Date : </label>
+                <input type="text" name="" id="" style="border: none;outline: none;">
+            </div>
+            <div><br><br>
+                <h1 style="margin-right:4rem;">Verified By </h1>
+            </div>
+        </div>
+        <div class="d10">
+            <dir>
+                <p>
+                    <i class="fa fa-location-dot"></i><br>
+                    2nd Floor, Mithulok,west Boring <br>
+                    canal road, Near Bharat Petrol Pump. <br>
+                    Patna, Bihar- 800001
+                </p>
+            </dir>
+            <dir>
+                <p>
+                    <i class="fa fa-phone"></i><br>
+                    0612-2321928 <br>
+                    9308654075
+                </p><br>
+            </dir>
+            <dir>
+                <p>
+                    <i class="fa fa-globe"></i><br>
+                    info@raysonline.in <br>
+                    www.raysonline.in
+                </p>
+            </dir>
+        </div>
+    </div>
+</body>
+</html>

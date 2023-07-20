@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="repllogo.png">
+    <title>Registration Invoice</title>
+    <style>
+        html{
+            font-size: 10px;
+        }
+        #main{
+            border: 1px solid black;
+            width: 21cm;
+            height: 15cm;
+            border: solid 2px rgb(169, 226, 11);
+        }
+        #img1{
+            height: 12rem;
+            width: 12rem;
+            position: absolute;
+        }
+        #d1{
+            margin-left: 13rem;
+            height: auto;
+            height: 7.5rem;
+            display: flex;
+        }
+        #d11,#d12{
+            width: 38%;
+            margin-top: 2rem;
+            font-size: 1.6rem;
+            line-height: 10px;
+        }
+        #d11{
+            width: 60%;
+            padding-right: 1rem;
+        }
+        #d12{
+            margin-top: 1rem;
+            margin-right: 0;
+            /* margin-left: 18%; */
+            line-height: 20px;
+        }
+        h2{
+            font-size: 3rem;
+        }
+        #p1{
+            margin-left: 13rem;
+            font-size: 1.1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #p2{
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 0rem;
+        }
+        #tab1,#tab2{
+            margin: 0rem 1rem 0rem 1rem;
+        }
+        #tab1{
+            margin-top: -2rem;
+        }
+        td{
+            height: 3.9rem;
+            font-size: 1.5rem;
+        }
+        #td1{
+            width: 12%;
+            /* border: solid 2px red; */
+            }
+            #td2{
+                width: 24%;
+            /* border: solid 2px rgb(20, 17, 184); */
+            }
+            #td3{
+                width: 2%;
+            /* border: solid 2px rgb(28, 199, 13); */
+            }
+        #b1{
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            width: 12rem;
+            padding: 0.5rem;
+            border-radius: 0.4rem;
+        }
+        #tab2 #but{
+            padding-left: 30rem;
+        }
+        #tab2{
+            margin-bottom: 0rem;
+        }
+        @media print{
+            #b1{
+                display: none;
+            }
+        }
+        /* @media (max-width:998px) {
+            html{
+                font-size: 55%;
+            }
+        }
+        @media (max-width:768px) {
+            html{
+                font-size: 45%;
+            }
+            #main{
+                height: 60rem;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div id="main">
+        <img src="rayslogo1-1.png" alt="loading" id="img1">
+        <div id="d1">
+            <div id="d11">
+                <label style="margin-left: 19%;"><b>CIN : </b> U80904BR2013PTC20489</label>
+                <h2><b>Rays Edutech Pvt. Ltd.</b></h2>
+            </div>
+            <div id="d12">
+                <label><b>Visit Us:- </b> www.raysonline.in</label><br>
+                <label><b>Mail Us:- </b> info@raysonline.in</label><br>
+                <label><b>Cell No:-</b> 7091566160, 9308654075</label>
+            </div>
+        </div><br>
+        <span id="p1"><b>2nd Floor, Mithulok, West Boring Canal Road, Near Bharat Petrol Pump, Opposite of New Tanishq,Patna, Bihar - 800001</b></span>
+        <hr>
+        <p id="p2"><u>Registration Receipt</u></p>
+        <table id="tab1">
+            <tr>
+                <td id="td1"><b>Registration No : </b></td>
+                <td id="td2">REPL/BR01/23/R0001</td>
+                <td id="td3"></td>
+                <td id="td1"><b>Registration Date : </b></td>
+                <td id="td2">08/07/2023</td>
+            </tr>
+            <tr>
+                <td><b>Student Name : </b></td>
+                <td>Shivam Singh</td>
+                <td></td>
+                <td><b>Father's Name : </b></td>
+                <td>Shivam Singh</td>
+            </tr>
+            <tr>
+                <td><b>Mother's Name : </b></td>
+                <td>Shivam Singh</td>
+                <td></td>
+                <td><b>Date Of Birth : </b></td>
+                <td>08/07/2023</td>
+            </tr>
+            <tr>
+                <td><b>Gender : </b></td>
+                <td>Male</td>
+                <td></td>
+                <td><b>Blood Group : </b></td>
+                <td>AB+</td>
+            </tr>
+            <tr>
+                <td><b>Email Id : </b></td>
+                <td>shivrajproject.rays@gmail.com</td>
+                <td></td>
+                <td><b>Contact No. : </b></td>
+                <td>7617839389</td>
+            </tr>
+            <tr>
+                <td><b>Program : </b></td>
+                <td>BCA</td>
+                <td></td>
+                <td><b>College Name : </b></td>
+                <td>7617839389</td>
+            </tr>
+            <tr>
+                <td><b>State : </b></td>
+                <td>Uttar Pradesh</td>
+                <td></td>
+                <td><b>District : </b></td>
+                <td>Ballia</td>
+            </tr>
+            <tr>
+                <td><b>Permanent Address : </b></td>
+                <td>Uttar Pradesh, urfherui uefgirhuiuh hrfgeruifhuierfhuier</td>
+                <td></td>
+                <td><b>Correspondence Address : </b></td>
+                <td>Ballia, fijioer finierjhjdfhgjheghehgejhguiehuig guerhuiguerhh</td>
+            </tr>
+        </table><hr>
+        <table id="tab2">
+            <tr>
+                <td><b>Signature....................................................................</b></td>
+                <td id="but"><button type="button" id="b1" onclick="window.print()"><b style="font-size: 1.8rem;">&#x1F5B6;&nbsp;&nbsp;PRINT</b></button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

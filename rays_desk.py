@@ -29,9 +29,18 @@ try:
         elif(reg_no<10000):
            strr="REPL/"+"BR01/"+str(year)+"/R"+str(reg_no)
         print(strr,reg_no,sep=',,,')
-    elif(d=='cmb_reg'):
-        print('hii')
-    
+    elif(d=='reg_district'):
+        t1=f.getvalue('t1')
+        t.execute("select distr from state1 where stat='"+t1+"'")    
+        rs=t.fetchall()
+        if(rs!=[]):
+            print('<option value="" selected disabled>----------------Select Any District-----------------</option>')
+            for a in rs:
+                for i in a:
+                    for b in i.split(','):
+                        print('<option>'+b+'</option>')
+        else:
+            print("Invalid Choice!")
     ######################################Internship##############
     elif(d=='int_auto'):
         t.execute('select int_no,int_ch from automatic')
@@ -42,8 +51,8 @@ try:
         t.execute('select max(intern_no) from internship')
         rs1=t.fetchall()
         if(rs1[0][0]!=None):
-            yr=rs1[0][0][11:13]
-            if(year>int(yr)):
+            yr=rs1[0][0][12:14]
+            if(year>int(yr) or year<int(yr)):
                 int_no=1
                 ch='A'
         if(int_no==1000):
@@ -57,7 +66,36 @@ try:
            strr="REPL/"+"INTERN/"+str(year)+"/"+ch+str(int_no)
         print(strr,int_no,ch,sep=',,,')
     elif(d=='int_insert'):
-        print("hii")
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        d6=f.getvalue('t6')
+        d7=f.getvalue('t7')
+        d8=f.getvalue('t8')
+        d9=f.getvalue('t9')
+        d10=f.getvalue('t10')
+        d11=f.getvalue('t11')
+        d12=f.getvalue('t12')
+        d13=f.getvalue('t13')
+        d14=f.getvalue('t14')
+        d15=f.getvalue('t15')
+        d16=f.getvalue('t16')
+        d17=f.getvalue('t17')
+        d18=f.getvalue('t18')
+        d19=f.getvalue('t19')
+        d20=f.getvalue('t20')
+        d21=f.getvalue('t21')
+        t.execute("select * from internship where intern_no='"+d1+"'")
+        if(t.fetchall()==[]):
+            url="insert into internship values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d20,d21))
+            t.execute("update automatic set int_no="+d19+",int_ch='"+d18+"'")
+            con.commit()
+            print("Successfully Inserted Record!,,,10")
+        else:
+            print("Already Inserted Record for this Intern ID!")
     #############Course Details###################
     elif(d=='ins_course'):
         d1=f.getvalue('t1')
@@ -67,11 +105,15 @@ try:
         d5=f.getvalue('t5')
         d6=f.getvalue('t6')
         d7=f.getvalue('t7')
-        url="insert into course values(%s,%s,%s,%s,%s,%s)"
-        t.execute(url,(d1,d2,d3,d4,d5,d6))
-        t.execute("update automatic set cid="+d7+"")
-        con.commit()
-        print("Course Created Successfully!,,,10")
+        t.execute("select * from course where cid='"+d1+"'")
+        if(t.fetchall()==[]):
+            url="insert into course values(%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6))
+            t.execute("update automatic set cid="+d7+"")
+            con.commit()
+            print("Course Created Successfully!,,,10")
+        else:
+            print("Something Wrong,Try Again!")
     elif(d=='cmb_course'):
         d1=f.getvalue('t1')
         t.execute("select distinct "+d1+" from course")
