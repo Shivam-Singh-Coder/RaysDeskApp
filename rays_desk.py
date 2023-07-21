@@ -18,17 +18,18 @@ try:
         year=date.today().year%100
         t.execute('select max(reg_no) from registration')
         rs=t.fetchall()
-        yr=rs[0][0][10:12]
-        if(year>int(yr)):
-            reg_no=1
+        if(rs[0][0]!=None):
+            yr=rs[0][0][10:12]
+            if(year>int(yr)):
+                reg_no=1
         if(reg_no<10):
-            strr="REPL/"+"BR01/"+str(year)+"/R000"+str(reg_no)
+            strr="REPL/"+t1.upper()+"/"+str(year)+"/R000"+str(reg_no)
         elif(reg_no<100):
-            strr="REPL/"+"BR01/"+str(year)+"/R00"+str(reg_no)
+            strr="REPL/"+t1.upper()+"/"+str(year)+"/R00"+str(reg_no)
         elif(reg_no<1000):
-           strr="REPL/"+"BR01/"+str(year)+"/R0"+str(reg_no)
+           strr="REPL/"+t1.upper()+"/"+str(year)+"/R0"+str(reg_no)
         elif(reg_no<10000):
-           strr="REPL/"+"BR01/"+str(year)+"/R"+str(reg_no)
+           strr="REPL/"+t1.upper()+"/"+str(year)+"/R"+str(reg_no)
         print(strr,reg_no,sep=',,,')
     elif(d=='reg_district'):
         t1=f.getvalue('t1')
@@ -76,18 +77,34 @@ try:
     elif d=='ser_reg':
         d1=f.getvalue('t1')
         d2=f.getvalue('t2')
-        if(d1=='Registration'):
+        d3=f.getvalue('t2')
+        d4=f.getvalue('t2')
+        if(d3!=None and d4!=None and d1==None and d2==None):
+            url="select * from registration where reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Registration' and d3==None and d4==None):
             url="select * from registration where reg_no='"+d2+"'"
-        elif(d1=='Contact'):
+        if(d1=='Registration' or d1=='Contact' or d1=='College' or d1=='Name' or d1=='Blood Grp' or d1=='Prog' or d1=='College' and d3!=None and d4!=None):
+            url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Contact' and d3==None and d4==None):
             url="select * from registration where cont_no='"+d2+"'"
-        elif(d1=='Name'):
+        # if(d1=='Contact' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Name' and d3==None and d4==None):
             url="select * from registration where sname='"+d2+"'"
-        elif(d1=='Blood Grp'):
+        # if(d1=='Name' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Blood Grp' and d3==None and d4==None):
             url="select * from registration where blood_grp='"+d2+"'"
-        elif(d1=='Prog'):
+        # if(d1=='Blood Grp' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Prog' and d3==None and d4==None):
             url="select * from registration where prog='"+d2+"'"
-        elif(d1=='College'):
+        # if(d1=='Prog' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='College' and d3==None and d4==None):
             url="select * from registration where clg_name='"+d2+"'"
+        # if(d1=='College' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
         else:
             url="select * from registration"
         t.execute(url)
@@ -126,6 +143,124 @@ try:
     elif d=='del_reg':
         d1=f.getvalue('t1')
         t.execute('delete from registration where reg_no="'+d1+'"')
+        con.commit()
+        print('Successfully Deleted This Record!,,,10')
+    ##################Admission###########################
+    elif(d=='auto_adm'):
+        t1=f.getvalue('t1')
+        t.execute("select adm_no,adm_ch from branch_details where bcode='"+t1+"'")
+        rs=t.fetchall()
+        adm_no=rs[0][0]+1
+        adm_ch=rs[0][1]
+        year=date.today().year%100
+        t.execute('select max(adm_no) from admission')
+        # rs=t.fetchall()
+        if(t.fetchall()[0][0]!=None):
+            yr=t.fetchall()[0][0][0:2]
+            if(year>int(yr) or year<int(yr)):
+                adm_no=1
+                adm_ch='A'
+        if(adm_no==1000):
+            adm_ch=chr(ord(adm_ch)+1)
+            adm_no=1
+        if(adm_no<10):
+            strr=str(year)+str(adm_ch)+"000"+str(adm_no)
+        elif(adm_no<100):
+            strr=str(year)+str(adm_ch)+"00"+str(adm_no)
+        elif(adm_no<1000):
+           strr=str(year)+str(adm_ch)+"0"+str(adm_no)
+        elif(adm_no<10000):
+           strr=str(year)+str(adm_ch)+str(adm_no)
+        print(strr,adm_no,adm_ch,sep=',,,')
+    elif(d=='adm_insert'):
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        d6=f.getvalue('t6')
+        d7=f.getvalue('t7')
+        d8=f.getvalue('t8')
+        d9=f.getvalue('t9')
+        d10=f.getvalue('t10')
+        t.execute("select * from admission where adm_no='"+d1+"'")
+        if(t.fetchall()==[]):
+            url="insert into admission values(%s,%s,%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8))
+            t.execute("update branch_details set adm_no="+d9+",adm_ch='"+d10+"' where bcode='"+d7+"'")
+            con.commit()
+            print("Successfully Inserted Record!,,,10")
+        else:
+            print("Already Inserted Record for this Registration ID!")
+    elif d=='ser_adm':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t2')
+        d4=f.getvalue('t2')
+        if(d3!=None and d4!=None and d1==None and d2==None):
+            url="select * from registration where reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Registration' and d3==None and d4==None):
+            url="select * from registration where reg_no='"+d2+"'"
+        if(d1=='Registration' or d1=='Contact' or d1=='College' or d1=='Name' or d1=='Blood Grp' or d1=='Prog' or d1=='College' and d3!=None and d4!=None):
+            url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Contact' and d3==None and d4==None):
+            url="select * from registration where cont_no='"+d2+"'"
+        # if(d1=='Contact' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Name' and d3==None and d4==None):
+            url="select * from registration where sname='"+d2+"'"
+        # if(d1=='Name' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Blood Grp' and d3==None and d4==None):
+            url="select * from registration where blood_grp='"+d2+"'"
+        # if(d1=='Blood Grp' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='Prog' and d3==None and d4==None):
+            url="select * from registration where prog='"+d2+"'"
+        # if(d1=='Prog' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        if(d1=='College' and d3==None and d4==None):
+            url="select * from registration where clg_name='"+d2+"'"
+        # if(d1=='College' and d3!=None and d4!=None):
+        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
+        else:
+            url="select * from registration"
+        t.execute(url)
+        rs=t.fetchall()
+        if rs==[]:
+            print(0)
+        else:
+            i=0
+            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Course ID</th><th>Course Name</th><th>Course Dur.</th><th>Course Fee</th><th>One Time Payment(OTP)</th><th colspan="2" style="color:blue;" id="act">Action Here</th></tr>')
+            for a in rs:
+                i=i+1
+                print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Course ID">'+str(a[0])+'   '+'</td><td data-label="Course Name" contenteditable="true" id="e">'+str(a[1])+'   '+'</td><td data-label="Course Dur." contenteditable="true" id="e">'+str(a[2])+'   '+'</td><td data-label="Course Fee" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="One Time Payment(OTP)" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td></tr>')
+            print('</table></div>')
+    elif d=='upd_reg':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        d5=f.getvalue('t6')
+        d5=f.getvalue('t7')
+        d5=f.getvalue('t8')
+        d5=f.getvalue('t9')
+        d5=f.getvalue('t10')
+        d5=f.getvalue('t11')
+        d5=f.getvalue('t12')
+        d5=f.getvalue('t13')
+        d5=f.getvalue('t14')
+        d5=f.getvalue('t15')
+        d5=f.getvalue('t16')
+        d5=f.getvalue('t17')
+        d5=f.getvalue('t18')
+        t.execute('update admission set reg_date="'+d2+'",sname="'+d3+'",fname="'+d4+'",mname="'+d5+'",sdob="'+d6+'",email="'+d7+'",cont_no="'+d8+'",prog="'+d9+'",blood_grp="'+d10+'",clg_name="'+d11+'",gender="'+d12+'",prmt_add="'+d13+'",dis="'+d14+'",stt="'+d15+'",sphoto="'+d16+'",aadhaar="'+d17+'",cor_add="'+d18+'" where reg_no="'+d1+'" ')
+        con.commit()
+        print('Successfully Updated This Record!')
+    elif d=='del_adm':
+        d1=f.getvalue('t1')
+        t.execute('delete from admission where adm_no="'+d1+'"')
         con.commit()
         print('Successfully Deleted This Record!,,,10')
     ######################################Internship##############

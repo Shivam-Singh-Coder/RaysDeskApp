@@ -107,7 +107,7 @@
             font-size: 1.8rem;
             text-align: center;
         }
-        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t10,#t9,#from,#to,#t11,#t12{
+        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t10,#t9,#from,#to,#t11,#t12,#t13{
             width: 90%;
             height: 4rem;
             padding-left: 1rem;
@@ -134,16 +134,19 @@
         #t11,#t10{
             margin-left: 5%;
         }
-        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l10,#l9,#l11,#l12,#lf,#lt,#l13{
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l10,#l9,#l11,#l12,#lf,#lt,#l13,#l14{
             position: absolute;
             font-size: 1.8rem;
             margin: -1rem 4rem;
             background-color: white;
         }
+        #l3,#l4,#l5,#l6,#l7,#l8{
+            visibility: hidden;
+        }
         #lt{
             margin-left: 3%;
         }
-        #ll1,#ll2,#ll3,#ll4,#ll5{
+        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6{
             color: red;
             font-size: 1.6rem;
             float:left;
@@ -168,20 +171,21 @@
         #b7{
             background:blue;
             margin-left: 7rem;
+            /* display: none; */
         }
         .fa-search{
             position: absolute;
             font-size: 1.7rem;
             color:white;
-            margin: 1rem 14%;
+            margin: 1.2rem 1.5%;
         }
         #b4,#b6{
             background: red;
             margin-left: 7rem;
         }
-        #b5{
+        /* #b5{
             margin-left: 20%;
-        }
+        } */
         /* ------------ Service ----------------- */
         #table2 td{
             width: 33%;
@@ -325,26 +329,26 @@
                 <form>
                     <table id="table1">
                         <tr>
-                            <td id="td1"><label id="l1">Form No</label><input type="text" id="t1" placeholder="Form No" readonly></td>
-                            <td id="td1"><label id="l2">Date</label><input type="date" id="t2" placeholder="Date"></td>
+                            <td id="td1"><label id="l1">Adm. Form No</label><input type="text" id="t1" placeholder="Adm. Form No" readonly></td>
+                            <td id="td1"><label id="l2">Adm. Date</label><input type="date" id="t2" placeholder="Adm. Date" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l3">Registration No</label><input type="text" id="t3" placeholder="Registration No"><label id="ll1">Reg</label></td>
+                            <td><label id="l3">Registration No</label><input type="text" id="t3" placeholder="Registration No" maxlength="18" minlength="18" onkeydown="keychk('#t3','#ll1')"><label id="ll1"></label></td>
                             <td><label id="l4">Prev. Course</label><input type="text" id="t4" placeholder="Prev. Course" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l5">Student Name</label><input type="text" id="t5" placeholder="Student Name"></td>
+                            <td><label id="l5">Student Name</label><input type="text" id="t5" placeholder="Student Name" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">Course Applying</label><select style="height: 4.5rem;" id="t6"><option value="" selected disabled>----- Select Any One -----</option></select><label id="l7">Selected Course</label><input type="text" placeholder="Selected Course" id="t7" readonly><br><label id="ll2">Course</label></td>
+                            <td><label id="l6">Course Applying</label><select style="height: 4.5rem;" id="t6" onchange="cmbchk('#t6','#ll2')"><option value="" selected disabled>----- Select Any One -----</option></select><label id="l7">Selected Course</label><input type="text" placeholder="Selected Course" id="t7" readonly><br><label id="ll2"></label></td>
                             <td><label id="l8">Course Fee</label><input type="text" id="t8" placeholder="Course Fee" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l9">Disc. in %</label><input type="text" name="" id="t9" value="0"><label id="l10">Disc. in Num</label><input type="text" name="" id="t10" value="0"><label id="l11">Discount</label><select id="t11" ><option value="" selected>Installment</option><option value="">OTP(One Time Payment)</option></select><br><label id="ll3">jfdj</label><label id="ll4">j888</label></td>
+                            <td><label id="l9">Disc. in %</label><input type="text" name="" id="t9" value="0"><label id="l10">Disc. in Num</label><input type="text" name="" id="t10" value="0"><label id="l11">Discount</label><select id="t11" ><option value="" selected>Installment</option><option value="">OTP(One Time Payment)</option></select><br><label id="ll3"></label><label id="ll4"></label></td>
                             <td><label id="l12">Total Fee</label><input type="text" id="t12" placeholder="Total Fee" value="0" readonly></td>
                         </tr>
                         <tr>
-                            <td><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
+                            <td colspan="2"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
                         </tr>
                     </table>
                 </form>
@@ -353,18 +357,21 @@
                 <div id="d2"><b>Admission &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
-                        <td><label id="l13">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Admission">Admission No.</option><option value="Name">Student Name</option></select><br><label id="ll5">Choice</label></td>
-                        <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select></td>
+                        <td><label id="l13">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Admission">Admission No.</option><option value="Name">Student Name</option></select><br><label id="ll5"></label></td>
+                        <td><label id="l14">Your Choice</label>
+                            <!-- <select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select> -->
+                            <input type="text" id="t13" placeholder="Select Your Choice">
+                            <br><label id="ll6"></label></td>
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
                     </tr>
                     <tr>
-                        <td id="sr" colspan="2" ><i class="fa fa-search" hidden></i><input type="button" value=" &nbsp; Search" id="b5"><input type="button" value="&#x21bb;&nbsp; Refresh" id="b6"><input type="button" class="fa" value="&#xf019;&nbsp; Download" id="b7"></td>
+                        <td id="sr" colspan="3" ><i class="fa fa-search" hidden></i><input type="button" value=" &nbsp; Search" id="b5"><input type="button" value="&#x21bb;&nbsp; Refresh" id="b6"><input type="button" class="fa" value="&#xf019;&nbsp; Download" id="b7"></td>
                     </tr>
                 </table>
                 <div id="d3">
                     <div id="d5">
                         <table id="table3">
-                            <tr><th id="sn">Sn</th><th>Admission No</th><th>Admission Date</th><th>Registration No</th><th>Course Applied</th><th>Course Fee</th><th>Discount</th><th colspan="3">Check</th></tr>
+                            <tr><th id="sn">Sn</th><th>Admission No</th><th>Admission Date</th><th>Registration No</th><th>Course Applied</th><th>Course Fee</th><th>Discount</th><th colspan="3" id="chk">Check</th></tr>
                             <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Admission No">P001</td><td data-label="Admission Date">Ord0001</td><td data-label="Registration No">UPI</td><td data-label="Course Applied">22-07-2001</td><td data-label="Course Fee">15000</td><td data-label="Discount">5000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>
                         </table>
                     </div>
@@ -391,25 +398,224 @@
         })
         // --------------------------------------------------------------------
        // ======================== Mandatory ===========================
-        var flag=true;
-        function ch2(t,l){
-            a=$(t).val();
-            if(a==null){
-                $(t).css('border','2px solid red');
-                $(l).html('Select any One!');
-                flag=false;
+       var flag =flag2= true;
+        function ch2(t) {
+            a = $(t).val();
+            if (a == null || a == '' || a.length == 0) {
+                $(t).css({ 'border': '1px solid red', 'color': 'red' });
+                $(t).val('*Field is Mandatory!');
+                flag = false;
+            }
+            else if($(t).val() == '*Field is Mandatory!')
+                flag = false;
+        }
+        function ch3(t) {
+            $(t).css({ 'border': '1px solid black', 'color': 'black' });
+            if ($(t).val() == '*Field is Mandatory!' || $(t).val() == null) {
+                $(t).val('')
             }
         }
-        function ch3(t,l){
-            $(t).css('border','1px solid black');
-            $(l).html('');
+        // ====================Key Validaition=================
+        function keychk(chk, d) {
+            $(d).text("");
+            if (chk == '#t3') {
+                $(chk).on('keypress', function (a) {
+                    if((a.which == 47||a.which>=48 && a.which<=57)&& a.target.selectionStart === 0){
+                        $(d).text("Zero & / at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==47)){
+                        $(d).text("Only Alphabet,Digit & / Allowed!");
+                        return false;
+                    }
+                    else if(a.which==47 && $(this).val().slice(-1) ==='/'){
+                        a.preventDefault();
+                        $(d).text("Special Character Multiple times Not Allowed!");
+                    }
+                    else
+                        $(d).text("");
+                });
+            }
+            else{
+                $(chk).on('keypress',function(a){
+                    if(a.which == 48 && a.target.selectionStart === 0){
+                        $(d).text("Zero at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57 || a.which==13)){
+                        $(d).html('Only Digit Allowed!');
+                        return false;
+                    }
+                    else if($(this).val()=='0')
+                        $(this).val('');
+                    else
+                        $(d).text("");
+                    // if(chk=='#t10'||'#t9'){
+                    //     if($(this).val()=='0')
+                    //         $(this).val('');
+                    // }
+                    if(chk=='#t10'){
+                        bk=$('#t8').val()
+                        if(bk=='')
+                            bk=0
+                        if(parseInt($(this).val()+String.fromCharCode(a.which))>parseInt(bk)){
+                            $(d).text("Discount can't be greater than Course fee!");
+                            return false;
+                        }
+                    }
+                })
+            }
         }
-        // -----------------------------------------
+        $('#t9,#t10').on('input',function(a){
+            if($(this).attr('id')=='t10')
+                $('#t9').val($(this).val()/$('#t8').val()*100)
+            else
+                $('#t10').val($(this).val()*$('#t8').val()/100)
+        })
+        $('#t10,#t9').keyup(function(){
+            if($(this).val()=='')
+                $(this).val('0');
+        })
+        $('#t10,#t9').focusout(function(){
+            if($(this).attr('id')=='t10')
+                $('#ll4').html('');
+            else if($(this).attr('id')=='t9')
+                $('#ll3').html('');
+        })
+        // -----------------Legend------------------------
+        function input(d, l) {
+            jk = $(d).val()
+            if (jk != '') {
+                $(l).css('visibility', 'visible')
+            }
+            else {
+                $(l).css('visibility', 'hidden')
+            }
+        }
+         // --------------ComboCheck--------------
+         function cmbchk(id, l) {
+            if ($(id).val() != null)
+                $(l).css('visibility', 'visible')
+            if (id == '#t6') {
+                $.ajax({
+                    url: 'rays_desk.py',
+                    method: 'post',
+                    data: {
+                        cond: 'adm_cfee',
+                        t1: $(id).val()
+                    },
+                    success: function (data) {
+                        if(data!=0)
+                            $('#t8').val(parseInt($('#t8').val())+parseInt(data))
+                    }
+                })
+            }
+        }
+        // --------------Auto Id-------------
+        $(document).ready(function () {
+            date();
+            auto();
+            cname();
+        })
+        // -------------Date---------
+        function date() {
+            var b = new Date();
+            yy = b.getFullYear()
+            dd = b.getDate()
+            mm = b.getMonth() + 1
+            if (mm < 10)
+                mm = "0" + mm
+            if (dd < 10)
+                dd = "0" + dd
+            $('#t2').val(yy + '-' + mm + '-' + dd)
+        }
+        var adm_no,adm_ch;
+        function auto() {
+            $.ajax({
+                url: 'rays_desk.py',
+                method: 'post',
+                data: {
+                    cond: 'auto_adm',
+                    t1:bcode
+                },
+                success: function (data) {
+                    var j = data.split(',,,')
+                    $('#t1').val(j[0])
+                    adm_no = j[1]
+                    adm_ch = j[2]
+                }
+            })
+        }
+        //================COurse Name=============
+        function cname() {
+            $.ajax({
+                url: 'rays_desk.py',
+                method: 'post',
+                data: {
+                    cond: 'cname_adm',
+                    t1:bcode
+                },
+                success: function (data) {
+                    if(data==0)
+                        alert("Please Add Any Course In Course Entry Form!")
+                    else
+                        $('#t6').html(data)
+                }
+            })
+        }
+        //===================Insert Record=======================
+        $('#b3').click(function(){
+            var conf=confirm("Are you sure want to insert this record?")
+            if(conf){
+                $.ajax({
+                    url:'rays_desk.py',
+                    method:'post',
+                    data:{
+                        cond:'adm_insert',
+                        t1:$('#t1').val(),//adm_no
+                        t2:$('#t2').val(),//adm_date
+                        t3:$('#t3').val(),//reg_no
+                        t4:$('#t7').val(),//cou_app
+                        t5:$('#t8').val(),//cfee
+                        t6:$('#t10').val(),//dis
+                        t7:bcode,//bcode
+                        t8:"Raj_02",//u_id
+                        t9:adm_no,//adm_no
+                        t10:adm_ch//adm_ch
+                    },
+                    success:function(data){
+                        var j=data.split(',,,');
+                        alert(j[0])
+                        if(j[1]==10){
+                            auto()
+                            clear()
+                        }
+                    }
+                })
+            }
+        })
+        $('#b4').click(function(){
+            clear()
+        })
+        //----------------Clear Record---------------------
+        function clear(){
+            date()
+            ch3('#t3')
+            $('#t3').val('')
+            $('#t4').val('')
+            $('#t5').val('')
+            $('#t6').val('')
+            $('#t7').val('')
+            $('#t8').val('')
+            $('#t9').val('0')
+            $('#t10').val('0')
+            $('#t12').val('0')
+        }
         // ======================= Download==========================
         
         $(document).on('click','#b7',function(){
             $("#table3").table2excel({
-                exclude: ".sn,#sn,#chk",
+                exclude: "#del,#upd,#prt,#chk",
                 filename: $('#s1').val()+"_exp.xls"
             });
         });

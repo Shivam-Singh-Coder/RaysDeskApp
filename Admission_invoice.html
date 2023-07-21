@@ -171,6 +171,9 @@
     <script>
         function toPDF(){
           html2pdf()
+            .set({
+                exclude: "#b1"
+            })
             .from(document.body)
             .save(document.getElementById('sname').innerHTML+"_Admission_Form.pdf");
         }
