@@ -12,7 +12,7 @@
         }
         #main{
             border: 1px solid black;
-            width: 20.5cm;
+            width: 20.7cm;
             height: 15cm;
         }
         #img1{
@@ -128,35 +128,35 @@
         <table id="tab1">
             <tr>
                 <td id="td1"><b>Admission No : </b></td>
-                <td id="td2">23A0001</td>
+                <td id="td2" class="adm_no"></td>
                 <td id="td3"></td>
                 <td id="td1"><b>Admission Date : </b></td>
-                <td id="td2">08/07/2023</td>
+                <td id="td2" class="adm_date"></td>
             </tr>
             <tr>
                 <td><b>Registration No : </b></td>
-                <td>REPL/BR01/23/R0001</td>
+                <td class="reg_no"></td>
                 <td></td>
                 <td><b>Previous Course : </b></td>
-                <td>JAVA</td>
+                <td class="pc"></td>
             </tr>
             <tr>
                 <td><b>Student's Name : </b></td>
-                <td id="sname">Sudhanshu Kumar</td>
+                <td id="sname" class="sname"></td>
                 <td></td>
                 <td><b>Course Applied : </b></td>
-                <td>Python</td>
+                <td class="capp"></td>
             </tr>
             <tr>
                 <td><b>Course Fee : </b></td>
-                <td>450078778</td>
+                <td class="fee"></td>
                 <td></td>
                 <td><b>Discount : </b></td>
-                <td>15007778</td>
+                <td class="disc"></td>
             </tr>
             <tr>
                 <td><b>Total Fee : </b></td>
-                <td>500067657</td>
+                <td class="tot"></td>
             </tr>
         </table><hr>
         <table id="tab2">
@@ -168,12 +168,43 @@
         </table>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
+        // var a1=sessionStorage.getItem('a1',cell[1])
+        // var a2=sessionStorage.getItem('a2',cell[2])
+        // var a3=sessionStorage.getItem('a3',cell[3])
+        // var a4=sessionStorage.getItem('a4',cell[4])
+        // var a5=sessionStorage.getItem('a5',cell[5])
+        // var a6=sessionStorage.getItem('a6',cell[6])
+        $(document).ready(function(){
+            $.ajax({
+                url:'rays_desk.py',
+                method:'post',
+                data:{
+                    cond:'adm_inv',
+                    t1:sessionStorage.getItem('a1'),
+                    t2:sessionStorage.getItem('a2')
+                },
+                success:function(data){
+                    if(data!='0'){
+                        var j=data.split('&&')
+                        $('.adm_no').html(j[0])
+                        $('.adm_date').html(j[1])
+                        $('.reg_no').html(j[2])
+                        $('.pc').html(j[9])
+                        $('.sname').html(j[8])
+                        $('.capp').html(j[3])
+                        $('.fee').html(j[4])
+                        $('.disc').html(j[5])
+                        $('.tot').html(parseInt(j[4])-parseInt(j[5]))
+                    }
+                    else
+                        alert("Something Wrong!")
+                }
+            })
+        })
         function toPDF(){
           html2pdf()
-            .set({
-                exclude: "#b1"
-            })
             .from(document.body)
             .save(document.getElementById('sname').innerHTML+"_Admission_Form.pdf");
         }

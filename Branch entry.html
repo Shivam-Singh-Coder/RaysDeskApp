@@ -775,17 +775,17 @@ function autoid(k){
                     method:'post',
                     data:{
                         cond:'ent',
-                        t1:$('#k1').val(),
-                        t2:$('.xx').val(),
-                        t3:$('#t5').val(),
-                        t4:$('#t6').val(),
-                        t5:$('#t0').val(),
-                        t6:$('#t9').val(),
-                        t7:$('#t7').val(),
-                        t8:$('.s1 option:selected').text(),
-                        t9:$('#kk').val(),
+                        t1:$('#k1').val().trim(),
+                        t2:$('.xx').val().trim(),
+                        t3:$('#t5').val().trim(),
+                        t4:$('#t6').val().trim(),
+                        t5:$('#t0').val().trim(),
+                        t6:$('#t9').val().trim(),
+                        t7:$('#t7').val().trim(),
+                        t8:$('.s1 option:selected').text().trim(),
+                        t9:$('#kk').val().trim(),
                         t10:inv,
-                        t11:$('#tt').val()
+                        t11:$('#tt').val().trim()
                     },
                     success:function(data){
                         // alert(data)

@@ -151,12 +151,12 @@ try:
         t.execute("select adm_no,adm_ch from branch_details where bcode='"+t1+"'")
         rs=t.fetchall()
         adm_no=rs[0][0]+1
-        adm_ch=rs[0][1]
+        adm_ch=rs[0][1].strip()
         year=date.today().year%100
         t.execute('select max(adm_no) from admission')
-        # rs=t.fetchall()
-        if(t.fetchall()[0][0]!=None):
-            yr=t.fetchall()[0][0][0:2]
+        rs1=t.fetchall()[0][0]
+        if(rs1!=None):
+            yr=rs1[0:2]
             if(year>int(yr) or year<int(yr)):
                 adm_no=1
                 adm_ch='A'
@@ -195,74 +195,113 @@ try:
     elif d=='ser_adm':
         d1=f.getvalue('t1')
         d2=f.getvalue('t2')
-        d3=f.getvalue('t2')
-        d4=f.getvalue('t2')
-        if(d3!=None and d4!=None and d1==None and d2==None):
-            url="select * from registration where reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Registration' and d3==None and d4==None):
-            url="select * from registration where reg_no='"+d2+"'"
-        if(d1=='Registration' or d1=='Contact' or d1=='College' or d1=='Name' or d1=='Blood Grp' or d1=='Prog' or d1=='College' and d3!=None and d4!=None):
-            url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Contact' and d3==None and d4==None):
-            url="select * from registration where cont_no='"+d2+"'"
-        # if(d1=='Contact' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Name' and d3==None and d4==None):
-            url="select * from registration where sname='"+d2+"'"
-        # if(d1=='Name' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Blood Grp' and d3==None and d4==None):
-            url="select * from registration where blood_grp='"+d2+"'"
-        # if(d1=='Blood Grp' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Prog' and d3==None and d4==None):
-            url="select * from registration where prog='"+d2+"'"
-        # if(d1=='Prog' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='College' and d3==None and d4==None):
-            url="select * from registration where clg_name='"+d2+"'"
-        # if(d1=='College' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        else:
-            url="select * from registration"
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        url=''
+        if(d1=='adm'):
+            url='select * from admission where adm_no="'+d2+'" and bcode="'+d5+'"'
+        if(d1=='adm' and d4!=None and d5!=None):
+            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
+        if(d1=='reg'):
+            url='select * from admission where reg_no="'+d2+'" and bcode="'+d5+'"'
+        if(d1=='reg' and d4!=None and d5!=None):
+            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
+        if(d1=='sname'):
+            url='select * from admission where reg_no in(select reg_no from registration where sname="'+d2+'" and bcode="'+d5+'") and bcode="'+d5+'"'
+        if(d1=='sname' and d4!=None and d5!=None):
+            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
         t.execute(url)
         rs=t.fetchall()
         if rs==[]:
             print(0)
         else:
             i=0
-            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Course ID</th><th>Course Name</th><th>Course Dur.</th><th>Course Fee</th><th>One Time Payment(OTP)</th><th colspan="2" style="color:blue;" id="act">Action Here</th></tr>')
+            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Admission No</th><th>Admission Date</th><th>Registration No</th><th>Course Applied</th><th>Course Fee</th><th>Discount</th><th colspan="3" id="chk">Check</th></tr>')
             for a in rs:
                 i=i+1
-                print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Course ID">'+str(a[0])+'   '+'</td><td data-label="Course Name" contenteditable="true" id="e">'+str(a[1])+'   '+'</td><td data-label="Course Dur." contenteditable="true" id="e">'+str(a[2])+'   '+'</td><td data-label="Course Fee" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="One Time Payment(OTP)" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td></tr>')
+                print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Admission No">'+str(a[0])+'   '+'</td><td data-label="Admission Date">'+str(a[1])+'   '+'</td><td data-label="Registration No">'+str(a[2])+'   '+'</td><td data-label="Course Applied" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="Course Fee">'+str(a[4])+'   '+'</td><td data-label="Discount" contenteditable="true" id="e">'+str(a[5])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>')
             print('</table></div>')
-    elif d=='upd_reg':
+    elif d=='upd_adm':
         d1=f.getvalue('t1')
         d2=f.getvalue('t2')
         d3=f.getvalue('t3')
         d4=f.getvalue('t4')
         d5=f.getvalue('t5')
-        d5=f.getvalue('t6')
-        d5=f.getvalue('t7')
-        d5=f.getvalue('t8')
-        d5=f.getvalue('t9')
-        d5=f.getvalue('t10')
-        d5=f.getvalue('t11')
-        d5=f.getvalue('t12')
-        d5=f.getvalue('t13')
-        d5=f.getvalue('t14')
-        d5=f.getvalue('t15')
-        d5=f.getvalue('t16')
-        d5=f.getvalue('t17')
-        d5=f.getvalue('t18')
-        t.execute('update admission set reg_date="'+d2+'",sname="'+d3+'",fname="'+d4+'",mname="'+d5+'",sdob="'+d6+'",email="'+d7+'",cont_no="'+d8+'",prog="'+d9+'",blood_grp="'+d10+'",clg_name="'+d11+'",gender="'+d12+'",prmt_add="'+d13+'",dis="'+d14+'",stt="'+d15+'",sphoto="'+d16+'",aadhaar="'+d17+'",cor_add="'+d18+'" where reg_no="'+d1+'" ')
+        d6=f.getvalue('t6')
+        d7=f.getvalue('t7')
+        t.execute('update admission set adm_date="'+d2+'",reg_no="'+d3+'",cou_apply="'+d4+'",fee="'+d5+'",dis="'+d6+'" where adm_no="'+d1+'" and bcode="'+d7+'"')
         con.commit()
         print('Successfully Updated This Record!')
     elif d=='del_adm':
         d1=f.getvalue('t1')
-        t.execute('delete from admission where adm_no="'+d1+'"')
+        d2=f.getvalue('t2')
+        t.execute('delete from admission where adm_no="'+d1+'" and bcode="'+d2+'"')
         con.commit()
         print('Successfully Deleted This Record!,,,10')
+    elif d=='cname_adm':
+        d1=f.getvalue('t1')
+        t.execute('select cname from course where bcode="'+d1+'"')
+        rs=t.fetchall()
+        if(rs!=[] or rs!=None):
+            for a in rs:
+                print('<option>'+a[0]+'</option>')
+        else:
+            print('0')
+    elif d=='adm_cfee':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        t.execute('select cfee from course where cname="'+d1+'" and bcode="'+d2+'"')
+        rs=t.fetchall()
+        if(rs!=[] or rs!=None):
+            print(rs[0][0])
+        else:
+            print('0')
+    elif d=='adm_otp':
+        d1=f.getvalue('t1').split(',')
+        d2=f.getvalue('t2')
+        num=0
+        for a in range(len(d1)):
+            t.execute('select otp from course where cname="'+d1[a]+'" and bcode="'+d2+'"')
+            rs=t.fetchall()
+            if(rs!=[] or rs!=None):
+                num=num+int(rs[0][0])
+            else:
+                num=num+0
+        print(num)
+    elif d=='adm_reg':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        t.execute('select sname from registration where reg_no="'+d1+'" and bcode="'+d2+'"')
+        rs=t.fetchall()
+        if(rs!=[]):
+            t.execute('select cou_apply from admission where reg_no="'+d1+'" and bcode="'+d2+'"')
+            rs1=t.fetchall()
+            if(rs1==[]):
+                rs1=None
+            else:
+                rs1=rs1[0][0]
+            print(rs[0][0],rs1,sep=',,,')
+        else:
+            print('0')
+    elif d=='adm_inv':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        t.execute('select * from admission where adm_no="'+d1+'" and bcode="'+d2+'"')
+        rs=t.fetchall()
+        if(rs!=[]):
+            for a in rs:
+                for i in a:
+                    print(str(i)+"&&")
+                t.execute('select sname from registration where reg_no="'+a[2]+'" and bcode="'+d2+'"')
+                print(t.fetchall()[0][0])
+                t.execute('select cou_apply from admission where reg_no="'+a[2]+'" and bcode="'+d2+'" and adm_date<"'+str(a[1])+'"')
+                rs=t.fetchall()
+                for b in rs:
+                    if(b[0]!=a[3]):
+                        print("&&"+b[0])
+        else:
+            print('0')
     ######################################Internship##############
     elif(d=='int_auto'):
         t.execute('select int_no,int_ch from automatic')
@@ -318,6 +357,63 @@ try:
             print("Successfully Inserted Record!,,,10")
         else:
             print("Already Inserted Record for this Intern ID!")
+    elif d=='int_branch':
+        d1=f.getvalue('t1')
+        t.execute('select bname,addr from branch_details where bcode="'+d1+'"')
+        rs=t.fetchall()
+        if(rs!=[]):
+            for a in rs:
+                for i in a:
+                    print(i+"&&&&")
+        else:
+            print('0')
+    elif d=='ser_int':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        url=''
+        if(d1=='adm'):
+            url='select * from admission where adm_no="'+d2+'" and bcode="'+d5+'"'
+        if(d1=='adm' and d4!=None and d5!=None):
+            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
+        if(d1=='reg'):
+            url='select * from admission where reg_no="'+d2+'" and bcode="'+d5+'"'
+        if(d1=='reg' and d4!=None and d5!=None):
+            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
+        if(d1=='sname'):
+            url='select * from admission where reg_no in(select reg_no from registration where sname="'+d2+'" and bcode="'+d5+'") and bcode="'+d5+'"'
+        if(d1=='sname' and d4!=None and d5!=None):
+            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
+        t.execute(url)
+        rs=t.fetchall()
+        if rs==[]:
+            print(0)
+        else:
+            i=0
+            print("<div id='d5'><table id='table3'><tr><th id='sn'>Sn</th><th>Internship No</th><th>Student Name</th><th>Father's Name</th><th>Gender</th><th>Date Of Birth</th><th>Email ID</th><th>Contact No.</th><th>College Name</th><th>Project Title</th><th>Duration</th><th>Technologies</th><th>Guidance Name</th><th>Stipend Amt.</th><th>Study Centre</th><th>Student Pic</th><th>Choose File</th><th colspan='4' style='color: blue;'>Action</th><th id='sn1'></th></tr>")
+            for a in rs:
+                i=i+1
+                print("<tr class='tr1'><td id='sn' data-label='SN'>1</td><td data-label='Internship No'>P001</td><td data-label='Student Name' contenteditable='true' id='e'>22-07-2001</td><td data-label='Father's Name' contenteditable='true' id='e'>15000</td><td data-label='Gender' contenteditable='true' id='e'>Ord0001</td><td data-label='Date Of Birth' contenteditable='true' id='e'>UPI</td><td data-label='Email ID' contenteditable='true' id='e'>5000</td><td data-label='Contact No.' contenteditable='true' id='e'>20000</td><td data-label='College Name' contenteditable='true' id='e'>20000</td><td data-label='Project Title' contenteditable='true' id='e'>20000</td><td data-label='Duration' contenteditable='true' id='e'>20000</td><td data-label='Technologies' contenteditable='true' id='e'>20000</td><td data-label='Guidance Name' contenteditable='true' id='e'>20000</td><td data-label='Stipend Amt.' contenteditable='true' id='e'>20000</td><td data-label='Study Centre'>17000</td><td data-label='Student Pic'>17000</td><td data-label='Choose File'>17000</td><td data-label='Update'><i class='fa' id='upd' data-toggle='tooltip' title='Update'>&#xf044;</i></td><td data-label='Delete'><i class='fa' id='del' data-toggle='tooltip' title='Delete'>&#xf014;</i></td><td data-label='Certificate'><i class='fa' id='cert' data-toggle='tooltip' title='Certificate'>&#xf15c;</i></td><td data-label='Marksheet'><i class='fa' id='mark' data-toggle='tooltip' title='Marksheet'>&#xf15b;</i></td><td class='sn'></td></tr>")
+            print('</table></div>')
+    elif d=='upd_int':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        d6=f.getvalue('t6')
+        d7=f.getvalue('t7')
+        t.execute('update admission set adm_date="'+d2+'",reg_no="'+d3+'",cou_apply="'+d4+'",fee="'+d5+'",dis="'+d6+'" where adm_no="'+d1+'" and bcode="'+d7+'"')
+        con.commit()
+        print('Successfully Updated This Record!')
+    elif d=='del_int':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        t.execute('delete from admission where adm_no="'+d1+'" and bcode="'+d2+'"')
+        con.commit()
+        print('Successfully Deleted This Record!,,,10')
     #############Course Details###################
     elif(d=='ins_course'):
         d1=f.getvalue('t1')
@@ -330,7 +426,7 @@ try:
         t.execute("select * from course where cid='"+d1+"'")
         if(t.fetchall()==[]):
             url="insert into course values(%s,%s,%s,%s,%s,%s)"
-            t.execute(url,(d1,d2,d3,d4,d5,d6))
+            t.execute(url,(d1,d2,d4,d3,d5,d6))
             t.execute("update automatic set cid="+d7+"")
             con.commit()
             print("Course Created Successfully!,,,10")
@@ -381,7 +477,6 @@ try:
         con.commit()
         print('Successfully Deleted!,,,10')
     else:
-        # d1=f.getvalue('t1')
         t.execute("select cid from automatic")
         rs=t.fetchall()
         cid=rs[0][0]+1
