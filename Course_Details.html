@@ -91,11 +91,18 @@
             margin: 3rem 2.5%;
             border-collapse:collapse;
         }
-        #table1 td,#table2 td{
+        #table4{
+            position: relative;
+            width: 95%;
+            top: -3rem;
+            margin: 0 2.5%;
+            border-collapse:collapse;
+        }
+        #table1 td,#table2 td,#table4 td{
             height: 8rem;
             text-align: center;
         }
-        #table1 #td1{
+        #table1 #td1,#table4 #td1{
             width: 43%;
         }
         #table1 #td2{
@@ -107,53 +114,56 @@
             font-size: 1.8rem;
             text-align: center;
         }
-        #t1,#t2,#t3,#t4,#t6,#t5,#t7{
+        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9{
             width: 90%;
             height: 4rem;
             padding-left: 1rem;
             font-size: 1.8rem;
         }
-        #t4,#t5{
-            width: 42%;
-            font-size: 1.8rem;
-        }
-        #t5{
-            margin-left: 5%;
+        #t4{
+            width: 83%;
         }
         #t6,#t7{
-            width: 15%;
+            width: 42%;
             font-size: 1.8rem;
         }
         #t7{
             margin-left: 5%;
         }
-        #l1,#l2,#l3,#l4,#l5,#l6,#l7{
+        #t8,#t9{
+            width: 15%;
+            font-size: 1.8rem;
+        }
+        #t9{
+            margin-left: 5%;
+        }
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9{
             position: absolute;
             font-size: 1.8rem;
             margin: -1rem 4rem;
             background-color: white;
         }
-        #l3,#l2,#l4{
+        /* #l3,#l2,#l4{
             visibility:hidden;
-        }
-        #l6{
+        } */
+        #l8{
             margin-left: 4rem;
         }
-        #l5{
+        #l7{
             margin-left: 1rem;
         }
-        #ll1,#ll2,#ll3,#ll6{
+        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6,#ll7,#ll8,#ll9{
             color: red;
             font-size: 1.6rem;
             float:left;
             margin-left: 3rem;
         }
-        #ll4,#ll5{
+        #ll6,#ll7{
             position: absolute;
             color: red;
             font-size: 1.6rem;
         }
-        #ll5{
+        #ll7{
             margin-left: 14rem;
         }
         #b3,#b4,#b5,#b6,#b7{
@@ -254,7 +264,7 @@
             html{
                 font-size: 45%;
             }
-            #table1 #td1{
+            #table1 #td1,#table4 #td1{
                 width: 100%;
             }
             #table1 #td2{
@@ -263,7 +273,7 @@
             #table3 th{
                 display: none;
             }
-            #table1 td,#table2 td,#table3 td{
+            #table1 td,#table2 td,#table3 td,#table4 td{
                 display: block;
             }
             #table2 td{
@@ -318,7 +328,7 @@
         <div id="body">
             <div id="ent">
                 <div id="d2"><b>Course &nbsp; Entry</b></div>
-                <span style="color: red;float: right;margin-right: 5rem;font-size: 2rem;">*&nbsp;Field is Mandatory!</span>
+                <!-- <span style="color: red;float: right;margin-right: 5rem;font-size: 2rem;">*&nbsp;Field is Mandatory!</span> -->
                 <form>
                     <table id="table1">
                         <tr>
@@ -326,11 +336,17 @@
                             <td id="td1"><label id="l2">Course Name<font style="color: red;">*</font></label><input type="text" id="t2" placeholder="Course Name*" style="text-transform: capitalize;" onkeydown="keychk('#t2','#ll1')" oninput="input('#t2','#l2')" onfocus="ch3('#t2')" onfocusout="ch2('#t2')"><br><label id="ll1"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l3">Course Fee<font style="color: red;">*</font></label><input type="text" id="t3" placeholder="Course Fee*" onkeydown="keychk('#t3','#ll2')" oninput="input('#t3','#l3')" onfocus="ch3('#t3')" onfocusout="ch2('#t3')"><br><label id="ll2"></label></td>
-                            <td><label id="l4">Course Dur.<font style="color: red;">*</font></label><input type="text" placeholder="Course Dur.*" id="t4" onkeydown="keychk('#t4','#ll3')" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')"><select style="height: 4.5rem;" id="t5"><option value="Hrs" selected>Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts">Months</option></select><br><label id="ll3"></label></td>
+                            <td><label id="l3">Module Name</label><input type="text" id="t3" placeholder="Module Name(Optional)"><br><label id="ll2"></label></td>
+                            <td><label id="l4">Module Desc.</label><input type="text" id="t4" placeholder="Module Desc.(Optional)" style="text-transform: capitalize;" onkeydown="keychk('#t2','#ll1')" oninput="input('#t2','#l2')" onfocus="ch3('#t2')" onfocusout="ch2('#t2')"><i class="fa" id="add" style="font-size: 3rem;color: blue;cursor: pointer;">&nbsp;&nbsp;&#xf0fe;</i><br><label id="ll3"></label></td>
+                        </tr>
+                    </table>
+                    <table id="table4">
+                        <tr>
+                            <td id="td1"><label id="l5">Course Fee<font style="color: red;">*</font></label><input type="text" id="t5" placeholder="Course Fee*" onkeydown="keychk('#t3','#ll2')" oninput="input('#t3','#l3')" onfocus="ch3('#t3')" onfocusout="ch2('#t3')"><br><label id="ll4"></label></td>
+                            <td id="td1"><label id="l6">Course Dur.<font style="color: red;">*</font></label><input type="text" placeholder="Course Dur.*" id="t6" onkeydown="keychk('#t4','#ll3')" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')"><select style="height: 4.5rem;" id="t7"><option value="Hrs" selected>Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts">Months</option></select><br><label id="ll5"></label></td>
                         </tr>
                         <tr>
-                            <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-top: 1rem;">One Time Payment (OTP)</label><label id="l5">Disc. in %</label><input type="text" name="" id="t6" maxlength="2" value="0" onkeydown="keychk('#t6','#ll4')"><label id="l6">Disc. in &#x20B9;</label><input type="text" name="" id="t7" value="0" onkeydown="keychk('#t7','#ll5')"><br><label id="ll4"></label><label id="ll5"></label></td>
+                            <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-top: 1rem;">One Time Payment (OTP)</label><label id="l7">Disc. in %</label><input type="text" name="" id="t8" maxlength="2" value="0" onkeydown="keychk('#t6','#ll4')"><label id="l8">Disc. in &#x20B9;</label><input type="text" name="" id="t9" value="0" onkeydown="keychk('#t7','#ll5')"><br><label id="ll6"></label><label id="ll7"></label></td>
                         </tr>
                         <tr>
                             <td colspan="2"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
@@ -342,8 +358,8 @@
                 <div id="d2"><b>Course &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
-                        <td><label id="l7">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="cid">Course ID</option><option value="cname">Course Name</option></select></td>
-                        <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll6"></label></td>
+                        <td><label id="l9">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="cid">Course ID</option><option value="cname">Course Name</option></select><br><label id="ll8"></label></td>
+                        <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll9"></label></td>
                     </tr>
                     <tr>
                         <td id="sr" colspan="2" ><i class="fa fa-search" hidden></i><input type="button" value=" &nbsp; Search" id="b5"><input type="button" value="&#x21bb;&nbsp; Refresh" id="b6"><input type="button" class="fa" value="&#xf019;&nbsp; Download" id="b7"></td>
@@ -397,7 +413,13 @@
             else
                 $(l).css('visibility','hidden')
         }
-        // --------------------------------------------------------------------
+        // --------------------Runtime Creation----------------------------------
+        $('#add').click(function(){
+            $('#table1 tr:last-child').after('<tr><td><label id="l3">Module Name</label><input type="text" id="t3" placeholder="Module Name(Optional)"><br><label id="ll2"></label></td><td><label id="l4">Module Desc.</label><input type="text" id="t4" placeholder="Module Desc.(Optional)" style="text-transform: capitalize;" onkeydown="keychk("#t2","#ll1")" oninput="input("#t2","#l2")" onfocus="ch3("#t2")" onfocusout="ch2("#t2")"><i class="fa" id="delr" style="font-size: 2rem;color: red;cursor: pointer;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#xf014;</i><br><label id="ll3"></label></td></tr>');
+        })
+        $(document).on('click','#delr',function(){
+            $(this).closest('tr').remove()
+        })
        // ======================== Mandatory ===========================
         var flag=true;
         function ch2(t){
@@ -477,38 +499,54 @@
                 $('#ll4').html('');
         })
         // ====================================Insert Data===========================
+        
         $('#b3').click(function(){
-            flag=true;
-            ch2('#t2')
-            ch2('#t3')
-            ch2('#t4')
-            if(flag){
-                var conf=confirm("Are you sure want to create course?")
-                if(conf){
-                    $.ajax({
-                        url:'rays_desk.py',
-                        method:'post',
-                        data:{
-                            cond:'ins_course',
-                            t1:$('#t1').val(),
-                            t2:$('#t2').val(),
-                            t3:$('#t3').val(),
-                            t4:$('#t4').val()+"-"+$('#t5').val(),
-                            t5:$('#t7').val(),
-                            t6:bcode,
-                            t7:cid
-                        },
-                        success:function(data){
-                            var j=data.split(',,,');
-                            alert(j[0])
-                            if(j[1]==10){
-                                reset();
-                                auto();
-                            }
-                        }
-                    })
-                }
+            var mn=md='';
+            var r=$('#table1 tr').length
+            for (i=1;i<r;i++){
+                // alert(document.getElementById("table1").rows[i].cells[1].children[1].value)
+                if(mn!='')
+                    mn=mn+","+document.getElementById("table1").rows[i].cells[0].children[1].value
+                else
+                    mn=document.getElementById("table1").rows[i].cells[0].children[1].value
+                if(md!='')
+                    md=md+","+document.getElementById("table1").rows[i].cells[1].children[1].value
+                else
+                    md=document.getElementById("table1").rows[i].cells[1].children[1].value
             }
+            
+            alert(mn+"/"+md)
+            // flag=true;
+            // ch2('#t2')
+            // ch2('#t3')
+            // ch2('#t4')
+            // if(flag){
+            //     var conf=confirm("Are you sure want to create course?")
+            //     if(conf){
+            //         $.ajax({
+            //             url:'rays_desk.py',
+            //             method:'post',
+            //             data:{
+            //                 cond:'ins_course',
+            //                 t1:$('#t1').val(),
+            //                 t2:$('#t2').val(),
+            //                 t3:$('#t3').val(),
+            //                 t4:$('#t4').val()+"-"+$('#t5').val(),
+            //                 t5:$('#t7').val(),
+            //                 t6:bcode,
+            //                 t7:cid
+            //             },
+            //             success:function(data){
+            //                 var j=data.split(',,,');
+            //                 alert(j[0])
+            //                 if(j[1]==10){
+            //                     reset();
+            //                     auto();
+            //                 }
+            //             }
+            //         })
+            //     }
+            // }
         })
         $('#b4').click(function(){
             reset();

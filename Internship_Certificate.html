@@ -383,7 +383,7 @@
                             <td><label id="l15">Branch Add.</label><textarea placeholder="Branch Add." readonly></textarea></td>
                         </tr>
                         <tr>
-                            <td><label id="l16">Student Pic</label><input type="file" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;"><br><label id="ll12"></label></td>
+                            <td><label id="l16">Student Pic</label><input type="file" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;" onchange="image1('#t16','#t17')"><br><label id="ll12"></label></td>
                             <td style="display: none;" id="img"><img src="#" alt="Student Pic" id="t17" style="height: 12rem;width: 12rem;border: solid 2px red;"></td>
                         </tr>
                         <tr>
@@ -396,7 +396,7 @@
                 <div id="d2"><b>Internship &nbsp; Certificate &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
-                        <td><label id="l17">Your Choice</label><select id="s1" onchange="cmbchk('#s1','#l17')"><option value="" selected disabled>----- Select Any One -----</option><option value="reg">Registration No.</option><option value="cert">Certificate No.</option><option value="sname">Student's Name</option></select><br><label id="ll34"></label></td>
+                        <td><label id="l17">Your Choice</label><select id="s1" onchange="cmbchk('#s1','#l17')"><option value="" selected disabled>----- Select Any One -----</option><option value="cert">Certificate No.</option><option value="sname">Student's Name</option><option value="clg">College Name</option><option value="cont">Contact No.</option></select><br><label id="ll34"></label></td>
                         <td><label id="l18">Your Choice</label><input type="text" id="t18" placeholder="Your Choice" autocomplete="off" oninput="input('#t18','#l18')" onkeydown="keychk('#t18','#ll13')" onfocus="ch3('#t18')" onfocusout="ch2('#t18')"><br><label id="ll13"></label></td>
                         <!-- <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll3">Choice</label></td> -->
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
@@ -408,8 +408,8 @@
                 <div id="d3">
                     <div id="d5">
                         <table id="table3">
-                            <tr><th id="sn">Sn</th><th>Internship No</th><th>Student Name</th><th>Father's Name</th><th>Gender</th><th>Date Of Birth</th><th>Email ID</th><th>Contact No.</th><th>College Name</th><th>Project Title</th><th>Duration</th><th>Technologies</th><th>Guidance Name</th><th>Stipend Amt.</th><th>Study Centre</th><th>Student Pic</th><th>Choose File</th><th colspan="4" style="color: blue;">Action</th><th id="sn1"></th></tr>
-                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Internship No">P001</td><td data-label="Student Name" contenteditable="true" id="e">22-07-2001</td><td data-label="Father's Name" contenteditable="true" id="e">15000</td><td data-label="Gender" contenteditable="true" id="e">Ord0001</td><td data-label="Date Of Birth" contenteditable="true" id="e">UPI</td><td data-label="Email ID" contenteditable="true" id="e">5000</td><td data-label="Contact No." contenteditable="true" id="e">20000</td><td data-label="College Name" contenteditable="true" id="e">20000</td><td data-label="Project Title" contenteditable="true" id="e">20000</td><td data-label="Duration" contenteditable="true" id="e">20000</td><td data-label="Technologies" contenteditable="true" id="e">20000</td><td data-label="Guidance Name" contenteditable="true" id="e">20000</td><td data-label="Stipend Amt." contenteditable="true" id="e">20000</td><td data-label="Study Centre">17000</td><td data-label="Student Pic">17000</td><td data-label="Choose File">17000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Certificate"><i class="fa" id="cert" data-toggle="tooltip" title="Certificate">&#xf15c;</i></td><td data-label="Marksheet"><i class="fa" id="mark" data-toggle="tooltip" title="Marksheet">&#xf15b;</i></td><td class="sn"></td></tr>
+                            <tr><th id="sn">Sn</th><th>Internship No</th><th>Internship Date</th><th>Student Name</th><th>Father's Name</th><th>Gender</th><th>Date Of Birth</th><th>Email ID</th><th>Contact No.</th><th>College Name</th><th>Project Title</th><th>Duration</th><th>Technologies</th><th>Guidance Name</th><th>Stipend Amt.</th><th>Study Centre</th><th>Student Pic</th><th>Choose File</th><th colspan="4" style="color: blue;">Action</th><th id="sn1"></th></tr>
+                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Internship No">P001</td><td data-label="Internship Date">10/12/2004</td><td data-label="Student Name" contenteditable="true" id="e">22-07-2001</td><td data-label="Father's Name" contenteditable="true" id="e">15000</td><td data-label="Gender" contenteditable="true" id="e">Ord0001</td><td data-label="Date Of Birth" contenteditable="true" id="e">UPI</td><td data-label="Email ID" contenteditable="true" id="e">5000</td><td data-label="Contact No." contenteditable="true" id="e">20000</td><td data-label="College Name" contenteditable="true" id="e">20000</td><td data-label="Project Title" contenteditable="true" id="e">20000</td><td data-label="Duration" contenteditable="true" id="e">20000</td><td data-label="Technologies" contenteditable="true" id="e">20000</td><td data-label="Guidance Name" contenteditable="true" id="e">20000</td><td data-label="Stipend Amt." contenteditable="true" id="e">20000</td><td data-label="Study Centre">17000</td><td data-label="Student Pic">17000</td><td data-label="Choose File">17000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Certificate"><i class="fa" id="cert" data-toggle="tooltip" title="Certificate">&#xf15c;</i></td><td data-label="Marksheet"><i class="fa" id="mark" data-toggle="tooltip" title="Marksheet">&#xf15b;</i></td><td class="sn"></td></tr>
                         </table>
                     </div>
                 </div> 
@@ -443,7 +443,7 @@
                 email();
         }
        // ======================== Mandatory ===========================
-        var flag=flag2=true,kl;
+        var flag=flag2=true,kl=null;
         function ch2(t){
             a=$(t).val();
             if(a==''||a.length==0){
@@ -458,12 +458,12 @@
                 if(t=='#t18')
                     flag2=false
             }
-            if(t=='#t18' && $('#l18').text()=='Registration No.' && a.length>=1 && a.length<18){
-                $('#ll13').html("Invalid Registration No!")
+            if(t=='#t18' && $('#l18').text()=='Certificate No.' && a.length>=1 && a.length<19){
+                $('#ll13').html("Invalid Certificate No!")
                 flag2=false;
             }
-            else if(t=='#t18' && $('#l18').text()=='Certificate No.' && a.length>=1 && a.length<19){
-                $('#ll13').html("Invalid Certificate No!")
+            else if(t=='#t18' && $('#l18').text()=='Contact No.' && a.length>=1 && a.length<10){
+                $('#ll13').html("Incorrect Contact No!")
                 flag2=false;
             }
         }
@@ -598,7 +598,7 @@
                 success:function(data){
                     if(data!='0'){
                         var j=data.split('&&&&')
-                        $('#t15').val(j[0])
+                        $('#t15').val(j[0]+" - "+bcode)
                         $('textarea').val(j[1].trim())
                     }
                     else
@@ -635,20 +635,30 @@
             $('#t5').attr({'max':yy+"-"+mm+"-"+dd,'min':parseInt(yy)-50+"-"+mm+"-"+dd})
         }
         //===================Image Validation======================
-        $('#t16').bind('change', function () {
-            if ($('#t16').val() == '') {
+        // $('#t16').bind('change', function () {
+            
+        // })
+        function image1(id,img){
+            if ($(id).val() == '') {
                 kl = null;
-                $('#t17').attr('src', '#');
-                $('#img').css('display','none')
+                if(id=='#t16'){
+                    $(img).attr('src', '#');
+                    $('#img').css('display','none')
+                }
             }
             var a = new FileReader();
-            a.readAsDataURL(document.getElementById('t16').files[0]);
+            a.readAsDataURL($(id)[0].files[0]);
             a.onload = function (e) {
-                document.getElementById('t17').src = e.target.result;
-                $('#img').css('display','block')
                 kl = e.target.result;
+                if(id=='#t16'){
+                    $('#img').css('display','block')
+                    $(img).attr('src', e.target.result);
+                }
+                else{   
+                    img= e.target.result;
+                }
             }
-        })
+        }
         //==============================Insert Record==============
         $('#b3').click(function(){
             // alert($('#t1').val()+$('input[name="rd"]:checked').val()+$('#t2').val())
@@ -678,8 +688,7 @@
                         t17:kl,
                         t18:int_ch,
                         t19:int_no,
-                        t20:'Raj_02',
-                        t21:bcode
+                        t20:'Raj_02'
                     },
                     success:function(data){
                         var j=data.split(',,,');
@@ -717,11 +726,18 @@
                     $(l).css('visibility', 'visible')
                     $('#t18').focus()
                     // $('#s1').focusout()
-                    if($(id).val()== 'reg'){
+                    if($(id).val()== 'clg'){
                         $('#t18').removeAttr('readonly')
-                        $('#t18').attr({'maxlength':'18','minlength':'18','placeholder':'Registration No.'})
-                        $('#t18').css('text-transform','uppercase')
-                        $('#l18').html('Registration No.')
+                        $('#t18').attr({'placeholder':'College Name'})
+                        $('#t18').css('text-transform','capitalize')
+                        $('#l18').html('College Name')
+                        $('#t18').val('')
+                        input('#t18','#l18')
+                    }
+                    else if($(id).val()== 'cont'){
+                        $('#t18').removeAttr('readonly')
+                        $('#t18').attr({'maxlength':'10','minlength':'10','placeholder':'Contact No.'})
+                        $('#l18').html('Contact No.')
                         $('#t18').val('')
                         input('#t18','#l18')
                     }
@@ -748,7 +764,7 @@
             flag2=true;
             if($('#s1').val()!=null){
                 ch2('#t18')
-                if(!(($('#l18').text()=='Certificate No.' && $('#t13').val().length!=19)||($('#l14').text()=='Registration No.' && $('#t13').val().length!=18)||$('#t13').val()=="*Field is Mandatory!"||$('#t13').val()==null)){
+                if(!(($('#l18').text()=='Certificate No.' && $('#t13').val().length!=19)||($('#l14').text()=='Contact No.' && $('#t13').val().length!=10)||$('#t13').val()=="*Field is Mandatory!"||$('#t13').val()==null)){
                     if($('#from').val()=='' && $('#to').val()!=''){
                         alert("From Date is required!")
                         flag2=false;
@@ -779,8 +795,7 @@
                         t1:$('#s1').val(),
                         t2:$('#t18').val(),
                         t3:$('#from').val(),
-                        t4:$('#to').val(),
-                        t5:bcode
+                        t4:$('#to').val()
                     },
                     success:function(data){
                         if(data!=0){
@@ -806,6 +821,10 @@
         $(document).on('keypress','#e',function(){
             $(this).css('color','green');
         });
+        $(document).on('change','#imgi',function(){
+            var jk=$(this).closest('td').prev('td').children('img').attr('src')
+            image1('#imgi',jk)
+        });
         // --------------------Update Data--------------------
         $(document).on('click','#upd',function(){
             var conf=confirm("Are you sure want to Update this Record!");
@@ -829,8 +848,8 @@
                         t11:cell[11],
                         t12:cell[12],
                         t13:cell[13],
-                        t14:cell[16],
-                        t15:bcode
+                        t14:cell[14],
+                        t15:kl
                     },
                     success:function(data){
                         alert(data);
@@ -848,8 +867,7 @@
                     method:'post',
                     data:{
                         cond:'del_int',
-                        t1:cell[1],
-                        t2:bcode
+                        t1:cell[1]
                     },
                     success:function(data){
                         var j=data.split(',,,')
@@ -881,7 +899,7 @@
             var conf=confirm("Do you want to Download this record!")
             if(conf){
                 $("#table3").table2excel({
-                    exclude: ".sn,#sn,#chk",
+                    exclude: ".sn,#sn,#chk,#del,#upd,#mark,#cert",
                     filename: $('#s1').val()+"_exp.xls"
                 });
             }

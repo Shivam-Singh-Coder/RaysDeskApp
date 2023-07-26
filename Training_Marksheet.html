@@ -86,12 +86,12 @@
             justify-content: center;
             font-size: 3rem;
         }
-        #table1,#table2{
+        #table1,#table2,#table4{
             width: 95%;
             margin: 3rem 2.5%;
             border-collapse:collapse;
         }
-        #table1 td,#table2 td{
+        #table1 td,#table2 td,#table4 td{
             height: 8rem;
             text-align: center;
         }
@@ -107,11 +107,14 @@
             font-size: 1.8rem;
             text-align: center;
         }
-        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#t10,#t11,#t41,#t81,#t82,#t83,#from,#to{
+        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#t10,#t11,#t12,#from,#to{
             width: 90%;
             height: 4rem;
             padding-left: 1rem;
             font-size: 1.8rem;
+        }
+        #t1,#t3{
+            text-transform: uppercase;
         }
         #from,#to{
             width: 41%;
@@ -120,55 +123,56 @@
         #to{
             margin-left: 5%;
         }
-        #t41,#t51{
+        /* #t41,#t51{
             width: 42%;
             font-size: 1.8rem;
+        } */
+        #t9,#t10,#t11{
+            width: 26%;
         }
-        #t83,#t81,#t82{
-            width: 25%;
-        }
-        #t81,#t82{
+        #t10,#t11{
             margin-left: 5%;
         }
-        #t51{
+        /* #t51{
             margin-left: 5%;
-        }
+        } */
         textarea{
             resize: none;
-            width: 95%;
+            width: 95.2%;
             height: 4rem;
             padding: 1rem 0 0 1rem;
             font-size: 1.8rem;
         }
-        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#lf,#lt,#l71,#l72,#l73{
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#l12,#l13,#l14,#lf,#lt{
             position: absolute;
             font-size: 1.8rem;
             margin: -1rem 4rem;
             background-color: white;
         }
-        #l72,#l73{
+        /* #l10{
+            margin-top: -0.4rem;   
+        } */
+        #l11,#l12{
+            /* margin-top: -0.4rem; */
             margin-left: 8%;
         }
-        #l10{
+        /* #l10{
             margin-left: 30%;
-        }
+        } */
         #lt{
             margin-left: 3%;
         }
-        #ll1,#ll2,#ll3{
+        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6,#ll7,#ll8{
             color: red;
             font-size: 1.6rem;
             float:left;
             margin-left: 3rem;
         }
-        #r{
-            float: left;
-            font-size: 1.8rem;
-            margin-left: 0.5rem;
+        #ll4{
+            margin-left: 4.5rem;
         }
-        .radio{
-            float: left;
-            margin-left: 4rem;
+        #ll5,#ll6{
+            margin-left: 26.5%;
         }
         #b3,#b4,#b5,#b6,#b7{
             font-weight: bolder;
@@ -271,12 +275,12 @@
         #table3 tr:nth-child(odd){
             background-color: rgb(184, 182, 182);
         }
-        #sa1{
+        /* #sa1{
             height: 100%;
             width: 100%;
             border: none;
             outline: none;
-        }
+        } */
         @media (max-width:998px) {
             html{
                 font-size: 55%;
@@ -296,7 +300,7 @@
             #table3 th{
                 display: none;
             }
-            #table1 td,#table2 td,#table3 td{
+            #table1 td,#table2 td,#table3 td,#table4 td{
                 display: block;
             }
             #table2 td{
@@ -336,9 +340,21 @@
                 font-weight: bold;
                 color: black;
             }
-            #sa1{
-                width: 50%;
+            /* #l11,#l12,#l10{
+                margin-top: -1rem;
+            } */
+            #l10{
+                margin-left: 1.5rem;
             }
+            textarea{
+                width: 90%;
+            }
+            #t9,#t10,#t11{
+                width: 20%;
+            }
+            /* #sa1{
+                width: 50%;
+            } */
         }
     </style>
 </head>
@@ -354,29 +370,31 @@
                 <form>
                     <table id="table1">
                         <tr>
-                            <td id="td1"><label id="l1">Certificate No.</label><input type="text" id="t1" placeholder="Certificate No." readonly></td>
-                            <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2"></td>
+                            <td id="td1"><label id="l1">Certificate No.</label><input type="text" id="t1" placeholder="Certificate No." maxlength="18" minlength="18" onfocusout="ch2('#t1')"><br><label id="ll1"></label></td>
+                            <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2" readonly><br><label id="ll2"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l5">Registration No.</label><input type="text" id="t5" placeholder="Registration No." readonly></td>
-                            <td><label id="l5">Student Name</label><input type="text" id="t5" placeholder="Student Name" readonly></td>
+                            <td><label id="l3">Registration No.</label><input type="text" id="t3" placeholder="Registration No." readonly></td>
+                            <td><label id="l4">Student Name</label><input type="text" id="t4" placeholder="Student Name" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">Father's Name</label><input type="text" id="t6" placeholder="Father's Name" readonly></td>
+                            <td><label id="l5">Father's Name</label><input type="text" id="t5" placeholder="Father's Name" readonly></td>
                             <td><label id="l6">Course Name</label><input type="text" id="t6" placeholder="Course Name" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">Duration</label><input type="text" id="t7" placeholder="Duration"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Study Centre<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Study Centre*"><br><label id="ll6"></label></td>
+                            <td><label id="l7">Duration</label><input type="text" id="t7" placeholder="Duration" readonly><br><label id="ll5"></label></td>
+                            <td><label id="l8">Study Centre<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Study Centre*" readonly><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><label id="l11">Modules Covered<font style="color: red;">*</font></label><textarea placeholder="Modules Covered*"></textarea><br><label id="ll12"></label></td>
+                            <td colspan="2" style="height: 8rem;"><label id="l9">Modules Covered<font style="color: red;">*</font></label><textarea placeholder="Modules Covered*" style="height: 20rem;"></textarea><br><label id="ll3"></label></td>
+                        </tr>
+                    </table>
+                    <table id="table4">
+                        <tr>
+                            <td colspan="2"><label id="l10">Module Name<font style="color: red;">*</font></label><input type="text" id="t9" placeholder="Module Name*"><label id="l11">Theory Marks<font style="color: red;">*</font></label><input type="text" id="t10" placeholder="Theory Marks*"><label id="l12">Lab Marks<font style="color: red;">*</font></label><input type="text" id="t11" placeholder="Lab Marks*"><i class="fa" id="add" style="font-size: 3rem;color: blue;cursor: pointer;">&nbsp;&nbsp;&#xf0fe;</i><br><label id="ll4"></label><label id="ll5"></label><label id="ll6"></label></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><label id="l71">Module Name<font style="color: red;">*</font></label><input type="text" id="t83" placeholder="Module Name*"><label id="l72">Theory Marks<font style="color: red;">*</font></label><input type="text" id="t81" placeholder="Theory Marks*"><label id="l73">Lab Marks<font style="color: red;">*</font></label><input type="text" id="t82" placeholder="Lab Marks*"><i class="fa" style="font-size: 4rem;color: blue;">&nbsp;&nbsp;&#xf13a;</i><br><label id="ll6"></label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="padding: 6rem;"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
+                            <td colspan="2"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
                         </tr>
                     </table>
                 </form>
@@ -385,8 +403,8 @@
                 <div id="d2"><b>Training &nbsp; Marksheet &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
-                        <td><label id="l9">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Certificate">Certificate No.</option><option value="Name">Student Name</option></select></td>
-                        <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll3">Choice</label></td>
+                        <td><label id="l13">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Your Choice -----</option><option value="reg">Registration No.</option><option value="cert">Certificate No.</option><option value="sname">Student Name</option></select><br><label id="ll7"></label></td>
+                        <td><label id="l14">Your Choice</label><input type="text" id="t12" placeholder="Select Your Choice" readonly><br><label id="ll8"></label></td>
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
                     </tr>
                     <tr>
@@ -419,31 +437,108 @@
             $('#togx').css({'margin-left':'0rem','border-radius':'1rem 0 0 1rem'});
             $('#body').css('margin-left','0%');
             $('#lf,#lt,.fa-search').hide();
-            $('#d3').html('');
+            // $('#d3').html('');
         })
         // --------------------------------------------------------------------
+        $('#add').click(function(){
+            $('#table4 tr:last-child').before('<tr><td colspan="2"><label id="l10">Module Name<font style="color: red;">*</font></label><input type="text" id="t9" placeholder="Module Name*"><label id="l11">Theory Marks<font style="color: red;">*</font></label><input type="text" id="t10" placeholder="Theory Marks*"><label id="l12">Lab Marks<font style="color: red;">*</font></label><input type="text" id="t11" placeholder="Lab Marks*"><i class="fa" id="delr" style="font-size: 2rem;color: red;cursor: pointer;">&nbsp;&nbsp;&nbsp;&nbsp;&#xf014;</i><br><label id="ll4"></label><label id="ll5"></label><label id="ll6"></label></td></tr>');
+        })
+        $(document).on('click','#delr',function(){
+            $(this).closest('tr').remove()
+        })
        // ======================== Mandatory ===========================
-        var flag=true;
-        function ch2(t,l){
+       var flag=true;
+        function ch2(t){
             a=$(t).val();
-            if(a==null){
-                $(t).css('border','2px solid red');
-                $(l).html('Select any One!');
+            if(a==''||a.length==0){
+                $(t).css({'border':'1px solid red','color':'red'});
+                $(t).val('*Field is Mandotary!');
                 flag=false;
             }
+            else if($(t).val()=='*Field is Mandotary!'){
+                flag=false;
+            }
+            if(t=='#t1' && a.length==18 && a!='*Field is Mandotary!'){
+                $.ajax({
+                    url:'rays_desk.py',
+                    method:'post',
+                    data:{
+                        cond:'mark_reg',
+                        t1:$('#t1').val()
+                    },
+                    success:function(data){
+                        // alert(data)
+                        if(data!='0'){
+                            var j=data.split('&&&&');
+                            $('#t3').val(j[0]);
+                            $('#t4').val(j[1]);
+                            $('#t5').val(j[2]);
+                            $('#t6').val(j[3]);
+                            $('#t7').val(j[4]+" to "+j[5]);
+                            $('#t8').val(j[6]);
+                        }
+                        else
+                            alert("Invalid Registration!")
+                    }
+                })
+            }
         }
-        function ch3(t,l){
-            $(t).css('border','1px solid black');
-            $(l).html('');
+        function ch3(t){
+            $(t).css({'border':'1px solid black','color':'black'});
+            if($(t).val()=='*Field is Mandotary!')
+                $(t).val('')
+        }
+        //====================Ready Function==============
+        $(document).ready(function(){
+            date();
+        })
+        // -------------------Date-------------
+        function date(){
+            var dt=new Date()
+            dd=dt.getDate()
+            mm=dt.getMonth()+1
+            yy=dt.getFullYear()
+            if(mm<10)
+                mm="0"+mm
+            if(dd<10)
+                dd="0"+dd
+            $('#t2').val(yy+"-"+mm+"-"+dd)
         }
         // -----------------------------------------
+        // var mn=tm=lm='';
+        // $('#b3').click(function(){
+        //     // alert($('#table4 td').children('#t9').text())
+        //     var c=$('#table4 td').length
+        //     var r=$('#table4 tr').length
+        //     for (i=0;i<c-1;i++){
+        //         // $('#table4').children()
+        //         if(mn!='')
+        //             mn=mn+","+document.getElementById("table4").rows[i].cells[0].children[1].value
+        //         else
+        //             mn=document.getElementById("table4").rows[i].cells[0].children[1].value
+        //         if(tm!='')
+        //             tm=tm+","+document.getElementById("table4").rows[i].cells[0].children[3].value
+        //         else
+        //             tm=document.getElementById("table4").rows[i].cells[0].children[3].value
+        //         if(lm!='')
+        //             lm=lm+","+document.getElementById("table4").rows[i].cells[0].children[5].value
+        //         else
+        //             lm=document.getElementById("table4").rows[i].cells[0].children[5].value
+        //     }
+            
+        //     alert(mn+"/"+tm+"/"+lm)
+        //     // alert($('#table4').children().children().children('input').html())
+        // })
         // ======================= Download==========================
         
         $(document).on('click','#b7',function(){
-            $("#table3").table2excel({
-                exclude: ".sn,#sn,#chk",
-                filename: $('#s1').val()+"_exp.xls"
-            });
+            var conf=confirm("Do you want to Download this record!")
+            if(conf){
+                $("#table3").table2excel({
+                    exclude: ".sn,#sn,#chk,#del,#upd,#mark,#cert",
+                    filename: $('#s1').val()+"_exp.xls"
+                });
+            }
         });
     </script>
 </body>
