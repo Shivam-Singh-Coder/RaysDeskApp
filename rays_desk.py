@@ -184,11 +184,12 @@ try:
         d8=f.getvalue('t8')
         d9=f.getvalue('t9')
         d10=f.getvalue('t10')
+        d11=f.getvalue('t11')
         t.execute("select * from admission where adm_no='"+d1+"'")
         if(t.fetchall()==[]):
-            url="insert into admission values(%s,%s,%s,%s,%s,%s,%s,%s)"
-            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8))
-            t.execute("update branch_details set adm_no="+d9+",adm_ch='"+d10+"' where bcode='"+d7+"'")
+            url="insert into admission values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,0))
+            t.execute("update branch_details set adm_no="+d10+",adm_ch='"+d11+"' where bcode='"+d8+"'")
             con.commit()
             print("Successfully Inserted Record!,,,10")
         else:
@@ -200,28 +201,33 @@ try:
         d4=f.getvalue('t4')
         d5=f.getvalue('t5')
         url=''
-        if(d1=='adm'):
-            url='select * from admission where adm_no="'+d2+'" and bcode="'+d5+'"'
+        if(d1==None and d2==None and d4!=None and d3!=None and d5!=None):
+            url='select * from admission where bcode="'+d5+'" and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
+        if(d1=='adm' and d5!=None):
+            url='select * from admission where adm_no="'+d2+'" and bcode="'+d5+'" order by adm_no desc'
         if(d1=='adm' and d4!=None and d5!=None):
-            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
-        if(d1=='reg'):
-            url='select * from admission where reg_no="'+d2+'" and bcode="'+d5+'"'
+            url=url[0:url.find('order')]+' and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
+        if(d1=='reg' and d5!=None):
+            url='select * from admission where reg_no="'+d2+'" and bcode="'+d5+'" order by adm_no desc'
         if(d1=='reg' and d4!=None and d5!=None):
-            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
-        if(d1=='sname'):
-            url='select * from admission where reg_no in(select reg_no from registration where sname="'+d2+'" and bcode="'+d5+'") and bcode="'+d5+'"'
-        if(d1=='sname' and d4!=None and d5!=None):
-            url=url+' and adm_date between "'+d3+'" and "'+d4+'"'
+            url=url[0:url.find('order')]+'and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
+        if(d1=='sname' and d5!=None):
+            url='select * from admission where reg_no in(select reg_no from registration where sname="'+d2+'" and bcode="'+d5+'") and bcode="'+d5+'" order by adm_no desc'
+        if(d1=='sname' and d4!=None and d3!=None and d5!=None):
+            url=url[0:url.find('order')]+' and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
         t.execute(url)
         rs=t.fetchall()
         if rs==[]:
             print(0)
         else:
             i=0
-            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Admission No</th><th>Admission Date</th><th>Registration No</th><th>Course Applied</th><th>Course Fee</th><th>Discount</th><th colspan="3" id="chk">Check</th></tr>')
+            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Admission No</th><th>Admission Date</th><th>Registration No</th><th>Course Applied</th><th>Course Fee</th><th>Disc. Type</th><th>Discount</th><th colspan="3" id="chk">Action Here</th></tr>')
             for a in rs:
                 i=i+1
-                print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Admission No">'+str(a[0])+'   '+'</td><td data-label="Admission Date">'+str(a[1])+'   '+'</td><td data-label="Registration No">'+str(a[2])+'   '+'</td><td data-label="Course Applied" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="Course Fee">'+str(a[4])+'   '+'</td><td data-label="Discount" contenteditable="true" id="e">'+str(a[5])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>')
+                if(a[9]==1):
+                    print('<tr class="tr1" style="background-color:red;color:white;"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Admission No">'+str(a[0])+'   '+'</td><td data-label="Admission Date">'+str(a[1])+'   '+'</td><td data-label="Registration No">'+str(a[2]).upper()+'   '+'</td><td data-label="Course Applied">'+str(a[3])+'   '+'</td><td data-label="Course Fee">'+str(a[4])+'   '+'</td><td data-label="Discount Type">'+str(a[5])+'   '+'</td><td data-label="Discount">'+str(a[6])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update" style="color:white;">&#xf044;</i></td><td data-label="Cancel"><i class="fa" id="del" data-toggle="tooltip" title="Cancel" style="color:white;">&#10006;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print" style="color:white;">&#xf02f;</i></td></tr>')
+                else:
+                    print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Admission No">'+str(a[0])+'   '+'</td><td data-label="Admission Date">'+str(a[1])+'   '+'</td><td data-label="Registration No">'+str(a[2]).upper()+'   '+'</td><td data-label="Course Applied" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="Course Fee">'+str(a[4])+'   '+'</td><td data-label="Discount Type" contenteditable="true" id="e">'+str(a[5])+'   '+'</td><td data-label="Discount" contenteditable="true" id="e">'+str(a[6])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Cancel"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>')
             print('</table></div>')
     elif d=='upd_adm':
         d1=f.getvalue('t1')
@@ -237,9 +243,9 @@ try:
     elif d=='del_adm':
         d1=f.getvalue('t1')
         d2=f.getvalue('t2')
-        t.execute('delete from admission where adm_no="'+d1+'" and bcode="'+d2+'"')
+        t.execute('update admission set cancel=1 where adm_no="'+d1+'" and bcode="'+d2+'"')
         con.commit()
-        print('Successfully Deleted This Record!,,,10')
+        print('Successfully Cancelled This Record!,,,10')
     elif d=='cname_adm':
         d1=f.getvalue('t1')
         t.execute('select cname from course where bcode="'+d1+'"')
@@ -296,11 +302,12 @@ try:
                     print(str(i)+"&&")
                 t.execute('select sname from registration where reg_no="'+a[2]+'" and bcode="'+d2+'"')
                 print(t.fetchall()[0][0])
-                t.execute('select cou_apply from admission where reg_no="'+a[2]+'" and bcode="'+d2+'" and adm_date<"'+str(a[1])+'"')
-                rs=t.fetchall()
-                for b in rs:
+                t.execute('select distinct cou_apply from admission where reg_no="'+a[2]+'" and bcode="'+d2+'" and adm_date<"'+str(a[1])+'"')
+                rs1=t.fetchall()
+                print('&&')
+                for b in rs1:
                     if(b[0]!=a[3]):
-                        print("&&"+b[0])
+                        print(b[0]+",")
         else:
             print('0')
     ######################################Internship##############
@@ -348,10 +355,11 @@ try:
         d18=f.getvalue('t18')
         d19=f.getvalue('t19')
         d20=f.getvalue('t20')
+        d21=f.getvalue('t21')
         t.execute("select * from internship where intern_no='"+d1+"'")
         if(t.fetchall()==[]):
-            url="insert into internship values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d20))
+            url="insert into internship values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d20,d21,0))
             t.execute("update automatic set int_no="+d19+",int_ch='"+d18+"'")
             con.commit()
             print("Successfully Inserted Record!,,,10")
@@ -372,23 +380,24 @@ try:
         d2=f.getvalue('t2')
         d3=f.getvalue('t3')
         d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
         url=''
-        if(d1=='cert'):
-            url='select * from internship where intern_no="'+d2+'"'
-        if(d1=='cert' and d4!=None and d5!=None):
-            url=url+' and int_date between "'+d3+'" and "'+d4+'"'
-        if(d1=='cont'):
-            url='select * from internship where cont_no="'+d2+'"'
-        if(d1=='cont' and d4!=None and d5!=None):
-            url=url+' and int_date between "'+d3+'" and "'+d4+'"'
-        if(d1=='sname'):
-            url='select * from internship where sname="'+d2+'"'
-        if(d1=='sname' and d4!=None and d5!=None):
-            url=url+' and int_date between "'+d3+'" and "'+d4+'"'
-        if(d1=='clg'):
-            url='select * from internship where coll_name="'+d2+'"'
-        if(d1=='clg' and d4!=None and d5!=None):
-            url=url+' and int_date between "'+d3+'" and "'+d4+'"'
+        if(d1=='cert' and d5!=None):
+            url='select * from internship where intern_no="'+d2+'" order by intern_no desc'
+        if(d1=='cert' and d3!=None and d4!=None and d5!=None):
+            url=url[0:url.find('order')]+' and int_date between "'+d3+'" and "'+d4+'" order by intern_no desc'
+        if(d1=='cont' and d5!=None):
+            url='select * from internship where cont_no="'+d2+'" order by intern_no desc'
+        if(d1=='cont' and d3!=None and d4!=None and d5!=None):
+            url=url[0:url.find('order')]+' and int_date between "'+d3+'" and "'+d4+'" order by intern_no desc'
+        if(d1=='sname' and d5!=None):
+            url='select * from internship where sname="'+d2+'" order by intern_no desc'
+        if(d1=='sname' and d3!=None and d4!=None and d5!=None):
+            url=url[0:url.find('order')]+' and int_date between "'+d3+'" and "'+d4+'" order by intern_no desc'
+        if(d1=='clg' and d5!=None):
+            url='select * from internship where coll_name="'+d2+'" order by intern_no desc'
+        if(d1=='clg' and d3!=None and d4!=None and d5!=None):
+            url=url[0:url.find('order')]+' and int_date between "'+d3+'" and "'+d4+'" order by intern_no desc'
         t.execute(url)
         rs=t.fetchall()
         if rs==[]:
@@ -402,7 +411,10 @@ try:
                     b='#'
                 else:
                     b=a[16].decode()
-                print("<tr class='tr1'><td id='sn' data-label='SN'>"+str(i)+"   "+"</td><td data-label='Internship No'>"+str(a[0])+"   "+"</td><td data-label='Internship Date'>"+str(a[1])+"   "+"</td><td data-label='Student Name' contenteditable='true' id='e'>"+str(a[2])+"   "+"</td><td data-label='Father's Name' contenteditable='true' id='e'>"+str(a[3])+"   "+"</td><td data-label='Gender' contenteditable='true' id='e'>"+str(a[4])+"   "+"</td><td data-label='Date Of Birth' contenteditable='true' id='e'>"+str(a[5])+"   "+"</td><td data-label='Email ID' contenteditable='true' id='e'>"+str(a[7])+"   "+"</td><td data-label='Contact No.' contenteditable='true' id='e'>"+str(a[6])+"   "+"</td><td data-label='College Name' contenteditable='true' id='e'>"+str(a[8])+"   "+"</td><td data-label='Project Title' contenteditable='true' id='e'>"+str(a[9])+"   "+"</td><td data-label='Duration' contenteditable='true' id='e'>"+str(a[10])+"   "+"</td><td data-label='Technologies' contenteditable='true' id='e'>"+str(a[11])+"   "+"</td><td data-label='Guidance Name' contenteditable='true' id='e'>"+str(a[12])+"   "+"</td><td data-label='Stipend Amt.' contenteditable='true' id='e'>"+str(a[13])+"   "+"</td><td data-label='Study Centre'>"+str(a[14])+"   "+"</td><td data-label='Student Pic'><img src="+b+" alt='Student Pic' id='imgd' style='height: 5rem;width: 5rem;'>"+   +"</td><td data-label='Choose File'><input type='file' id='imgi'>"+   +"</td><td data-label='Update'><i class='fa' id='upd' data-toggle='tooltip' title='Update'>&#xf044;</i></td><td data-label='Delete'><i class='fa' id='del' data-toggle='tooltip' title='Delete'>&#xf014;</i></td><td data-label='Certificate'><i class='fa' id='cert' data-toggle='tooltip' title='Certificate'>&#xf15c;</i></td><td data-label='Marksheet'><i class='fa' id='mark' data-toggle='tooltip' title='Marksheet'>&#xf15b;</i></td><td class='sn'></td></tr>")
+                if(a[19]==1):
+                    print("<tr class='tr1' style='background-color:red;color:white;'><td id='sn' data-label='SN'>"+str(i)+"   "+"</td><td data-label='Internship No'>"+str(a[0])+"   "+"</td><td data-label='Internship Date'>"+str(a[1])+"   "+"</td><td data-label='Student Name' contenteditable='true' id='e'>"+str(a[2])+"   "+"</td><td data-label='Father's Name' contenteditable='true' id='e'>"+str(a[3])+"   "+"</td><td data-label='Gender' contenteditable='true' id='e'>"+str(a[4])+"   "+"</td><td data-label='Date Of Birth' contenteditable='true' id='e'>"+str(a[5])+"   "+"</td><td data-label='Email ID' contenteditable='true' id='e'>"+str(a[7])+"   "+"</td><td data-label='Contact No.' contenteditable='true' id='e'>"+str(a[6])+"   "+"</td><td data-label='College Name' contenteditable='true' id='e'>"+str(a[8])+"   "+"</td><td data-label='Project Title' contenteditable='true' id='e'>"+str(a[9])+"   "+"</td><td data-label='Duration' contenteditable='true' id='e'>"+str(a[10])+"   "+"</td><td data-label='Technologies' contenteditable='true' id='e'>"+str(a[11])+"   "+"</td><td data-label='Guidance Name' contenteditable='true' id='e'>"+str(a[12])+"   "+"</td><td data-label='Stipend Amt.' contenteditable='true' id='e'>"+str(a[13])+"   "+"</td><td data-label='Study Centre'>"+str(a[14])+"   "+"</td><td data-label='Student Pic'><img src="+b+" alt='Student Pic' id='imgd' style='height: 5rem;width: 5rem;'>"+   +"</td><td data-label='Choose File'><input type='file' id='imgi'>"+   +"</td><td data-label='Update'><i class='fa' id='upd' data-toggle='tooltip' title='Update' style='color:white;'>&#xf044;</i></td><td data-label='Cancel'><i class='fa' id='del' data-toggle='tooltip' title='Cancel' style='color:white;'>&#10006;</i></td><td data-label='Certificate'><i class='fa' id='cert' data-toggle='tooltip' title='Certificate' style='color:white;'>&#xf15c;</i></td><td data-label='Marksheet'><i class='fa' id='mark' data-toggle='tooltip' title='Marksheet' style='color:white;'>&#xf15b;</i></td><td class='sn'></td></tr>")
+                else:
+                    print("<tr class='tr1'><td id='sn' data-label='SN'>"+str(i)+"   "+"</td><td data-label='Internship No'>"+str(a[0])+"   "+"</td><td data-label='Internship Date'>"+str(a[1])+"   "+"</td><td data-label='Student Name' contenteditable='true' id='e'>"+str(a[2])+"   "+"</td><td data-label='Father's Name' contenteditable='true' id='e'>"+str(a[3])+"   "+"</td><td data-label='Gender' contenteditable='true' id='e'>"+str(a[4])+"   "+"</td><td data-label='Date Of Birth' contenteditable='true' id='e'>"+str(a[5])+"   "+"</td><td data-label='Email ID' contenteditable='true' id='e'>"+str(a[7])+"   "+"</td><td data-label='Contact No.' contenteditable='true' id='e'>"+str(a[6])+"   "+"</td><td data-label='College Name' contenteditable='true' id='e'>"+str(a[8])+"   "+"</td><td data-label='Project Title' contenteditable='true' id='e'>"+str(a[9])+"   "+"</td><td data-label='Duration' contenteditable='true' id='e'>"+str(a[10])+"   "+"</td><td data-label='Technologies' contenteditable='true' id='e'>"+str(a[11])+"   "+"</td><td data-label='Guidance Name' contenteditable='true' id='e'>"+str(a[12])+"   "+"</td><td data-label='Stipend Amt.' contenteditable='true' id='e'>"+str(a[13])+"   "+"</td><td data-label='Study Centre'>"+str(a[14])+"   "+"</td><td data-label='Student Pic'><img src="+b+" alt='Student Pic' id='imgd' style='height: 5rem;width: 5rem;'>"+   +"</td><td data-label='Choose File'><input type='file' id='imgi'>"+   +"</td><td data-label='Update'><i class='fa' id='upd' data-toggle='tooltip' title='Update'>&#xf044;</i></td><td data-label='Cancel'><i class='fa' id='del' data-toggle='tooltip' title='Cancel'>&#10006;</i></td><td data-label='Certificate'><i class='fa' id='cert' data-toggle='tooltip' title='Certificate'>&#xf15c;</i></td><td data-label='Marksheet'><i class='fa' id='mark' data-toggle='tooltip' title='Marksheet'>&#xf15b;</i></td><td class='sn'></td></tr>")
             print('</table></div>')
     elif d=='upd_int':
         d1=f.getvalue('t1')
@@ -420,14 +432,16 @@ try:
         d13=f.getvalue('t13')
         d14=f.getvalue('t14')
         d15=f.getvalue('t15')
-        t.execute('update internship set int_date="'+d2+'",sname="'+d3+'",fname="'+d4+'",gender="'+d5+'",dob="'+d6+'",cont_no="'+d8+'",email_id="'+d7+'",coll_name="'+d9+'",pro_tit="'+d10+'",dur="'+d11+'",techno="'+d12+'",guide_name="'+d13+'",stip_amt="'+d14+'",stu_pic="'+d15+'" where intern_no="'+d1+'"')
+        d16=f.getvalue('t16')
+        t.execute('update internship set int_date="'+d2+'",sname="'+d3+'",fname="'+d4+'",gender="'+d5+'",dob="'+d6+'",cont_no="'+d8+'",email_id="'+d7+'",coll_name="'+d9+'",pro_tit="'+d10+'",dur="'+d11+'",techno="'+d12+'",guide_name="'+d13+'",stip_amt="'+d14+'",stu_pic="'+d15+'" where intern_no="'+d1+'" and bcode="'+d16+'"')
         con.commit()
         print('Successfully Updated This Record!')
     elif d=='del_int':
         d1=f.getvalue('t1')
-        t.execute('delete from internship where intern_no="'+d1+'"')
+        d2=f.getvalue('t2')
+        t.execute('update internship set cancel=1 where intern_no="'+d1+'" and bcode="'+d2+'"')
         con.commit()
-        print('Successfully Deleted This Record!,,,10')
+        print('Successfully Cancelled This Record!,,,10')
     #######################Certificate###############
     elif d=='cert_auto':
         t.execute('select cert_no,cert_ch from automatic')
@@ -467,19 +481,21 @@ try:
         d2=f.getvalue('t2')
         t.execute('select sname,fname,sphoto from registration where reg_no="'+d1+'" and bcode="'+d2+'"')
         rs=t.fetchall()
-        # print(rs)
         if(rs!=[]):
             t.execute('select distinct cou_apply from admission where reg_no="'+d1+'" and bcode="'+d2+'"')
             rs1=t.fetchall()
-            print(rs1)
             if(rs1==[]):
-                rs1=None
+                print('50050')
             else:
                 for a in rs1:
                     t.execute('select * from certificate where reg_no="'+d1+'" and course="'+a[0]+'"')
                     if(t.fetchall()==[]):
                         print('<option>'+a[0]+'</option>')
-            print('&&&&'+rs[0][0]+'&&&&'+rs[0][1]+'&&&&'+rs[0][2].decode())
+            if(rs[0][2]==None):
+                bk='#'
+            else:
+                bk=rs[0][2].decode()
+            print('&&&&'+rs[0][0]+'&&&&'+rs[0][1]+'&&&&'+bk)
         else:
             print('0')
     elif(d=='cert_insert'):
@@ -495,10 +511,12 @@ try:
         d10=f.getvalue('t10')
         d11=f.getvalue('t11')
         d12=f.getvalue('t12')
+        d13=f.getvalue('t13')
+        d14=f.getvalue('t14')
         t.execute("select * from certificate where cref_no='"+d1+"'")
         if(t.fetchall()==[]):
-            url="insert into certificate values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10))
+            url="insert into certificate values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,d14,d13,d10,0))
             t.execute("update automatic set cert_no="+d12+",cert_ch='"+d11+"'")
             con.commit()
             print("Successfully Inserted Record!,,,10")
@@ -509,29 +527,39 @@ try:
         d2=f.getvalue('t2')
         d3=f.getvalue('t3')
         d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
         url=''
-        if(d1=='cert'):
-            url='select * from certificate where cref_no="'+d2+'"'
-        if(d1=='cert' and d4!=None and d5!=None):
-            url=url+' and cer_date between "'+d3+'" and "'+d4+'"'
-        if(d1=='cont'):
-            url='select * from certificate where reg_no="'+d2+'"'
-        if(d1=='cont' and d4!=None and d5!=None):
-            url=url+' and cer_date between "'+d3+'" and "'+d4+'"'
-        if(d1=='sname'):
-            url='select * from certificate where sname="'+d2+'"'
-        if(d1=='sname' and d4!=None and d5!=None):
-            url=url+' and cer_date between "'+d3+'" and "'+d4+'"'
+        if(d1==None and d2==None and d4!=None and d3!=None and d5!=None):
+            url='select * from certificate where bcode="'+d5+'" and cer_date between "'+d3+'" and "'+d4+'" order by cref_no desc'
+        if(d1=='cert' and d5!=None):
+            url='select * from certificate where cref_no="'+d2+' and bcode="'+d5+'" order by cref_no desc'
+        if(d1=='cert' and d4!=None and d3!=None):
+            url=url[0:url.find('order')]+' and cer_date between "'+d3+'" and "'+d4+'" order by cref_no desc'
+        if(d1=='reg' and d5!=None):
+            url='select * from certificate where reg_no="'+d2+'" and bcode="'+d5+'" order by cref_no desc'
+        if(d1=='reg' and d4!=None and d3!=None):
+            url=url[0:url.find('order')]+' and cer_date between "'+d3+'" and "'+d4+'" order by cref_no desc'
+        if(d1=='sname' and d5!=None):
+            url='select * from certificate where sname="'+d2+'" and bcode="'+d5+'" order by cref_no desc'
+        if(d1=='sname' and d4!=None and d3!=None):
+            url=url[0:url.find('order')]+' and cer_date between "'+d3+'" and "'+d4+'" order by cref_no desc'
         t.execute(url)
         rs=t.fetchall()
         if rs==[]:
             print(0)
         else:
             i=0
-            print("<div id='d5'><table id='table3'><tr><th id='sn'>Sn</th><th>Certificate No</th><th>Registration No</th><th>Date Of Issue</th><th>Student Name</th><th>Father's Name</th><th>Course</th><th>Starting Date</th><th>Ending Date</th><th>Study Centre</th><th colspan='4' style='color: blue;'>Action</th><th id='sn1'></th></tr>")
+            print("<div id='d5'><table id='table3'><tr><th id='sn'>Sn</th><th>Certificate No</th><th>Registration No</th><th>Date Of Issue</th><th>Student Name</th><th>Father's Name</th><th>Course</th><th>Starting Date</th><th>Ending Date</th><th>Study Centre</th><th>Student Pic</th><th colspan='4' style='color: blue;' id='chk'>Action Here</th></tr>")
             for a in rs:
                 i=i+1
-                print("<tr class='tr1'><td id='sn' data-label='SN'>"+str(i)+"   "+"</td><td data-label='Certificate No'>"+str(0)+"   "+"</td><td data-label='Registration No'>"+str(2)+"   "+"</td><td data-label='Date Of Issue'>"+str(1)+"   "+"</td><td data-label='Student Name'>"+str(4)+"   "+"</td><td data-label='Father's Name'>"+str(5)+"   "+"</td><td data-label='Course' contenteditable='true' id='e'>"+str(3)+"   "+"</td><td data-label='Starting Date' contenteditable='true' id='e'>"+str(6)+"   "+"</td><td data-label='Ending Date' contenteditable='true' id='e'>"+str(7)+"   "+"</td><td data-label='Study Centre'>"+str(8)+"   "+"</td><td data-label='Update'><i class='fa' id='upd' data-toggle='tooltip' title='Update'>&#xf044;</i></td><td data-label='Delete'><i class='fa' id='del' data-toggle='tooltip' title='Delete'>&#xf014;</i></td><td data-label='Certificate'><i class='fa' id='cert' data-toggle='tooltip' title='Certificate'>&#xf019;</i></td><td data-label='Marksheet'><i class='fa' id='mark' data-toggle='tooltip' title='Marksheet'>&#xf019;</i></td><td class='sn'></td></tr>")
+                if(a[9]==b'#'):
+                    b='#'
+                else:
+                    b=a[9].decode()
+                if(a[12]==1):
+                    print("<tr class='tr1' style='background-color:red;color:white;'><td id='sn' data-label='SN'>"+str(i)+"   "+"</td><td data-label='Certificate No'>"+str(a[0])+"   "+"</td><td data-label='Registration No'>"+str(a[2])+"   "+"</td><td data-label='Date Of Issue'>"+str(a[1])+"   "+"</td><td data-label='Student Name'>"+str(a[4])+"   "+"</td><td data-label='Father's Name'>"+str(a[5])+"   "+"</td><td data-label='Course' contenteditable='true' id='e'>"+str(a[3])+"   "+"</td><td data-label='Starting Date' contenteditable='true' id='e'>"+str(a[6])+"   "+"</td><td data-label='Ending Date' contenteditable='true' id='e'>"+str(a[7])+"   "+"</td><td data-label='Study Centre'>"+str(a[8])+"   "+"</td><td data-label='Student Pic'><img src='"+b+"' alt='Student Pic' style='height: 5rem;width: 5rem;'></td><td data-label='Update'><i class='fa' id='upd' data-toggle='tooltip' title='Update' style='color:white;'>&#xf044;</i></td><td data-label='Cancel'><i class='fa' id='del' data-toggle='tooltip' title='Cancel' style='color:white;'>&#10006;</i></td><td data-label='Certificate'><i class='fa' id='cert' data-toggle='tooltip' title='Certificate' style='color:white;'>&#xf15c;</i></td><td data-label='Marksheet'><i class='fa' id='mark' data-toggle='tooltip' title='Marksheet' style='color:white;'>&#xf15b;</i></td></tr>")
+                else:
+                    print("<tr class='tr1'><td id='sn' data-label='SN'>"+str(i)+"   "+"</td><td data-label='Certificate No'>"+str(a[0])+"   "+"</td><td data-label='Registration No'>"+str(a[2])+"   "+"</td><td data-label='Date Of Issue'>"+str(a[1])+"   "+"</td><td data-label='Student Name'>"+str(a[4])+"   "+"</td><td data-label='Father's Name'>"+str(a[5])+"   "+"</td><td data-label='Course' contenteditable='true' id='e'>"+str(a[3])+"   "+"</td><td data-label='Starting Date' contenteditable='true' id='e'>"+str(a[6])+"   "+"</td><td data-label='Ending Date' contenteditable='true' id='e'>"+str(a[7])+"   "+"</td><td data-label='Study Centre'>"+str(a[8])+"   "+"</td><td data-label='Student Pic'><img src='"+b+"' alt='Student Pic' style='height: 5rem;width: 5rem;'></td><td data-label='Update'><i class='fa' id='upd' data-toggle='tooltip' title='Update'>&#xf044;</i></td><td data-label='Cancel'><i class='fa' id='del' data-toggle='tooltip' title='Cancel'>&#10006;</i></td><td data-label='Certificate'><i class='fa' id='cert' data-toggle='tooltip' title='Certificate'>&#xf15c;</i></td><td data-label='Marksheet'><i class='fa' id='mark' data-toggle='tooltip' title='Marksheet'>&#xf15b;</i></td></tr>")
             print('</table></div>')
     elif d=='upd_cert':
         d1=f.getvalue('t1')
@@ -539,17 +567,20 @@ try:
         d3=f.getvalue('t3')
         d4=f.getvalue('t4')
         d5=f.getvalue('t5')
-        t.execute('update certificate set cer_date="'+d2+'",course="'+d3+'",cstart="'+d4+'",cend="'+d5+'" where cref_no="'+d1+'"')
+        d6=f.getvalue('t6')
+        t.execute('update certificate set cer_date="'+d2+'",course="'+d3+'",cstart="'+d4+'",cend="'+d5+'" where cref_no="'+d1+'" and bcode="'+d6+'"')
         con.commit()
         print('Successfully Updated This Record!')
     elif d=='del_cert':
         d1=f.getvalue('t1')
-        t.execute('delete from certificate where cref_no="'+d1+'"')
+        d2=f.getvalue('t2')
+        t.execute('update certificate set cancel=1 where cref_no="'+d1+'" and bcode="'+d2+'"')
         con.commit()
-        print('Successfully Deleted This Record!,,,10')
+        print('Successfully Cancelled This Record!,,,10')
     ###################Marksheet##############
     elif d=='mark_reg':
         d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
         t.execute('select reg_no,sname,fname,course,cstart,cend,study_c from certificate where cref_no="'+d1+'"')
         rs=t.fetchall()
         if(rs!=[]):
@@ -562,6 +593,9 @@ try:
                     else:
                         k=str(i)
                     print(k+"&&&&")
+            t.execute('select mod_name,mod_desc from course where cname="'+rs[0][3]+'" and bcode="'+d2+'"')
+            rs=t.fetchall()
+            print(rs[0])
         else:
             print('0')
             
@@ -577,11 +611,12 @@ try:
         d7=f.getvalue('t7')
         d8=f.getvalue('t8')
         d9=f.getvalue('t9')
+        d10=f.getvalue('t10')
         t.execute("select * from course where cid='"+d1+"'")
         if(t.fetchall()==[]):
-            url="insert into course values(%s,%s,%s,%s,%s,%s,%s,%s)"
-            t.execute(url,(d1,d2,d4,d3,d5,d6,d8,d9))
-            t.execute("update branch_details set cid="+d7+" where bcode='"+d8+"'")
+            url="insert into course values(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9))
+            t.execute("update branch_details set cid="+d10+" where bcode='"+d8+"'")
             con.commit()
             print("Course Created Successfully!,,,10")
         else:
@@ -613,10 +648,10 @@ try:
             print(0)
         else:
             i=0
-            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Course ID</th><th>Course Name</th><th>Course Dur.</th><th>Course Fee</th><th>One Time Payment(OTP)</th><th colspan="2" style="color:blue;" id="act">Action Here</th></tr>')
+            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Course ID</th><th>Course Name</th><th>Module Name</th><th>Module Disc.</th><th>Course Dur.</th><th>Course Fee</th><th>One Time Payment(OTP)</th><th colspan="2" style="color:blue;" id="act">Action Here</th></tr>')
             for a in rs:
                 i=i+1
-                print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Course ID">'+str(a[0])+'   '+'</td><td data-label="Course Name" contenteditable="true" id="e">'+str(a[1])+'   '+'</td><td data-label="Course Dur." contenteditable="true" id="e">'+str(a[2])+'   '+'</td><td data-label="Course Fee" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="One Time Payment(OTP)" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td></tr>')
+                print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Course ID">'+str(a[0])+'   '+'</td><td data-label="Course Name" contenteditable="true" id="e">'+str(a[1])+'   '+'</td><td data-label="Module Name">'+str(a[2])+'   '+'</td><td data-label="Module Disc.">'+str(a[3])+'   '+'</td><td data-label="Course Dur." contenteditable="true" id="e">'+str(a[5])+'   '+'</td><td data-label="Course Fee" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="One Time Payment(OTP)" contenteditable="true" id="e">'+str(a[6])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td></tr>')
             print('</table></div>')
     elif d=='upd_course':
         d1=f.getvalue('t1')
@@ -625,7 +660,9 @@ try:
         d4=f.getvalue('t4')
         d5=f.getvalue('t5')
         d6=f.getvalue('t6')
-        t.execute('update course set cname="'+d2+'",cdur="'+d3+'",cfee="'+d4+'",otp="'+d5+'" where cid="'+d1+'" and bcode="'+d6+'"')
+        d7=f.getvalue('t7')
+        d8=f.getvalue('t8')
+        t.execute('update course set cname="'+d2+'",mod_name="'+d3+'",mod_desc="'+d4+'",cdur="'+d5+'",cfee="'+d6+'",otp="'+d7+'" where cid="'+d1+'" and bcode="'+d8+'"')
         con.commit()
         print('Successfully Updated!')
     elif d=='del_course':
@@ -634,6 +671,14 @@ try:
         t.execute('delete from course where cid="'+d1+'" and bcode="'+d2+'"')
         con.commit()
         print('Successfully Deleted!,,,10')
+    elif d=='certgen':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        d3=f.getvalue('t3')
+        t.execute('select gender from registration where reg_no="'+d1+'"')
+        print(t.fetchall()[0][0]+"&&&")
+        print(datetime.strptime(d2, '%Y-%m-%d').strftime('%d %b, %Y')+"&&&")
+        print(datetime.strptime(d3, '%Y-%m-%d').strftime('%d %b, %Y'))
     else:
         d1=f.getvalue('t1')
         t.execute("select cid from branch_details where bcode='"+d1+"'")
@@ -647,7 +692,7 @@ try:
            str="REPLC"+str(cid)
         else:
             str="End Course!"
-        print(cid,str,sep=",,,")
+        print(str,cid,sep=",,,")
 except Exception as e:
     print("Unsuccesss",e)
 finally:

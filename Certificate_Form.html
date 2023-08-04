@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Certificate Form</title>
-    <link rel="icon" href="repllogo.png">
+    <link rel="icon" href="REPL t-shirt logo 2.jpg">
     <style>
         html{
             font-size: 10px;
@@ -120,7 +120,7 @@
         #to{
             margin-left: 5%;
         }
-        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#lf,#lt{
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l101,#l11,#lf,#lt{
             position: absolute;
             font-size: 1.8rem;
             margin: -1rem 4rem;
@@ -132,14 +132,13 @@
         #lt{
             margin-left: 3%;
         }
-        #ll1,#ll2,#ll3,#ll4{
+        #ll1,#ll2,#ll3,#ll4,#dtl,#dte,#dts{
             color: red;
             font-size: 1.6rem;
             float:left;
             margin-left: 3rem;
-            visibility: hidden;
         }
-        #l11,#l10,#l3,#l4,#l5,#l6{
+        #l11,#l10,#l101,#l3,#l4,#l5,#l6{
             visibility: hidden;
         }
         #b3,#b4,#b5,#b6,#b7{
@@ -241,9 +240,9 @@
             border: none;
             outline: none;
         }
-        #table3 tr:nth-child(odd){
+        /* #table3 tr:nth-child(odd){
             background-color: rgb(184, 182, 182);
-        }
+        } */
         #sa1{
             height: 100%;
             width: 100%;
@@ -327,26 +326,25 @@
                     <table id="table1">
                         <tr>
                             <td id="td1"><label id="l1">Certificate No</label><input type="text" id="t1" placeholder="Certificate No." readonly></td>
-                            <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2" readonly></td>
+                            <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2" readonly onchange="dtchk('#t2','#dtl')"><br><label id="dtl"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l3">Registration No</label><input type="text" id="t3" onfocusout="ch2('#t3')" placeholder="Registration No." maxlength="18" minlength="18" style="text-transform: uppercase;"><label id="ll1">Reg</label></td>
-                            <td><label id="l4">Course</label><select style="height: 4.6rem;width: 92.5%;" id="t4"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll2">Course</label></td>
+                            <td><label id="l3">Registration No</label><input type="text" id="t3" onfocusout="ch2('#t3')" onfocus="ch3('#t3')" oninput="input('#t3','#l3')" placeholder="Registration No." maxlength="18" minlength="18" style="text-transform: uppercase;"><label id="ll1"></label></td>
+                            <td><label id="l4">Course</label><select disabled style="height: 4.6rem;width: 92.5%;" id="t4" onfocusout="ch2('#t4')" onfocus="ch3('#t4')" onchange="cmbchk('#t4','#l4')"><option value="" selected disabled>----- Select Any Course -----</option></select><br><label id="ll2"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l5">Student Name</label><input type="text" id="t5" placeholder="Student Name" readonly></td>
                             <td><label id="l6">Father's Name</label><input type="text" id="t6" placeholder="Father's Name" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l7">Starting Date</label><input type="date" id="t7"></td>
-                            <td><label id="l8">Ending Date</label><input type="date" id="t8"></td>
+                            <td><label id="l7">Starting Date</label><input type="date" id="t7" onchange="dtchk('#t7','#dts')"><br><label id="dts"></label></td>
+                            <td><label id="l8">Ending Date</label><input type="date" id="t8" onchange="dtchk('#t8','#dte')"><br><label id="dte"></label></td>
                         </tr>
                         <tr>
                             <td id="cent"><label id="l9">Study Centre Name</label><input type="text" id="t9" placeholder="Study Centre Name" readonly></td>
-                            <td id="stu" style="display: none;"><label id="l10">Student Pic</label><img src="rayslogo1-1.png" alt="" id="t10" style="height: 15rem;width: 15rem;border: solid 1px;"></td>
+                            <td id="stu" style="display: none;"><label id="l10">Student Pic</label><img src="#" alt="Student Pic" id="t10" style="height: 15rem;width: 15rem;"></td>
                         </tr>
                         <tr style="display: none;" id="stur"><td></td></tr>
-                        <!-- <input type="file" src="" id="t10" alt="" style="padding-top: 0.5rem;border: solid 1px;"><br> -->
                         <tr>
                             <td colspan="2"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
                         </tr>
@@ -357,8 +355,9 @@
                 <div id="d2"><b>Certificate &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
-                        <td><label id="l10">Your Choice</label><select id="s1" onchange="cmbchk('#s1','#l10')"><option value="" selected disabled>----- Select Any One -----</option><option value="reg">Registration No.</option><option value="cert">Certificate No.</option><option value="sname">Student Name</option></select><br><label id="ll3"></label></td>
-                        <td><label id="l11">Your Choice</label><input type="text" id="t11" placeholder="Select Your Choice" readonly><br><label id="ll4"></label></td>
+                        <td><label id="l101">Your Choice</label><select id="s1" onchange="cmbchk('#s1','#l101')"><option value="" selected disabled>----- Select Any One -----</option><option value="reg">Registration No.</option><option value="cert">Certificate No.</option><option value="sname">Student Name</option></select><br><label id="ll3"></label></td>
+                        <td><label id="l11">Your Choice</label><input type="text" id="t11" placeholder="Select Your Choice" readonly onfocus="ch3('#t11')" onfocusout="ch2('#t11')" oninput="input('#tll','#l11')">
+                            <br><label id="ll4"></label></td>
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
                     </tr>
                     <tr>
@@ -395,26 +394,29 @@
         })
         // --------------------------------------------------------------------
        // ======================== Mandatory ===========================
-        var flag=true;
+        var flag=flag2=true;
         function ch2(t){
             a=$(t).val();
-            if(t=='#t7'||t=='#t8'){
-                if($('#t7').val()!=''){
-                    $('#t8').attr('max',$('#t7').val())
-                    if($('#t8').val()!='' && $('#t8').val()<$('#t7').val()){
-                        alert("Ending Date Should be greater than Starting Date!")
-                        flag=false;
-                    }
+            if(t=='#t4'){
+                if($('#t4').val()==null){
+                    flag=false;
+                    $('#ll2').html('Please Select Any Course!')
+                    $(t).css({'border':'1px solid red','color':'red'});
                 }
+
             }
             else{
                 if(a==''||a.length==0){
                     $(t).css({'border':'1px solid red','color':'red'});
                     $(t).val('*Field is Mandotary!');
                     flag=false;
+                    if(t=='#t11')
+                        flag2 = false;
                 }
                 else if($(t).val()=='*Field is Mandotary!'){
                     flag=false;
+                    if(t=='#t11')
+                        flag2 = false;
                 }
             }
             if(t=='#t3' && a.length==18 && a!='*Field is Mandotary!'){
@@ -427,14 +429,25 @@
                         t2:bcode
                     },
                     success:function(data){
-                        // alert(data)
-                        if(data!='0'){
+                        if(data!=0){
                             var j=data.split('&&&&')
-                            $('#t4').append(j[0])
-                            $('#t5').val(j[1])
-                            $('#t6').val(j[2])
-                            $('#t10').attr('src',j[3])
-                            $('#stu,#stur').css('display','block')
+                            if(j[0]!=50050){   
+                                $('#t4').removeAttr('disabled')
+                                $('#t4 option[value!=""]').remove()
+                                $('#t4').append(j[0])
+                                $('#t5').val(j[1])
+                                $('#t6').val(j[2])
+                                $('#t10').attr('src',j[3])
+                                $('#stu,#stur').css('display','block')
+                            }
+                            else{  
+                                $('#t4').attr('disabled',true)
+                                $('#t5').val('')
+                                $('#t6').val('')
+                                $('#t10').attr('src','')
+                                $('#stu,#stur').css('display','none')
+                                alert("Please First Create Admission Form for this Registration No.!")
+                            }
                         }
                         else
                             alert('No Record Found!')
@@ -442,15 +455,32 @@
                 })
             }
             else{
-                if(t=='#t3' && a.length>=1 && a.length<18)
+                if(t=='#t3' && a.length>=1 && a.length<18){
                    $('#ll1').html("Invalid Registration No.")
                    flag=false;
+                }
+            }
+            if(t=='#t11' && ($('#l11').text()=='Registration No.'||$('#l11').text()=='Certificate No.') && a.length>=1 && a.length<18){
+                $('#ll4').html("Invalid "+$('#l11').text()+"!")
+                flag2=false;
             }
         }
         function ch3(t){
             $(t).css({'border':'1px solid black','color':'black'});
+            if(t=='#t4')
+                $('#ll2').html('')
             if($(t).val()=='*Field is Mandotary!')
                 $(t).val('')
+        }
+        // -----------------Legend------------------------
+        function input(d, l) {
+            jk = $(d).val()
+            if (jk != '') {
+                $(l).css('visibility', 'visible')
+            }
+            else {
+                $(l).css('visibility', 'hidden')
+            }
         }
         //====================Ready Function==============
         $(document).ready(function(){
@@ -489,7 +519,13 @@
                 }
             })
         }
+        $('#t7').change(function(){
+            if($('#t7').val()!=''){
+                $('#t8').attr('min',$('#t7').val()) 
+            }
+        })
         // -------------------Date-------------
+        var cd;
         function date(){
             var dt=new Date()
             dd=dt.getDate()
@@ -499,40 +535,146 @@
                 mm="0"+mm
             if(dd<10)
                 dd="0"+dd
-            $('#t2,#t7,#t8').val(yy+"-"+mm+"-"+dd)
-            $('#t7,#t8').attr({'max':yy+"-"+mm+"-"+dd})
+            cd=yy+"-"+mm+"-"+dd
+            $('#t2,#t7,#t8').val(cd)
+            $('#t7,#t8,#t2,#to,#from').attr({'max':cd})
+            $('#t8').attr('min',cd)
         }
-        // -----------------------------------------
-        $('#b3').click(function(){
-            var conf=confirm("Are you sure want to insert this record?")
-            if(conf){
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'cert_insert',
-                        t1:$('#t1').val(),
-                        t2:$('#t2').val(),
-                        t3:$('#t3').val(),
-                        t4:$('#t4 option:selected').text(),
-                        t5:$('#t5').val(),
-                        t6:$('#t6').val(),
-                        t7:$('#t7').val(),
-                        t8:$('#t8').val(),
-                        t9:$('#t9').val(),
-                        t10:'Raj_02',
-                        t11:cert_ch,
-                        t12:cert_no
-                    },
-                    success:function(data){
-                        var j=data.split(',,,');
-                        alert(j[0])
-                        if(j[1]==10){
-                            auto()
-                            clear()
-                        }
+        function dtchk(d,l){
+            if($(d).val()==''){
+                flag=false;
+                $(l).text("Date Cann't be empty!")
+            }
+            else if($(d).val()>cd){
+                flag=false;
+                $(l).text("Date Cann't be grater than Current Date!")
+            }
+            else
+                $(l).text("")
+            if(d=='#t7'){
+                if($(d).val()>$('#t8').val()){
+                    flag=false;
+                    $(l).text("Start Date Cann't be grater than End Date!")
+                }
+            }
+            else if(d=='#t8'){
+                if($(d).val()<$('#t7').val()){
+                    flag=false;
+                    $(l).text("Start Date Cann't be grater than End Date!")
+                }
+            }
+        }
+        // ====================Key Validaition=================
+        var jkl=0;
+        $('#t11').keypress(function(a){
+            if (jkl==1||jkl==2) {
+                    if((a.which == 47||a.which>=48 && a.which<=57)&& a.target.selectionStart === 0){
+                        $('#ll4').text("Digit & / at First Not Allowed!");
+                        return false;
                     }
-                })
+                    else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==47)){
+                        $('#ll4').text("Only Alphabet,Digit & / Allowed!");
+                        return false;
+                    }
+                    else if(a.which==47 && $('#t13').val().slice(-1) ==='/'){
+                        $('#ll4').text("'/' Multiple times Not Allowed!");
+                        a.preventDefault();
+                    }
+                    else
+                        $('#ll4').text("");
+            }
+            else if(jkl==3){
+                    if((a.which == 46||a.which==32) && a.target.selectionStart === 0){
+                        $('#ll4').text("Dot & Space at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==46||a.which==32)){
+                        $('#ll4').text("Only Alphabet,Digit & / Allowed!");
+                        return false;
+                    }
+                    else if((a.which==46 || a.which==32)&& $('#t13').val().slice(-1) ===String.fromCharCode(a.which)){
+                        $('#ll4').text("Dot & Space Multiple times Not Allowed!");
+                        a.preventDefault();
+                    }
+                    else
+                        $('#ll4').text("");
+            }
+        })
+        $('#t3').on('keypress', function (a) {
+            if((a.which == 47||a.which>=48 && a.which<=57)&& a.target.selectionStart === 0){
+                $('#ll1').text("Digit & / at First Not Allowed!");
+                return false;
+            }
+            else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==47)){
+                $('#ll1').text("Only Alphabet,Digit & / Allowed!");
+                return false;
+            }
+            else if(a.which==47 && $(this).val().slice(-1) ==='/'){
+                $('#ll1').text("'/' Multiple times Not Allowed!");
+                a.preventDefault();
+            }
+            else
+            $('#ll1').text("");
+        });
+        // -------------------insert record----------------------
+        $('#b3').click(function(){
+            flag=true;
+            ch2('#t3')
+            ch2('#t4')
+            dtchk('#t7','#dts');
+            dtchk('#t8','#dte');
+            dtchk('#t2','#dtl');
+            if(flag){
+                var conf=confirm("Are you sure want to insert this record?")
+                if(conf){
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'cert_insert',
+                            t1:$('#t1').val().toUpperCase().trim(),
+                            t2:$('#t2').val(),
+                            t3:$('#t3').val().toUpperCase().trim(),
+                            t4:$('#t4 option:selected').text().trim(),
+                            t5:$('#t5').val().trim().replace(/\b[a-z]/g, function (txtVal) { return txtVal.toUpperCase() }),
+                            t6:$('#t6').val().trim().replace(/\b[a-z]/g, function (txtVal) { return txtVal.toUpperCase() }),
+                            t7:$('#t7').val(),
+                            t8:$('#t8').val(),
+                            t9:$('#t9').val().trim(),
+                            t10:'Raj_02',
+                            t11:cert_ch,
+                            t12:cert_no,
+                            t13:bcode,
+                            t14:$('#t10').attr('src')
+                        },
+                        success:function(data){
+                            var j=data.split(',,,');
+                            alert(j[0])
+                            if(j[1]==10){
+                                var conf=confirm('Do you want to Generate Certificate for this record!')
+                                if(conf){
+                                    if($('#t10').attr('src')!='#'){
+                                        sessionStorage.setItem('cert',$('#t1').val());
+                                        sessionStorage.setItem('reg',$('#t3').val());
+                                        sessionStorage.setItem('doi',$('#t2').val());
+                                        sessionStorage.setItem('sname',$('#t5').val());
+                                        sessionStorage.setItem('fname',$('#t6').val());
+                                        sessionStorage.setItem('cou',$('#t4').val());
+                                        sessionStorage.setItem('sdt',$('#t7').val());
+                                        sessionStorage.setItem('edt',$('#t8').val());
+                                        sessionStorage.setItem('sc',$('#t9').val());
+                                        sessionStorage.setItem('sp',$('#t10').val());
+                                        window.location.href='Training_Certificate.html'
+                                    }
+                                    else
+                                        alert('Please add Student Pic in Registration Form!')   
+                                }
+                                auto()
+                                clear()
+                            }
+                        }
+                    })
+                }
             }
         })
         $('#b4').click(function(){
@@ -540,40 +682,57 @@
         })
         function clear(){
             date()
+            ch3('#t3')
+            ch3('#t4')
             $('#t3').val('')
             $('#t4').val(null)
             $('#t5').val('')
             $('#t6').val('')
             $('#stu,#stur').css('display','none')
+            input('#t3','#l3')
+            $('#t4').attr('disabled',true)
+            cmbchk('#t4','#l4')
+            dtchk('#t7','#dts');
+            dtchk('#t8','#dte');
+            dtchk('#t2','#dtl');
         }
         // --------------ComboCheck--------------
         function cmbchk(id,l) {
-                if ($(id).val() != null){
-                    $(l).css('visibility', 'visible')
-                    $('#t11').focus()
-                    if($(id).val()== 'reg'){
-                        $('#t11').removeAttr('readonly')
-                        $('#t11').attr({'maxlength':'18','minlength':'18','placeholder':'Registration No.'})
-                        $('#t11').css('text-transform','uppercase')
-                        $('#l11').html('Registration No.')
-                        $('#t11').val('')
+                if(id=='#t4'){
+                    if ($(id).val() != null)
+                        $(l).css('visibility', 'visible')
+                    else
+                        $(l).css('visibility', 'hidden')
+                }
+                else{
+                    if ($(id).val() != null){
+                        $(l).css('visibility', 'visible')
+                        $('#t11').focus()
                         input('#t11','#l11')
-                    }
-                    else if($(id).val() == 'cert'){
-                        $('#t11').removeAttr('readonly')
-                        $('#t11').attr({'maxlength':'18','minlength':'18','placeholder':'Certificate No.'})
-                        $('#t11').css('text-transform','uppercase')
-                        $('#l11').html('Certificate No.')
-                        $('#t11').val('')
-                        input('#t11','#l11')
-                    }
-                    else{
-                        $('#t11').removeAttr('readonly','maxlength','minlength')
-                        $('#t11').attr({"placeholder":"Student's Name"})
-                        $('#t11').css('text-transform','capitalize')
-                        $('#l11').html("Student's Name")
-                        $('#t11').val('')
-                        input('#t11','#l11')
+                        if($(id).val()== 'reg'){
+                            $('#t11').removeAttr('readonly')
+                            $('#t11').attr({'maxlength':'18','minlength':'18','placeholder':'Registration No.'})
+                            $('#t11').css('text-transform','uppercase')
+                            $('#l11').html('Registration No.')
+                            $('#t11').val('')
+                            jkl=1
+                        }
+                        else if($(id).val() == 'cert'){
+                            $('#t11').removeAttr('readonly')
+                            $('#t11').attr({'maxlength':'18','minlength':'18','placeholder':'Certificate No.'})
+                            $('#t11').css('text-transform','uppercase')
+                            $('#l11').html('Certificate No.')
+                            $('#t11').val('')
+                            jkl=2
+                        }
+                        else{
+                            $('#t11').removeAttr('readonly')
+                            $('#t11').attr({"placeholder":"Student's Name",'maxlength':'','minlength':''})
+                            $('#t11').css('text-transform','capitalize')
+                            $('#l11').html("Student's Name")
+                            $('#t11').val('')
+                            jkl=3
+                        }
                     }
                 }
         }
@@ -582,7 +741,7 @@
             flag2=true;
             if($('#s1').val()!=null){
                 ch2('#t11')
-                if(!(($('#l11').text()=='Certificate No.' && $('#t11').val().length!=18)||($('#l11').text()=='Registration No.' && $('#t11').val().length!=18)||$('#t13').val()=="*Field is Mandatory!"||$('#t13').val()==null)){
+                if(!(($('#l11').text()=='Certificate No.' && $('#t11').val().length!=18)||($('#l11').text()=='Registration No.' && $('#t11').val().length!=18)||$('#t11').val()=="*Field is Mandatory!"||$('#t11').val()=='')){
                     if($('#from').val()=='' && $('#to').val()!=''){
                         alert("From Date is required!")
                         flag2=false;
@@ -600,9 +759,26 @@
                 }
             }
             else{
-                flag2=false;
-                $('#ll34').html("Please Select Your Choice!")
-                $('#s1').css({'color':'red','border':'solid 1px red'})
+                if($('#from').val()!=''||$('#to').val()!=''){
+                    if($('#from').val()=='' && $('#to').val()!=''){
+                        alert("From Date is required!")
+                        flag2=false;
+                    }
+                    else if($('#from').val()!='' && $('#to').val()==''){
+                        alert("To Date is required!")
+                        flag2=false;
+                    }
+                    else{
+                        if($('#from').val()>$('#to').val()){
+                            alert('From Date Cannot be greater than To Date!')
+                            flag2=false;
+                        }
+                    }
+                }
+                else{
+                    alert('Please Select Any Field!')
+                    flag2=false;
+                }
             }
             if(flag2){
                 $.ajax({
@@ -611,9 +787,10 @@
                     data:{
                         cond:'ser_cert',
                         t1:$('#s1').val(),
-                        t2:$('#t18').val(),
+                        t2:$('#t11').val(),
                         t3:$('#from').val(),
-                        t4:$('#to').val()
+                        t4:$('#to').val(),
+                        t5:bcode
                     },
                     success:function(data){
                         if(data!=0){
@@ -629,62 +806,87 @@
             } 
         })
         $(document).on('blur','#e',function(){
-            // a=$(this).text();
             $(this).text($(this).text()+"   ");
         });
         $(document).on('focus','#e',function(){
-            // a=$(this).text().trim();
             $(this).text($(this).text().trim());
         });
         $(document).on('keypress','#e',function(){
             $(this).css('color','green');
         });
-        $(document).on('change','#imgi',function(){
-            var jk=$(this).closest('td').prev('td').children('img').attr('src')
-            image1('#imgi',jk)
-        });
+        // $(document).on('change','#imgi',function(){
+        //     var jk=$(this).closest('td').prev('td').children('img').attr('src')
+        //     image1('#imgi',jk)
+        // });
         // --------------------Update Data--------------------
         $(document).on('click','#upd',function(){
-            var conf=confirm("Are you sure want to Update this Record!");
-            if(conf){
-                var cell=$(this).closest('tr').children("td").text().split('   ');
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'upd_int',
-                        t1:cell[1],
-                        t2:cell[3],
-                        t3:cell[6],
-                        t4:cell[7],
-                        t5:cell[8]
-                    },
-                    success:function(data){
-                        alert(data);
-                    }
-                })
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var conf=confirm("Are you sure want to Update this Record!");
+                if(conf){
+                    var cell=$(this).closest('tr').children("td").text().split('   ');
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'upd_cert',
+                            t1:cell[1],
+                            t2:cell[3],
+                            t3:cell[6],
+                            t4:cell[7],
+                            t5:cell[8],
+                            t6:bcode
+                        },
+                        success:function(data){
+                            alert(data);
+                        }
+                    })
+                }
             }
         })
         // --------------Delete Data------------------
         $(document).on('click','#del',function(){
-            var conf=confirm("Are you sure want to Delete this Record!");
-            if(conf){
-                var cell=$(this).closest('tr').children("td").text().split('   ');
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'del_int',
-                        t1:cell[1]
-                    },
-                    success:function(data){
-                        var j=data.split(',,,')
-                        alert(j[0])
-                        if(j[1]==10){
-                            $(this).closest('tr').text()
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var conf=confirm("Are you sure want to Cancel this Record!");
+                if(conf){
+                    var cell=$(this).closest('tr').children("td").text().split('   ');
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'del_cert',
+                            t1:cell[1],
+                            t2:bcode
+                        },
+                        success:function(data){
+                            var j=data.split(',,,')
+                            alert(j[0])
+                            if(j[1]==10){
+                                for(a=1;a<$('#table3 tr').length+1;a++){
+                                    if(document.getElementById("table3").rows[a].cells[1].innerHTML.trim()==cell[1].trim()){
+                                        document.getElementById("table3").rows[a].style.backgroundColor='red';
+                                        document.getElementById("table3").rows[a].style.color='white';
+                                        alert(document.getElementById("table3").rows[a].cells[10].innerHTML)
+                                        document.getElementById("table3").rows[a].cells[10].style.color='white';
+                                        document.getElementById("table3").rows[a].cells[11].style.color='white';
+                                        document.getElementById("table3").rows[a].cells[12].style.color='white';
+                                        document.getElementById("table3").rows[a].cells[13].style.color='white';
+                                        break;
+                                    } 
+                                }
+                            }
                         }
-                    }
-                })
+                    })
+                }
+            }
+        })
+        $('#from').change(function(){
+            if($('#from').val()!=''){
+                $('#to').attr('min',$('#from').val())
+            }
+        })
+        $('#to').change(function(){
+            if($('#to').val()!=''){
+                $('#from').attr('max',$('#to').val())
             }
         })
         // -----------------Refresh Page------------
@@ -692,22 +894,61 @@
             $('#s1').val(null);
             $('#d3').html('');
             $('#b7').css('display','none')
-            $('#t18').val('')
-            $('#from').val('')
-            $('#to').val('')
-            input('#t18','#l18')
-            $('#t18').attr({'placeholder':'Select Your Choice','readonly':true})
-            $('#ll34').html('')
-            $('#l18').css('visibility','hidden')
+            // $('#t18').val('')
+            $('#from,#to,#t11').val('')
+            $('#to').removeAttr('min')
+            // $('#to').val('')
+            input('#t11','#l11')
+            $('#t11').attr({'placeholder':'Select Your Choice','readonly':true,'style':'text-transform:capitalize'})
+            $('#ll4').html('')
+            $('#l101').css('visibility','hidden')
         })
+        // =======================Certificate==========================
+        
+        $(document).on('click','#cert',function(){
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var cell=$(this).closest('tr').children("td").text().split('   ');
+                var bk=$(this).parent('td').prev('td').prev('td').prev('td').children().attr('src')
+                var conf=confirm("Do you want to generate Certificate for this record!")
+                if(conf){
+                    if(bk.trim()!='#'){
+                        sessionStorage.setItem('cert',cell[1]);
+                        sessionStorage.setItem('reg',cell[2]);
+                        sessionStorage.setItem('doi',cell[3]);
+                        sessionStorage.setItem('sname',cell[4]);
+                        sessionStorage.setItem('fname',cell[5]);
+                        sessionStorage.setItem('cou',cell[6]);
+                        sessionStorage.setItem('sdt',cell[7]);
+                        sessionStorage.setItem('edt',cell[8]);
+                        sessionStorage.setItem('sc',cell[9]);
+                        sessionStorage.setItem('sp',bk);
+                        window.location.href="Training_Certificate.html"
+                    }
+                    else
+                        alert("Pleae fill Student Pic in registartion!")
+                }
+            }
+        });
+        // =======================Marksheet==========================
+        
+        $(document).on('click','#mark',function(){
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var cell=$(this).closest('tr').children("td").text().split('   ');
+                var conf=confirm("Do you want to create Marksheet for this record!")
+                if(conf){
+                    sessionStorage.setItem('cern',cell[1]);
+                    window.location.href='Training_Marksheet.html'
+                }
+            }
+        });
         // ======================= Download==========================
         
         $(document).on('click','#b7',function(){
             var conf=confirm("Do you want to Download this record!")
             if(conf){
                 $("#table3").table2excel({
-                    exclude: ".sn,#sn,#chk,#del,#upd,#mark,#cert",
-                    filename: $('#s1').val()+"_exp.xls"
+                    exclude: "#chk,#del,#upd,#mark,#cert",
+                    filename: "Training_Certificate_exp.xls"
                 });
             }
         });

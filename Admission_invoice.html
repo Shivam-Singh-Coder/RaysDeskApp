@@ -170,12 +170,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
-        // var a1=sessionStorage.getItem('a1',cell[1])
-        // var a2=sessionStorage.getItem('a2',cell[2])
-        // var a3=sessionStorage.getItem('a3',cell[3])
-        // var a4=sessionStorage.getItem('a4',cell[4])
-        // var a5=sessionStorage.getItem('a5',cell[5])
-        // var a6=sessionStorage.getItem('a6',cell[6])
         $(document).ready(function(){
             $.ajax({
                 url:'rays_desk.py',
@@ -188,15 +182,17 @@
                 success:function(data){
                     if(data!='0'){
                         var j=data.split('&&')
-                        $('.adm_no').html(j[0])
+                        alert(data)
+                        // alert(j[10].length-1)
+                        $('.adm_no').html(j[0].toUpperCase())
                         $('.adm_date').html(j[1])
-                        $('.reg_no').html(j[2])
-                        $('.pc').html(j[9])
+                        $('.reg_no').html(j[2].toUpperCase())
+                        $('.pc').html(j[11].substring(0,j[11].trim().length+1))
                         $('.sname').html(j[8])
                         $('.capp').html(j[3])
                         $('.fee').html(j[4])
-                        $('.disc').html(j[5])
-                        $('.tot').html(parseInt(j[4])-parseInt(j[5]))
+                        $('.disc').html(j[6])
+                        $('.tot').html(parseInt(j[4])-parseInt(j[6]))
                     }
                     else
                         alert("Something Wrong!")

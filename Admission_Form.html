@@ -146,7 +146,7 @@
         #lt{
             margin-left: 3%;
         }
-        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6{
+        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6,#dtl{
             color: red;
             font-size: 1.6rem;
             float:left;
@@ -249,9 +249,9 @@
             border: none;
             outline: none;
         }
-        #table3 tr:nth-child(odd){
+        /* #table3 tr:nth-child(odd){
             background-color: rgb(184, 182, 182);
-        }
+        } */
         @media (max-width:998px) {
             html{
                 font-size: 55%;
@@ -330,21 +330,21 @@
                     <table id="table1">
                         <tr>
                             <td id="td1"><label id="l1">Adm. Form No.</label><input type="text" id="t1" placeholder="Adm. Form No." readonly></td>
-                            <td id="td1"><label id="l2">Adm. Date</label><input type="date" id="t2" placeholder="Adm. Date" readonly></td>
+                            <td id="td1"><label id="l2">Adm. Date</label><input type="date" id="t2" placeholder="Adm. Date" onchange="dtchk()" readonly><br><label id="dtl"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l3">Registration No.</label><input type="text" id="t3" autofocus placeholder="Registration No." oninput="input('#t3','#l3')" maxlength="18" minlength="18" onkeydown="keychk('#t3','#ll1')" onfocusout="ch2('#t3')" onfocus="ch3('#t3')" style="text-transform: uppercase;"><label id="ll1" class="l"></label></td>
+                            <td><label id="l3">Registration No.</label><input type="text" id="t3" placeholder="Registration No." oninput="input('#t3','#l3')" maxlength="18" minlength="18" onkeydown="keychk('#t3','#ll1')" onfocusout="ch2('#t3')" onfocus="ch3('#t3')" style="text-transform: uppercase;"><br><label id="ll1" class="l"></label></td>
                             <td><label id="l4">Prev. Course</label><input type="text" id="t4" placeholder="Prev. Course" readonly></td>
                         </tr>
                         <tr>
                             <td><label id="l5">Student Name</label><input type="text" id="t5" placeholder="Student Name" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">Course Applying</label><select style="height: 4.5rem;" id="t6" onchange="cmbchk('#t6','#l6')"><option value="" selected>----- Select Any Course -----</option></select><label id="l7">Selected Course</label><input type="text" placeholder="Selected Course" id="t7" readonly><br><label id="ll2"></label></td>
+                            <td><label id="l6">Course Applying</label><select style="height: 4.5rem;" id="t6" onfocus="ch3('#t6')" onfocusout="ch2('#t6')" onchange="cmbchk('#t6','#l6')"><option value="" selected>----- Select Any Course -----</option></select><label id="l7">Selected Course</label><input type="text" placeholder="Selected Course" id="t7" readonly><br><label id="ll2"></label></td>
                             <td><label id="l8">Course Fee</label><input type="text" id="t8" placeholder="Course Fee" value="0" readonly></td>
                         </tr>
                         <tr>
-                            <td><label id="l9">Disc. in %</label><input type="text" name="" id="t9" maxlength="2" value="0" readonly onkeydown="keychk('#t9','#ll3')"><label id="l10">Disc. in Num</label><input type="text" name="" id="t10" value="0" readonly onkeydown="keychk('#t10','#ll4')"><label id="l11">Discount</label><select id="t11" onchange="cmbchk('#t11','#l11')"><option value="inst" selected>Installment</option><option value="otp">OTP(One Time Payment)</option></select><br><label id="ll3"></label><label id="ll4"></label></td>
+                            <td><label id="l9">Disc. in %</label><input type="text" name="" id="t9" maxlength="2" value="0" readonly onkeydown="keychk('#t9','#ll3')"><label id="l10">Disc. in &#x20B9;</label><input type="text" name="" id="t10" value="0" readonly onkeydown="keychk('#t10','#ll4')"><label id="l11">Discount</label><select id="t11" onchange="cmbchk('#t11','#l11')"><option value="inst" selected>Installment</option><option value="otp">OTP(One Time Payment)</option></select><br><label id="ll3"></label><label id="ll4"></label></td>
                             <td><label id="l12">Total Fee</label><input type="text" id="t12" placeholder="Total Fee" value="0" readonly></td>
                         </tr>
                         <tr>
@@ -367,8 +367,7 @@
                             <br><label id="ll5"></label>
                         </td>
                         <td><label id="l14">Your Choice</label>
-                            <!-- <select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select> -->
-                            <input type="text" id="t13" placeholder="Select Your Choice" oninput="input('#t13','#l14')" onfocus="ch3('#t13')" onfocusout="ch2('#t13')" onkeydown="keychk('#t13','#ll6')" readonly>
+                            <input type="text" id="t13" placeholder="Select Your Choice" onfocus="ch3('#t13')" onfocusout="ch2('#t13')" readonly>
                             <br><label id="ll6" class="l"></label></td>
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
                     </tr>
@@ -377,12 +376,12 @@
                     </tr>
                 </table>
                 <div id="d3">
-                    <div id="d5">
+                    <!-- <div id="d5">
                         <table id="table3">
                             <tr><th id="sn">Sn</th><th>Admission No</th><th>Admission Date</th><th>Registration No</th><th>Course Applied</th><th>Course Fee</th><th>Discount</th><th colspan="3" id="chk">Check</th></tr>
-                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Admission No">P001</td><td data-label="Admission Date">Ord0001</td><td data-label="Registration No">UPI</td><td data-label="Course Applied" contenteditable="true" id="e">22-07-2001</td><td data-label="Course Fee">15000</td><td data-label="Discount" contenteditable="true" id="e">5000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>
+                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Admission No">P001</td><td data-label="Admission Date">Ord0001</td><td data-label="Registration No">UPI</td><td data-label="Course Applied" contenteditable="true" id="e">22-07-2001</td><td data-label="Course Fee">15000</td><td data-label="Discount" contenteditable="true" id="e">5000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Print" aria-disabled="true"><i class="fa" id="prt" data-toggle="tooltip" title="Print" aria-readonly="true">&#xf02f;</i></td></tr>
                         </table>
-                    </div>
+                    </div> -->
                 </div> 
             </div>
         </div>
@@ -410,17 +409,26 @@
         function ch2(t) {
             a = $(t).val();
             $('.l').html('')
-            if (a == null || a == '' || a.length == 0) {
+            if(t=='#t6'){
+                if($('#t7').val().length==0){
+                    flag=false
+                    $('#ll2').text('Please Select AnyOne!')
+                    $(t).css({ 'border': '1px solid red', 'color': 'red' });
+                }
+            }
+            else{
+                if (a == null || a == '' || a.length == 0) {
                 $(t).css({ 'border': '1px solid red', 'color': 'red' });
                 $(t).val('*Field is Mandatory!');
                 flag = false;
                 if(t=='#t13')
                     flag2 = false;
-            }
-            else if($(t).val() == '*Field is Mandatory!'){
-                flag = false;
-                if(t=='#t13')
-                    flag2 = false;
+                }
+                else if($(t).val() == '*Field is Mandatory!'){
+                    flag = false;
+                    if(t=='#t13')
+                        flag2 = false;
+                }
             }
             if(t=='#t3' && a.length==18){
                 $.ajax({
@@ -436,6 +444,8 @@
                                var j=data.split(',,,')
                                $('#t4').val(j[1])
                                $('#t5').val(j[0])
+                               input('#t4','#l4')
+                               input('#t5','#l5')
                             }
                             else
                                alert("No Record Found for this Input, try Again!")
@@ -460,6 +470,9 @@
             if(t=='#s1'){
                 $('#ll5').html('')
             }
+            else if(t=='#t6'){
+                $('#ll2').text('')
+            }
             else{
                 if ($(t).val() == '*Field is Mandatory!' || $(t).val() == null) {
                     $(t).val('')
@@ -467,13 +480,57 @@
             }
         }
         // ====================Key Validaition=================
+        var jkl=0;
+        $('#t13').keypress(function(a){
+            if (jkl==1) {
+                    if((a.which == 47||a.which>=48 && a.which<=57)&& a.target.selectionStart === 0){
+                        $('#ll6').text("Digit & / at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==47)){
+                        $('#ll6').text("Only Alphabet,Digit & / Allowed!");
+                        return false;
+                    }
+                    else if(a.which==47 && $('#t13').val().slice(-1) ==='/'){
+                        $('#ll6').text("'/' Multiple times Not Allowed!");
+                        a.preventDefault();
+                    }
+                    else
+                        $('#ll6').text("");
+            }
+            else if(jkl==2){
+                    if((a.which == 48||a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122)&& a.target.selectionStart === 0){
+                        $('#ll6').text("Alphabet & Zero at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13)){
+                        $('#ll6').text("Only Alphabet,Digit Allowed!");
+                        return false;
+                    }
+                    else
+                        $('#ll6').text("");
+            }
+            else if(jkl==3){
+                    if((a.which == 46||a.which==32) && a.target.selectionStart === 0){
+                        $('#ll6').text("Dot & Space at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==46||a.which==32)){
+                        $('#ll6').text("Only Alphabet,Digit & / Allowed!");
+                        return false;
+                    }
+                    else if((a.which==46 || a.which==32)&& $('#t13').val().slice(-1) ===String.fromCharCode(a.which)){
+                        $('#ll6').text("Dot & Space Multiple times Not Allowed!");
+                        a.preventDefault();
+                    }
+                    else
+                        $('#ll6').text("");
+            }
+        })
         function keychk(chk, d) {
             $(d).text("");
-            console.log(chk)
-            console.log($('#l14').text())
-            if ((chk=='#t13'&& $('#l14').text()=='Registration No.')||chk=='#t3') {
+            if (chk=='#t3') {
                 $(chk).on('keypress', function (a) {
-                    console.log('Registration')
                     if((a.which == 47||a.which>=48 && a.which<=57)&& a.target.selectionStart === 0){
                         $(d).text("Digit & / at First Not Allowed!");
                         return false;
@@ -483,51 +540,14 @@
                         return false;
                     }
                     else if(a.which==47 && $(this).val().slice(-1) ==='/'){
-                        a.preventDefault();
                         $(d).text("'/' Multiple times Not Allowed!");
-                    }
-                    else
-                        $(d).text("");
-                });
-            }
-            else if(chk=='#t13'&& $('#l14').text()=='Admission No.'){
-                $(chk).on('keypress', function (a) {
-                    console.log('Admission')
-                    if((a.which == 48||a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122)&& a.target.selectionStart === 0){
-                        $(d).text("Alphabet & Zero at First Not Allowed!");
-                        return false;
-                    }
-                    else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13)){
-                        $(d).text("Only Alphabet,Digit Allowed!");
-                        return false;
-                    }
-                    else
-                        $(d).text("");
-                });
-            }
-            else if(chk=='#t13' && $('#l14').text()=="Student's Name"){
-                $(chk).on('keypress', function (a) {
-                    console.log('Student')
-                    if((a.which == 46||a.which==32)&& a.target.selectionStart === 0){
-                        console.log("hii")
-                        $(d).text("Dot & Space at First Not Allowed!");
-                        return false;
-                    }
-                    else if(!(a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==46||a.which==32)){
-                        console.log("hii2")
-                        $(d).text("Only Alphabet,Digit & / Allowed!");
-                        return false;
-                    }
-                    else if((a.which==46)&& $(this).val().slice(-1) ===String.fromCharCode(a.which)){
-                        console.log("hii3")
                         a.preventDefault();
-                        $(d).text("Dot & Space Multiple times Not Allowed!");
                     }
                     else
                         $(d).text("");
-                }); 
+                });
             }
-            else{
+            else if(chk=='#t9' && $('#t8').val()!=0||chk=='#t10' && $('#t8').val()!=0){
                 $(chk).on('keypress',function(a){
                     if(a.which == 48 && a.target.selectionStart === 0){
                         $(d).text("Zero at First Not Allowed!");
@@ -553,27 +573,24 @@
                 })
             }
         }
-        // $('#t9,#t10').on('input',function(){
-        //     if($(this).attr('id')=='t10'){
-        //         $('#t12').val(parseFloat($('#t8').val())-parseFloat($(this).val()))
-        //         $('#t9').val($(this).val()/$('#t8').val()*100)
-        //     }
-        //     else{
-        //         // $('#t12').val(parseFloat($('#t8').val())-parseFloat($('#t10').val()))
-        //         $('#t10').val($(this).val()*$('#t8').val()/100)
-        //     }
-        // })
+        $('#t9,#t10').on('input',function(){
+            var nk;
+            if($(this).val()=='')
+                nk=0
+            else
+                nk=$(this).val()
+            if($(this).attr('id')=='t10'){
+                $('#t12').val(parseFloat($('#t8').val())-parseFloat(nk))
+                $('#t9').val((nk/$('#t8').val()*100).toFixed(2))
+            }
+            else{
+                $('#t12').val(parseFloat($('#t8').val())-parseFloat(nk*$('#t8').val()/100))
+                $('#t10').val(nk*$('#t8').val()/100)
+            }
+        })
         $('#t10,#t9').keyup(function(){
             if($(this).val()=='')
                 $(this).val('0');
-            if($(this).attr('id')=='t10' && $(this).val()==''){
-                $('#t12').val(parseFloat($('#t8').val())-parseFloat($(this).val()))
-                $('#t9').val($(this).val()/$('#t8').val()*100)
-            }
-            else{
-                $('#t12').val(parseFloat($('#t8').val())-parseFloat($('#t10').val()))
-                $('#t10').val($(this).val()*$('#t8').val()/100)
-            }
         })
         $('#t10,#t9').focusout(function(){
             if($(this).attr('id')=='t10')
@@ -596,10 +613,13 @@
             if(id=='#t6'){
                 if ($(id).val() != null){
                     $(l).css('visibility', 'visible')
-                    if($('#t7').val()!='')
+                    input('#t7','#l7')
+                    if($('#t7').val()!=''){
                         $('#t7').val($('#t7').val()+","+$(id).val())
-                    else
+                    }
+                    else{
                         $('#t7').val($(id).val())
+                    }
                     $.ajax({
                         url: 'rays_desk.py',
                         method: 'post',
@@ -611,6 +631,7 @@
                         success: function (data) {
                             if(data!=0){
                                 $('#t8').val(parseInt($('#t8').val())+parseInt(data))
+                                $('#t12').val(parseInt($('#t8').val()))
                                 $('#t6 option[value!=null]:selected').detach()
                                 $('#t9,#t10').removeAttr('readonly')
                             }
@@ -631,13 +652,9 @@
                             t2:bcode
                         },
                         success: function (data) {
-                            if(data!=0){
-                                $('#t10').val(data)
-                                $('#t12').val(parseFloat($('#t8').val())-parseFloat(data))
-                                $('#t9').val(parseInt(data)/$('#t8').val()*100)
-                            }
-                            else
-                                alert("Something Went Wrong!")
+                            $('#t10').val(data)
+                            $('#t12').val(parseFloat($('#t8').val())-parseFloat(data))
+                            $('#t9').val((parseInt(data)/$('#t8').val()*100).toFixed(2))
                         }
                     })
                 }
@@ -648,14 +665,14 @@
                 if ($(id).val()!= null){
                     $(l).css('visibility', 'visible')
                     $('#t13').focus()
-                    // $('#s1').focusout()
                     if($(id).val()== 'reg'){
                         $('#t13').removeAttr('readonly')
                         $('#t13').attr({'maxlength':'18','minlength':'18','placeholder':'Registration No.'})
                         $('#t13').css('text-transform','uppercase')
                         $('#l14').html('Registration No.')
                         $('#t13').val('')
-                        // input('#t13','#l14')
+                        $('#ll5').html('')
+                        jkl=1
                     }
                     else if($(id).val() == 'adm'){
                         $('#t13').removeAttr('readonly')
@@ -663,15 +680,17 @@
                         $('#t13').css('text-transform','uppercase')
                         $('#l14').html('Admission No.')
                         $('#t13').val('')
-                        // input('#t13','#l14')
+                        $('#ll5').html('')
+                        jkl=2
                     }
                     else{
-                        $('#t13').removeAttr('readonly','maxlength','minlength')
-                        $('#t13').attr({"placeholder":"Student's Name"})
+                        $('#t13').removeAttr('readonly')
+                        $('#t13').attr({"placeholder":"Student's Name",'maxlength':'','minlength':''})
                         $('#t13').css('text-transform','capitalize')
                         $('#l14').html("Student's Name")
                         $('#t13').val('')
-                        // input('#t13','#l14')
+                        $('#ll5').html('')
+                        jkl=3
                     }
             }
         }
@@ -694,7 +713,20 @@
             if (dd < 10)
                 dd = "0" + dd
             cd=yy + '-' + mm + '-' + dd
-            $('#t2').attr({'value':yy + '-' + mm + '-' + dd,'max':yy + '-' + mm + '-' + dd})
+            $('#from,#to').attr('max',cd)
+            $('#t2').attr({'value':cd,'max':cd})
+        }
+        function dtchk(){
+            if($('#t2').val()==''){
+                flag=false;
+                $('#dtl').text("Date Cann't be empty!")
+            }
+            else if($('#t2').val()>cd){
+                flag=false;
+                $('#dtl').text("Date Cann't be grater than Current Date!")
+            }
+            else
+                $('#dtl').text("")
         }
         var adm_no,adm_ch;
         function auto() {
@@ -714,6 +746,7 @@
             })
         }
         //================COurse Name=============
+        var res_dat;
         function cname() {
             $.ajax({
                 url: 'rays_desk.py',
@@ -723,6 +756,7 @@
                     t1:bcode
                 },
                 success: function (data) {
+                    res_dat=data
                     if(data==0)
                         alert("Please Add Any Course In Course Entry Form!")
                     else
@@ -732,39 +766,46 @@
         }
         //===================Insert Record=======================
         $('#b3').click(function(){
-            var conf=confirm("Are you sure want to insert this record?")
-            if(conf){
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'adm_insert',
-                        t1:$('#t1').val().trim(),//adm_no
-                        t2:$('#t2').val().trim(),//adm_date
-                        t3:$('#t3').val().trim(),//reg_no
-                        t4:$('#t7').val().trim(),//cou_app
-                        t5:$('#t8').val().trim(),//cfee
-                        t6:$('#t10').val().trim(),//dis
-                        t7:bcode.trim(),//bcode
-                        t8:"Raj_02",//u_id
-                        t9:adm_no.trim(),//adm_no
-                        t10:adm_ch.trim()//adm_ch
-                    },
-                    success:function(data){
-                        var j=data.split(',,,');
-                        alert(j[0])
-                        if(j[1]==10){
-                            var conf=confirm("Do you want to print Admission Invoive!")
-                            if(conf){
-                                sessionStorage.setItem('a1',$('#t1').val())
-                                sessionStorage.setItem('a2',bcode)
-                                window.location.href='Admission_invoice.html'
+            flag=true;
+            ch2('#t3')
+            ch2('#t6')
+            dtchk();
+            if(flag){
+                var conf=confirm("Are you sure want to insert this record?")
+                if(conf){
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'adm_insert',
+                            t1:$('#t1').val().trim().toUpperCase(),//adm_no
+                            t2:$('#t2').val().trim(),//adm_date
+                            t3:$('#t3').val().trim().toUpperCase(),//reg_no
+                            t4:$('#t7').val().trim(),//cou_app
+                            t5:$('#t8').val().trim(),//cfee
+                            t6:$('#t11 option:selected').text().trim(),//dis_ty
+                            t7:$('#t10').val().trim(),//dis
+                            t8:bcode.trim(),//bcode
+                            t9:"Raj_02",//u_id
+                            t10:adm_no.trim(),//adm_no
+                            t11:adm_ch.trim()//adm_ch
+                        },
+                        success:function(data){
+                            var j=data.split(',,,');
+                            alert(j[0])
+                            if(j[1]==10){
+                                var conf=confirm("Do you want to print Admission Invoive!")
+                                if(conf){
+                                    sessionStorage.setItem('a1',$('#t1').val())
+                                    sessionStorage.setItem('a2',bcode)
+                                    window.location.href='Admission_invoice.html'
+                                }
+                                auto()
+                                clear()
                             }
-                            auto()
-                            clear()
                         }
-                    }
-                })
+                    })
+                }
             }
         })
         $('#b4').click(function(){
@@ -777,19 +818,27 @@
         function clear(){
             date()
             ch3('#t3')
-            $('#t3').val('')
-            $('#t4').val('')
-            $('#t5').val('')
-            $('#t6').val('')
-            $('#t7').val('')
-            $('#t8').val('0')
-            $('#t9').val('0')
-            $('#t10').val('0')
-            $('#t12').val('0')
+            ch3('#t6')
+            $('#t3,#t4,#t5,#t6,#t7').val('')
+            $('#t8,#t9,#t10,#t12').val('0')
+            $('#t11').val('inst')
+            $('#t9,#t10').attr('readonly',true)
+            input('#t7','#l7')
+            input('#t4','#l4')
+            input('#t5','#l5')
+            input('#t3','#l3')
+            input('#t6','#l6')
+            $('#t6 option[value!=""]').remove()
+            $('#t6').append(res_dat)
         }
         $('#from').focusout(function(){
             if($('#from').val()!=''){
                 $('#to').attr('min',$('#from').val())
+            }
+        })
+        $('#to').focusout(function(){
+            if($('#to').val()!=''){
+                $('#from').attr('max',$('#to').val())
             }
         })
         //==========================Service Form=============
@@ -797,7 +846,7 @@
             flag2=true;
             if($('#s1').val()!=null){
                 ch2('#t13')
-                if(!(($('#l14').text()=='Admission No.' && $('#t13').val().length!=7)||($('#l14').text()=='Registration No.' && $('#t13').val().length!=18)||$('#t13').val()=="*Field is Mandatory!"||$('#t13').val()==null)){
+                if(!(($('#l14').text()=='Admission No.' && $('#t13').val().length!=7)||($('#l14').text()=='Registration No.' && $('#t13').val().length!=18)||$('#t13').val()=="*Field is Mandatory!"||$('#t13').val()=='')){
                     if($('#from').val()=='' && $('#to').val()!=''){
                         alert("From Date is required!")
                         flag2=false;
@@ -815,9 +864,26 @@
                 }
             }
             else{
-                flag2=false;
-                $('#ll5').html("Please Select Your Choice!")
-                $('#s1').css({'color':'red','border':'solid 1px red'})
+                if($('#from').val()!=''||$('#to').val()!=''){
+                    if($('#from').val()=='' && $('#to').val()!=''){
+                        alert("From Date is required!")
+                        flag2=false;
+                    }
+                    else if($('#from').val()!='' && $('#to').val()==''){
+                        alert("To Date is required!")
+                        flag2=false;
+                    }
+                    else{
+                        if($('#from').val()>$('#to').val()){
+                            alert('From Date Cannot be greater than To Date!')
+                            flag2=false;
+                        }
+                    }
+                }
+                else{
+                    alert('Please Select Any Field!')
+                    flag2=false;
+                }
             }
             if(flag2){
                 $.ajax({
@@ -845,11 +911,9 @@
             } 
         })
         $(document).on('blur','#e',function(){
-            // a=$(this).text();
             $(this).text($(this).text()+"   ");
         });
         $(document).on('focus','#e',function(){
-            // a=$(this).text().trim();
             $(this).text($(this).text().trim());
         });
         $(document).on('keypress','#e',function(){
@@ -857,73 +921,87 @@
         });
         // --------------------Update Data--------------------
         $(document).on('click','#upd',function(){
-            var conf=confirm("Are you sure want to Update this Record!");
-            if(conf){
-                var cell=$(this).closest('tr').children("td").text().split('   ');
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'upd_adm',
-                        t1:cell[1],
-                        t2:cell[2],
-                        t3:cell[3],
-                        t4:cell[4],
-                        t5:cell[5],
-                        t6:cell[6],
-                        t7:bcode
-                    },
-                    success:function(data){
-                        alert(data);
-                    }
-                })
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var conf=confirm("Are you sure want to Update this Record!");
+                if(conf){
+                    var cell=$(this).closest('tr').children("td").text().split('   ');
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'upd_adm',
+                            t1:cell[1],
+                            t2:cell[2],
+                            t3:cell[3],
+                            t4:cell[4],
+                            t5:cell[5],
+                            t6:cell[6],
+                            t7:bcode
+                        },
+                        success:function(data){
+                            alert(data);
+                        }
+                    })
+                }
             }
         })
         // --------------Delete Data------------------
         $(document).on('click','#del',function(){
-            var conf=confirm("Are you sure want to Delete this Record!");
-            if(conf){
-                var cell=$(this).closest('tr').children("td").text().split('   ');
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'del_adm',
-                        t1:cell[1],
-                        t2:bcode
-                    },
-                    success:function(data){
-                        var j=data.split(',,,')
-                        alert(j[0])
-                        if(j[1]==10){
-                            $(this).closest('tr').text()
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var conf=confirm("Are you sure want to Cancel this Record!");
+                if(conf){
+                    var cell=$(this).closest('tr').children("td").text().split('   ');
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'del_adm',
+                            t1:cell[1],
+                            t2:bcode
+                        },
+                        success:function(data){
+                            var j=data.split(',,,')
+                            alert(j[0])
+                            if(j[1]==10){
+                                for(a=1;a<$('#table3 tr').length+1;a++){
+                                    if(document.getElementById("table3").rows[a].cells[1].innerHTML.trim()==cell[1].trim()){
+                                        document.getElementById("table3").rows[a].style.backgroundColor='red';
+                                        document.getElementById("table3").rows[a].style.color='white';
+                                        break;
+                                    } 
+                                }
+                            }
                         }
-                    }
-                })
+                    })
+                }
             }
         })
         // --------------Print Data------------------
         $(document).on('click','#prt',function(){
-            var conf=confirm("Do you want to Print this Record!");
-            if(conf){
-                var cell=$(this).closest('tr').children("td").text().split('   ');
-                sessionStorage.setItem('a1',cell[1])
-                sessionStorage.setItem('a2',bcode)
-                window.location.href='Admission_invoice.html'
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var conf=confirm("Do you want to Print this Record!");
+                if(conf){
+                    var cell=$(this).closest('tr').children("td").text().split('   ');
+                    sessionStorage.setItem('a1',cell[1])
+                    sessionStorage.setItem('a2',bcode)
+                    window.location.href='Admission_invoice.html'
+                }
             }
         })
         // -----------------Refresh Page------------
         $('#b6').click(function(){
             $('#s1').val(null);
-            $('#d3').html('');
+            $('#d3,#ll6').html('');
             $('#b7').css('display','none')
-            $('#t13').val('')
-            $('#from').val('')
-            $('#to').val('')
+            $('#from,#to').attr({'min':''})
+            $('#t13,#from,#to').val('')
+            // $('#from').val('')
+            // $('#to').val(null)
             input('#t13','#l14')
             $('#t13').attr({'placeholder':'Select Your Choice','readonly':true})
-            $('#ll6').html('')
+            // $('#ll6').html('')
             $('#l13').css('visibility','hidden')
+            date();
         })
         // ======================= Download==========================
         

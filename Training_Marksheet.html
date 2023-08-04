@@ -370,7 +370,7 @@
                 <form>
                     <table id="table1">
                         <tr>
-                            <td id="td1"><label id="l1">Certificate No.</label><input type="text" id="t1" placeholder="Certificate No." maxlength="18" minlength="18" onfocusout="ch2('#t1')"><br><label id="ll1"></label></td>
+                            <td id="td1"><label id="l1">Certificate No.</label><input type="text" id="t1" placeholder="Certificate No." maxlength="18" minlength="18" onfocusout="ch2('#t1')" onfocus="ch3('#t1')"><br><label id="ll1"></label></td>
                             <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2" readonly><br><label id="ll2"></label></td>
                         </tr>
                         <tr>
@@ -383,10 +383,10 @@
                         </tr>
                         <tr>
                             <td><label id="l7">Duration</label><input type="text" id="t7" placeholder="Duration" readonly><br><label id="ll5"></label></td>
-                            <td><label id="l8">Study Centre<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Study Centre*" readonly><br><label id="ll6"></label></td>
+                            <td><label id="l8">Study Centre</label><input type="text" id="t8" placeholder="Study Centre*" readonly><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="height: 8rem;"><label id="l9">Modules Covered<font style="color: red;">*</font></label><textarea placeholder="Modules Covered*" style="height: 20rem;"></textarea><br><label id="ll3"></label></td>
+                            <td colspan="2" style="height: 8rem;"><label id="l9">Modules Covered</label><textarea placeholder="Modules Covered*" style="height: 20rem;"></textarea><br><label id="ll3"></label></td>
                         </tr>
                     </table>
                     <table id="table4">
@@ -459,16 +459,25 @@
                 flag=false;
             }
             if(t=='#t1' && a.length==18 && a!='*Field is Mandotary!'){
-                $.ajax({
+                details($('#t1').val())
+            }
+        }
+        function ch3(t){
+            $(t).css({'border':'1px solid black','color':'black'});
+            if($(t).val()=='*Field is Mandotary!')
+                $(t).val('')
+        }
+        function details(k){
+            $.ajax({
                     url:'rays_desk.py',
                     method:'post',
                     data:{
                         cond:'mark_reg',
-                        t1:$('#t1').val()
+                        t1:k,
+                        t2:bcode
                     },
                     success:function(data){
-                        // alert(data)
-                        if(data!='0'){
+                        if(data!=0){
                             var j=data.split('&&&&');
                             $('#t3').val(j[0]);
                             $('#t4').val(j[1]);
@@ -477,20 +486,27 @@
                             $('#t7').val(j[4]+" to "+j[5]);
                             $('#t8').val(j[6]);
                         }
-                        else
-                            alert("Invalid Registration!")
+                        else{
+                            alert("Invalid Certificate No.!")
+                            $('#t3').val('');
+                            $('#t4').val('');
+                            $('#t5').val('');
+                            $('#t6').val('');
+                            $('#t7').val('');
+                            $('#t8').val('');
+                        }
                     }
                 })
-            }
-        }
-        function ch3(t){
-            $(t).css({'border':'1px solid black','color':'black'});
-            if($(t).val()=='*Field is Mandotary!')
-                $(t).val('')
         }
         //====================Ready Function==============
         $(document).ready(function(){
             date();
+            var cern=sessionStorage.getItem('cern')
+            if(cern!=null){
+                details(cern)
+                $('#t1').attr('readonly',true)
+                $('#t1').val(cern)
+            }
         })
         // -------------------Date-------------
         function date(){
@@ -502,8 +518,393 @@
                 mm="0"+mm
             if(dd<10)
                 dd="0"+dd
-            $('#t2').val(yy+"-"+mm+"-"+dd)
+            $('#t2').attr({'value':yy+"-"+mm+"-"+dd,'max':yy+"-"+mm+"-"+dd})
         }
+        function dtchk(d,l){
+            if($(d).val()==''){
+                flag=false;
+                $(l).text("Date Cann't be empty!")
+            }
+            else if($(d).val()>cd){
+                flag=false;
+                $(l).text("Date Cann't be grater than Current Date!")
+            }
+            else
+                $(l).text("")
+            if(d=='#t7'){
+                if($(d).val()>$('#t8').val()){
+                    flag=false;
+                    $(l).text("Start Date Cann't be grater than End Date!")
+                }
+            }
+            else if(d=='#t8'){
+                if($(d).val()<$('#t7').val()){
+                    flag=false;
+                    $(l).text("Start Date Cann't be grater than End Date!")
+                }
+            }
+        }
+        // ====================Key Validaition=================
+        var jkl=0;
+        $('#t11').keypress(function(a){
+            if (jkl==1||jkl==2) {
+                    if((a.which == 47||a.which>=48 && a.which<=57)&& a.target.selectionStart === 0){
+                        $('#ll4').text("Digit & / at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==47)){
+                        $('#ll4').text("Only Alphabet,Digit & / Allowed!");
+                        return false;
+                    }
+                    else if(a.which==47 && $('#t13').val().slice(-1) ==='/'){
+                        $('#ll4').text("'/' Multiple times Not Allowed!");
+                        a.preventDefault();
+                    }
+                    else
+                        $('#ll4').text("");
+            }
+            else if(jkl==3){
+                    if((a.which == 46||a.which==32) && a.target.selectionStart === 0){
+                        $('#ll4').text("Dot & Space at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==46||a.which==32)){
+                        $('#ll4').text("Only Alphabet,Digit & / Allowed!");
+                        return false;
+                    }
+                    else if((a.which==46 || a.which==32)&& $('#t13').val().slice(-1) ===String.fromCharCode(a.which)){
+                        $('#ll4').text("Dot & Space Multiple times Not Allowed!");
+                        a.preventDefault();
+                    }
+                    else
+                        $('#ll4').text("");
+            }
+        })
+        $('#t3').on('keypress', function (a) {
+            if((a.which == 47||a.which>=48 && a.which<=57)&& a.target.selectionStart === 0){
+                $('#ll1').text("Digit & / at First Not Allowed!");
+                return false;
+            }
+            else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==47)){
+                $('#ll1').text("Only Alphabet,Digit & / Allowed!");
+                return false;
+            }
+            else if(a.which==47 && $(this).val().slice(-1) ==='/'){
+                $('#ll1').text("'/' Multiple times Not Allowed!");
+                a.preventDefault();
+            }
+            else
+            $('#ll1').text("");
+        });
+        // -------------------insert record----------------------
+        $('#b3').click(function(){
+            flag=true;
+            ch2('#t1')
+            ch2('#t9')
+            ch2('#t10')
+            ch2('#t11')
+            dtchk('#t2','#ll2');
+            if(flag){
+                var conf=confirm("Are you sure want to insert this record?")
+                if(conf){
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'mark_insert',
+                            t1:$('#t1').val().toUpperCase().trim(),
+                            t2:$('#t2').val(),
+                            t3:$('#t3').val().toUpperCase().trim(),
+                            t4:$('#t4').val().trim(),
+                            t5:$('#t5').val().trim(),
+                            t6:$('#t6').val().trim(),
+                            t7:$('#t7').val(),
+                            t8:$('#t8').val(),
+                            t9:$('textarea').val(),
+                            t10:$('#t9').val().replace(/\b[a-z]/g, function (txtVal) { return txtVal.toUpperCase() }).trim(),
+                            t11:$('#t10').val().trim(),
+                            t12:$('#t11').val().trim(),
+                            t13:'Raj_02',
+                            t14:bcode
+                        },
+                        success:function(data){
+                            var j=data.split(',,,');
+                            alert(j[0])
+                            if(j[1]==10){
+                                var conf=confirm('Do you want to Generate Marksheet for this record!')
+                                if(conf){
+                                        sessionStorage.setItem('cert',$('#t1').val());
+                                        window.location.href='Training_Marksheet_Gen.html'
+                                    }
+                                    else
+                                        alert('Please add Student Pic in Registration Form!')   
+                                }
+                                auto()
+                                clear()
+                            }
+                        // }
+                    })
+                }
+            }
+        })
+        $('#b4').click(function(){
+            clear()
+        })
+        function clear(){
+            date()
+            ch3('#t1')
+            ch3('#t9')
+            ch3('#t10')
+            ch3('#t11')
+            ch3('textarea')
+            $('#t1,#t2,#t3,#t4,#t5,#t6,#t7,#t8,#t9,#t10,#t11').val('')
+            // $('#t4').val(null)
+            // $('#t5').val('')
+            // $('#t6').val('')
+            // $('#stu,#stur').css('display','none')
+            // input('#t3','#l3')
+            // $('#t4').attr('disabled',true)
+            // cmbchk('#t4','#l4')
+            dtchk('#t2','#ll2');
+        }
+        // --------------ComboCheck--------------
+        $('#s1').change(function(){
+                    if ($('#s1').val() != null){
+                        $('#l13').css('visibility', 'visible')
+                        $('#t12').focus()
+                        input('#t12','#l14')
+                        if($(id).val()== 'reg'){
+                            $('#t12').removeAttr('readonly')
+                            $('#t12').attr({'maxlength':'18','minlength':'18','placeholder':'Registration No.'})
+                            $('#t12').css('text-transform','uppercase')
+                            $('#l12').html('Registration No.')
+                            $('#t12').val('')
+                            jkl=1
+                        }
+                        else if($(id).val() == 'cert'){
+                            $('#t12').removeAttr('readonly')
+                            $('#t12').attr({'maxlength':'18','minlength':'18','placeholder':'Certificate No.'})
+                            $('#t12').css('text-transform','uppercase')
+                            $('#l12').html('Certificate No.')
+                            $('#t12').val('')
+                            jkl=2
+                        }
+                        else{
+                            $('#t12').removeAttr('readonly')
+                            $('#t12').attr({"placeholder":"Student's Name",'maxlength':'','minlength':''})
+                            $('#t12').css('text-transform','capitalize')
+                            $('#l12').html("Student's Name")
+                            $('#t12').val('')
+                            jkl=3
+                        }
+                    }
+                
+        });
+        //==========================Service Form=============
+        $('#b5').click(function(){
+            flag2=true;
+            if($('#s1').val()!=null){
+                ch2('#t12')
+                if(!(($('#l14').text()=='Certificate No.' && $('#t12').val().length!=18)||($('#l14').text()=='Registration No.' && $('#t12').val().length!=18)||$('#t12').val()=="*Field is Mandatory!"||$('#t12').val()=='')){
+                    if($('#from').val()=='' && $('#to').val()!=''){
+                        alert("From Date is required!")
+                        flag2=false;
+                    }
+                    else if($('#from').val()!='' && $('#to').val()==''){
+                        alert("To Date is required!")
+                        flag2=false;
+                    }
+                    else{
+                        if($('#from').val()>$('#to').val()){
+                            alert('From Date Cannot be greater than To Date!')
+                            flag2=false;
+                        }
+                    }
+                }
+            }
+            else{
+                if($('#from').val()!=''||$('#to').val()!=''){
+                    if($('#from').val()=='' && $('#to').val()!=''){
+                        alert("From Date is required!")
+                        flag2=false;
+                    }
+                    else if($('#from').val()!='' && $('#to').val()==''){
+                        alert("To Date is required!")
+                        flag2=false;
+                    }
+                    else{
+                        if($('#from').val()>$('#to').val()){
+                            alert('From Date Cannot be greater than To Date!')
+                            flag2=false;
+                        }
+                    }
+                }
+                else{
+                    alert('Please Select Any Field!')
+                    flag2=false;
+                }
+            }
+            if(flag2){
+                $.ajax({
+                    url:'rays_desk.py',
+                    method:'post',
+                    data:{
+                        cond:'ser_cert',
+                        t1:$('#s1').val(),
+                        t2:$('#t12').val(),
+                        t3:$('#from').val(),
+                        t4:$('#to').val(),
+                        t5:bcode
+                    },
+                    success:function(data){
+                        if(data!=0){
+                            $('#d3').html(data);
+                            $('#b7').css('display','inline-block');
+                        }
+                        else{
+                            $('#d3').html('');
+                            alert("No Record Found!")
+                        }
+                    }
+                })
+            } 
+        })
+        $(document).on('blur','#e',function(){
+            $(this).text($(this).text()+"   ");
+        });
+        $(document).on('focus','#e',function(){
+            $(this).text($(this).text().trim());
+        });
+        $(document).on('keypress','#e',function(){
+            $(this).css('color','green');
+        });
+        // $(document).on('change','#imgi',function(){
+        //     var jk=$(this).closest('td').prev('td').children('img').attr('src')
+        //     image1('#imgi',jk)
+        // });
+        // --------------------Update Data--------------------
+        // $(document).on('click','#upd',function(){
+        //     if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+        //         var conf=confirm("Are you sure want to Update this Record!");
+        //         if(conf){
+        //             var cell=$(this).closest('tr').children("td").text().split('   ');
+        //             $.ajax({
+        //                 url:'rays_desk.py',
+        //                 method:'post',
+        //                 data:{
+        //                     cond:'upd_cert',
+        //                     t1:cell[1],
+        //                     t2:cell[3],
+        //                     t3:cell[6],
+        //                     t4:cell[7],
+        //                     t5:cell[8],
+        //                     t6:bcode
+        //                 },
+        //                 success:function(data){
+        //                     alert(data);
+        //                 }
+        //             })
+        //         }
+        //     }
+        // })
+        // --------------Delete Data------------------
+        // $(document).on('click','#del',function(){
+        //     if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+        //         var conf=confirm("Are you sure want to Cancel this Record!");
+        //         if(conf){
+        //             var cell=$(this).closest('tr').children("td").text().split('   ');
+        //             $.ajax({
+        //                 url:'rays_desk.py',
+        //                 method:'post',
+        //                 data:{
+        //                     cond:'del_cert',
+        //                     t1:cell[1],
+        //                     t2:bcode
+        //                 },
+        //                 success:function(data){
+        //                     var j=data.split(',,,')
+        //                     alert(j[0])
+        //                     if(j[1]==10){
+        //                         for(a=1;a<$('#table3 tr').length+1;a++){
+        //                             if(document.getElementById("table3").rows[a].cells[1].innerHTML.trim()==cell[1].trim()){
+        //                                 document.getElementById("table3").rows[a].style.backgroundColor='red';
+        //                                 document.getElementById("table3").rows[a].style.color='white';
+        //                                 alert(document.getElementById("table3").rows[a].cells[10].innerHTML)
+        //                                 document.getElementById("table3").rows[a].cells[10].style.color='white';
+        //                                 document.getElementById("table3").rows[a].cells[11].style.color='white';
+        //                                 document.getElementById("table3").rows[a].cells[12].style.color='white';
+        //                                 document.getElementById("table3").rows[a].cells[13].style.color='white';
+        //                                 break;
+        //                             } 
+        //                         }
+        //                     }
+        //                 }
+        //             })
+        //         }
+        //     }
+        // })
+        // $('#from').change(function(){
+        //     if($('#from').val()!=''){
+        //         $('#to').attr('min',$('#from').val())
+        //     }
+        // })
+        // $('#to').change(function(){
+        //     if($('#to').val()!=''){
+        //         $('#from').attr('max',$('#to').val())
+        //     }
+        // })
+        // -----------------Refresh Page------------
+        // $('#b6').click(function(){
+        //     $('#s1').val(null);
+        //     $('#d3').html('');
+        //     $('#b7').css('display','none')
+        //     // $('#t18').val('')
+        //     $('#from,#to,#t11').val('')
+        //     $('#to').removeAttr('min')
+        //     // $('#to').val('')
+        //     input('#t11','#l11')
+        //     $('#t11').attr({'placeholder':'Select Your Choice','readonly':true,'style':'text-transform:capitalize'})
+        //     $('#ll4').html('')
+        //     $('#l101').css('visibility','hidden')
+        // })
+        // =======================Certificate==========================
+        
+        // $(document).on('click','#cert',function(){
+        //     if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+        //         var cell=$(this).closest('tr').children("td").text().split('   ');
+        //         var bk=$(this).parent('td').prev('td').prev('td').prev('td').children().attr('src')
+        //         var conf=confirm("Do you want to generate Certificate for this record!")
+        //         if(conf){
+        //             if(bk.trim()!='#'){
+        //                 sessionStorage.setItem('cert',cell[1]);
+        //                 sessionStorage.setItem('reg',cell[2]);
+        //                 sessionStorage.setItem('doi',cell[3]);
+        //                 sessionStorage.setItem('sname',cell[4]);
+        //                 sessionStorage.setItem('fname',cell[5]);
+        //                 sessionStorage.setItem('cou',cell[6]);
+        //                 sessionStorage.setItem('sdt',cell[7]);
+        //                 sessionStorage.setItem('edt',cell[8]);
+        //                 sessionStorage.setItem('sc',cell[9]);
+        //                 sessionStorage.setItem('sp',bk);
+        //                 window.location.href="Training_Certificate.html"
+        //             }
+        //             else
+        //                 alert("Pleae fill Student Pic in registartion!")
+        //         }
+        //     }
+        // });
+        // =======================Marksheet==========================
+        
+        // $(document).on('click','#mark',function(){
+        //     if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+        //         var cell=$(this).closest('tr').children("td").text().split('   ');
+        //         var conf=confirm("Do you want to create Marksheet for this record!")
+        //         if(conf){
+        //             sessionStorage.setItem('cern',cell[1]);
+        //             window.location.href='Training_Marksheet.html'
+        //         }
+        //     }
+        // });
         // -----------------------------------------
         // var mn=tm=lm='';
         // $('#b3').click(function(){
@@ -535,8 +936,8 @@
             var conf=confirm("Do you want to Download this record!")
             if(conf){
                 $("#table3").table2excel({
-                    exclude: ".sn,#sn,#chk,#del,#upd,#mark,#cert",
-                    filename: $('#s1').val()+"_exp.xls"
+                    exclude: "#chk,#del,#upd,#mark,#cert",
+                    filename: "Training_Marksheet_exp.xls"
                 });
             }
         });

@@ -148,7 +148,7 @@
         #lt{
             margin-left: 3%;
         }
-        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6,#ll7,#ll8,#ll9,#ll10,#ll11,#ll12,#ll13{
+        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6,#ll7,#ll8,#ll9,#ll10,#ll11,#ll12,#ll13,#dtl{
             color: red;
             font-size: 1.6rem;
             float:left;
@@ -352,7 +352,7 @@
                     <table id="table1">
                         <tr>
                             <td id="td1"><label id="l1">Internship No.</label><input type="text" id="t1" placeholder="Internship No." readonly></td>
-                            <td id="td1"><label id="l2">Applied Date</label><input type="date" id="t2" readonly></td>
+                            <td id="td1"><label id="l2">Applied Date</label><input type="date" id="t2" readonly onchange="dtchk('#t2','#dtl')"><br><label id="dtl"></label></td>
                         </tr>
                         <tr>
                             <td><label id="l3">Student Name<font style="color: red;">*</font></label><input type="text" id="t3" autocomplete="off" placeholder="Student Name*" oninput="input('#t3','#l3')" onfocus="ch3('#t3')" onfocusout="ch2('#t3')" onkeydown="keychk('#t3','#ll1')"><br><label id="ll1"></label></td>
@@ -383,7 +383,7 @@
                             <td><label id="l15">Branch Add.</label><textarea placeholder="Branch Add." readonly></textarea></td>
                         </tr>
                         <tr>
-                            <td><label id="l16">Student Pic</label><input type="file" id="t16" alt="" style="padding-top: 0.5rem;border: solid 1px;" onchange="image1('#t16','#t17')"><br><label id="ll12"></label></td>
+                            <td><label id="l16">Student Pic</label><input type="file" id="t16" alt="Student Pic" style="padding-top: 0.5rem;border: solid 1px;" onchange="image1('#t16','#t17')"><br><label id="ll12"></label></td>
                             <td style="display: none;" id="img"><img src="#" alt="Student Pic" id="t17" style="height: 12rem;width: 12rem;border: solid 2px red;"></td>
                         </tr>
                         <tr>
@@ -396,9 +396,8 @@
                 <div id="d2"><b>Internship &nbsp; Certificate &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
-                        <td><label id="l17">Your Choice</label><select id="s1" onchange="cmbchk('#s1','#l17')"><option value="" selected disabled>----- Select Any One -----</option><option value="cert">Certificate No.</option><option value="sname">Student's Name</option><option value="clg">College Name</option><option value="cont">Contact No.</option></select><br><label id="ll34"></label></td>
+                        <td><label id="l17">Your Choice</label><select id="s1" onchange="cmbchk('#s1','#l17')"><option value="" selected disabled>----- Select Any One -----</option><option value="cert">Internship No.</option><option value="sname">Student's Name</option><option value="clg">College Name</option><option value="cont">Contact No.</option></select><br><label id="ll34"></label></td>
                         <td><label id="l18">Your Choice</label><input type="text" id="t18" placeholder="Your Choice" autocomplete="off" oninput="input('#t18','#l18')" onkeydown="keychk('#t18','#ll13')" onfocus="ch3('#t18')" onfocusout="ch2('#t18')"><br><label id="ll13"></label></td>
-                        <!-- <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll3">Choice</label></td> -->
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
                     </tr>
                     <tr>
@@ -458,8 +457,8 @@
                 if(t=='#t18')
                     flag2=false
             }
-            if(t=='#t18' && $('#l18').text()=='Certificate No.' && a.length>=1 && a.length<19){
-                $('#ll13').html("Invalid Certificate No!")
+            if(t=='#t18' && $('#l18').text()=='Internship No.' && a.length>=1 && a.length<19){
+                $('#ll13').html("Invalid Internship No!")
                 flag2=false;
             }
             else if(t=='#t18' && $('#l18').text()=='Contact No.' && a.length>=1 && a.length<10){
@@ -478,7 +477,7 @@
         // -------------------------Key Validation------------
         function keychk(chk,d){
                 $(d).text("");
-                if(chk=='#t10'||chk=='#t14'){
+                if(chk=='#t10'||chk=='#t14'||chk=='#t7'){
                     $(chk).on('keypress',function(e){
                         if(e.which==48 && e.target.selectionStart==0){
                             $(d).text("Zero At First Not Allowed!");
@@ -496,7 +495,7 @@
                         }
                     });
                 }
-                else if(chk=='#t3'||chk=='#t4'||chk=='#t8'||chk=='#t9'||chk=='#t13'){
+                else if(chk=='#t3'||chk=='#t4'||chk=='#t8'||chk=='#t9'||chk=='#t13'||chk=='#t12'){
                     $(chk).on('keypress',function(e){
                         if(e.which==32 && e.target.selectionStart==0||e.which==46 && e.target.selectionStart==0){
                             $(d).text("Space and Dot At First Not Allowed!");
@@ -634,6 +633,18 @@
             $('#t2,#t5').val(yy+"-"+mm+"-"+dd)
             $('#t5').attr({'max':yy+"-"+mm+"-"+dd,'min':parseInt(yy)-50+"-"+mm+"-"+dd})
         }
+        function dtchk(d,l){
+            if($(d).val()==''){
+                flag=false;
+                $(l).text("Date Cann't be empty!")
+            }
+            else if($(d).val()>cd){
+                flag=false;
+                $(l).text("Date Cann't be grater than Current Date!")
+            }
+            else
+                $(l).text("")
+        }
         //===================Image Validation======================
         // $('#t16').bind('change', function () {
             
@@ -661,48 +672,60 @@
         }
         //==============================Insert Record==============
         $('#b3').click(function(){
-            // alert($('#t1').val()+$('input[name="rd"]:checked').val()+$('#t2').val())
-            var conf=confirm("Are you sure want to insert this record?")
-            if(conf){
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'int_insert',
-                        t1:$('#t1').val(),
-                        t2:$('#t2').val(),
-                        t3:$('#t3').val(),
-                        t4:$('#t4').val(),
-                        t5:$('input[name="rd"]:checked').val(),
-                        t6:$('#t5').val(),
-                        t7:$('#t6').val(),
-                        t8:$('#t7').val(),
-                        t9:$('#t8').val(),
-                        t10:$('#t9').val(),
-                        t11:$('#t10').val()+"-"+$('#t11').val(),
-                        t12:$('#t12').val(),
-                        t13:$('#t13').val(),
-                        t14:$('#t14').val(),
-                        t15:$('#t15').val(),
-                        t16:$('textarea').val(),
-                        t17:kl,
-                        t18:int_ch,
-                        t19:int_no,
-                        t20:'Raj_02'
-                    },
-                    success:function(data){
-                        var j=data.split(',,,');
-                        alert(j[0])
-                        if(j[1]==10){
-                            auto()
-                            clear()
-                        }
-                    }
-                })
+            flag=true;
+            ch2('#t3,#t4,#t7,#t8,#t9,#t10,#t12,#t13')
+            if($('#t7').val().length<10 && $('#t7').val()!='*Field is Mandotary!'){
+                flag=false;
+                $('#ll5').html('Please enter valid numner!')
             }
+            if(flag){
+                var conf=confirm("Are you sure want to insert this record?")
+                if(conf){
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'int_insert',
+                            t1:$('#t1').val(),
+                            t2:$('#t2').val(),
+                            t3:$('#t3').val(),
+                            t4:$('#t4').val(),
+                            t5:$('input[name="rd"]:checked').val(),
+                            t6:$('#t5').val(),
+                            t7:$('#t6').val(),
+                            t8:$('#t7').val(),
+                            t9:$('#t8').val(),
+                            t10:$('#t9').val(),
+                            t11:$('#t10').val()+"-"+$('#t11').val(),
+                            t12:$('#t12').val(),
+                            t13:$('#t13').val(),
+                            t14:$('#t14').val(),
+                            t15:$('#t15').val(),
+                            t16:$('textarea').val(),
+                            t17:kl,
+                            t18:int_ch,
+                            t19:int_no,
+                            t20:'Raj_02',
+                            t21:bcode
+                        },
+                        success:function(data){
+                            var j=data.split(',,,');
+                            alert(j[0])
+                            if(j[1]==10){
+                                auto()
+                                clear()
+                            }
+                        }
+                    })
+                }
+            }
+            
         })
         $('#b4').click(function(){
             clear()
+        })
+        $('#b4').focusout(function(){
+            $('#t3').focus()
         })
         function clear(){
             date()
@@ -716,55 +739,107 @@
             $('#t11').val('Mts')
             $('#t12').val('')
             $('#t13').val('')
-            $('#t14').val('')
+            $('#t14').val('0')
             $('#t16').val('')
+            $('#t17').css('display','none')
             $('#t17').attr('src','#')
         }
         // --------------ComboCheck--------------
+        var jkl=0;
         function cmbchk(id,l) {
                 if ($(id).val() != null){
                     $(l).css('visibility', 'visible')
                     $('#t18').focus()
+                    input('#t18','#l18')
                     // $('#s1').focusout()
                     if($(id).val()== 'clg'){
                         $('#t18').removeAttr('readonly')
-                        $('#t18').attr({'placeholder':'College Name'})
+                        $('#t18').attr({'placeholder':'College Name','maxlength':'','minlength':''})
                         $('#t18').css('text-transform','capitalize')
                         $('#l18').html('College Name')
                         $('#t18').val('')
-                        input('#t18','#l18')
+                        jkl=1;
                     }
                     else if($(id).val()== 'cont'){
                         $('#t18').removeAttr('readonly')
                         $('#t18').attr({'maxlength':'10','minlength':'10','placeholder':'Contact No.'})
                         $('#l18').html('Contact No.')
                         $('#t18').val('')
-                        input('#t18','#l18')
+                        jkl=2;
+                        // input('#t18','#l18')
                     }
                     else if($(id).val() == 'cert'){
                         $('#t18').removeAttr('readonly')
                         $('#t18').attr({'maxlength':'19','minlength':'19','placeholder':'Certificate No.'})
                         $('#t18').css('text-transform','uppercase')
-                        $('#l18').html('Certificate No.')
+                        $('#l18').html('Internship No.')
                         $('#t18').val('')
-                        input('#t18','#l18')
+                        jkl=3;
+                        // input('#t18','#l18')
                     }
                     else{
-                        $('#t18').removeAttr('readonly','maxlength','minlength')
-                        $('#t18').attr({"placeholder":"Student's Name"})
+                        $('#t18').removeAttr('readonly')
+                        $('#t18').attr({"placeholder":"Student's Name",'maxlength':'','minlength':''})
                         $('#t18').css('text-transform','capitalize')
                         $('#l18').html("Student's Name")
                         $('#t18').val('')
-                        input('#t18','#l18')
+                        jkl=4;
+                        // input('#t18','#l18')
                     }
                 }
         }
+        $('#t11').keypress(function(a){
+            if (jkl==3) {
+                    if((a.which == 47||a.which>=48 && a.which<=57)&& a.target.selectionStart === 0){
+                        $('#ll3').text("Digit & / at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57 || a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==47)){
+                        $('#ll3').text("Only Alphabet,Digit & / Allowed!");
+                        return false;
+                    }
+                    else if(a.which==47 && $('#t13').val().slice(-1) ==='/'){
+                        $('#ll3').text("'/' Multiple times Not Allowed!");
+                        a.preventDefault();
+                    }
+                    else
+                        $('#ll3').text("");
+            }
+            else if(jkl==1||jkl==4){
+                    if((a.which == 46||a.which==32) && a.target.selectionStart === 0){
+                        $('#ll3').text("Dot & Space at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=65 && a.which<=90 || a.which>=97 && a.which<=122 || a.which==13||a.which==46||a.which==32)){
+                        $('#ll3').text("Only Alphabet Allowed!");
+                        return false;
+                    }
+                    else if((a.which==46 || a.which==32)&& $('#t13').val().slice(-1) ===String.fromCharCode(a.which)){
+                        $('#ll3').text("Dot & Space Multiple times Not Allowed!");
+                        a.preventDefault();
+                    }
+                    else
+                        $('#ll3').text("");
+            }
+            else{
+                if((a.which == 48) && a.target.selectionStart === 0){
+                        $('#ll3').text("Zero at First Not Allowed!");
+                        return false;
+                    }
+                    else if(!(a.which>=48 && a.which<=57|| a.which==13||a.which==46||a.which==32)){
+                        $('#ll3').text("Only Digit Allowed!");
+                        return false;
+                    }
+                    else
+                        $('#ll3').text("");
+            }
+        })
         //==========================Service Form=============
         $('#b5').click(function(){
             flag2=true;
             if($('#s1').val()!=null){
                 ch2('#t18')
-                if(!(($('#l18').text()=='Certificate No.' && $('#t13').val().length!=19)||($('#l14').text()=='Contact No.' && $('#t13').val().length!=10)||$('#t13').val()=="*Field is Mandatory!"||$('#t13').val()==null)){
+                if(!(($('#l18').text()=='Intenship No.' && $('#t18').val().length!=19)||($('#l18').text()=='Contact No.' && $('#t18').val().length!=10)||$('#t18').val()=="*Field is Mandatory!"||$('#t18').val()=='')){
                     if($('#from').val()=='' && $('#to').val()!=''){
                         alert("From Date is required!")
                         flag2=false;
@@ -782,9 +857,26 @@
                 }
             }
             else{
-                flag2=false;
-                $('#ll34').html("Please Select Your Choice!")
-                $('#s1').css({'color':'red','border':'solid 1px red'})
+                if($('#from').val()!=''||$('#to').val()!=''){
+                    if($('#from').val()=='' && $('#to').val()!=''){
+                        alert("From Date is required!")
+                        flag2=false;
+                    }
+                    else if($('#from').val()!='' && $('#to').val()==''){
+                        alert("To Date is required!")
+                        flag2=false;
+                    }
+                    else{
+                        if($('#from').val()>$('#to').val()){
+                            alert('From Date Cannot be greater than To Date!')
+                            flag2=false;
+                        }
+                    }
+                }
+                else{
+                    alert('Please Select Any Field!')
+                    flag2=false;
+                }
             }
             if(flag2){
                 $.ajax({
@@ -795,7 +887,8 @@
                         t1:$('#s1').val(),
                         t2:$('#t18').val(),
                         t3:$('#from').val(),
-                        t4:$('#to').val()
+                        t4:$('#to').val(),
+                        t5:bcode
                     },
                     success:function(data){
                         if(data!=0){
@@ -827,62 +920,88 @@
         });
         // --------------------Update Data--------------------
         $(document).on('click','#upd',function(){
-            var conf=confirm("Are you sure want to Update this Record!");
-            if(conf){
-                var cell=$(this).closest('tr').children("td").text().split('   ');
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'upd_int',
-                        t1:cell[1],
-                        t2:cell[2],
-                        t3:cell[3],
-                        t4:cell[4],
-                        t5:cell[5],
-                        t6:cell[6],
-                        t7:cell[7],
-                        t8:cell[8],
-                        t9:cell[9],
-                        t10:cell[10],
-                        t11:cell[11],
-                        t12:cell[12],
-                        t13:cell[13],
-                        t14:cell[14],
-                        t15:kl
-                    },
-                    success:function(data){
-                        alert(data);
-                    }
-                })
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var conf=confirm("Are you sure want to Update this Record!");
+                if(conf){
+                    var cell=$(this).closest('tr').children("td").text().split('   ');
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'upd_int',
+                            t1:cell[1],
+                            t2:cell[2],
+                            t3:cell[3],
+                            t4:cell[4],
+                            t5:cell[5],
+                            t6:cell[6],
+                            t7:cell[7],
+                            t8:cell[8],
+                            t9:cell[9],
+                            t10:cell[10],
+                            t11:cell[11],
+                            t12:cell[12],
+                            t13:cell[13],
+                            t14:cell[14],
+                            t15:kl,
+                            t16:bcode
+                        },
+                        success:function(data){
+                            alert(data);
+                        }
+                    })
+                }
             }
         })
         // --------------Delete Data------------------
         $(document).on('click','#del',function(){
-            var conf=confirm("Are you sure want to Delete this Record!");
-            if(conf){
-                var cell=$(this).closest('tr').children("td").text().split('   ');
-                $.ajax({
-                    url:'rays_desk.py',
-                    method:'post',
-                    data:{
-                        cond:'del_int',
-                        t1:cell[1]
-                    },
-                    success:function(data){
-                        var j=data.split(',,,')
-                        alert(j[0])
-                        if(j[1]==10){
-                            $(this).closest('tr').text()
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var conf=confirm("Are you sure want to Delete this Record!");
+                if(conf){
+                    var cell=$(this).closest('tr').children("td").text().split('   ');
+                    $.ajax({
+                        url:'rays_desk.py',
+                        method:'post',
+                        data:{
+                            cond:'del_int',
+                            t1:cell[1],
+                            t2:bcode
+                        },
+                        success:function(data){
+                            var j=data.split(',,,')
+                            alert(j[0])
+                            if(j[1]==10){
+                                for(a=1;a<$('#table3 tr').length+1;a++){
+                                    if(document.getElementById("table3").rows[a].cells[1].innerHTML.trim()==cell[1].trim()){
+                                        document.getElementById("table3").rows[a].style.backgroundColor='red';
+                                        document.getElementById("table3").rows[a].style.color='white';
+                                        alert(document.getElementById("table3").rows[a].cells[10].innerHTML)
+                                        document.getElementById("table3").rows[a].cells[10].style.color='white';
+                                        document.getElementById("table3").rows[a].cells[11].style.color='white';
+                                        document.getElementById("table3").rows[a].cells[12].style.color='white';
+                                        document.getElementById("table3").rows[a].cells[13].style.color='white';
+                                        break;
+                                    } 
+                                }
+                            }
                         }
-                    }
-                })
+                    })
+                }
             }
         })
-        // --------------Print Data------------------
+        $('#from').change(function(){
+            if($('#from').val()!=''){
+                $('#to').attr('min',$('#from').val())
+            }
+        })
+        $('#to').change(function(){
+            if($('#to').val()!=''){
+                $('#from').attr('max',$('#to').val())
+            }
+        })
         // -----------------Refresh Page------------
         $('#b6').click(function(){
-            $('#s1').val(null);
+            $('#s1').val('');
             $('#d3').html('');
             $('#b7').css('display','none')
             $('#t18').val('')
@@ -893,6 +1012,44 @@
             $('#ll34').html('')
             $('#l18').css('visibility','hidden')
         })
+         // =======================Certificate==========================
+        
+         $(document).on('click','#cert',function(){
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var cell=$(this).closest('tr').children("td").text().split('   ');
+                var bk=$(this).parent('td').prev('td').prev('td').prev('td').prev('td').children().attr('src')
+                var conf=confirm("Do you want to generate Certificate for this record!")
+                if(conf){
+                    if(bk.trim()!='#'){
+                        sessionStorage.setItem('cert',cell[1]);
+                        sessionStorage.setItem('reg',cell[2]);
+                        sessionStorage.setItem('doi',cell[3]);
+                        sessionStorage.setItem('sname',cell[4]);
+                        sessionStorage.setItem('fname',cell[5]);
+                        sessionStorage.setItem('cou',cell[6]);
+                        sessionStorage.setItem('sdt',cell[7]);
+                        sessionStorage.setItem('edt',cell[8]);
+                        sessionStorage.setItem('sc',cell[9]);
+                        sessionStorage.setItem('sp',bk);
+                        window.location.href="Internship_Cert.html"
+                    }
+                    else
+                        alert("Pleae fill Student Pic in Internship Details!")
+                }
+            }
+        });
+        // =======================Marksheet==========================
+        
+        $(document).on('click','#mark',function(){
+            if(!($(this).closest('tr').css('background-color')=='rgb(255, 0, 0)')){
+                var cell=$(this).closest('tr').children("td").text().split('   ');
+                var conf=confirm("Do you want to create Marksheet for this record!")
+                if(conf){
+                    sessionStorage.setItem('intern',cell[1]);
+                    window.location.href='Performance_Report.html'
+                }
+            }
+        });
         // ======================= Download==========================
         
         $(document).on('click','#b7',function(){

@@ -107,11 +107,21 @@
             font-size: 1.8rem;
             text-align: center;
         }
-        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#t10,#t11,#t41,#from,#to{
+        #t1,#t2,#t3,#t4,#t6,#t5,#t7,#t8,#t9,#t10,#t11,#t12,#t13,#t14,#t15,#t16,#from,#to{
             width: 90%;
             height: 4rem;
             padding-left: 1rem;
             font-size: 1.8rem;
+        }
+        #t9{
+            width: 95%;
+        }
+        #t10,#t11,#t12,#t13,#t14,#t15{
+            width: 20%;
+        }
+        #t11,#t12,#t13,#t14,#t15{
+            width: 12%;
+            margin-left: 2rem;
         }
         #from,#to{
             width: 41%;
@@ -119,46 +129,30 @@
         }
         #to{
             margin-left: 5%;
-        }#t41,#t51{
-            width: 42%;
-            font-size: 1.8rem;
         }
-        #t51{
-            margin-left: 5%;
-        }
-        textarea{
-            resize: none;
-            width: 91%;
-            height: 4rem;
-            padding: 1rem 0 0 1rem;
-            font-size: 1.8rem;
-        }
-        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#lf,#lt{
+        #l1,#l2,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#l12,#l13,#l14,#l15,#l16,#l17,#lf,#lt{
             position: absolute;
             font-size: 1.8rem;
             margin: -1rem 4rem;
             background-color: white;
         }
-        #l10{
-            margin-left: 30%;
+        #l1,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#l12,#l3,#l4,#l5,#l16,#l17{
+            visibility: hidden;
         }
         #lt{
             margin-left: 3%;
         }
-        #ll1,#ll2,#ll3{
+        #ll1,#ll2,#ll3,#ll4,#ll5,#ll6,#ll7,#ll8,#ll9,#ll10,#ll11,#ll12,#ll13,#ll14{
             color: red;
             font-size: 1.6rem;
             float:left;
             margin-left: 3rem;
         }
-        #r{
-            float: left;
-            font-size: 1.8rem;
-            margin-left: 0.5rem;
+        #ll8{
+            margin-left: 25%;
         }
-        .radio{
-            float: left;
-            margin-left: 4rem;
+        #ll9,#ll10,#ll11,#ll12{
+            margin-left: 10%;
         }
         #b3,#b4,#b5,#b6,#b7{
             font-weight: bolder;
@@ -326,6 +320,29 @@
                 font-weight: bold;
                 color: black;
             }
+            
+            #t9{
+                width: 90%;
+            }
+            #t10,#t11,#t12,#t13,#t14,#t15{
+                width: 18%;
+            }
+            #t11,#t12,#t13,#t14,#t15{
+                width: 9%;
+                margin-left: 2rem;
+            }
+            #l10{
+                margin-left: 1.2%;
+            }
+            #l11,#l12,#l13,#l14,#l15{
+                margin-left: 3.5%;
+            }
+            #ll8{
+                margin-left: 27%;
+            }
+            #ll9,#ll10,#ll11,#ll12{
+                margin-left: 6%;
+            }
             #sa1{
                 width: 50%;
             }
@@ -344,40 +361,26 @@
                 <form>
                     <table id="table1">
                         <tr>
-                            <td id="td1"><label id="l1">Internship No.</label><input type="text" id="t1" placeholder="Internship No." readonly></td>
-                            <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2"></td>
+                            <td id="td1"><label id="l1">Internship No.</label><input type="text" id="t1" placeholder="Internship No." oninput="input('#t1','#l1')"></td>
+                            <td id="td1"><label id="l2">Date Of Issue</label><input type="date" id="t2" readonly><br><label id="ll1"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l5">Student Name</label><input type="text" id="t5" placeholder="Student Name" readonly></td>
-                            <td><label id="l6">Father's Name</label><input type="text" id="t6" placeholder="Father's Name" readonly></td>
+                            <td><label id="l3">Project Title<font style="color: red;">*</font></label><input type="text" id="t3" placeholder="Project Title*" readonly></td>
+                            <td><label id="l4">OS<font style="color: red;">*</font></label><input type="text" id="t4" placeholder="OS*" oninput="input('#t4','#l4')"><br><label id="ll2"></label></td>
                         </tr>
                         <tr>
-                            <td><label style="font-size: 2rem;float: left;margin-left: 2.5rem;margin-bottom: 1.5rem;">Gender</label><input type="radio" name="rd" id="dr1" class="radio" checked><label for="dr1" id="r">Male</label><input type="radio" name="rd" id="dr2" class="radio"><label for="dr2" id="r">Female</label><input type="radio" name="rd" id="dr3" class="radio"><label for="dr3" id="r">Binary</label></td>
-                            <td><label id="l5">Date Of Birth<font style="color: red;">*</font></label><input type="date" id="t6"><br><label id="ll4"></label></td>
+                            <td><label id="l5">Frontend<font style="color: red;">*</font></label><input type="text" id="t5" placeholder="Frontend*" oninput="input('#t5','#l5')"><br><label id="ll3"></label></td>
+                            <td><label id="l6">Backend<font style="color: red;">*</font></label><input type="text" id="t6" placeholder="Backend*" oninput="input('#t6','#l6')"><br><label id="ll4"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">Email ID</label><input type="email" id="t7" placeholder="Email ID"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Contact No.<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Contact No.*"><br><label id="ll6"></label></td>
+                            <td><label id="l7">Database<font style="color: red;">*</font></label><input type="text" id="t7" placeholder="Database*" oninput="input('#t7','#l7')"><br><label id="ll5"></label></td>
+                            <td><label id="l8">Team Leader's Name<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Team Leader's Name*" oninput="input('#t8','#l8')"><br><label id="ll6"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l6">College Name</label><input type="text" id="t7" placeholder="College Name"><br><label id="ll5" oninput="input('#t7','#l6')"></label></td>
-                            <td><label id="l7">Project Title<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Project Title*"><br><label id="ll6"></label></td>
+                            <td colspan="2"><label id="l9">Team Members<font style="color: red;">*</font></label><input type="text" id="t9" placeholder="Team Members*" oninput="input('#t9','#l9')"><br><label id="ll7"></label></td>
                         </tr>
                         <tr>
-                            <td><label id="l4">Duration<font style="color: red;">*</font></label><input type="text" placeholder="Duration*" id="t41" onkeydown="keychk('#t4','#ll3')" oninput="input('#t4','#l4')" onfocus="ch3('#t4')" onfocusout="ch2('#t4')"><select style="height: 4.5rem;" id="t51"><option value="Hrs" selected>Hours</option><option value="Days">Days</option><option value="Wks">Weeks</option><option value="Mts">Months</option></select><br><label id="ll3"></label></td>
-                            <td><label id="l7">Technologies<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Technologies*"><br><label id="ll6"></label></td>
-                        </tr>
-                        <tr>
-                            <td><label id="l3">Guidance Name</label><input type="text" id="t3" placeholder="Guidance Name"><label id="ll1">Reg</label></td>
-                            <td><label id="l3">Stipend Amt.</label><input type="text" id="t3" placeholder="Stipend Amt."><label id="ll1">Reg</label></td>
-                        </tr>
-                        <tr>
-                            <td><label id="l9">Study Centre Name</label><input type="text" id="t9" placeholder="Study Centre Name" readonly></td>
-                            <td><label id="l11">Branch Add.<font style="color: red;">*</font></label><textarea placeholder="Branch Add.*"></textarea><br><label id="ll12"></label></td>
-                        </tr>
-                        <tr>
-                            <td style="border:rgb(49, 204, 10) solid 2px;"><label id="l10">Student Pic</label><input type="file" src="" id="t10" alt="" style="padding-top: 0.5rem;border: solid 1px;"></td>
-                            <td><img src="rayslogo1-1.png" alt="" id="t11" style="height: 10rem;width: 10rem;border: solid 2px red;"></td>
+                            <td colspan="2"><label id="l10">Member's Name<font style="color: red;">*</font></label><input type="text" id="t10" placeholder="Member's Name*" readonly><label id="l11">Database<font style="color: red;">*</font></label><input type="text" id="t11" placeholder="Database*" oninput="input('#t11','#l11')"><label id="l12">Frontend<font style="color: red;">*</font></label><input type="text" id="t12" placeholder="Frontend*" oninput="input('#t12','#l12')"><label id="l13">Backend<font style="color: red;">*</font></label><input type="text" id="t13" placeholder="Backend*" oninput="input('#t13','#l13')"><label id="l14">Testing<font style="color: red;">*</font></label><input type="text" id="t14" placeholder="Testing*" oninput="input('#t14','#l14')"><label id="l15">Doc.<font style="color: red;">*</font></label><input type="text" id="t15" placeholder="Documentation*" oninput="input('#t15','#l15')"><br><label id="ll8"></label><label id="ll9"></label><label id="ll10"></label><label id="ll11"></label><label id="ll12"></label></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="padding: 6rem;"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
@@ -389,8 +392,12 @@
                 <div id="d2"><b>Performance &nbsp; Report &nbsp; Service</b></div>
                 <table id="table2">
                     <tr>
-                        <td><label id="l9">Your Choice</label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="Registration">Registration No.</option><option value="Certificate">Certificate No.</option><option value="Name">Student Name</option></select></td>
-                        <td><select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll3">Choice</label></td>
+                        <td><label id="l16">Your Choice<font style="color: red;">*</font></label><select id="s1"><option value="" selected disabled>----- Select Any One -----</option><option value="proj">Project Title</option><option value="intern">Internship No.</option></select><br><label id="ll13"></label></td>
+                        <td>
+                            <label id="l17">Your Choice<font style="color: red;">*</font></label><input type="text" id="t16" placeholder="Select Your Choice*" readonly onfocus="ch3('#t16')" onfocusout="ch2('#t16')" oninput="input('#tl6','#l17')">
+                            <br><label id="ll14"></label>
+                            <!-- <select id="s2"><option value="" selected disabled>----- Select Any One -----</option></select><br><label id="ll3">Choice</label> -->
+                        </td>
                         <td><label id="lf">From</label><input type="date" id="from"><label id="lt">To</label><input type="date" id="to"></td>
                     </tr>
                     <tr>
@@ -400,8 +407,8 @@
                 <div id="d3">
                     <div id="d5">
                         <table id="table3">
-                            <tr><th id="sn">Sn</th><th>Internship No</th><th>Student Name</th><th>Father's Name</th><th>Gender</th><th>Date Of Birth</th><th>Email ID</th><th>Contact No.</th><th>College Name</th><th>Project Title</th><th>Duration</th><th>Technologies</th><th>Guidance Name</th><th>Stipend Amt.</th><th>Study Centre</th><th>Student Pic</th><th>Choose File</th><th colspan="4" style="color: blue;">Action</th><th id="sn1"></th></tr>
-                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Internship No">P001</td><td data-label="Student Name">22-07-2001</td><td data-label="Father's Name">15000</td><td data-label="Gender">Ord0001</td><td data-label="Date Of Birth">UPI</td><td data-label="Email ID">5000</td><td data-label="Contact No.">20000</td><td data-label="College Name">20000</td><td data-label="Project Title">20000</td><td data-label="Duration">20000</td><td data-label="Technologies">20000</td><td data-label="Guidance Name">20000</td><td data-label="Stipend Amt.">20000</td><td data-label="Study Centre" contenteditable="true" id="e">17000</td><td data-label="Student Pic" contenteditable="true" id="e">17000</td><td data-label="Choose File" contenteditable="true" id="e">17000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td><td data-label="Certificate"><i class="fa" id="cert" data-toggle="tooltip" title="Certificate">&#xf019;</i></td><td data-label="Marksheet"><i class="fa" id="mark" data-toggle="tooltip" title="Marksheet">&#xf019;</i></td><td class="sn"></td></tr>
+                            <tr><th id="sn">Sn</th><th>Internship No</th><th>Date of Issue</th><th>Project Title</th><th>OS</th><th>Frontend</th><th>Backend</th><th>Database</th><th>TL Name</th><th>Team Members</th><th>Member's Name</th><th>Data_Rec</th><th>Front_Rec</th><th>Back_Rec</th><th>Test_Rec</th><th>Doc_Rec</th><th colspan="4" style="color: blue;">Action Here</th><th id="sn1"></th></tr>
+                            <tr class="tr1"><td id="sn" data-label="SN">1</td><td data-label="Internship No">P001</td><td data-label="Date of Issue">P001</td><td data-label="Project Title">22-07-2001</td><td data-label="OS" contenteditable="true" id="e">15000</td><td data-label="Frontend" contenteditable="true" id="e">Ord0001</td><td data-label="Backend" contenteditable="true" id="e">UPI</td><td data-label="Database" contenteditable="true" id="e">5000</td><td data-label="TL Name">20000</td><td data-label="Team Members">20000</td><td data-label="Member's Name">20000</td><td data-label="Data_Rec">20000</td><td data-label="Front_Rec">20000</td><td data-label="Back_Rec">20000</td><td data-label="Test_Rec">20000</td><td data-label="Doc_Rec">17000</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Cancel"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td><td data-label="Certificate"><i class="fa" id="cert" data-toggle="tooltip" title="Certificate">&#xf019;</i></td><td data-label="Marksheet"><i class="fa" id="mark" data-toggle="tooltip" title="Marksheet">&#xf019;</i></td><td class="sn"></td></tr>
                         </table>
                     </div>
                 </div> 
@@ -423,9 +430,24 @@
             $('#togx').css({'margin-left':'0rem','border-radius':'1rem 0 0 1rem'});
             $('#body').css('margin-left','0%');
             $('#lf,#lt,.fa-search').hide();
-            $('#d3').html('');
+            // $('#d3').html('');
         })
         // --------------------------------------------------------------------
+        // -------------------Date-------------
+        var cd;
+        function date(){
+            var dt=new Date()
+            dd=dt.getDate()
+            mm=dt.getMonth()+1
+            yy=dt.getFullYear()
+            if(mm<10)
+                mm="0"+mm
+            if(dd<10)
+                dd="0"+dd
+            cd=yy+"-"+mm+"-"+dd
+            $('#t2').val(cd)
+            $('#t2,#to,#from').attr({'max':cd})
+        }
        // ======================== Mandatory ===========================
         var flag=true;
         function ch2(t,l){
@@ -441,13 +463,53 @@
             $(l).html('');
         }
         // -----------------------------------------
+        function dtchk(d,l){
+            if($(d).val()==''){
+                flag=false;
+                $(l).text("Date Cann't be empty!")
+            }
+            else if($(d).val()>cd){
+                flag=false;
+                $(l).text("Date Cann't be grater than Current Date!")
+            }
+            else
+                $(l).text("")
+            if(d=='#t7'){
+                if($(d).val()>$('#t8').val()){
+                    flag=false;
+                    $(l).text("Start Date Cann't be grater than End Date!")
+                }
+            }
+            else if(d=='#t8'){
+                if($(d).val()<$('#t7').val()){
+                    flag=false;
+                    $(l).text("Start Date Cann't be grater than End Date!")
+                }
+            }
+        }
+        // -----------------Legend------------------------
+        function input(d, l) {
+            jk = $(d).val()
+            if (jk != '') {
+                $(l).css('visibility', 'visible')
+            }
+            else {
+                $(l).css('visibility', 'hidden')
+            }
+        }
+        $(document).ready(function(){
+            date();
+        })
         // ======================= Download==========================
         
         $(document).on('click','#b7',function(){
-            $("#table3").table2excel({
-                exclude: ".sn,#sn,#chk",
-                filename: $('#s1').val()+"_exp.xls"
-            });
+            var conf=confirm("Do you want to Download this record!")
+            if(conf){
+                $("#table3").table2excel({
+                    exclude: "#chk,#del,#upd,#mark,#cert",
+                    filename: "Performance_Report_exp.xls"
+                });
+            }
         });
     </script>
 </body>
