@@ -78,6 +78,7 @@
             /* border: solid 2px rgb(28, 199, 13); */
             }
         #b1{
+            position: absolute;
             cursor: pointer;
             background-color: green;
             color: white;
@@ -86,7 +87,7 @@
             border-radius: 0.4rem;
             border: none;
             height: 4rem;
-            margin-left: 6rem;
+            margin-left: 20rem;
             transition: 0.5s;
         }
         #b1:hover{
@@ -110,6 +111,9 @@
                 height: 60rem;
             }
         } */
+        #sname,#mname,#fname,#clg,#per,#cor,#st,#dist,#gend,#prog{
+            text-transform: capitalize;
+        }
     </style>
 </head>
 <body>
@@ -132,72 +136,77 @@
         <table id="tab1">
             <tr>
                 <td id="td1"><b>Registration No : </b></td>
-                <td id="td2">REPL/BR01/23/R0001</td>
+                <td id="td2" class="reg_no"></td>
                 <td id="td3"></td>
                 <td id="td1"><b>Registration Date : </b></td>
-                <td id="td2">08/07/2023</td>
+                <td id="td2" class="reg_date"></td>
             </tr>
             <tr>
                 <td><b>Student's Name : </b></td>
-                <td id="sname">Shivam Singh</td>
+                <td id="sname"></td>
                 <td></td>
                 <td><b>Father's Name : </b></td>
-                <td>Shivam Singh</td>
+                <td id="fname"></td>
             </tr>
             <tr>
                 <td><b>Mother's Name : </b></td>
-                <td>Shivam Singh</td>
+                <td id="mname"></td>
                 <td></td>
                 <td><b>Date Of Birth : </b></td>
-                <td>08/07/2023</td>
+                <td id="dob"></td>
             </tr>
             <tr>
                 <td><b>Gender : </b></td>
-                <td>Male</td>
+                <td id="gend"></td>
                 <td></td>
                 <td><b>Blood Group : </b></td>
-                <td>AB+</td>
+                <td id="bld" style="text-transform: uppercase;"></td>
             </tr>
             <tr>
                 <td><b>Email Id : </b></td>
-                <td>shivrajproject.rays@gmail.com</td>
+                <td id="mail" style="text-transform: lowercase;"></td>
                 <td></td>
                 <td><b>Contact No. : </b></td>
-                <td>7617839389</td>
+                <td id="cont"></td>
             </tr>
             <tr>
                 <td><b>Program : </b></td>
-                <td>BCA</td>
+                <td id="prog"></td>
                 <td></td>
                 <td><b>College Name : </b></td>
-                <td>7617839389</td>
+                <td id="clg"></td>
             </tr>
             <tr>
                 <td><b>State : </b></td>
-                <td>Uttar Pradesh</td>
+                <td id="st"></td>
                 <td></td>
                 <td><b>District : </b></td>
-                <td>Ballia</td>
+                <td id="dist"></td>
             </tr>
             <tr>
                 <td><b>Permanent Address : </b></td>
-                <td>Uttar Pradesh, urfherui uefgirhuiuh hrfgeruifhuierfhuier</td>
+                <td id="per"></td>
                 <td></td>
                 <td><b>Correspondence Address : </b></td>
-                <td>Ballia, fijioer finierjhjdfhgjheghehgejhguiehuig guerhuiguerhh</td>
+                <td id="cor"></td>
             </tr>
         </table><hr>
-        <table id="tab2" style="margin-top: 1rem;">
+        <table id="tab2" style="margin-top: 2.5rem;">
             <tr>
                 <td><b>Signature....................................................................</b></td>
-                <td><button type="button" id="b1" class="b1" onclick="toPDF()"><b style="font-size: 1.8rem;" class="fa">&#xf019;&nbsp;&nbsp;DOWNLOAD</b></button></td>
-                <td><button type="button" id="b1" class="b2" onclick=window.print() style="width: 12rem;background-color: rgb(57, 57, 235);"><b style="font-size: 1.8rem;">&#x1F5B6;&nbsp;&nbsp;PRINT</b></button></td>
             </tr>
         </table>
-    </div>
+    </div><br>
+    <table>
+        <tr>
+            <td colspan="3"><button type="button" id="b1" class="b1" onclick="toPDF()"><b style="font-size: 1.8rem;" class="fa">&#xf019;&nbsp;&nbsp;DOWNLOAD</b></button>
+            <button type="button" id="b1" class="b2" onclick=window.print() style="width: 12rem;background-color: rgb(57, 57, 235);margin-left: 40rem;"><b style="font-size: 1.8rem;" class="fa">&#x1F5B6;&nbsp;&nbsp;PRINT</b></button></td>
+        </tr>
+    </table>
     <!-- <script>src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'</script>
     <script>src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"</script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
         function toPDF(){
           html2pdf()
@@ -211,6 +220,43 @@
             .from(document.body)
             .save(document.getElementById('sname').innerHTML+"_Registration_Form.pdf");
         }
+        $(document).ready(function(){
+            $.ajax({
+                url:'rays_desk.py',
+                method:'post',
+                data:{
+                    cond:'reg_invoice',
+                    t1:sessionStorage.getItem('r1'),
+                    t2:sessionStorage.getItem('r2')
+                },
+                success:function(data){
+                    if(data!='0'){
+                        var j=data.split('&&&&')
+                        $('.reg_no').html(j[0])
+                        $('.reg_date').html(j[1])
+                        $('#sname').html(j[2])
+                        $('#fname').html(j[3])
+                        $('#mname').html(j[4])
+                        $('#dob').html(j[5])
+                        $('#gend').html(j[6])
+                        $('#bld').html(j[7])
+                        if(j[8].trim()=='None')
+                            $('#mail').html('')
+                        else
+                            $('#mail').html(j[8])
+                        $('#cont').html(j[9])
+                        $('#prog').html(j[10])
+                        $('#clg').html(j[11])
+                        $('#st').html(j[12])
+                        $('#dist').html(j[13])
+                        $('#per').html(j[14])
+                        $('#cor').html(j[15])
+                    }
+                    else
+                        alert("Something Wrong!")
+                }
+            })
+        })
         </script>
     <!-- <script>
         window.jsPDF = window.jspdf.jsPDF;

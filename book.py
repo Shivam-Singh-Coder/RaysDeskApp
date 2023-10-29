@@ -1,8 +1,8 @@
-#! C:\\Users\\sunny\\AppData\\Local\Programs\\Python\\Python311\\python.exe
+#! C:\Users\HP\AppData\Local\Programs\Python\Python311\python.exe
 print('content-type:text/html\r\n\r\n')
 import cgi
 import mysql.connector
-con=mysql.connector.connect(host="localhost",user="rays_desk",password="rays_desk",database="rays_desk")
+con=mysql.connector.connect(host='localhost', user='webrays', passwd='rayssoft',database='webrays')
 t=con.cursor()
 f=cgi.FieldStorage()
 try:

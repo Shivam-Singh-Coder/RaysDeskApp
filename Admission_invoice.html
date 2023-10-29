@@ -106,6 +106,12 @@
                 height: 60rem;
             }
         } */
+        .pc,.sname,.capp,.disc_ty{
+            text-transform: capitalize;
+        }
+        .adm_no,.reg_no{
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -151,10 +157,13 @@
                 <td><b>Course Fee : </b></td>
                 <td class="fee"></td>
                 <td></td>
-                <td><b>Discount : </b></td>
-                <td class="disc"></td>
+                <td><b>Discount Type : </b></td>
+                <td class="disc_ty"></td>
             </tr>
             <tr>
+                <td><b>Discount : </b></td>
+                <td class="disc"></td>
+                <td></td>
                 <td><b>Total Fee : </b></td>
                 <td class="tot"></td>
             </tr>
@@ -182,15 +191,18 @@
                 success:function(data){
                     if(data!='0'){
                         var j=data.split('&&')
-                        alert(data)
-                        // alert(j[10].length-1)
-                        $('.adm_no').html(j[0].toUpperCase())
+                        $('.adm_no').html(j[0])
                         $('.adm_date').html(j[1])
-                        $('.reg_no').html(j[2].toUpperCase())
-                        $('.pc').html(j[11].substring(0,j[11].trim().length+1))
+                        $('.reg_no').html(j[2])
+                        if(j[10].includes(","))
+                            j[10]=j[10].substring(0,j[10].trim().length+1)
+                        else
+                            j[10]=j[10]
+                        $('.pc').html(j[10])
                         $('.sname').html(j[8])
                         $('.capp').html(j[3])
                         $('.fee').html(j[4])
+                        $('.disc_ty').html(j[5])
                         $('.disc').html(j[6])
                         $('.tot').html(parseInt(j[4])-parseInt(j[6]))
                     }

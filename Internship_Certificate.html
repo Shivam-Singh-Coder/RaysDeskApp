@@ -384,7 +384,7 @@
                         </tr>
                         <tr>
                             <td><label id="l16">Student Pic</label><input type="file" id="t16" alt="Student Pic" style="padding-top: 0.5rem;border: solid 1px;" onchange="image1('#t16','#t17')"><br><label id="ll12"></label></td>
-                            <td style="display: none;" id="img"><img src="#" alt="Student Pic" id="t17" style="height: 12rem;width: 12rem;border: solid 2px red;"></td>
+                            <td style="display: none;" id="img"><img src="#" alt="Student Pic" id="t17" style="height: 12rem;width: 12rem;border: solid 2px red;object-fit: fill;"></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="padding: 6rem;"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
@@ -705,7 +705,7 @@
                             t17:kl,
                             t18:int_ch,
                             t19:int_no,
-                            t20:'Raj_02',
+                            t20:sessionStorage.getItem('u_id'),
                             t21:bcode
                         },
                         success:function(data){

@@ -624,7 +624,7 @@
                             t10:$('#t9').val().replace(/\b[a-z]/g, function (txtVal) { return txtVal.toUpperCase() }).trim(),
                             t11:$('#t10').val().trim(),
                             t12:$('#t11').val().trim(),
-                            t13:'Raj_02',
+                            t13:sessionStorage.getItem('u_id'),
                             t14:bcode
                         },
                         success:function(data){

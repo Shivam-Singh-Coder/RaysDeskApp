@@ -136,7 +136,7 @@
             margin: -1rem 4rem;
             background-color: white;
         }
-        #l1,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#l12,#l3,#l4,#l5,#l16,#l17{
+        #l1,#l3,#l4,#l5,#l6,#l7,#l8,#l9,#l10,#l11,#l12,#l13,#l14,#l15,#l16,#l17{
             visibility: hidden;
         }
         #lt{
@@ -376,14 +376,14 @@
                             <td><label id="l7">Database<font style="color: red;">*</font></label><input type="text" id="t7" placeholder="Database*" oninput="input('#t7','#l7')"><br><label id="ll5"></label></td>
                             <td><label id="l8">Team Leader's Name<font style="color: red;">*</font></label><input type="text" id="t8" placeholder="Team Leader's Name*" oninput="input('#t8','#l8')"><br><label id="ll6"></label></td>
                         </tr>
-                        <tr>
+                        <tr style="border: solid 2px red;">
                             <td colspan="2"><label id="l9">Team Members<font style="color: red;">*</font></label><input type="text" id="t9" placeholder="Team Members*" oninput="input('#t9','#l9')"><br><label id="ll7"></label></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td colspan="2"><label id="l10">Member's Name<font style="color: red;">*</font></label><input type="text" id="t10" placeholder="Member's Name*" readonly><label id="l11">Database<font style="color: red;">*</font></label><input type="text" id="t11" placeholder="Database*" oninput="input('#t11','#l11')"><label id="l12">Frontend<font style="color: red;">*</font></label><input type="text" id="t12" placeholder="Frontend*" oninput="input('#t12','#l12')"><label id="l13">Backend<font style="color: red;">*</font></label><input type="text" id="t13" placeholder="Backend*" oninput="input('#t13','#l13')"><label id="l14">Testing<font style="color: red;">*</font></label><input type="text" id="t14" placeholder="Testing*" oninput="input('#t14','#l14')"><label id="l15">Doc.<font style="color: red;">*</font></label><input type="text" id="t15" placeholder="Documentation*" oninput="input('#t15','#l15')"><br><label id="ll8"></label><label id="ll9"></label><label id="ll10"></label><label id="ll11"></label><label id="ll12"></label></td>
-                        </tr>
+                        </tr> -->
                         <tr>
-                            <td colspan="2" style="padding: 6rem;"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
+                            <td colspan="2"><input type="button" value="&#x2713; Submit" id="b3"><input type="button" value="&#x21bb;&nbsp; Reset" id="b4"></td>
                         </tr>
                     </table>
                 </form>
@@ -448,6 +448,15 @@
             $('#t2').val(cd)
             $('#t2,#to,#from').attr({'max':cd})
         }
+        $('#t9').focusout(function(){
+            var k=$(this).val().trim();
+            if(k.endsWith(','))
+                k=k.substring(0,k.length-1)
+            k=k.split(',')
+            for(i=0;i<k.length;i++){
+                $(this).closest('tr').after('<tr><td colspan="2"><label id="l10">Members Name<font style="color: red;">*</font></label><input type="text" id="t10" placeholder="Member Name*" value="'+k[i]+'" readonly><label id="l11">Database<font style="color: red;">*</font></label><input type="text" id="t11" placeholder="Database*" oninput="input("#t11","#l11")"><label id="l12">Frontend<font style="color: red;">*</font></label><input type="text" id="t12" placeholder="Frontend*" oninput="input("#t12","#l12")"><label id="l13">Backend<font style="color: red;">*</font></label><input type="text" id="t13" placeholder="Backend*" oninput="input("#t13","#l13")"><label id="l14">Testing<font style="color: red;">*</font></label><input type="text" id="t14" placeholder="Testing*" oninput="input("#t14","#l14")"><label id="l15">Doc.<font style="color: red;">*</font></label><input type="text" id="t15" placeholder="Documentation*" oninput="input("#t15","#l15")"><br><label id="ll8"></label><label id="ll9"></label><label id="ll10"></label><label id="ll11"></label><label id="ll12"></label></td></tr>')
+            }
+        })
        // ======================== Mandatory ===========================
         var flag=true;
         function ch2(t,l){

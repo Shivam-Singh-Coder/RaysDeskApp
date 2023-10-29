@@ -5,7 +5,7 @@ import cgi
 from datetime import date
 from datetime import datetime
 import mysql.connector
-con=mysql.connector.connect(host='localhost', user='rays_desk', passwd='rays_desk',database='rays_desk')
+con=mysql.connector.connect(host='localhost', user='webrays', passwd='rayssoft',database='webrays')
 t=con.cursor() #ready and create explicit cursor that hold query
 try:
     f=cgi.FieldStorage()
@@ -68,8 +68,8 @@ try:
         d21=f.getvalue('t21')
         t.execute("select * from registration where reg_no='"+d1+"'")
         if(t.fetchall()==[]):
-            url="insert into registration values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20))
+            url="insert into registration values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            t.execute(url,(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,0))
             t.execute("update branch_details set reg_no="+d21+" where bcode='"+d19+"'")
             con.commit()
             print("Successfully Inserted Record!,,,10")
@@ -78,74 +78,114 @@ try:
     elif d=='ser_reg':
         d1=f.getvalue('t1')
         d2=f.getvalue('t2')
-        d3=f.getvalue('t2')
-        d4=f.getvalue('t2')
-        if(d3!=None and d4!=None and d1==None and d2==None):
-            url="select * from registration where reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Registration' and d3==None and d4==None):
-            url="select * from registration where reg_no='"+d2+"'"
-        if(d1=='Registration' or d1=='Contact' or d1=='College' or d1=='Name' or d1=='Blood Grp' or d1=='Prog' or d1=='College' and d3!=None and d4!=None):
-            url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Contact' and d3==None and d4==None):
-            url="select * from registration where cont_no='"+d2+"'"
-        # if(d1=='Contact' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Name' and d3==None and d4==None):
-            url="select * from registration where sname='"+d2+"'"
-        # if(d1=='Name' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Blood Grp' and d3==None and d4==None):
-            url="select * from registration where blood_grp='"+d2+"'"
-        # if(d1=='Blood Grp' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='Prog' and d3==None and d4==None):
-            url="select * from registration where prog='"+d2+"'"
-        # if(d1=='Prog' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        if(d1=='College' and d3==None and d4==None):
-            url="select * from registration where clg_name='"+d2+"'"
-        # if(d1=='College' and d3!=None and d4!=None):
-        #     url=url+"and reg_date between '"+d3+"' and '"+d4+"'"
-        else:
-            url="select * from registration"
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        url=''
+        if(d3!=None and d4!=None and d5!=None and d1==None and d2==None):
+            url="select * from registration where bcode='"+d5+"' and reg_date between '"+d3+"' and '"+d4+"' order by reg_no desc"
+        if(d1=='reg_no' and d2!=None and d5!=None):
+            url="select * from registration where reg_no='"+d2+"' and bcode='"+d5+"' order by reg_no desc"
+        if(d1=='reg_no'and d2!=None and d5!=None and d3!=None and d4!=None):
+            url=url[0:url.find('order')]+"and reg_date between '"+d3+"' and '"+d4+"' order by reg_no desc"
+        if(d1=='cont_no' and d2!=None and d5!=None):
+            url="select * from registration where cont_no='"+d2+"' and bcode='"+d5+"' order by reg_no desc"
+        if(d1=='cont_no'and d2!=None and d5!=None and d3!=None and d4!=None):
+            url=url[0:url.find('order')]+"and reg_date between '"+d3+"' and '"+d4+"' order by reg_no desc"
+        if(d1=='sname' and d2!=None and d5!=None):
+            url='select * from registration where sname="'+d2+'" and bcode="'+d5+'" order by reg_no desc'
+        if(d1=='sname' and d2!=None and d5!=None and d3!=None and d4!=None):
+            url=url[0:url.find('order')]+' and reg_date between "'+d3+'" and "'+d4+'" order by reg_no desc'
+        if(d1=='blood_grp' and d2!=None and d5!=None):
+            url="select * from registration where blood_grp='"+d2+"' and bcode='"+d5+"' order by reg_no desc"
+        if(d1=='blood_grp'and d2!=None and d5!=None and d3!=None and d4!=None):
+            url=url[0:url.find('order')]+"and reg_date between '"+d3+"' and '"+d4+"' order by reg_no desc"
+        if(d1=='prog' and d2!=None and d5!=None):
+            url="select * from registration where prog='"+d2+"' and bcode='"+d5+"' order by reg_no desc"
+        if(d1=='prog'and d2!=None and d5!=None and d3!=None and d4!=None):
+            url=url[0:url.find('order')]+"and reg_date between '"+d3+"' and '"+d4+"' order by reg_no desc"
+        if(d1=='clg_name' and d2!=None and d5!=None):
+            url="select * from registration where clg_name='"+d2+"' and bcode='"+d5+"' order by reg_no desc"
+        if(d1=='clg_name'and d2!=None and d5!=None and d3!=None and d4!=None):
+            url=url[0:url.find('order')]+"and reg_date between '"+d3+"' and '"+d4+"' order by reg_no desc"
         t.execute(url)
         rs=t.fetchall()
         if rs==[]:
             print(0)
         else:
             i=0
-            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Course ID</th><th>Course Name</th><th>Course Dur.</th><th>Course Fee</th><th>One Time Payment(OTP)</th><th colspan="2" style="color:blue;" id="act">Action Here</th></tr>')
+            print('<div id="d5"><table id="table3"><tr><th id="sn">Sn</th><th>Registration No</th><th>Registration Date</th><th>Sname</th><th>Fname</th><th>Mname</th><th>Date Of Birth</th><th>Email</th><th>Cont_No</th><th>Program</th><th>Blood_Grp</th><th>College Name</th><th>Gender</th><th>Perma_Add</th><th>District</th><th>State</th><th>Student Pic</th><th>Change SPic</th><th>Adhaar Pic</th><th>Change APic</th><th>Corres_Add</th><th colspan="3" id="chk">Action Here</th></tr>')
             for a in rs:
                 i=i+1
-                print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Course ID">'+str(a[0])+'   '+'</td><td data-label="Course Name" contenteditable="true" id="e">'+str(a[1])+'   '+'</td><td data-label="Course Dur." contenteditable="true" id="e">'+str(a[2])+'   '+'</td><td data-label="Course Fee" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="One Time Payment(OTP)" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete"><i class="fa" id="del" data-toggle="tooltip" title="Delete">&#xf014;</i></td></tr>')
+                if(a[15]==None):
+                    spic='#'
+                else:
+                    spic=a[15].decode()
+                if(a[16]==None):
+                    apic='#'
+                else:
+                    apic=a[16].decode()
+                if a[20]==1:
+                    print('<tr class="tr1" style="background-color:red;color:white;"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Registration No">'+str(a[0])+'   '+'</td><td data-label="Registration Date"><input type="date" value='+str(a[1])+' id="reg_date" style="font-size:1.8rem;color:white;" readonly>'+"   "+'</td><td data-label="Sname" contenteditable="true" id="e">'+str(a[2])+'   '+'</td><td data-label="Fname" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="Mname" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="Date Of Birth"><input type="date" value='+str(a[5])+' id="dob" style="font-size:1.8rem;color:white;" readonly>'+"   "+'</td><td data-label="Email" contenteditable="true" id="e">'+str(a[6])+'   '+'</td><td data-label="Cont_No" contenteditable="true" id="e">'+str(a[7])+'   '+'</td><td data-label="Program" contenteditable="true" id="e">'+str(a[8])+'   '+'</td><td data-label="Blood_Grp" contenteditable="true" id="e">'+str(a[9])+'   '+'</td><td data-label="College Name" contenteditable="true" id="e">'+str(a[10])+'   '+'</td><td data-label="Gender" contenteditable="true" id="e">'+str(a[11])+'   '+'</td><td data-label="Perma_Add" contenteditable="true" id="e">'+str(a[12])+'   '+'</td><td data-label="District" contenteditable="true" id="e">'+str(a[13])+'   '+'</td><td data-label="State" contenteditable="true" id="e">'+str(a[14])+'   '+'</td><td data-label="Student Pic"><img src="'+spic+'" alt="Student Pic" id="simg">'+"   "+'</td><td data-label="Change SPic"><input type="file" name="" id="spic" disabled accept="application/pdf,image/png, image/gif, image/jpeg">'+"   "+'</td><td data-label="Adhaar Pic"><img src="'+apic+'" alt="Adhaar Pic" id="aimg">'+"   "+'</td><td data-label="Change APic"><input type="file" name="" id="apic" disabled accept="application/pdf,image/png,image/gif, image/jpeg">'+"   "+'</td><td data-label="Corres_Add" contenteditable="true" id="e">'+str(a[17])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update" style="color:white;">&#xf044;</i></td><td data-label="Cancel"><i class="fa" id="del" data-toggle="tooltip" title="Cancel" style="color:white;">&#10006;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print" style="color:white;">&#xf02f;</i></td></tr>')
+                else:    
+                    print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Registration No">'+str(a[0])+'   '+'</td><td data-label="Registration Date"><input type="date" value='+str(a[1])+' id="reg_date" style="font-size:1.8rem;">'+"   "+'</td><td data-label="Sname" contenteditable="true" id="e">'+str(a[2])+'   '+'</td><td data-label="Fname" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="Mname" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="Date Of Birth"><input type="date" value='+str(a[5])+' id="dob" style="font-size:1.8rem;">'+"   "+'</td><td data-label="Email" contenteditable="true" id="e">'+str(a[6])+'   '+'</td><td data-label="Cont_No" contenteditable="true" id="e">'+str(a[7])+'   '+'</td><td data-label="Program" contenteditable="true" id="e">'+str(a[8])+'   '+'</td><td data-label="Blood_Grp" contenteditable="true" id="e">'+str(a[9])+'   '+'</td><td data-label="College Name" contenteditable="true" id="e">'+str(a[10])+'   '+'</td><td data-label="Gender" contenteditable="true" id="e">'+str(a[11])+'   '+'</td><td data-label="Perma_Add" contenteditable="true" id="e">'+str(a[12])+'   '+'</td><td data-label="District" contenteditable="true" id="e">'+str(a[13])+'   '+'</td><td data-label="State" contenteditable="true" id="e">'+str(a[14])+'   '+'</td><td data-label="Student Pic"><img src="'+spic+'" alt="Student Pic" id="simg">'+"   "+'</td><td data-label="Change SPic"><input type="file" name="" id="spic" accept="application/pdf,image/png, image/gif, image/jpeg">'+"   "+'</td><td data-label="Adhaar Pic"><img src="'+apic+'" alt="Adhaar Pic" id="aimg">'+"   "+'</td><td data-label="Change APic"><input type="file" name="" id="apic" accept="application/pdf,image/png, image/gif, image/jpeg">'+"   "+'</td><td data-label="Corres_Add" contenteditable="true" id="e">'+str(a[17])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Cancel"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>')
             print('</table></div>')
+    # print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Registration No">'+str(a[0])+'   '+'</td><td data-label="Registration Date"><input type="date" value='+str(a[1])+' id="reg_date" style="font-size:1.8rem;">'+"   "+'</td><td data-label="Sname" contenteditable="true" id="e">'+str(a[2])+'   '+'</td><td data-label="Fname" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="Mname" contenteditable="true" id="e">'+str(a[4])+'   '+'</td><td data-label="Date Of Birth"><input type="date" value='+str(a[5])+' id="dob" style="font-size:1.8rem;">'+"   "+'</td><td data-label="Email" contenteditable="true" id="e">'+str(a[6])+'   '+'</td><td data-label="Cont_No" contenteditable="true" id="e">'+str(a[7])+'   '+'</td><td data-label="Program" contenteditable="true" id="e">'+str(a[8])+'   '+'</td><td data-label="Blood_Grp"><select name="" id="bd"><option value="A">A</option><option value="B">B</option><option value="AB">AB</option><option value="O">O</option><option value="A-">A-</option><option value="B-">B-</option><option value="AB-">AB-</option><option value="O-">O-</option></select></td><td data-label="College Name" contenteditable="true" id="e">'+str(a[10])+'   '+'</td><td data-label="Gender">'+str(a[11])+'   '+'</td><td data-label="Perma_Add" contenteditable="true" id="e">'+str(a[12])+'   '+'</td><td data-label="District"><select name="" id="ds" style="text-align:left;width:15rem;"><option value="">jk</option></select></td><td data-label="State"><select name="" id="st" style="text-align:left;width:15rem;"><option value="Andhra Pradesh">Andhra Pradesh</option><option value="Arunachal Pradesh">Arunachal Pradesh</option><option value="Assam">Assam</option><option value="Bihar">Bihar</option><option value="Chandigarh">Chandigarh</option><option value="Chattisgarh">Chattisgarh</option><option value="Delhi">Delhi</option><option value="Goa">Goa</option><option value="Gujarat">Gujarat</option><option value="Haryana">Haryana</option><option value="Himachal Pradesh">Himachal Pradesh</option><option value="jammu & Kashmir">Jammu & Kashmir</option><option value="Jharkhand">Jharkhand</option><option value="Karnataka">Karnataka</option><option value="Kerala">Kerala</option><option value="Lakshadweep">Lakshadweep</option><option value="Madhya Pradesh">Madhya Pradesh</option><option value="Maharashtra">Maharashtra</option><option value="Manipur">Manipur</option><option value="Meghalaya">Meghalaya</option><option value="Mizoram">Mizoram</option><option value="Odisha">Odisha</option><option value="Punjab">Punjab</option><option value="Rajasthan">Rajasthan</option><option value="Sikkim">Sikkim</option><option value="Tamil Nadu">Tamil Nadu</option><option value="Telangana">Telangana</option><option value="Tripura">Tripura</option><option value="Uttar Pradesh">Uttar Pradesh</option><option value="Uttarakhand">Uttarakhand</option><option value="West Bengal">West Bengal</option><option value="Andaman & Nicobar">Andaman & Nicobar</option><option value="Dadra & Nagar Haveli and Daman & Diu">Dadra & Nagar Haveli and Daman& Diu</option><option value="Pondicherry">Pondicherry</option><option value="Nagaland"> Nagaland</option></select></td><td data-label="Student Pic"><img src="'+spic+'" alt="Student Pic" id="simg"></td><td data-label="Change SPic"><input type="file" name="" id="spic"></td><td data-label="Adhaar Pic"><img src="'+apic+'" alt="Adhaar Pic" id="aimg"></td><td data-label="Change APic"><input type="file" name="" id="apic"></td><td data-label="Corres_Add" contenteditable="true" id="e">'+str(a[17])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Cancel"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>')
     elif d=='upd_reg':
         d1=f.getvalue('t1')
         d2=f.getvalue('t2')
         d3=f.getvalue('t3')
         d4=f.getvalue('t4')
         d5=f.getvalue('t5')
-        d5=f.getvalue('t6')
-        d5=f.getvalue('t7')
-        d5=f.getvalue('t8')
-        d5=f.getvalue('t9')
-        d5=f.getvalue('t10')
-        d5=f.getvalue('t11')
-        d5=f.getvalue('t12')
-        d5=f.getvalue('t13')
-        d5=f.getvalue('t14')
-        d5=f.getvalue('t15')
-        d5=f.getvalue('t16')
-        d5=f.getvalue('t17')
-        d5=f.getvalue('t18')
-        t.execute('update registration set reg_date="'+d2+'",sname="'+d3+'",fname="'+d4+'",mname="'+d5+'",sdob="'+d6+'",email="'+d7+'",cont_no="'+d8+'",prog="'+d9+'",blood_grp="'+d10+'",clg_name="'+d11+'",gender="'+d12+'",prmt_add="'+d13+'",dis="'+d14+'",stt="'+d15+'",sphoto="'+d16+'",aadhaar="'+d17+'",cor_add="'+d18+'" where reg_no="'+d1+'" ')
+        d6=f.getvalue('t6')
+        d7=f.getvalue('t7')
+        d8=f.getvalue('t8')
+        d9=f.getvalue('t9')
+        d10=f.getvalue('t10')
+        d11=f.getvalue('t11')
+        d12=f.getvalue('t12')
+        d13=f.getvalue('t13')
+        d14=f.getvalue('t14')
+        d15=f.getvalue('t15')
+        d16=f.getvalue('t16')
+        d17=f.getvalue('t17')
+        d18=f.getvalue('t18')
+        d19=f.getvalue('t19')
+        t.execute('update registration set reg_date="'+d2+'",sname="'+d3+'",fname="'+d4+'",mname="'+d5+'",sdob="'+d6+'",email="'+d7+'",cont_no="'+d8+'",prog="'+d9+'",blood_grp="'+d10+'",clg_name="'+d11+'",gender="'+d12+'",prmt_add="'+d13+'",dis="'+d14+'",stt="'+d15+'",sphoto="'+d16+'",aadhar="'+d17+'",cor_add="'+d18+'" where reg_no="'+d1+'" and bcode="'+d19+'"')
         con.commit()
         print('Successfully Updated This Record!')
     elif d=='del_reg':
         d1=f.getvalue('t1')
-        t.execute('delete from registration where reg_no="'+d1+'"')
+        d2=f.getvalue('t2')
+        t.execute('update registration set cancel=1 where reg_no="'+d1+'" and bcode="'+d2+'"')
         con.commit()
-        print('Successfully Deleted This Record!,,,10')
+        print('Successfully Cancelled This Record!,,,10')
+    elif d=='reg_cmb':
+        d1=f.getvalue('t1')
+        t.execute('select distinct '+d1+' from registration')
+        rs=t.fetchall()
+        if(d1=='blood_grp'):
+            print('<option value="" selected disabled>----- Select Blood Group-----</option>')
+        elif(d1=='prog'):
+            print('<option value="" selected disabled>----- Select Program Name-----</option>')
+        else:
+            print('<option value="" selected disabled>----- Select College Name-----</option>')
+        if(rs!=[]):
+            for a in rs:
+                print('<option>'+str(a[0])+'</option>')
+        else:
+            print(0)
+    elif d=='reg_invoice':
+        d1=f.getvalue('t1')
+        d2=f.getvalue('t2')
+        t.execute('select reg_no,reg_date,sname,fname,mname,sdob,gender,blood_grp,email,cont_no,prog,clg_name,stt,dis,prmt_add,cor_add from registration where reg_no="'+d1+'" and bcode="'+d2+'"')
+        rs=t.fetchall()
+        if(rs!=[]):
+            for a in rs:
+                for i in a:
+                    print(str(i)+"&&&&")
+        else:
+            print('0')
     ##################Admission###########################
     elif(d=='auto_adm'):
         t1=f.getvalue('t1')
@@ -203,17 +243,17 @@ try:
         url=''
         if(d1==None and d2==None and d4!=None and d3!=None and d5!=None):
             url='select * from admission where bcode="'+d5+'" and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
-        if(d1=='adm' and d5!=None):
+        if(d1=='adm' and d2!=None and d5!=None):
             url='select * from admission where adm_no="'+d2+'" and bcode="'+d5+'" order by adm_no desc'
-        if(d1=='adm' and d4!=None and d5!=None):
+        if(d1=='adm' and d2!=None and d3!=None and d4!=None and d5!=None):
             url=url[0:url.find('order')]+' and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
-        if(d1=='reg' and d5!=None):
+        if(d1=='reg' and d2!=None and d5!=None):
             url='select * from admission where reg_no="'+d2+'" and bcode="'+d5+'" order by adm_no desc'
-        if(d1=='reg' and d4!=None and d5!=None):
-            url=url[0:url.find('order')]+'and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
-        if(d1=='sname' and d5!=None):
+        if(d1=='reg' and d2!=None and d3!=None and d4!=None and d5!=None):
+            url=url[0:url.find('order')]+' and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
+        if(d1=='sname' and d2!=None and d5!=None):
             url='select * from admission where reg_no in(select reg_no from registration where sname="'+d2+'" and bcode="'+d5+'") and bcode="'+d5+'" order by adm_no desc'
-        if(d1=='sname' and d4!=None and d3!=None and d5!=None):
+        if(d1=='sname' and d2!=None and d4!=None and d3!=None and d5!=None):
             url=url[0:url.find('order')]+' and adm_date between "'+d3+'" and "'+d4+'" order by adm_no desc'
         t.execute(url)
         rs=t.fetchall()
@@ -225,7 +265,7 @@ try:
             for a in rs:
                 i=i+1
                 if(a[9]==1):
-                    print('<tr class="tr1" style="background-color:red;color:white;"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Admission No">'+str(a[0])+'   '+'</td><td data-label="Admission Date">'+str(a[1])+'   '+'</td><td data-label="Registration No">'+str(a[2]).upper()+'   '+'</td><td data-label="Course Applied">'+str(a[3])+'   '+'</td><td data-label="Course Fee">'+str(a[4])+'   '+'</td><td data-label="Discount Type">'+str(a[5])+'   '+'</td><td data-label="Discount">'+str(a[6])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update" style="color:white;">&#xf044;</i></td><td data-label="Cancel"><i class="fa" id="del" data-toggle="tooltip" title="Cancel" style="color:white;">&#10006;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print" style="color:white;">&#xf02f;</i></td></tr>')
+                    print('<tr class="tr1" style="background-color:red;color:white;"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Admission No">'+str(a[0])+'   '+'</td><td data-label="Admission Date">'+str(a[1])+'   '+'</td><td data-label="Registration No">'+str(a[2]).upper()+'   '+'</td><td data-label="Course Applied">'+str(a[3])+'   '+'</td><td data-label="Course Fee">'+str(a[4])+'   '+'</td><td data-label="Discount Type">'+str(a[5])+'   '+'</td><td data-label="Discount">'+str(a[6])+'   '+'</td><td data-label="Update"><i class="fa" data-toggle="tooltip" title="Update" style="color:white;">&#xf044;</i></td><td data-label="Cancel"><i class="fa" data-toggle="tooltip" title="Cancel" style="color:white;">&#10006;</i></td><td data-label="Print"><i class="fa" data-toggle="tooltip" title="Print" style="color:white;">&#xf02f;</i></td></tr>')
                 else:
                     print('<tr class="tr1"><td id="sn" data-label="SN">'+str(i)+'   '+'</td><td data-label="Admission No">'+str(a[0])+'   '+'</td><td data-label="Admission Date">'+str(a[1])+'   '+'</td><td data-label="Registration No">'+str(a[2]).upper()+'   '+'</td><td data-label="Course Applied" contenteditable="true" id="e">'+str(a[3])+'   '+'</td><td data-label="Course Fee">'+str(a[4])+'   '+'</td><td data-label="Discount Type" contenteditable="true" id="e">'+str(a[5])+'   '+'</td><td data-label="Discount" contenteditable="true" id="e">'+str(a[6])+'   '+'</td><td data-label="Update"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Cancel"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td><td data-label="Print"><i class="fa" id="prt" data-toggle="tooltip" title="Print">&#xf02f;</i></td></tr>')
             print('</table></div>')
@@ -382,19 +422,19 @@ try:
         d4=f.getvalue('t4')
         d5=f.getvalue('t5')
         url=''
-        if(d1=='cert' and d5!=None):
+        if(d1=='cert' and d2!=None and d5!=None and d3==None and d4==None):
             url='select * from internship where intern_no="'+d2+'" order by intern_no desc'
         if(d1=='cert' and d3!=None and d4!=None and d5!=None):
             url=url[0:url.find('order')]+' and int_date between "'+d3+'" and "'+d4+'" order by intern_no desc'
-        if(d1=='cont' and d5!=None):
+        if(d1=='cont' and d5!=None and d3==None and d4==None):
             url='select * from internship where cont_no="'+d2+'" order by intern_no desc'
         if(d1=='cont' and d3!=None and d4!=None and d5!=None):
             url=url[0:url.find('order')]+' and int_date between "'+d3+'" and "'+d4+'" order by intern_no desc'
-        if(d1=='sname' and d5!=None):
+        if(d1=='sname' and d5!=None and d3==None and d4==None):
             url='select * from internship where sname="'+d2+'" order by intern_no desc'
         if(d1=='sname' and d3!=None and d4!=None and d5!=None):
             url=url[0:url.find('order')]+' and int_date between "'+d3+'" and "'+d4+'" order by intern_no desc'
-        if(d1=='clg' and d5!=None):
+        if(d1=='clg' and d5!=None and d3==None and d4==None):
             url='select * from internship where coll_name="'+d2+'" order by intern_no desc'
         if(d1=='clg' and d3!=None and d4!=None and d5!=None):
             url=url[0:url.find('order')]+' and int_date between "'+d3+'" and "'+d4+'" order by intern_no desc'

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LogIn-Rays</title>
+    <link rel="icon" href="REPL_t-shirt_logobg.png">
     <script src="https://kit.fontawesome.com/2c21330576.js" crossorigin="anonymous"></script>
     <style>
         html {
@@ -16,16 +17,9 @@
             margin: 0;
             padding: 0;
         }
-
-        .hero {
-            margin: 2% auto;
-            width: 80%;
-            height: auto;
-            display: flex;
-            flex-wrap: wrap;
-            box-shadow: 5px 5px 5px rgb(249, 242, 242);
+        body{
+            background-color: #F0F2F5;
         }
-
         .lo {
             height: 11rem;
             width: 11rem;
@@ -52,15 +46,20 @@
             width: 100%;
             height: 100%;
         }
-
+        .con,.con2,.con3{
+            background-color: #FFFFFF;
+            border-radius: 1.5rem;
+        }
         .con {
-            width: 50%;
+            margin: 1% auto;
+            width: 40%;
             height: auto;
             padding: 5rem 0 3rem;
-            /* display: none; */
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
 
         .con h1 {
+            color: #1877F2;
             text-align: center;
             font-size: 3rem;
         }
@@ -101,7 +100,21 @@
             background: transparent;
             transition: border-color 0.2s;
         }
-
+        .sel {
+            font-family: inherit;
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #9b9b9b;
+            outline: 0;
+            font-size: 17px;
+            padding: 7px 2rem;
+        }
+        .sq {
+            margin-left: 2rem;
+            font-size: 1.7rem;
+            color: #9b9b9b;
+            pointer-events: none;
+        }
         .input::placeholder {
             visibility: hidden;
         }
@@ -126,7 +139,7 @@
         .input:focus {
             padding-bottom: 6px;
             border-width: 3px;
-            border-image: linear-gradient(to right, rgb(0, 110, 255),  rgb(0, 110, 255), rgb(0, 110, 255));
+            border-image: linear-gradient(to right, rgb(0, 110, 255), rgb(0, 110, 255), rgb(0, 110, 255));
             border-image-slice: 1;
         }
 
@@ -145,10 +158,10 @@
             box-shadow: none;
         }
 
-        .fa {
+        .icon {
             position: absolute;
             font-size: 2rem;
-            margin-left: -3.7rem;
+            margin-left: -3rem;
             cursor: pointer;
         }
 
@@ -156,36 +169,54 @@
             position: absolute;
             color: red;
             font-weight: bold;
-            margin-left: 55%;
+            margin-left: 45%;
             font-size: 1.5rem;
         }
-        .aa{
+
+        .aa {
             position: absolute;
             color: red;
             font-weight: bold;
             margin-left: 35%;
             font-size: 1.5rem;
         }
+
         .btn {
-            width: 15rem;
-            height: 4rem;
+            padding: 2% 4%;
             font-weight: bold;
-            font-size: large;
+            font-size: 2rem;
+            margin-right: 10rem;
             border-radius: 1rem;
             cursor: pointer;
             background-color: royalblue;
             color: white;
+            border: none;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
-
+        #bt2 {
+            padding: 2% 4%;
+            font-weight: bold;
+            font-size: 2rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            background-color: royalblue;
+            color: white;
+            border: none;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
         #l,
         #l2 {
+            margin-left: -7rem;
             font-size: 1.5rem;
             cursor: pointer;
             font-weight: bold;
         }
 
         #l2 {
-            margin-left: 9rem;
+            float: right;
+            color: #1877F2;
             font-weight: bold;
         }
 
@@ -206,6 +237,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-evenly;
+            margin-left: 8rem;
+            /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
         }
 
         .fa-duotone {
@@ -218,35 +251,19 @@
         }
 
         .con2 {
-            width: 50%;
+            margin: 1% auto;
+            width: 40%;
             height: auto;
-            padding: 5rem 0 3rem;
+            padding: 1rem 0 3rem;
             display: none;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
 
         .con2 h1 {
             text-align: center;
             font-size: 3rem;
+            color: #1877F2;
         }
-
-        .sel {
-            font-family: inherit;
-            width: 43rem;
-            border: none;
-            border-bottom: 2px solid #9b9b9b;
-            outline: 0;
-            font-size: 17px;
-            padding: 7px 2rem;
-        }
-
-        .sq {
-            top: 0;
-            margin-left: 2rem;
-            font-size: 1.7rem;
-            color: #9b9b9b;
-            pointer-events: none;
-        }
-
         .d3 {
             width: 100%;
             display: flex;
@@ -255,15 +272,17 @@
         }
 
         .con3 {
-            width: 50%;
+            width: 40%;
+            margin: 1% auto;
             height: auto;
-            padding: 5rem 0 3rem;
-            /* border: 2px solid red; */
+            padding: 3rem 0 3rem;
             display: none;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
 
         .con3 h1 {
             text-align: center;
+            color: #1877F2;
         }
 
         .d5 {
@@ -280,21 +299,14 @@
             html {
                 font-size: 55%;
             }
-
-            .hero {
-                flex-direction: column;
-            }
-
             .sub {
                 display: none;
             }
-
             .con,
             .con2,
             .con3 {
-                width: 100%;
+                width: 40%;
             }
-
             #l {
                 text-align: center;
             }
@@ -304,85 +316,103 @@
             html {
                 font-size: 45%;
             }
-
-            .hero {
-                flex-direction: column;
-
-            }
-
             .sub {
                 display: none;
             }
-
             .con,
             .con2,
             .con3 {
-                width: 100%;
+                width: 60%;
             }
-
             #l {
                 text-align: center;
             }
         }
+        @media (max-width:600px){
+            html {
+                font-size: 35%;
+            }
+            .sub {
+                display: none;
+            }
+            .con,
+            .con2,
+            .con3 {
+                width: 80%;
+            }
+            #l {
+                text-align: center;
+            }
+        }
+        input[type='button']{
+            letter-spacing: 0.2rem;
+        }
+        #back{
+            font-size: 4rem;
+            color: #1877F2;
+            float: left;
+            height: 1rem;
+            margin-left: 5%;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        #back:hover{
+            scale: 1.2;
+            transition: 0.5s;
+        }
     </style>
 </head>
 
-<body>
-    <div class="hero">
-        <!-- ===============leftdiv===================== -->
-        <div class="sub">
-            <div class="lo"><img src="rayslogo1-1.png" alt="logo id loading"></div>
-            <div class="im"><img src="loginpic.jpg" alt="image is loading"></div>
-        </div>
-        <!-- ---------login---------- -->
+<body style="display: grid;">
         <div class="con">
             <div class="logo">
-                <img src="login.jpg" alt="">
+                <img src="REPL_t-shirt_logo.png" alt="">
             </div><br>
             <h1>LOGIN</h1><br>
             <div class="d1">
                 <div class="inp_div field">
                     <input type="input" name="#m1" class="input" placeholder="User Id " required="" id="t1"
-                        onfocusout="flcheck('#t1')" onfocus="fgchk('#t1')">
+                        onfocusout="flcheck('#t1')" onfocus="fgchk('#t1')"><i class="fa fa-user icon" style="margin-top:1rem"></i>
                     <label class="lab">User Id</label><br>
                 </div><br>
                 <div class="inp_div field">
                     <input type="password" name="#m2" class="input" placeholder="password" required="" id="t2"
-                        onfocusout="flcheck('#t2')" onfocus="fgchk('#t2')"><i class="fa fa-eye-slash" id="e"
+                        onfocusout="flcheck('#t2')" onfocus="fgchk('#t2')">
+                        <i class="fa fa-eye icon" style="margin-top:1rem;" id="e"
                         onclick="eye('#e','#t2')"></i>
-                    <label class="lab">Password</label><br>
+                    <label class="lab">Password</label><br> <label for="" id="l2">Forget Password ?</label></label>
                 </div><br><br><br><br>
-                <i class="fa-duotone fa-plus"></i><input type="button" value="LOGIN" class="btn"
-                    id="bt2"></i><br><br><br>
+               <input type="button" value="&#xf090;&nbsp;&nbsp;LOGIN"
+                    id="bt2" class="fa"><br><br><br>
                 <div class="d2">
-                    <label for="" id="l">Don't have an account ?<span>&nbsp;&nbsp; Sign Up</span> </label>
-                    <label for="" id="l2">Forget Password ?</label></label>
+                    <label for="" id="l">Don't have an account ?<span style="font-size: 2rem;">&nbsp;&nbsp; Sign Up</span> </label>
                 </div><br><br>
-                <div><label for="">------------------------</label></div>
+                <div><label for="" style="letter-spacing: 0.2rem;">------------------------</label></div>
             </div>
         </div>
         <!-- =======================signup======================== -->
         <div class="con2">
+            <h1 style="text-align: center;color: red;" id="h1show"></h1>
             <h1>Sign Up</h1>
             <div class="d3">
                 <div class="inp_div field">
                     <input type="input" name="#m1" class="input" placeholder="User Name " required="" id="t3"
-                        onfocusout="flcheck('#t3')" onfocus="fgchk('#t3')">
+                        onfocusout="flcheck('#t3')" onfocus="fgchk('#t3')"><i class="fa fa-user icon" style="margin-top:1rem"></i>
                     <label class="lab">User Name</label><br>
                     <label for="" id="m1" class="msg"></label>
                 </div><br>
                 <div class="inp_div field">
                     <input type="input" name="#m1" class="input" placeholder="User Id " required="" id="t4"
-                        onfocusout="flcheck('#t4')" onfocus="fgchk('#t4')">
+                        onfocusout="flcheck('#t4')" onfocus="fgchk('#t4')"><i class="fa fa-id-card icon" style="margin-top:1rem"></i>
                     <label class="lab">User Id</label><br>
                 </div><br>
-                <div>
+                <div class="inp_div field">
                     <label class="sq">Security Question</label><br>
                     <select name="" id="t44" class="sel">
-                        <!-- <option value="" selected>-----Security Question-----</option> -->
                         <option value="what is your pet's name?">what is your pet's name?</option>
                         <option value="what is your father's name?">what is your father's name?</option>
-                        <option value="what is your favourate subject?" selected>what is your favourate subject?</option>
+                        <option value="what is your favourate subject?" selected>what is your favourate subject?
+                        </option>
                         <option value="what is your best friend's name?">what is your best friend's name?</option>
                         <option value="what is your childhood name?">what is your childhood name?</option>
                     </select><br>
@@ -394,7 +424,7 @@
                 </div><br>
                 <div class="inp_div field">
                     <input type="password" name="#m1" class="input" placeholder="Password " required="" id="t6"
-                        onfocusout="flcheck('#t6')" onfocus="fgchk('#t6')"><i class="fa fa-eye-slash" id="e1"
+                        onfocusout="flcheck('#t6')" onfocus="fgchk('#t6')"><i class="fa fa-eye-slash icon" id="e1"
                         onclick="eye('#e1','#t6')"></i>
                     <label class="lab">Password</label><br>
                     <label for="" id="mm" class="msg"></label>
@@ -406,31 +436,28 @@
                     <label for="" id="mm1" class="msg"></label>
                 </div><br><br><br><br>
                 <div class="d4">
-                    <input type="button" class="btn" id="bt11" value="SIGNUP">
-                    <input type="button" class="btn" id="bt" value="Go To Login">
+                    <input type="button" class="btn fa" id="bt11" value="&#xf090;&nbsp;&nbsp;SIGNUP">
                 </div>
             </div>
+            <div id="back"><i class="fa">&#xf0a8;</i></div>
         </div>
         <!-- ===================forgot password================= -->
         <div class="con3">
-            <div class="logo">
-                <img src="login.jpg" alt="">
-            </div>
             <h1>FORGOT PASSWORD</h1>
             <div class="d5">
                 <div class="inp_div field">
                     <input type="input" name="#m1" class="input" placeholder="User Id " required="" id="t8"
-                        onfocusout="flcheck('#t8')" onfocus="fgchk('#t8')">
+                        onfocusout="flcheck('#t8')" onfocus="fgchk('#t8')"><i class="fa fa-user icon"></i>
                     <label class="lab">User Id</label><br>
                     <label for="" id="m1" class="msg"></label>
                 </div><br>
-                <div>
-                    <label class="sq">Security Question</label><br>
+                <div class="inp_div field">
+                    <label class="sq lab" style="margin-top: 1.5rem;">Security Question</label><br>
                     <select name="" id="t88" class="sel">
-                        <!-- <option value="" selected>-----Security Question-----</option> -->
                         <option value="what is your pet's name?">what is your pet's name?</option>
                         <option value="what is your father's name?">what is your father's name?</option>
-                        <option value="what is your favourate subject?" selected>what is your favourate subject?</option>
+                        <option value="what is your favourate subject?" selected>what is your favourate subject?
+                        </option>
                         <option value="what is your best friend's name?">what is your best friend's name?</option>
                         <option value="what is your childhood name?">what is your childhood name?</option>
                     </select><br>
@@ -442,7 +469,7 @@
                 </div><br>
                 <div class="inp_div field">
                     <input type="password" name="#m1" class="input" placeholder="New Password " disabled id="t10"
-                        onfocusout="flcheck('#t10')" onfocus="fgchk('#t10')"><i class="fa fa-eye-slash" id="e3"
+                        onfocusout="flcheck('#t10')" onfocus="fgchk('#t10')"><i class="fa fa-eye-slash icon" id="e3"
                         onclick="eye('#e3','#t10')"></i>
                     <label class="lab">Password</label><br>
                     <label for="" id="mmm" class="msg"></label>
@@ -454,16 +481,15 @@
                     <label for="" id="mn1" class="aa"></label>
                 </div><br><br><br><br>
                 <div class="d6">
-                    <input type="button" class="btn" id="bt3" value="CREATE">
-                    <input type="button" class="btn" id="bt1" value="Go to login"><br>
-                    <!-- <label for="" id="mn1" class="msg">vfkgjiorj</label> -->
+                    <input type="button" class="btn fa" id="bt3" value="&#xf090;&nbsp;&nbsp;CREATE">
                 </div><br><br>
             </div>
+            <div id="back" class="back"><i class="fa">&#xf0a8;</i></div>
         </div>
-    </div>
     <!-- ---------------------------------script--------------------------------------------------- -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
+        var role,stat;
         $('#l').click(function () {
             $('.con').css('display', 'none');
             $('.con2').css('display', 'block');
@@ -520,6 +546,12 @@
             if (!(b.which >= 65 && b.which <= 90 || b.which >= 97 && b.which <= 122 || b.which == 32)) {
                 $(a).html('Only alphabets allowed!')
                 return false;
+            }
+        });
+        $('#t2').on('keyup', function (b) {
+            if(b.which==13){
+                $('#bt2').click()
+                $('#bt2').focus()
             }
         });
         $('#t7').focusout(function () {
@@ -587,6 +619,7 @@
                 $('#mn1').html("")
         })
         // ----------------signin--------------
+        var cnt = 0, maxAttempts = 3;
         $('#bt11').click(function () {
             flag = true
             flcheck('#t3')
@@ -604,12 +637,21 @@
                         t2: $('#t4').val(),
                         t3: $('#t44').val(),
                         t4: $('#t5').val(),
-                        t5: $('#t6').val()
+                        t5: $('#t6').val(),
+                        t6: role,
+                        t7: stat
                     },
                     success: function (data) {
                         // alert(data)
                         if (data == 0)
                             alert('This User Id is already registered!')
+                        cnt = cnt + 1;
+                        if (cnt == 3) {
+
+                            alert("PLease Try Again!")
+                            $('#t1,#t2,#t3,#t4,#t5,#t6').val("")
+                            cnt = 0
+                        }
                         else {
                             alert(data)
                             location.reload()
@@ -619,6 +661,13 @@
             }
         })
         // ==================login====================
+        var cnt = 0, maxAttempts = 3;
+        $(document).ready(function () {
+            cnt = 0, maxAttempts = 3;
+            $('#back,.back').click(function(){
+                window.location.href='index.html'
+            })
+        })
         $('#bt2').click(function () {
             flag = true
             flcheck('#t1')
@@ -633,21 +682,33 @@
                         t2: $('#t2').val().trim()
                     },
                     success: function (data) {
-                        if (data == 0)
+                        if (data == 0) {
                             alert(" User Id or password doesn't match!")
+                            // alert('dfghj')
+                            cnt = cnt + 1;
+                            if (cnt == 3) {
+
+                                alert("PLease Try Again!")
+                                $('#t1,#t2').val("")
+                                cnt = 0
+                            }
+                        }
+                        else if(data==10){
+                            alert('Please wait for Approval!')
+                        }
                         else {
                             data = data.split(',,')
-                            alert("Login successfully!")
-                            location.reload()
-                            // localStorage.setItem('user_login',data[0])
-                            // localStorage.setItem('user_name',data[1])
-                            // window.location.href='homepage1234.html'
+                            sessionStorage.setItem('u_id', $('#t1').val().trim())
+                            sessionStorage.setItem('uname', data[0])
+                            sessionStorage.setItem('bcode', data[1])
+                            sessionStorage.setItem('role', data[2])
+                            window.location.href = 'dashbord.html'
                         }
                     }
                 })
             }
         })
-        // ============forgot================
+        // ============forgot===================================
         var count = 2;
         $('#t9').focusout(function () {
             flag = true
@@ -688,6 +749,13 @@
                         }
                         else if (data == 1)
                             alert('Sorry! you are blocked, Please contact to Super admin!')
+                        cnt = cnt + 1;
+                        if (cnt == 3) {
+
+                            alert("PLease Try Again!")
+                            $('#t1,#t2').val("")
+                            cnt = 0
+                        }
                         else
                             $('#t10,#t11').removeAttr('disabled')
                     }
@@ -708,8 +776,7 @@
                         t1: $('#t8').val(),
                         t2: $('#t88').val(),
                         t3: $('#t9').val(),
-                        t4: $('#t10').val()
-
+                        t4: $('#t10').val(),
                     },
                     success: function (data) {
                         alert(data)
@@ -719,7 +786,28 @@
             }
 
         })
+        $(document).ready(function(){
+            $.ajax({
+                url:'login.py',
+                method:'post',
+                data:{
+                    t:'admin'
+                },
+                success:function(data){
+                    // alert(data)
+                    if(data==0){
+                        $('#h1show').html("WELCOME SUPER ADMIN!")
+                        role='Super Admin';
+                        stat='Active';
+                    }
+                    else{ 
+                        $('#h1show').html("")
+                        role='User';
+                        stat='Inactive';
+                    }
+                }
+            })
+        })
     </script>
 </body>
-
 </html>

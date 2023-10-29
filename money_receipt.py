@@ -1,8 +1,8 @@
-#! C:\\Users\\abhim\\AppData\\Local\\Programs\\Python\\Python311\\python.exe
+#! C:\Users\HP\AppData\Local\Programs\Python\Python311\python.exe
 print('contact-type:text/html\r\n\r\n')
 import cgi
 import mysql.connector
-con=mysql.connector.connect(host="localhost",user="abhi",passwd="2003",database="abhi")
+con=mysql.connector.connect(host='localhost', user='webrays', passwd='rayssoft',database='webrays')
 t=con.cursor()
 f=cgi.FieldStorage()
 d=f.getvalue('k')

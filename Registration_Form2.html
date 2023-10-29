@@ -468,31 +468,6 @@
             border: none;
             background-color:transparent;
         }
-        #img-box{
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin-bottom: 3rem;
-          
-        }
-        #img-box div{
-            width: 40%;
-            height: 10rem;
-            border: 2px solid black;
-            position: relative;
-        }
-        #img-box div label{
-            position: absolute;
-            left: 0;
-        }
-        #img-box div img{
-            width: 10rem;
-            height: 10rem;
-        }
-        #img-box iframe{
-            height: 10rem;
-            width: 100%;
-        }
 
 
         @media (max-width:998px) {
@@ -733,22 +708,15 @@
                             <td style="margin-bottom: 2rem;"><label id="l13">Student Pic</label><input type="file" src="" id="t15" alt=""
                                     style="padding-top: 0.5rem;border: solid 1px;" onchange="image('#t15','#t17')"></td>
                             <td><label id="l14">Adhaar Pic</label><input type="file" src="" id="t16" alt=""
-                                    style="padding-top: 0.5rem;border: solid 1px;" onchange="image('#t16','iframe')"></td>
+                                    style="padding-top: 0.5rem;border: solid 1px;" onchange="image('#t16','#t18')"></td>
                         </tr>
                         <tr>
-                            <td style="margin-bottom: 4rem;display: none; " colspan="2" id="imgtd">
-                               <div id="img-box">
-                                    <div id="smg" style="visibility: hidden;">
-                                        <label id="l15">Student Pic</label>
-                                        <img src="Shivam_Pic.jpg" alt="" id="t17">
-                                    </div>
-                                    <div id="amg" style="visibility: hidden;">
-                                        <label id="l16">Adhaar Details</label>
-                                        <iframe src="DocumentsForPAN.pdf" frameborder="0"></iframe>
-                                    </div>
-                               </div>
+                            <td  id="std" style="margin-bottom: 2rem;display: none;"><label id="l15">Student Pic</label>
+                                <div><img src="Shivam_Pic.jpg" alt="" id="t17"></div>
+                                </td>
+                            <td  id="atd" style="display: none;"><label id="l16">Adhaar Pic</label>
+                                <div><iframe src="DocumentsForPAN.pdf" frameborder="0"></iframe></div>
                             </td>
-                            
                         </tr>
                         <tr>
                             <td colspan="2"><input type="button" value="&#x2713; Submit" id="b3"><input type="button"
@@ -815,50 +783,28 @@
         var kl=kl1=null;
         // $('#t16,#t15').bind('change', function () {
             function image(f,i){
-                if(f=='#t15'){
-                    const allowedTypes = ['image/png','image/jpg','image/jpeg']
-                    const file = $(f)[0].files[0];
-                    if (!allowedTypes.includes(file.type)) {
-                        alert('Only image is allowed!');
-                        $(f).val('');
-                    }
-                }
-                else if(f=='#t16'){
-                    const allowedTypes = ['application/pdf','image/png','image/jpg','image/jpeg']
-                    const file = $(f)[0].files[0];
-                    if (!allowedTypes.includes(file.type)) {
-                            alert('Only image/pdf is allowed!');
-                        $(f).val('');
-                    }
-                }
                 if ($(f).val() == '') {
                     if(f=='#t15'){
                         kl = null;
-                        $('#smg').css('visibility','hidden')
+                        $('#std').css('display','none')
                     }
                     else if(f=='#t16'){
                         kl1=null;
-                        $('#amg').css('visibility','hidden')
+                        $('#atd').css('display','none')
                     }
-                    if($('#t15').val()=='' && $('#t16').val()=='')
-                        $('#imgtd').css('display','none')
-                    $(i).attr('src', '');
+                    $(i).attr('src', '#');
                 }
-                else{
-                    var a = new FileReader();
-                    a.readAsDataURL($(f)[0].files[0]);
-                    a.onload = function (e) {
-                        $(i).attr('src',e.target.result);
-                        if(f=='#t15'){
-                            kl = e.target.result;
-                            $('#imgtd').css('display','block')
-                            $('#smg').css('visibility','visible')
-                        }
-                        else if(f=='#t16'){
-                            kl1 = e.target.result;
-                            $('#imgtd').css('display','block')
-                            $('#amg').css('visibility','visible')
-                        }
+                var a = new FileReader();
+                a.readAsDataURL($(f)[0].files[0]);
+                a.onload = function (e) {
+                    $(i).attr('src',e.target.result);
+                    if(f=='#t15'){
+                        kl = e.target.result;
+                        $('#std').css('display','block')
+                    }
+                    else if(f=='#t16'){
+                        kl1 = e.target.result;
+                        $('#atd').css('display','block')
                     }
                 }
             }

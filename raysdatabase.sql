@@ -1,244 +1,294 @@
-create table signup
-( 
-sn varchar(50),
-role int,
-Uname varchar(150),
-u_id varchar(150)  ,
-sec_qus varchar(300),
-sec_ans varchar(250) ,
-pas varchar(200),
-stat varchar(5),
-bcode varchar (25)
-)
-;
-create table registration
-(
-    reg_no varchar(150),
-    reg_date date,
-    sname varchar(200),
-    fname varchar(200),
-    mname varchar(200),
-    sdob date,
-    email varchar(150),
-    cont_no varchar(15),
-    prog varchar(300),
-    blood_grp varchar(10),
-    clg_name varchar(200),
-    gender varchar(10),
-    prmt_add varchar(300),
-    dis varchar(100),
-    stt varchar(300),
-    sphoto blob,
-    aadhar blob,
-    cor_add varchar(300),
-    bcode varchar (25)
-)
- ;
- create table certificate
- (
-    cref_no varchar(50) ,
-    cer_date date,
-    reg_no varchar(50)  ,
-    course varchar(200) ,
-    sname varchar (200) ,
-    fname varchar(200) ,
-    cstart date ,
-    cend date ,
-    stu_pic blob,
-    study_c varchar(500),
-    us_id varchar(200),
-    bcode varchar (25)
- )
- ;
- create table marksheet(
-   cref_no varchar(50) ,
-    mark_date date,
-    reg_no varchar(50)  ,
-    sname varchar (200) ,
-    fname varchar(200) ,
-    course varchar(200) ,
-    dur varchar(200),
-    study_c varchar(500),
-    mod_cov varchar(1500),
-    mod_name varchar(1500),
-    theory varchar(500),
-    lab varchar(500),
-    us_id varchar(200),
-    bcode varchar (25)
- )
- ;
- create table internship
- (
-    intern_no varchar(50) ,
-    int_date date,
-    sname varchar (200) ,
-    fname varchar(200) ,
-    gender varchar(200) ,
-    dob date ,
-    cont_no varchar(500),
-    email_id varchar(500),
-    coll_name varchar(500),
-    pro_tit varchar(500),
-    dur varchar(500),
-    techno varchar(500),
-    guide_name varchar(500),
-    stip_amt varchar(500),
-    stu_pic blob,
-    study_c varchar(500),
-    study_add varchar(500),
-    us_id varchar(200),
-    bcode varchar (25)
- )
- ;
- create table perf_report(
-   intern_no varchar(50) ,
-    int_date date,
-    sname varchar (200) ,
-    fname varchar(200) ,
-    pro_tit varchar(500),
-    os varchar(500),
-    backend varchar(500),
-    frontend varchar(500),
-    databas varchar(500),
-    tl_name varchar(500),
-    team_meb varchar(500),
-    meb_name varchar(500),
-    dbms varchar(500),
-    interface varchar(500),
-    back varchar(500),
-    testing varchar(500),
-    documentation varchar(500),
-    us_id varchar(200),
-    bcode varchar (25)
- )
- ;
- create table admission 
- (
-    adm_no varchar(50) ,
-    adm_date date,
-    reg_no varchar(30) ,
-    cou_apply varchar(300) ,
-    fee varchar(30) ,
-    dis varchar(150),
-    bcode varchar (25)
- )
- ;
- create table course
- (
-    cid varchar(25),
-    cname varchar(150),
-    cdur varchar(150),
-    cfee varchar(12),
-    otp varchar(12),
-    bcode varchar (25)
- )
-;
-create table money_receipt
-(
-    recpt_no varchar(150),
-    rdate date,
-    aform_no varchar(150),
-    cash varchar(20),
-    upi varchar(20),
-    cheque varchar(20),
-    dd varchar(20),
-    dues_amt varchar(15) ,
-    ins_date date,
-    rec_from varchar(200) ,
-    reg_no varchar(150),
-    bcode varchar (25)
-)
-;
-CREATE TABLE branch_details (
-  sn int NOT NULL AUTO_INCREMENT,
-  bcode varchar(250),
-  date varchar(45),
-  bname varchar(300),
-  bcont_pr varchar(200),
-  email varchar(150),
-  phno varchar(50),
-  addr varchar(200),
-  state1 varchar(200),
-  dist varchar(200),
-  reg_no int,
-  adm_no int,
-  cid int,
-  receipt_no int,
-  PRIMARY KEY (sn)
-) 
-;
-create table state(
-   ad int,
-   ar int,
-   am int,
-   br int,
-   cg int,
-   dl int,
-   ga int,
-   gj int,
-   hr int,
-   hp int,
-   jk int,
-   jh int,
-   ka int,
-   kl int,
-   ld int,
-   mp int,
-   mh int,
-   mn int,
-   ml int,
-   mz int,
-   nl int,
-   od int,
-   py int,
-   pb int,
-   rj int,
-   sk int,
-   tn int,
-   ts int,
-   tr int,
-   up int,
-   uk int,
-   wb int,
-   an int,
-   ch int,
-   dn int,
-   la int)
-;
-insert into state values(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-create table book_details
-(
-   reg_no varchar(40),
-   sname varchar(300),
-   bname varchar(500),
-   aname varchar(500),
-   pname varchar(500),
-   issue_dt date,
-   subm_dt date,
-   receice varchar(500),
-   bcode varchar (25)
-)
-;
-create table automatic 
-(
-   reg_no int,
-   adm_no int,
-   cid int,
-   recpt_no int,
-   ch varchar(20),
-   cert_ch varchar(20),
-   cert_no int
-)
-;
+CREATE TABLE `admission` (
+  `adm_no` varchar(50) DEFAULT NULL,
+  `adm_date` date DEFAULT NULL,
+  `reg_no` varchar(30) DEFAULT NULL,
+  `cou_apply` varchar(300) DEFAULT NULL,
+  `fee` varchar(30) DEFAULT NULL,
+  `disc_ty` varchar(100) DEFAULT NULL,
+  `dis` varchar(150) DEFAULT NULL,
+  `bcode` varchar(25) DEFAULT NULL,
+  `u_id` varchar(450) DEFAULT NULL,
+  `cancel` int DEFAULT NULL
+);
+CREATE TABLE `automatic` (
+  `ch` varchar(5) DEFAULT NULL,
+  `cert` int DEFAULT NULL,
+  `yy` varchar(5) DEFAULT NULL,
+  `cert_ch` varchar(20) DEFAULT NULL,
+  `cert_no` int DEFAULT NULL,
+  `int_no` int DEFAULT NULL,
+  `int_ch` varchar(45) DEFAULT NULL
+);
+CREATE TABLE `book_details` (
+  `reg_no` varchar(40) DEFAULT NULL,
+  `sname` varchar(300) DEFAULT NULL,
+  `bname` varchar(500) DEFAULT NULL,
+  `aname` varchar(500) DEFAULT NULL,
+  `pname` varchar(500) DEFAULT NULL,
+  `issue_dt` date DEFAULT NULL,
+  `subm_dt` date DEFAULT NULL,
+  `receice` varchar(500) DEFAULT NULL,
+  `bcode` varchar(25) DEFAULT NULL
+);
+CREATE TABLE `branch_details` (
+  `sn` int NOT NULL AUTO_INCREMENT,
+  `bcode` varchar(250) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  `bname` varchar(300) DEFAULT NULL,
+  `bcont_pr` varchar(200) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `phno` varchar(50) DEFAULT NULL,
+  `addr` varchar(200) DEFAULT NULL,
+  `state1` varchar(200) DEFAULT NULL,
+  `dist` varchar(200) DEFAULT NULL,
+  `reg_no` int DEFAULT NULL,
+  `adm_no` int DEFAULT NULL,
+  `adm_ch` varchar(45) DEFAULT NULL,
+  `cid` int DEFAULT NULL,
+  `rec_no` int DEFAULT NULL,
+  PRIMARY KEY (`sn`)
+);
+CREATE TABLE `certificate` (
+  `cref_no` varchar(50) DEFAULT NULL,
+  `cer_date` date DEFAULT NULL,
+  `reg_no` varchar(50) DEFAULT NULL,
+  `course` varchar(200) DEFAULT NULL,
+  `sname` varchar(200) DEFAULT NULL,
+  `fname` varchar(200) DEFAULT NULL,
+  `cstart` date DEFAULT NULL,
+  `cend` date DEFAULT NULL,
+  `study_c` varchar(500) DEFAULT NULL,
+  `stu_pic` longblob,
+  `bcode` varchar(45) DEFAULT NULL,
+  `us_id` varchar(200) DEFAULT NULL,
+  `cancel` int DEFAULT NULL
+);
+CREATE TABLE `course` (
+  `cid` varchar(25) DEFAULT NULL,
+  `cname` varchar(150) DEFAULT NULL,
+  `mod_name` varchar(345) DEFAULT NULL,
+  `mod_desc` varchar(5500) DEFAULT NULL,
+  `cfee` varchar(12) DEFAULT NULL,
+  `cdur` varchar(150) DEFAULT NULL,
+  `otp` varchar(12) DEFAULT NULL,
+  `bcode` varchar(25) DEFAULT NULL,
+  `u_id` varchar(405) DEFAULT NULL
+);
+CREATE TABLE `internship` (
+  `intern_no` varchar(50) DEFAULT NULL,
+  `int_date` date DEFAULT NULL,
+  `sname` varchar(200) DEFAULT NULL,
+  `fname` varchar(200) DEFAULT NULL,
+  `gender` varchar(200) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `cont_no` varchar(500) DEFAULT NULL,
+  `email_id` varchar(500) DEFAULT NULL,
+  `coll_name` varchar(500) DEFAULT NULL,
+  `pro_tit` varchar(500) DEFAULT NULL,
+  `dur` varchar(500) DEFAULT NULL,
+  `techno` varchar(500) DEFAULT NULL,
+  `guide_name` varchar(500) DEFAULT NULL,
+  `stip_amt` varchar(500) DEFAULT NULL,
+  `study_c` varchar(500) DEFAULT NULL,
+  `study_add` varchar(500) DEFAULT NULL,
+  `stu_pic` longblob,
+  `us_id` varchar(200) DEFAULT NULL,
+  `bcode` varchar(45) DEFAULT NULL,
+  `cancel` int DEFAULT NULL
+);
+CREATE TABLE `marksheet` (
+  `cref_no` varchar(50) DEFAULT NULL,
+  `mark_date` date DEFAULT NULL,
+  `reg_no` varchar(50) DEFAULT NULL,
+  `sname` varchar(200) DEFAULT NULL,
+  `fname` varchar(200) DEFAULT NULL,
+  `course` varchar(200) DEFAULT NULL,
+  `dur` varchar(200) DEFAULT NULL,
+  `study_c` varchar(500) DEFAULT NULL,
+  `mod_cov` varchar(1500) DEFAULT NULL,
+  `mod_name` varchar(1500) DEFAULT NULL,
+  `theory` varchar(500) DEFAULT NULL,
+  `lab` varchar(500) DEFAULT NULL,
+  `us_id` varchar(200) DEFAULT NULL,
+  `bcode` varchar(25) DEFAULT NULL
+);
+CREATE TABLE `money_receipt` (
+  `recpt_no` varchar(150) DEFAULT NULL,
+  `rdate` date DEFAULT NULL,
+  `aform_no` varchar(150) DEFAULT NULL,
+  `cash` varchar(20) DEFAULT NULL,
+  `upi` varchar(20) DEFAULT NULL,
+  `cheque` varchar(20) DEFAULT NULL,
+  `dd` varchar(20) DEFAULT NULL,
+  `dues_amt` varchar(15) DEFAULT NULL,
+  `ins_date` date DEFAULT NULL,
+  `rec_from` varchar(200) DEFAULT NULL,
+  `reg_no` varchar(150) DEFAULT NULL,
+  `bcode` varchar(25) DEFAULT NULL
+);
+CREATE TABLE `perf_report` (
+  `intern_no` varchar(50) DEFAULT NULL,
+  `int_date` date DEFAULT NULL,
+  `sname` varchar(200) DEFAULT NULL,
+  `fname` varchar(200) DEFAULT NULL,
+  `pro_tit` varchar(500) DEFAULT NULL,
+  `os` varchar(500) DEFAULT NULL,
+  `backend` varchar(500) DEFAULT NULL,
+  `frontend` varchar(500) DEFAULT NULL,
+  `databas` varchar(500) DEFAULT NULL,
+  `tl_name` varchar(500) DEFAULT NULL,
+  `team_meb` varchar(500) DEFAULT NULL,
+  `meb_name` varchar(500) DEFAULT NULL,
+  `dbms` varchar(500) DEFAULT NULL,
+  `interface` varchar(500) DEFAULT NULL,
+  `back` varchar(500) DEFAULT NULL,
+  `testing` varchar(500) DEFAULT NULL,
+  `documentation` varchar(500) DEFAULT NULL,
+  `us_id` varchar(200) DEFAULT NULL,
+  `bcode` varchar(25) DEFAULT NULL
+);
+CREATE TABLE `registration` (
+  `reg_no` varchar(150) DEFAULT NULL,
+  `reg_date` date DEFAULT NULL,
+  `sname` varchar(200) DEFAULT NULL,
+  `fname` varchar(200) DEFAULT NULL,
+  `mname` varchar(200) DEFAULT NULL,
+  `sdob` date DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `cont_no` varchar(15) DEFAULT NULL,
+  `prog` varchar(300) DEFAULT NULL,
+  `blood_grp` varchar(10) DEFAULT NULL,
+  `clg_name` varchar(200) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `prmt_add` varchar(300) DEFAULT NULL,
+  `dis` varchar(100) DEFAULT NULL,
+  `stt` varchar(300) DEFAULT NULL,
+  `sphoto` longblob,
+  `aadhar` longblob,
+  `cor_add` varchar(300) DEFAULT NULL,
+  `bcode` varchar(25) DEFAULT NULL,
+  `u_id` varchar(200) DEFAULT NULL,
+  `cancel` int DEFAULT NULL
+);
+CREATE TABLE `signup` (
+  `sn` int NOT NULL AUTO_INCREMENT,
+  `role` varchar(45) DEFAULT NULL,
+  `Uname` varchar(150) DEFAULT NULL,
+  `u_id` varchar(150) DEFAULT NULL,
+  `sec_qus` varchar(300) DEFAULT NULL,
+  `sec_ans` varchar(250) DEFAULT NULL,
+  `pas` varchar(200) DEFAULT NULL,
+  `stat` varchar(25) DEFAULT NULL,
+  `bcode` varchar(25) DEFAULT NULL,
+  `cancel` int DEFAULT NULL,
+  PRIMARY KEY (`sn`)
+);
+CREATE TABLE `state` (
+  `ad` int DEFAULT NULL,
+  `ar` int DEFAULT NULL,
+  `am` int DEFAULT NULL,
+  `br` int DEFAULT NULL,
+  `cg` int DEFAULT NULL,
+  `dl` int DEFAULT NULL,
+  `ga` int DEFAULT NULL,
+  `gj` int DEFAULT NULL,
+  `hr` int DEFAULT NULL,
+  `hp` int DEFAULT NULL,
+  `jk` int DEFAULT NULL,
+  `jh` int DEFAULT NULL,
+  `ka` int DEFAULT NULL,
+  `kl` int DEFAULT NULL,
+  `ld` int DEFAULT NULL,
+  `mp` int DEFAULT NULL,
+  `mh` int DEFAULT NULL,
+  `mn` int DEFAULT NULL,
+  `ml` int DEFAULT NULL,
+  `mz` int DEFAULT NULL,
+  `nl` int DEFAULT NULL,
+  `od` int DEFAULT NULL,
+  `py` int DEFAULT NULL,
+  `pb` int DEFAULT NULL,
+  `rj` int DEFAULT NULL,
+  `sk` int DEFAULT NULL,
+  `tn` int DEFAULT NULL,
+  `ts` int DEFAULT NULL,
+  `tr` int DEFAULT NULL,
+  `up` int DEFAULT NULL,
+  `uk` int DEFAULT NULL,
+  `wb` int DEFAULT NULL,
+  `an` int DEFAULT NULL,
+  `ch` int DEFAULT NULL,
+  `dn` int DEFAULT NULL,
+  `la` int DEFAULT NULL
+);
+CREATE TABLE `state1` (
+  `stat` varchar(50) DEFAULT NULL,
+  `distr` longtext
+);
+CREATE TABLE `blogs` (
+  `sn` int NOT NULL AUTO_INCREMENT,
+  `headline` varchar(1000) DEFAULT NULL,
+  `msg` longtext,
+  `image` longblob,
+  `author` varchar(100) DEFAULT NULL,
+  `pub_date` date DEFAULT NULL,
+  PRIMARY KEY (`sn`)
+);
+CREATE TABLE `certificate_details` (
+  `cert_no` varchar(100) DEFAULT NULL,
+  `regno` varchar(45) DEFAULT NULL,
+  `inst_code` varchar(45) DEFAULT NULL,
+  `sname` varchar(100) DEFAULT NULL,
+  `fname` varchar(100) DEFAULT NULL,
+  `dob` varchar(45) DEFAULT NULL,
+  `duration` varchar(45) DEFAULT NULL,
+  `course` varchar(100) DEFAULT NULL,
+  `marks` varchar(45) DEFAULT NULL,
+  `sphoto` longblob,
+  `issue_date` varchar(45) DEFAULT NULL
+);
+CREATE TABLE `internship_details` (
+  `sn` int NOT NULL AUTO_INCREMENT,
+  `position` varchar(100) DEFAULT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL,
+  `s_date` varchar(100) DEFAULT NULL,
+  `duration` varchar(100) DEFAULT NULL,
+  `stipend` int DEFAULT NULL,
+  `skill_req` varchar(100) DEFAULT NULL,
+  `end_date` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`sn`)
+);
+CREATE TABLE `placement` (
+  `name` varchar(100) DEFAULT NULL,
+  `image` longblob,
+  `company` varchar(100) DEFAULT NULL,
+  `package` varchar(100) DEFAULT NULL,
+  `year` varchar(100) DEFAULT NULL,
+  `msg` varchar(100) DEFAULT NULL
+);
+CREATE TABLE `rays_carear` (
+  `sn` int NOT NULL AUTO_INCREMENT,
+  `position` varchar(500) DEFAULT NULL,
+  `skil` varchar(5000) DEFAULT NULL,
+  `mode` varchar(1000) DEFAULT NULL,
+  `exp` varchar(100) DEFAULT NULL,
+  `vacency` varchar(100) DEFAULT NULL,
+  `clo_data` varchar(45) DEFAULT NULL,
+  `place` varchar(500) DEFAULT NULL,
+  `sal` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`sn`)
+);
+CREATE TABLE `video_details` (
+  `sn` int NOT NULL AUTO_INCREMENT,
+  `topic` varchar(500) DEFAULT NULL,
+  `url` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`sn`)
+);
 insert into automatic values(
-  0,0,0,0,'A','A',0
-)
-;
-create table state1(
-    stat varchar(50),
-    distr longtext
-)
-;
+  'A',0,0,'A',0,0,'A'
+);
+insert into state values(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 insert into state1 values('Bihar','Araria,Arwal,Aurangabad,Banka,Begusarai,Bhagalpur,Bhojpur,Buxar,Darbhanga,East Champaran(Motihari),Gaya,Gopalganj,Jamui,Jehanabad,Kaimur(Bhabua),Katihar,Khagaria,Kishanganj,Lakhisarai,Madhepura,Madhubani,Munger(Monghyr),Muzaffarpur,Nalanda,Nawada,Patna,Purnia(Purnea),Rohtas,Saharsa,Samastipur,Saran,Sheikhpura,Sheohar,Sitamarhi,Siwan,Supaul,Vaishali,West Champaran(Bettiah)')
 ;
 insert into state1 values('Uttar Pradesh','Agra,Aligarh,Allahabad,Ambedkar Nagar,Amethi,Amroha,Auraiya,Azamgarh,Baghpat,Bahraich,Ballia,Balrampur,Banda,Barabanki,Bareilly,Basti,Bhadohi,Bijnor,Budaun,Bulandshahr,Chandauli,Chitrakoot,Deoria,Etah,Etawah,Faizabad,Farrukhabad,Fatehpur,Firozabad,Gautam Buddha Nagar (Noida),Ghaziabad,,Ghazipur,Gonda,Gorakhpur,Hamirpur,Hapur (Panchsheel Nagar),Hardoi,Hathras,Jalaun,Jaunpur,Jhansi,Kannauj,Kanpur Dehat,Kanpur Nagar,Kasganj,Kaushambi,Kushinagar,Lakhimpur Kheri,Lalitpur,Lucknow,Maharajganj,Mahoba,Mainpuri,Mathura,Mau,Meerut,Mirzapur,Moradabad,Muzaffarnagar,Pilibhit,Pratapgarh,Raebareli,Rampur,Saharanpur,Sambhal,Sant Kabir Nagar,Sant Ravidas Nagar (Bhadohi),Shahjahanpur,Shamli,Shravasti,Siddharthnagar,Sitapur,Sonbhadra,Sultanpur,Unnao')

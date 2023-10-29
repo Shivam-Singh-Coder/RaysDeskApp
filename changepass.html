@@ -19,9 +19,12 @@
 
         .con {
             width: 50%;
+            margin-top: 5rem;
             height: auto;
             padding: 5rem 0 3rem;
             margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background-color: white;
         }
 
         .con h1 {
@@ -110,15 +113,17 @@
         }
 
         .btn {
-            width: 25rem;
+            width: 20rem;
             height: 4rem;
-            font-weight: bold;
-            font-size: large;
+            font-size:1.5rem;
             border-radius: 1rem;
             cursor: pointer;
             background-color: royalblue;
             color: white;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
+
 
         .fa {
             position: absolute;
@@ -157,10 +162,10 @@
     </style>
 </head>
 
-<body>
+<body style="margin-top: 8rem; background-color: rgb(157, 186, 239);">
     <div class="con">
         <div class="logo">
-            <img src="rayslogo1-1.png" alt="">
+            <img src="changepasslogo.jpg" alt="">
         </div><br>
         <h1>CHANGE PASSWORD</h1><br>
         <div class="d1">
@@ -258,11 +263,12 @@
                 $('#mn').html('')
         })
 
-        $('#bt').click(function(){
+        $('#bt').click(function () {
             flag = true
             flcheck('#t1')
             flcheck('#t2')
             flcheck('#t3')
+            // alert("dfghjk")
             if (flag) {
                 $.ajax({
                     url: 'login.py',
@@ -278,10 +284,38 @@
                     }
                 })
             }
-
         })
+        $(document).ready(function () {
+            $(".d1").submit(function (event) {
+                event.preventDefault();  
 
+                var oldPassword = $("#t1").val();
+                var newPassword = $("#t2").val();
+                var confirmPassword = $("#t3").val();
+
+                if (newPassword !== confirmPassword) {
+                    alert("New passwords do not match.");
+                    return;
+                }
+                $.ajax({
+                    url: 'entry.py',
+                    method: 'POST',
+                    data: {
+                        oldPassword: oldPassword,
+                        newPassword: newPassword
+                    },
+                    success: function (response) {
+                        alert("Password changed successfully!");
+                        $("#t1").val("");
+                        $("#t2").val("");
+                        $("#t3").val("");
+                    },
+                    error: function (error) {
+                        alert("Password change failed. Please try again.");
+                    }
+                });
+            });
+        });
     </script>
 </body>
-
 </html>

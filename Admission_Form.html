@@ -320,7 +320,7 @@
 <body>
     <div id="main">
         <div id="d1">
-                <div id="hm"><a href="#" id="home"><font size="4rem">&#x1F3E0; &nbsp; HOME</font></a></div>
+                <div id="hm"><a href="dashbord.html" id="home"><font size="5rem" style="color: white;">&#x1F3E0; &nbsp; HOME</font></a></div>
                 <div id="tog"><div id="togx"></div><p id="b1"><b>Entry</b></p><p id="b2"><b>Service</b></p></div>
         </div>
         <div id="body">
@@ -389,7 +389,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
     <script>
-        sessionStorage.setItem('bcode','BR01');
         var bcode=sessionStorage.getItem('bcode');
         // ====================== Animation ===============================
         $('#b2').click(function(){
@@ -418,13 +417,13 @@
             }
             else{
                 if (a == null || a == '' || a.length == 0) {
-                $(t).css({ 'border': '1px solid red', 'color': 'red' });
-                $(t).val('*Field is Mandatory!');
-                flag = false;
-                if(t=='#t13')
-                    flag2 = false;
+                    $(t).css({ 'border': '1px solid red', 'color': 'red' });
+                    $(t).val('*Field is Mandatory!');
+                    flag = false;
+                    if(t=='#t13')
+                        flag2 = false;
                 }
-                else if($(t).val() == '*Field is Mandatory!'){
+                else if($(t).val().trim()== '*Field is Mandatory!'){
                     flag = false;
                     if(t=='#t13')
                         flag2 = false;
@@ -474,7 +473,7 @@
                 $('#ll2').text('')
             }
             else{
-                if ($(t).val() == '*Field is Mandatory!' || $(t).val() == null) {
+                if ($(t).val().trim()== '*Field is Mandatory!' || $(t).val() == null) {
                     $(t).val('')
                 }
             }
@@ -786,7 +785,7 @@
                             t6:$('#t11 option:selected').text().trim(),//dis_ty
                             t7:$('#t10').val().trim(),//dis
                             t8:bcode.trim(),//bcode
-                            t9:"Raj_02",//u_id
+                            t9:sessionStorage.getItem('u_id'),//u_id
                             t10:adm_no.trim(),//adm_no
                             t11:adm_ch.trim()//adm_ch
                         },
@@ -812,13 +811,13 @@
             clear()
         })
         $('#b4').focusout(function(){
-            $('#t3').focus()
+            $('#t1').focus()
         })
         //----------------Clear Record---------------------
         function clear(){
             date()
-            ch3('#t3')
-            ch3('#t6')
+            ch3('#t3,#t6')
+            // ch3('#t6')
             $('#t3,#t4,#t5,#t6,#t7').val('')
             $('#t8,#t9,#t10,#t12').val('0')
             $('#t11').val('inst')
