@@ -638,7 +638,169 @@ try:
             print(rs[0])
         else:
             print('0')
-            
+    
+    ############## Video Details#########################
+    elif d=="video_topic":
+        t.execute("SELECT distinct topic FROM video_details")
+        rs=t.fetchall()
+        if(rs!=[]):
+            for a in rs:
+                print('<option>'+a[0]+'</option>')
+        else:
+            print(0)
+    elif d=="video_entry":
+        topic = f.getvalue("b1").title()
+        url = f.getvalue("b2")
+        uid = f.getvalue("b3")
+        t.execute("SELECT * FROM video_details WHERE topic='"+topic+"' and url='"+url+"'")
+        rs=t.fetchall()
+        if(rs==[]):
+            url1="insert into video_details(topic,url,u_id) values(%s,%s,%s)"
+            t.execute(url1,(topic,url,uid))
+            con.commit()
+            print('Successfully Insert!!&&0')
+        else:
+            print('Video already exists for this topic!!')
+    elif(d=='video_search'):
+        topic=f.getvalue('b1')
+        url1=f.getvalue('b2')
+        url='select * from video_details where'
+        if(topic!=None):
+            url=url+' topic="'+topic+'"'
+        if(url1!=None and topic!=None):
+            url=url+' and url="'+url1+'"'
+        if(url1!=None and topic==None):
+            url=url+' url="'+url1+'"'
+        url=url+' order by sn desc'
+        t.execute(url)
+        rs=t.fetchall()
+        if(rs!=[]):
+            num=0
+            print('<table class="tbl"><thead><tr><th>SNO</th><th style="display:none;">SNO</th><th>Topic Name</th><th>YouTube Url</th><th colspan="2">ACTION HERE</th></tr></thead><tbody>')
+            topi=''
+            t.execute("SELECT distinct topic FROM video_details")
+            rs1=t.fetchall()
+            if(rs1!=[]):
+                for a in rs1:
+                    topi=topi+'<option>'+a[0]+'</option>'
+            for i in rs:
+                num=num+1
+                print('<tr><td data-label="SERIAL NO.">'+str(num)+'   '+'</td><td data-label="SERIAL NO." style="display:none;">'+str(i[0])+'   '+'</td><td data-label="Topic"><input type="text" list="topi" id="inp" value="'+str(i[1])+'" /><datalist id="topi">'+topi+'</datalist>'+'   '+'</td><td data-label="YouTube Url"><textarea>'+str(i[2])+'</textarea>'+'   '+'</td><td data-label="Edit"><i class="fa fa-pen" id="btn_edit" title="Update"></i></td><td data-label="Delete"><i class="fa fa-trash" id="btn_trash" title="Delete"></i></td></tr>')
+            print('</tbody></table>')
+        else:
+            print('<table class="tbl" style="font-size:2rem;font-weight:bold;background:pink;border-radius:1rem;"><tr><td align="center" style="border:none;font-size:3rem;">No Record Found!!</td></tr></table>')
+    elif d=='video_del':
+        id=f.getvalue('b1')
+        t.execute('delete from video_details where sn='+id+'')
+        con.commit()
+        print('Deleted Successfully!!&&&0')
+    elif d=='video_upd':
+        id=f.getvalue('b1')
+        topic=f.getvalue('b2')
+        url=f.getvalue('b3')
+        t.execute('update video_details set topic="'+topic+'",url="'+url+'" where sn='+id+'')
+        con.commit()
+        print('Updated Successfully!!')
+    elif(d=='searchvideo'):
+        url="select distinct topic from video_details"
+        t.execute(url)
+        rs=t.fetchall()
+        url="select topic,url from video_details"
+        t.execute(url)
+        rs1=t.fetchall()
+        if(rs!=[]):
+            print('<h1  style="font-size:5rem;margin-top:8%;">VIDEO TUTORIALS</h1>')
+            for a in rs:
+                y=0
+                print('<div id="raj"><div class="d1" style="margin-top:2%;"><h2 id="topic"><b>'+a[0]+'</b></h2><br><hr><div class="d2">')
+                for i in rs1:
+                    if a[0] in i[0]:
+                        y=y+1
+                        print('<div><iframe class="img1" src="'+i[1]+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>')
+                print('</div></div>')
+                if(y>4):
+                    print('<button class="button-73" role="button" style="font-size:1.3rem;"><i class="fas fa-chevron-circle-down"></i>&nbsp;&nbsp;VIEW MORE</button></div>')
+                else:
+                    print('</div>')
+        else:
+            print("10")
+    elif(d=='searchrec'):
+        t1=f.getvalue('t1')
+        if(t1=='0'):
+            url="select * from blogs order by sn desc limit 5"
+            t.execute("select count(sn) from blogs order by sn desc;")
+        else:
+            url="select * from blogs where sn<"+t1+" order by sn desc limit 5"
+            t.execute("select count(sn) from blogs where sn<"+t1+" order by sn desc;")
+        rs1=t.fetchall()
+        t.execute(url)
+        rs=t.fetchall()
+        if(rs!=[]):
+            kk=0
+            for a in rs:
+                kk=str(a[0])
+                print('<div id="p1"><div id="x"><img src="' + a[3].decode() + '" alt="Blogs Pic" id="img1"></div><div id="y"><p id="topic">' + a[1] + '</p><hr id="hr1"><p id="para">' + a[2] + '</p><input class="custom-btn btn-2" type="button" value="Read More" id="but"><label class="author" for="">Author: ' + a[4] + '</label><label class="Publish" for="">Publish Date: ' +str(a[5]) + '</label><span id="span" hidden>' +str(a[0])+ '</span></div></div><hr>')
+            if(rs1[0][0]>5):
+                print('<div id="btn"><button><i class="fas fa-chevron-circle-down" style="font-size:2rem;"></i>&nbsp;&nbsp;VIEW MORE</button></div>')
+            print(",,,,"+kk)
+            # print(len(rs))
+            # for k in range(len(rs)):
+            #     for i in rs[k]:
+            #         print(i,',,,')
+            #     print("&:;")
+        else:
+            a=0
+            print(a)
+    elif(d=='searchall'):
+        url="select sn,image,headline from blogs order by sn desc limit 6"
+        t.execute(url)
+        rs=t.fetchall()
+        if(rs!=[]):
+            for a in rs:
+                print('<div class="anm"><img id="sld_img" src="'+a[1].decode()+'" alt=""><br><div id="sp"><span>'+a[2]+'</span><label>'+str(a[0])+'</label></div></div>')
+        else:
+            # a=0
+            print(0)
+    elif(d=='job_apply'):
+        d2=f.getvalue('t2').title()
+        d3=f.getvalue('t3')
+        d4=f.getvalue('t4')
+        d5=f.getvalue('t5')
+        d6=f.getvalue('t6')
+        d7=f.getvalue('t7')
+        d8=f.getvalue('t8')
+        if d8=='entern':
+            url="insert into rays_intern_apply (name,mo_no,email,resume,position,mode) values(%s,%s,%s,%s,%s,%s)"
+        else:
+            url="insert into rays_job_apply (name,mo_no,email,resume,position,mode) values(%s,%s,%s,%s,%s,%s)"
+        t.execute(url,(d2,d3,d4,d5,d6,d7))
+        con.commit()
+        print('Thanks for apply!\nOur team will Contact You soon')
+    elif(d=='blogsn'):
+        t1=f.getvalue('t1')
+        t2=f.getvalue('t2')
+        t.execute("select sn,pub_date,image,headline from blogs where pub_date<='"+t1+"' and sn not in("+t2+") order by sn desc limit 3;")
+        rs=t.fetchall()
+        if(rs!=[]):
+            for a in rs:
+                print('<div id="bot_dv"><div id="img1"><img src="'+a[2].decode()+'" alt="" style="width: 100%;height: 100%;"></div><hr><span id="l">'+a[3]+'</span><hr><span id="dt">'+str(a[1])+'</span><span style="color:red;" hidden id="sn">'+str(a[0])+'</span></div>')
+        else:
+            t.execute("select sn,pub_date,image,headline from blogs where pub_date<=current_date() and sn not in("+t2+") order by sn desc limit 3;")
+            rs=t.fetchall()
+            if(rs!=[]):
+                for a in rs:
+                    print('<div id="bot_dv"><div id="img1"><img src="'+a[2].decode()+'" alt="" style="width: 100%;height: 100%;"></div><hr><span id="l">'+a[3]+'</span><hr><span id="dt">'+str(a[1])+'</span><span style="color:red;" hidden id="sn">'+str(a[0])+'</span></div>')
+    elif(d=='blogelse'):
+        sn=f.getvalue('t1')
+        t.execute("select * from blogs where sn=%s"%(sn))
+        rs=t.fetchall()
+        if(rs!=[]):
+            for a in rs:
+                for i in a:
+                    print(i,',,,')
+        else:
+            a=0
+            print(a)
 # print(datetime.strptime('2023-07-22', '%Y-%m-%d').strftime('%d %b %Y'))
     #############Course Details###################
     elif(d=='ins_course'):

@@ -22,14 +22,14 @@
             float: left;
         }
         .main {
-            height: 7rem;
+            height: 6rem;
             width: 100%;
             background-color: rgb(243, 237, 237);
             display: flex;
             justify-content: space-between;
             align-items: center;
             column-gap: 1rem;
-            border: 2px solid red;
+            /* border: 2px solid red; */
         }
         .main img {
             height: 100%;
@@ -124,7 +124,8 @@
             align-items:flex-start;
             justify-content: center;
             overflow: scroll;
-            padding-top: 10%;
+            padding-top: 5%;
+            z-index: 999;
         }
 
         /*---------------- popup------------------------------------- */
@@ -177,6 +178,7 @@
             color: white;
             font-size: 2rem;
             background-color: rgb(28, 185, 148);
+            padding: 0.5rem;
         }
         #table3 input {
             border: none;
@@ -247,7 +249,7 @@
         .vol {
             margin-left: 1rem;
             font-size: 1.5rem;
-            border: 2PX solid blue;
+            border: 2px solid blue;
             border-radius: 5rem;
             height: 3rem;
             width: 3rem;
@@ -306,15 +308,27 @@
         .a{
             display: flex;
             position: relative;
+            /* border: 2px solid green; */
+            /* top: -7rem; */
+            /* max-height: 100vh; */
+            /* overflow: hidden;
+            max-height: 92vh; */
         }
         .work{
+            /* position: relative;
+            top: -7rem; */
             width: 100%;
             min-height: 100vh;
             /* border: 2px solid red; */
         }
 
         .sidebar {
+            position: sticky;
+            top: 7rem;
             min-height:100vh;
+            z-index: 111;
+            /* position: relative;
+            top: -7rem; */
         }
         .first-ul{
             min-height: 100vh;
@@ -368,45 +382,55 @@
         
         .box {
             width: 98%;
-            margin-top: 0.5rem;
             /* border: 2px solid pink; */
             position: relative;
+            margin: 0.5rem auto;
         }
         .main-box {
             display: grid;
-            grid-template-columns: auto auto auto auto auto;
+            grid-template-columns: auto auto auto auto auto auto;
             grid-template-rows: 2;
             row-gap: 3rem;
-            border: 2px solid red;
+            column-gap: 2rem;
+            /* border: 2px solid red; */
         }
         #d {
-            float: right;
-            /* position: relative; */
-            font-size: 3rem;
+            /* float: right; */
+            position: absolute;
+            font-size: 2.5rem;
             color: white;
-            margin-right: 1rem;
-            margin-top: -1rem;
+            bottom: 1rem;
+            right: 4%;
         }
         #pp7,#pp8,#pp6,#pp5,#pp3,#pp2,#p1{
-            font-size: 3rem;
-            margin-top: 5%;
+            position: absolute;
+            font-size: 2.2rem;
+            /* margin-top: 5%; */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
         }
         p {
-            font-size: 1.9rem;
+            position: absolute;
+            font-size: 1.6rem;
             letter-spacing: 0.1rem;
             color: white;
             text-align: center;
-            margin: auto;
+            /* border: 2px solid red; */
+            width: 100%;
+            left: 0;
+            /* margin: auto; */
             /* padding-top: 2rem; */
         }
 
 
         .d1,.d2 {
-            width: 20rem;
+            width: 15rem;
             height: 10rem;
             border-radius: 1rem;
             border: none;
             padding: 0.5rem;
+            position: relative;
             /* border: solid 2px red; */
         }
 
@@ -417,7 +441,6 @@
 
         .graph-box {
             min-height: 35rem;
-
             width: 60%;
             display: flex;
             flex-direction: column-reverse;
@@ -426,7 +449,7 @@
             position: absolute; 
             bottom:0% ;
             right: 0;
-            border: 2px solid red;
+            /* border: 2px solid red; */
         }
         .graph{
             width: 100%;
@@ -498,7 +521,7 @@
       
         @media (max-width:1197px) {
             .main-box {
-                grid-template-columns: auto auto;
+                grid-template-columns: auto auto auto;
                 grid-template-rows: 2;
             }
             #uname{
@@ -511,6 +534,9 @@
             .graph-box{
                 bottom: 1%;
                 min-height: 40rem;
+            }
+            .a{
+                max-height: 1000vh;
             }
            
         }
@@ -688,10 +714,10 @@
                 <i class="fa fa-bell bell" title="Notifications" style="font-size: 2.5rem;"></i>
                 <a>
                     <div style="position: relative;">
-                        <i class="fa fa-user-circle"  title="Profile" style="color: darkblue;font-size: 2.5rem;margin-left: 1rem;" id="pfr"></i>
+                        <i class="fa fa-user-circle prfl"  title="Profile" style="color: darkblue;font-size: 2.5rem;margin-left: 1rem;" id="pfr"></i>
                         <ul class="profile">
                             <li style="display: flex;"><i class='fas'>&#xf2bd;</i>&nbsp;<a href="Profile_Page.html" style="position: absolute;left: 2.8rem;">Profile</a></li><hr>
-                            <li><i class="fa fa-power-off" style="color: white;"></i>&nbsp;<a>Log Out</a></li>
+                            <li><i class="fa fa-power-off" style="color: white;"></i>&nbsp;<a href="index.html">Log Out</a></li>
                         </ul>
                     </div>
                     
@@ -699,96 +725,68 @@
                     
                 </a>
             </div>
-            <!-- <div style="position: absolute;left: 75%;top: 10%;z-index: 1;font-size: 1rem;">
-                <ul>
-                    <li>Profile</li>
-                    <li>Log Out</li>
-                </ul>
-            </div> -->
         </div>
-
    <div class="a">
     <div class="container sidebar">
         <ul class="first-ul">
             <li>
                 <a><i class="fa-solid fa-folder-tree" id="i"></i></a>
-                <!-- <span id="a"><b><a>Testimonial Details</a></b></span> -->
                 <ul class="sub-ul">
-                    <li><a href="#">Blog Details</a></li>
-                    <li><a href="#">Internship Details</a></li>
-                    <li><a href="#">Career Details</a></li>
+                    <li><a style="cursor: pointer;">Blog Details</a></li>
+                    <li><a style="cursor: pointer;">Internship Details</a></li>
+                    <li><a style="cursor: pointer;">Career Details</a></li>
                 </ul>
             </li>
             <li>
-                <a href="video_Ent_ser.html"><i class="fa-brands fa-youtube" id="i"></i></a>
-                <!-- <span id="a"><b><a href="video_Ent_ser.html">Video Details</a></b></span> -->
+                <a><i class="fa-brands fa-youtube" id="i"></i></a>
                 <ul class="sub-ul">
-                    <li><a href="video_Ent_ser.html">Video Details</a></li>
+                    <li><a href="Video_Details.html">Video Details</a></li>
                 </ul> 
             </li>
             <li>
                 <a><i class="fa fa-graduation-cap" id="i"></i></a>
-                <!-- <span id="a"><b><a>Internship Certificate</a></b></span> -->
                 <ul class="sub-ul">
-                    <li><a href="#">Course Certificate</a></li>
-                    <li><a href="#">Marksheet</a></li>
-                    <li><a href="#">Internship Certificate</a></li>
-                    <li><a href="#">Performance Report</a></li>
+                    <li><a style="cursor: pointer;">Course Certificate</a></li>
+                    <li><a style="cursor: pointer;">Marksheet</a></li>
+                    <li><a style="cursor: pointer;">Internship Certificate</a></li>
+                    <li><a style="cursor: pointer;">Performance Report</a></li>
                 </ul>
             </li>
-            <!-- <li>
-                <a href="Certificate_Form.html"><i class="fa fa-file-text-o" id="i"></i></a>
-                <span id="a"><b><a href="Certificate_Form.html">Training Certificate</a></b></span>
-            </li> -->
-            <!-- <li> <a href="Training_Marksheet.html"><i class="fa fa-address-card" id="i"></i></a>
-                <span id="a"><b><a href="Training_Marksheet.html">Marksheet From</a></b></span>
-            </li> -->
-            <!-- <li>
-                <a href="Internship_Certificate.html"><i class="fa fa-graduation-cap" id="i"></i></a>
-                <span id="a"><b><a href="Internship_Certificate.html">Internship Certificate</a></b></span>
-            </li> -->
-            <!-- <li> <a href="Performance_Report.html"><i class="fa fa-sticky-note-o" id="i"></i></a>
-                <span id="a"><b><a href="Performance_Report.html">Performance Report Form</a></b></span>
-            </li> -->
             <li>
-                <a href="changepass.html"><i class="fa-solid fa-address-book" id="i"></i></a>
-                <!-- <span id="a"><b><a href="changepass.html">Contact Details</a></b></span> -->
+                <a><i class="fa-solid fa-address-book" id="i"></i></a>
                 <ul class="sub-ul">
                     <li><a href="changepass.html">Contact Details</a></li>
                 </ul>
             </li>
             <li>
-                <a href="changepass.html"><i class="fa fa-lock" id="i"></i></a>
-                <!-- <span id="a"><b><a href="changepass.html">Change Password</a></b></span> -->
+                <a><i class="fa fa-lock" id="i"></i></a>
                 <ul class="sub-ul">
                     <li><a href="changepass.html">Change Password</a></li>
                 </ul>
             </li>
-            <li onclick="popup('all')">
-                <a href="#" id="pop"><i class="fa-solid fa-table" id="i"></i> 
-                    <!-- <span id="a"><b style="color: black;" onclick="popup('all')">Analytics</b></a></span> -->
+            <li>
+                <a href="#" id="pop"><i class="fa-solid fa-table" id="i"></i>
                     <ul class="sub-ul">
-                        <li><a href="#" style="position: absolute;">Analytics</a></li>
+                        <li><a style="position: absolute;cursor: pointer;" onclick="popup('all')">Analytics</a></li>
                     </ul>   
             </li>
-            <li class="logout"><i class="fa fa-power-off" id="i"></i> 
-                <!-- <span id="a"><b>Log out</b></span> -->
+            <li class="logout"><i class="fa fa-power-off" id="i"></i>
                 <ul class="sub-ul">
-                    <li><a href="#">Log Out</a></li>
+                    <li><a href="index.html">Log Out</a></li>
                 </ul> 
             </li>
         </ul>
     </div>
 <!-- ------------------ run time table work ------------------------------- -->
-<div class="work" style="display: flex;flex-direction: column;justify-content: center;align-items: center;min-height: 90vh;">
-    <div class="popup" style="z-index: 100;">
+<div class="work" style="display: flex;flex-direction: column;min-height: 90vh;">
+    <div class="popup">
         <div  style="background-color: white;border-radius: 1rem; width: 95%;">
             <div style="display: flex;justify-content: space-between;margin: 1rem;">
                 <input type="search" id="search" name="search" placeholder="Enter User Name">
                 <i class="fa fa-close" id="clbtn" onclick="$('.popup').css('scale','0');"></i>
             </div>
             <div id="d5" style=" border: solid 1px gray;">
-                <!-- <table id="table3"><thead><tr><th>Sn</th><th>Username</th><th>User Id</th><th>Password</th><th>Security Question</th><th>Answer</th><th>Role</th><th>Status</th><th>Branch Name</th><th colspan="2" id="chk">Check</th></tr></thead><tbody id="myTable">
+                <table id="table3"><thead><tr><th>Sn</th><th>Username</th><th>User Id</th><th>Password</th><th>Security Question</th><th>Answer</th><th>Role</th><th>Status</th><th>Branch Name</th><th colspan="2" id="chk">Check</th></tr></thead><tbody id="myTable">
                     <tr><td>1</td><td data-label="username">Shivam Singh Rajput</td><td data-label="user_id">hdfhwdfhwhjefkwejf</td><td data-label="Password">hfewhfiuwehfi</td><td data-label="Sec_Ques">jfhwihfiwuhfuihwrfiuh fuhwefuihwieufhweufhu</td><td data-label="Answer">hfwifhiduifhwei</td><td data-label="Role" readonly>Super Admin</td><td data-label="status" readonly>Inactive</td><td data-label="bcode" readonly>BR01-Rays Edutech Private Limited</td><td data-label="Update" style="color:blue; cursor:pointer;"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete" style="color: red; cursor:pointer;"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td></tr>
                     <tr><td>'+str(num)+"  "+'</td><td data-label="username">'+str(a[2])+"  "+'</td><td data-label="user_id">'+str(a[3])+"  "+'</td><td data-label="Password">'+str(a[6])+"  "+'</td><td data-label="Security">'+str(a[4])+"  "+'</td><td data-label="Question">'+str(a[5])+"  "+'</td><td data-label="Role" readonly>'+rol+'  '+'</td><td data-label="status" readonly>'+stat+"  "+'</td><td data-label="bcode" readonly>'+bcode+"  "+'</td><td data-label="Update" style="color:blue; cursor:pointer;"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete" style="color: red; cursor:pointer;"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td></tr>
                     <tr><td>'+str(num)+"  "+'</td><td data-label="username">'+str(a[2])+"  "+'</td><td data-label="user_id">'+str(a[3])+"  "+'</td><td data-label="Password">'+str(a[6])+"  "+'</td><td data-label="Security">'+str(a[4])+"  "+'</td><td data-label="Question">'+str(a[5])+"  "+'</td><td data-label="Role" readonly>'+rol+'  '+'</td><td data-label="status" readonly>'+stat+"  "+'</td><td data-label="bcode" readonly>'+bcode+"  "+'</td><td data-label="Update" style="color:blue; cursor:pointer;"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete" style="color: red; cursor:pointer;"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td></tr>
@@ -819,7 +817,7 @@
                     <tr><td>'+str(num)+"  "+'</td><td data-label="username">'+str(a[2])+"  "+'</td><td data-label="user_id">'+str(a[3])+"  "+'</td><td data-label="Password">'+str(a[6])+"  "+'</td><td data-label="Security">'+str(a[4])+"  "+'</td><td data-label="Question">'+str(a[5])+"  "+'</td><td data-label="Role" readonly>'+rol+'  '+'</td><td data-label="status" readonly>'+stat+"  "+'</td><td data-label="bcode" readonly>'+bcode+"  "+'</td><td data-label="Update" style="color:blue; cursor:pointer;"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete" style="color: red; cursor:pointer;"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td></tr>
                     <tr><td>'+str(num)+"  "+'</td><td data-label="username">'+str(a[2])+"  "+'</td><td data-label="user_id">'+str(a[3])+"  "+'</td><td data-label="Password">'+str(a[6])+"  "+'</td><td data-label="Security">'+str(a[4])+"  "+'</td><td data-label="Question">'+str(a[5])+"  "+'</td><td data-label="Role" readonly>'+rol+'  '+'</td><td data-label="status" readonly>'+stat+"  "+'</td><td data-label="bcode" readonly>'+bcode+"  "+'</td><td data-label="Update" style="color:blue; cursor:pointer;"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete" style="color: red; cursor:pointer;"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td></tr>
                     <tr><td>'+str(num)+"  "+'</td><td data-label="username">'+str(a[2])+"  "+'</td><td data-label="user_id">'+str(a[3])+"  "+'</td><td data-label="Password">'+str(a[6])+"  "+'</td><td data-label="Security">'+str(a[4])+"  "+'</td><td data-label="Question">'+str(a[5])+"  "+'</td><td data-label="Role" readonly>'+rol+'  '+'</td><td data-label="status" readonly>'+stat+"  "+'</td><td data-label="bcode" readonly>'+bcode+"  "+'</td><td data-label="Update" style="color:blue; cursor:pointer;"><i class="fa" id="upd" data-toggle="tooltip" title="Update">&#xf044;</i></td><td data-label="Delete" style="color: red; cursor:pointer;"><i class="fa" id="del" data-toggle="tooltip" title="Cancel">&#10006;</i></td></tr>
-                </tbody></table> -->
+                </tbody></table>
             </div>
             <div style="padding: 0.5rem;display: flex;justify-content: flex-end;margin: 0 1rem;margin-bottom: 1rem;">
                 <button onclick="$('.popup').css('scale','0');" style="background: red;color: white;padding: 0.5rem 1rem;border: none;border-radius: 0.5rem;font-size: 2rem;cursor: pointer;" class="fa">&#10006;&nbsp;CLOSE</button>
@@ -850,14 +848,20 @@
                 <p id="pp8">000</p>
                 <i class="fa fa-bullhorn" id="d"></i>
             </div>
-            <!-- <div class="d1" style=" background-color: rgb(31, 113, 235);cursor: pointer;" 
+            <div class="d1" style=" background-color: rgb(31, 113, 235);cursor: pointer;" 
                 onclick="window.location.href='Course_Details.html'">
-                <p>Course Details</p>
+                <p>Course Certificate</p>
                 <p id="pp7">000</p>
                 <a> <i class="fa" id="d">&#xf1ea;</i></a>
-            </div> -->
+            </div>
+            <div class="d1" style=" background-color: rgb(31, 113, 235);cursor: pointer;" 
+                onclick="window.location.href='Course_Details.html'">
+                <p>Lead</p>
+                <p id="pp7">000</p>
+                <a> <i class="fa" id="d">&#xf1ea;</i></a>
+            </div>
         </div>
-        <div class="main-box2" style="border: 1px solid blue;">
+        <div class="main-box2">
             <div class="d2" style="background-color: rgb(240, 107, 191);cursor: pointer;" onclick="window.location.href='Book_Details.html'">
                 <p>Book Details</p>
                 <p id="pp5">000</p>
@@ -936,6 +940,12 @@
         $(document).ready(function () {
             chart();
             popup('inactive');
+            $('.prfl').click(function(){
+                if($('.profile').css("scale")==0)
+                    $('.profile').css("scale", "1");
+                else
+                    $('.profile').css("scale", "0");
+            })
             u_id = sessionStorage.getItem('u_id');
             $('#uname').text(sessionStorage.getItem('uname').trim())
             bcode = sessionStorage.getItem('bcode');

@@ -1,0 +1,150 @@
+.pulse{
+    position: absolute;
+    width: 25rem;
+    height: 25rem;
+    background:#fff;
+    border-radius: 50%;
+    left: 34%;
+    top: 25%;
+}
+.pulse span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    opacity: .8;
+    animation: pulse 4s ease-in-out infinite;
+    animation-delay: calc(1s * var(--i));
+}
+@keyframes pulse{
+    100%{
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+.center-img{
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 50%;
+    background-image: url(logo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    /* border: 2px solid blue; */
+
+}
+.circle{
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%;
+    /* border: 3px solid blue; */
+    animation: rotate 40s linear infinite;
+}
+@keyframes rotate{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.circle div{
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    /* border: 2px solid red; */
+    animation: icons 10s linear infinite;
+}
+@keyframes icons{
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+.s1{
+    left: 13%;
+    top:-1%;
+    background-image: url(py.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.s2{
+    left: 43%;
+    top: -12%;
+    background-image: url(cyber.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s3{
+    left: 92%;
+    top: 30%;
+    background: #fff;
+    background-image: url(tt.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s4{
+    bottom: 26%;
+    left: -5%;
+    background-image: url(java.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s5{
+    left: 11%;
+    bottom: 3%;
+    background-image: url(android.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s6{
+    bottom:-10%;
+    left: 40%;
+    background: #fff;
+    background-image: url(ai.jpg);
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: 50%;
+}
+.s7{
+    right: -4%;
+    top: 61%;
+    background-image: url(js.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 45%;
+}
+.s8{
+    right: 16%;
+    bottom: 1%;
+    background-image: url(mongoDB.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s9{
+    bottom: 82%;
+    right: 8%;
+    background-image: url(react.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s10{
+    top: 28%;
+    left: -6%;
+    background-image: url(node.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* @media (max-width:768px){
+    .pulse{
+        width: 16rem;
+        height: 16rem;
+    }
+} */
+

@@ -1,0 +1,91 @@
+body{
+    font-size: 10px;
+    background-color: rgb(159, 183, 242);
+}
+h2{
+    text-align: center;
+    font-size: 3rem;
+}
+form{
+    border: 1px solid black;
+    width: 50rem;
+    height: auto;
+    margin: auto;
+    padding: 3rem 0 3rem 0;
+    font-size: 18px;
+    background-color: rgb(221, 221, 255);
+}
+input{
+    height: 45px;
+    width: 90%;
+    padding-left: 10px;
+    margin:20px 5%;
+    border-radius: 5px;
+    font-size: 20px;
+    /* border: none;
+    outline: none; */
+}
+#l1,#l2,#l3{
+    position: absolute;
+    margin: 6px 0 0 80px;
+    background:linear-gradient(to bottom,rgb(221, 221, 255) 50%,white 50%);
+    visibility: hidden;
+}
+#t4{
+    width: 55%;
+}
+#l4{
+    margin-left: 5%;
+}
+#b1,#b2{
+    width: 25%;
+    margin-left: 15%;
+    margin-top:0;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+    font-size: 22px;
+}
+#b2{
+    background-color: red;
+}
+#t1{
+    text-transform: capitalize;
+}
+#ll1,#ll2,#ll3{
+    position: absolute;
+    margin:-20px 0 0 70px;
+    color: red;
+}
+@media(max-width:998px){
+    html {
+        font-size: 55%;
+    }
+    form{
+        width: 75%;
+    }
+    #t4{
+        display: block;
+        width: 90%;
+        font-size: 15px;
+    }
+}
+@media(max-width:768px){
+    html {
+        font-size: 45%;
+    }
+    form{
+        width: 90%;
+    }
+    #b1,#b2{
+        font-size: 16px;
+    }
+    #t4{
+        display: block;
+        width: 90%;
+        font-size: 15px;
+    }
+    #l1,#l2,#l3{
+        margin-left:50px;
+    }
+}

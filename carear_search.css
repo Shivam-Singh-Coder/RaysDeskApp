@@ -1,0 +1,28 @@
+#body{
+    overflow-y: auto;
+}
+#t1{
+    max-height: 100%;
+    width: 100%;
+}
+#t1,#t1 td,#t1 th{
+    border: 1px solid black;
+    border-collapse:collapse;
+    text-align: center;
+}
+#t1 th{
+    font-size: 20px;
+    position: sticky;
+    top: 0;
+    background-color: rgb(164, 173, 221);
+}
+#t1 tr{
+    height: 100px;
+}
+#th{
+    width: 100px;
+}
+embed{
+    height: 100px;
+    width: 100px;
+}

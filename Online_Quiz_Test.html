@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Test</title>
+    <link rel="icon" href="REPL_t-shirt_logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- -----bootstrap cdn------  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- ----pulse animation---  -->
+    <link rel="stylesheet" href="pulse.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="online_quiz_test.css">
+
+    <!-- ---------Image Corausel------  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- slick slider  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        /* body {
+            background: rgba(55, 81, 126, 1);
+        } */
+
+        header {
+            background: rgba(42, 63, 99, 1);
+            height: 10rem;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 38rem;
+            height: 90%;
+            /* border: 2px solid red; */
+            position: relative;
+            /* display: flex; */
+        }
+
+        .logo img {
+            /* background-color: #fff; */
+            border-radius: 50%;
+            position: absolute;
+            top: 1rem;
+            left: 1%;
+            width: 13.5%;
+            height: 55%;
+        }
+
+        .nav {
+            /* border: 2px solid red; */
+            width: 68%;
+            height: 80%;
+            position: absolute;
+            right: 3rem;
+            /* background: rgba(55, 81, 126, 1); */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .rays {
+            color: #fff;
+            /* border: 2px solid red; */
+            position: absolute;
+            top: 25%;
+            left: 7rem;
+            font-size: 3rem;
+            font-family: cursive;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .nav-list {
+            position: absolute;
+            top: 1.5rem;
+            padding-top: 1rem;
+            right: 1.5rem;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* height: 3rem; */
+            /* border: 2px solid green; */
+
+        }
+
+        .nav-list li {
+            display: inline-block;
+            /* list-style: none; */
+            font-size: 1.5rem;
+            font-weight: bold;
+            /* border: 2px solid black; */
+            position: relative;
+            min-width: 15rem;
+            height: 3rem;
+            text-align: center;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 5rem;
+            left: -10rem;
+            background: rgba(55, 81, 126, 1);
+            min-width: 20rem;
+            line-height: 3rem;
+            border-top: 4px groove #fff;
+            visibility: hidden;
+            /* opacity: 0; */
+        }
+
+        .submenu li {
+            display: block;
+            text-align: left;
+            padding-left: .5rem;
+        }
+
+
+        .nav-list li a {
+            color: #fff;
+            letter-spacing: .1rem;
+        }
+
+        .nav-list .menu:hover .submenu {
+            /* opacity: 1; */
+            visibility: visible;
+            top: 3rem;
+            transition: all .2s linear;
+        }
+
+        .menu:hover .a i {
+            rotate: 180deg;
+        }
+
+        .fa-bars {
+            position: absolute;
+            right: 3rem;
+            font-size: 3rem;
+            color: #fff;
+            display: none;
+        }
+        .main-container {
+            width: 100%;
+            width: calc(100%-5rem);
+            float: right;
+            margin: auto;
+            margin-top: 2rem;
+            min-height: 100vh;
+            max-height: 800vh;
+            /* border: 2px solid red; */
+            padding-left: 5rem;
+            position: relative;
+        }
+        /* -------Footer------- */
+        footer {
+            position: relative;
+            bottom: 0;
+            margin-top: 10rem;
+            /* min-height: 30rem; */
+            border-top: 3px solid gold;
+            /* background: rgba(42, 63, 99, 1);
+            color: #fff; */
+            background-color: whitesmoke;
+            padding: 2rem 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .ftr-box{
+            /* border: 1px solid black; */
+            width: 100%;
+            min-height: 20rem;
+            /* position: relative; */
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 5rem;
+
+            
+        }
+        .ftr-box li{
+            /* display: inline-block; */
+            width: 22%;
+            /* border: 1px solid red; */
+            height: 100%;
+            /* position: absolute; */
+            top: 0;
+            text-align: center;
+        }
+        .ftr-box li iframe{
+            width: 100%;
+        }
+        .ftr-box li a{
+            text-decoration: none;
+            color: black;
+        }
+        .ftr-box h3{
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+
+        li {
+            list-style-type: none;
+        }
+        .p{
+            font-size: 1.5rem;
+        }
+        .social,
+        .ftr-links {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .social li a {
+            font-size: 2rem;
+            color: #333;
+            margin: 0 1rem;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+
+        footer .social li a:hover {
+            transform: translateY(-1rem);
+            /* color: #3586ff; */
+
+        }
+
+        .ftr-p {
+            background-color: #333;
+            color: #fff;
+            font-size: 2rem;
+            width: 100%;
+            letter-spacing: .1rem;
+            line-height: 4rem;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+        }
+
+        @media(max-width:1151px) {
+            .rays {
+                font-size: 2rem;
+                top: 30%;
+            }
+        }
+
+        @media(max-width:1010px) {
+            html {
+                font-size: 55%;
+            }
+
+            .nav {
+                position: absolute;
+                right: -20rem;
+                top: 10rem;
+                width: 20rem;
+                min-height: 100vh;
+                flex-direction: column;
+                background: rgba(55, 81, 126, 1);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                min-height: 20rem;
+            }
+
+            .nav-list>li {
+                width: 100%;
+                height: 4rem;
+                padding-top: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .submenu {
+                /* visibility: visible; */
+                left: -24rem;
+                top: 1rem;
+                width: 24rem;
+            }
+
+            .nav-list .menu:hover {
+                border-top-left-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                background-color: rgba(0, 0, 150, 0.5);
+            }
+
+            .nav-list .menu:hover .submenu {
+                left: -24rem;
+                top: 0rem;
+                transition: all .2s linear;
+            }
+
+            .submenu li {
+                padding-left: 1rem;
+                min-height: 3rem;
+                transition: .2s all ease-in-out;
+            }
+
+            .submenu li:hover {
+                font-weight: bolder;
+            }
+
+            .fa-bars {
+                display: block;
+                cursor: pointer;
+            }
+        }
+        @media(max-width:866px) {
+            html {
+                font-size: 45%;
+            }
+        }
+
+        @media(max-width:768px) {
+            html {
+                font-size: 45%;
+            }
+        }
+
+        @media(max-width:600px) {
+            html {
+                font-size: 35%;
+            }
+
+            .side-bar .lists {
+                height: 100vh;
+            }
+
+            .side-bar .lists li {
+                margin-top: 6vh;
+            }
+
+            footer {
+                min-height: 50rem;
+            }
+            .ftr-box{
+                /* flex-direction: column; */
+                display: grid;
+                /* border: 2px solid green; */
+                grid-template-columns: auto auto ;
+                justify-content:unset;
+            }
+            .ftr-box li{
+                /* display: block; */
+                width: 25rem;
+                /* border: 2px solid red; */
+            }
+            .p{
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">
+            <img src="logo.png" alt="">
+            <h2 class="rays">Rays Edutech Pvt. Ltd.</h2>
+            </a>
+        </h1>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="">HOME</a></li>
+                <li class="menu"><a href="#" class="a">SERVICES&nbsp;<i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="submenu">
+                        <li class="menu_item"><a href="#">Online Test</a></li>
+                        <li class="menu_item"><a href="#">Workshop</a></li>
+                        <li class="menu_item"><a href="#">Web Development</a></li>
+                        <li class="menu_item"><a href="#">App Development</a></li>
+                    </ul>
+                </li>
+                <li class="menu"><a href="#" class="a">TRAINING&nbsp;<i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="submenu">
+                        <li class="menu_item"><a href="#">Course</a></li>
+                        <li class="menu_item"><a href="#">Project Training</a></li>
+                        <li class="menu_item"><a href="#">Industrial Training</a></li>
+                    </ul>
+                </li>
+                <li><a href="">INTERNSHIP</a></li>
+                <li class="menu"><a href="#" class="a">MORE&nbsp;<i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="submenu">
+                        <li class="menu_item"><a href="#"><strong>We are hiring</strong>
+                            </a></li>
+                        <li class="menu_item"><a href="#"><strong>Our placed students</strong>
+                                <hr>
+                            </a></li>
+                        <li class="menu_item"><a href="#">Student Testimonials</a></li>
+                        <li class="menu_item"><a href="#">Blogs</a></li>
+                        <li class="menu_item"><a href="#">Certificate Verification</a></li>
+                        <li class="menu_item"><a href="#">About Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <i class="fa-solid fa-bars"></i>
+    </header>
+    <!-- -------SIDEBAR------  -->
+    <div class="side-bar">
+        <ul class="lists">
+            <li>
+                <a href="#">
+                    <span class="icons"><i class="fa fa-home"></i></span>
+                    <span class="tooltip">HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icons"><i class="fa-solid fa-code"></i></span>
+                    <span class="tooltip">DEVELOPMENT</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icons"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <span class="tooltip">PLACED STUDENTS</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icons"><i class="fa-brands fa-blogger-b"></i></span>
+                    <span class="tooltip">BLOGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icons"><i class="fa-solid fa-laptop-file"></i></span>
+                    <span class="tooltip">ONLINE TEST</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icons"><i class="fa-solid fa-laptop-code"></i></span>
+                    <span class="tooltip">PROJECT TRAINING</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icons"><i class="fa-solid fa-building"></i></span>
+                    <span class="tooltip">WORKSHOP</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-container">
+        <div style="margin-top: 10rem;">
+            <div id="main1">
+                <div id="top">
+                    <div id="top1">
+                        <p><b>SUBJECT : </b><label id="l1">PYTHON</label></p>
+                        <p><b>TOPIC : </b><label id="l2">Basic Introduction</label></p>
+                    </div>
+                    <div id="top2"></div>
+                </div>
+                <div id="question">
+                    <div class="q1">
+                        <p><b><label class="ll">Q1 : </label></b><pre class="Q1">What is python?</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a1" id="r11"> &nbsp; <label for="r11" class="o11">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a1" id="r12"> &nbsp; <label for="r12" class="o12">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a1" id="r13"> &nbsp; <label for="r13" class="o13">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a1" id="r14"> &nbsp; <label for="r14" class="o14">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q2" hidden>
+                        <p><b><label class="ll">Q2 : </label></b><pre class="Q2">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a2" id="r21"> &nbsp; <label for="r21" class="o21">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a2" id="r22"> &nbsp; <label for="r22" class="o22">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a2" id="r23"> &nbsp; <label for="r23" class="o23">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a2" id="r24"> &nbsp; <label for="r24" class="o24">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q3" hidden>
+                        <p><b><label class="ll">Q3 : </label></b><pre class="Q3">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a3" id="r31"> &nbsp; <label for="r31" class="o31">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a3" id="r32"> &nbsp; <label for="r32" class="o32">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a3" id="r33"> &nbsp; <label for="r33" class="o33">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a3" id="r34"> &nbsp; <label for="r34" class="o34">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q4" hidden>
+                        <p><b><label class="ll">Q4 : </label></b><pre class="Q4">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a4" id="r41"> &nbsp; <label for="r41" class="o41">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a4" id="r42"> &nbsp; <label for="r42" class="o42">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a4" id="r43"> &nbsp; <label for="r43" class="o43">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a4" id="r44"> &nbsp; <label for="r44" class="o44">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q5" hidden>
+                        <p><b><label class="ll">Q5 : </label></b><pre class="Q5">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a5" id="r51"> &nbsp; <label for="r51" class="o51">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a5" id="r52"> &nbsp; <label for="r52" class="o52">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a5" id="r53"> &nbsp; <label for="r53" class="o53">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a5" id="r54"> &nbsp; <label for="r54" class="o54">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q6" hidden>
+                        <p><b><label class="ll">Q6 : </label></b><pre class="Q6">What is python</pre></p>
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a6" id="r63"> &nbsp; <label for="r63" class="o63">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a6" id="r64"> &nbsp; <label for="r64" class="o64">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a6" id="r61"> &nbsp; <label for="r61" class="o61">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a6" id="r62"> &nbsp; <label for="r62" class="o62">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q7" hidden>
+                        <p><b><label class="ll">Q7 : </label></b><pre class="Q7">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a7" id="r71"> &nbsp; <label for="r71" class="o71">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a7" id="r72"> &nbsp; <label for="r72" class="o72">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a7" id="r73"> &nbsp; <label for="r73" class="o73">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a7" id="r74"> &nbsp; <label for="r74" class="o74">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q8" hidden>
+                        <p><b><label class="ll">Q8 : </label></b><pre class="Q8">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a8" id="r81"> &nbsp; <label for="r81" class="o81">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a8" id="r82"> &nbsp; <label for="r82" class="o82">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a8" id="r83"> &nbsp; <label for="r83" class="o83">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a8" id="r84"> &nbsp; <label for="r84" class="o84">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q9" hidden>
+                        <p><b><label class="ll">Q9 : </label></b><pre class="Q9">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a9" id="r91"> &nbsp; <label for="r91" class="o91">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a9" id="r92"> &nbsp; <label for="r92" class="o92">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a9" id="r93"> &nbsp; <label for="r93" class="o93">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a9" id="r94"> &nbsp; <label for="r94" class="o94">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q10" hidden>
+                        <p><b><label class="ll">Q10 : </label></b><pre class="Q10">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a10" id="r101"> &nbsp; <label for="r101" class="o101">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a10" id="r102"> &nbsp; <label for="r102" class="o102">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a10" id="r103"> &nbsp; <label for="r103" class="o103">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a10" id="r104"> &nbsp; <label for="r104" class="o104">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q11" hidden>
+                        <p><b><label class="ll">Q11 : </label></b><pre class="Q11">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a11" id="r111"> &nbsp; <label for="r111" class="o111">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a11" id="r112"> &nbsp; <label for="r112" class="o112">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a11" id="r113"> &nbsp; <label for="r113" class="o113">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a11" id="r114"> &nbsp; <label for="r114" class="o114">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q12" hidden>
+                        <p><b><label class="ll">Q12 : </label></b><pre class="Q12">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a12" id="r121"> &nbsp; <label for="r121" class="o121">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a12" id="r122"> &nbsp; <label for="r122" class="o122">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a12" id="r123"> &nbsp; <label for="r123" class="o123">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a12" id="r124"> &nbsp; <label for="r124" class="o124">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q13" hidden>
+                        <p><b><label class="ll">Q13 : </label></b><pre class="Q13">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a13" id="r131"> &nbsp; <label for="r131" class="o131">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a13" id="r132"> &nbsp; <label for="r132" class="o132">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a13" id="r133"> &nbsp; <label for="r133" class="o133">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a13" id="r134"> &nbsp; <label for="r134" class="o134">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q14" hidden>
+                        <p><b><label class="ll">Q14 : </label></b><pre class="Q14">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a14" id="r141"> &nbsp; <label for="r141" class="o141">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a14" id="r142"> &nbsp; <label for="r142" class="o142">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a14" id="r143"> &nbsp; <label for="r143" class="o143">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a14" id="r144"> &nbsp; <label for="r144" class="o144">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q15" hidden>
+                        <p><b><label class="ll">Q15 : </label></b><pre class="Q15">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a15" id="r151"> &nbsp; <label for="r151" class="o151">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a15" id="r152"> &nbsp; <label for="r152" class="o152">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a15" id="r153"> &nbsp; <label for="r153" class="o153">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a15" id="r154"> &nbsp; <label for="r154" class="o154">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q16" hidden>
+                        <p><b><label class="ll">Q16 : </label></b><pre class="Q16">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a16" id="r161"> &nbsp; <label for="r161" class="o161">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a16" id="r162"> &nbsp; <label for="r162" class="o162">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a16" id="r163"> &nbsp; <label for="r163" class="o163">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a16" id="r164"> &nbsp; <label for="r164" class="o164">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q17" hidden>
+                        <p><b><label class="ll">Q17 : </label></b><pre class="Q17">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a17" id="r171"> &nbsp; <label for="r171" class="o171">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a17" id="r172"> &nbsp; <label for="r172" class="o172">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a17" id="r173"> &nbsp; <label for="r173" class="o173">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a17" id="r174"> &nbsp; <label for="r174" class="o174">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q18" hidden>
+                        <p><b><label class="ll">Q18 : </label></b><pre class="Q18">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a18" id="r181"> &nbsp; <label for="r181" class="o181">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a18" id="r182"> &nbsp; <label for="r182" class="o182">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a18" id="r183"> &nbsp; <label for="r183" class="o183">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a18" id="r184"> &nbsp; <label for="r184" class="o184">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q19" hidden>
+                        <p><b><label class="ll">Q19 : </label></b><pre class="Q19">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a19" id="r191"> &nbsp; <label for="r191" class="o191">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a19" id="r192"> &nbsp; <label for="r192" class="o192">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a19" id="r193"> &nbsp; <label for="r193" class="o193">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a19" id="r194"> &nbsp; <label for="r194" class="o194">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                    <div class="q20" hidden>
+                        <p><b><label class="ll">Q20 : </label></b><pre class="Q20">What is python</pre></p>
+                        <div id="f1"><b>A. &nbsp;</b><input type="radio" value="" name="a20" id="r201"> &nbsp; <label for="r201" class="o201">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b><input type="radio" value="" name="a20" id="r202"> &nbsp; <label for="r202" class="o202">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                        <div id="f3"><b>C. &nbsp;</b><input type="radio" value="" name="a20" id="r203"> &nbsp; <label for="r203" class="o203">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b><input type="radio" value="" name="a20" id="r204"> &nbsp; <label for="r204" class="o204">Welcome to Rays Edutech pvt. ltd.</label></div>
+                    </div>
+                </div>
+                <div id="num" style="text-align: center;">
+                    <p><input type="button" value="<" id="pre" hidden> &nbsp; &nbsp; &nbsp; &nbsp; <input type="button" value="1" id="a1" onclick="cl('.q1','#a1')"> &nbsp; <input type="button" value="2" id="a2" onclick="cl('.q2','#a2')"> &nbsp; <input type="button" value="3" id="a3" onclick="cl('.q3','#a3')"> &nbsp; <input type="button" value="4" id="a4" onclick="cl('.q4','#a4')"> &nbsp; <input type="button" value="5" id="a5" onclick="cl('.q5','#a5')"> &nbsp; 
+                    <input type="button" value="6" id="a6" onclick="cl('.q6','#a6')"> &nbsp; <input type="button" value="7" id="a7" onclick="cl('.q7','#a7')"> &nbsp; <input type="button" value="8" id="a8" onclick="cl('.q8','#a8')"> &nbsp; <input type="button" value="9" id="a9" onclick="cl('.q9','#a9')"> &nbsp; <input type="button" value="10" id="a10" onclick="cl('.q10','#a10')"> &nbsp; 
+                    <input type="button" value="11" id="a11" onclick="cl('.q11','#a11')"> &nbsp; <input type="button" value="12" id="a12" onclick="cl('.q12','#a12')"> &nbsp; <input type="button" value="13" id="a13" onclick="cl('.q13','#a13')"> &nbsp; <input type="button" value="14" id="a14" onclick="cl('.q14','#a14')"> &nbsp; <input type="button" value="15" id="a15" onclick="cl('.q15','#a15')"> &nbsp; 
+                    <input type="button" value="16" id="a16" onclick="cl('.q16','#a16')"> &nbsp; <input type="button" value="17" id="a17" onclick="cl('.q17','#a17')"> &nbsp; <input type="button" value="18" id="a18" onclick="cl('.q18','#a18')"> &nbsp; <input type="button" value="19" id="a19" onclick="cl('.q19','#a19')"> &nbsp; <input type="button" value="20" id="a20" onclick="cl('.q20','#a20')"> &nbsp; &nbsp; &nbsp; &nbsp; <input type="button" value=">" id="post"></p><br><br>
+                    <input type="button" value="Submit Test" id="sub_tst">
+                </div>
+            </div>
+            <div id="main2" hidden>
+                <div id="res1" style="background-image: linear-gradient(to right top, #a4bae6, #8ea7ee, #8093f2, #7c7bf3, #8160ef); z-index: 1; opacity: .8;">
+                    <p><b>Attempted &nbsp; Question : </b><label id="resl1"></label></p>
+                    <p><b>Not &nbsp; Attempted : </b><label id="resl2"></label></p>
+                    <p><b>Right &nbsp; Answer : </b><label id="resl3"></label></p>
+                    <p><b>Wrong &nbsp; Answer : </b><label id="resl4"></label></p>
+                </div>
+                <div class="d1" id="d1">
+                    <p><b><label class="ll">Q1 : </label></b><pre class="Q1">What is python?</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o11">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o12">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o13">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o14">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a1"></label></div>
+                </div>
+                <div class="d1" id="d2">
+                    <p><b><label class="ll">Q2 : </label></b><pre class="Q2">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o21">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o22">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o23">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o24">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a2"></label></div>
+                </div>
+                <div class="d1" id="d3">
+                    <p><b><label class="ll">Q3 : </label></b><pre class="Q3">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o31">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o32">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o33">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o34">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a3"></label></div>
+                </div>
+                <div class="d1" id="d4">
+                    <p><b><label class="ll">Q4 : </label></b><pre class="Q4">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o41">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o42">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o43">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o44">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a4"></label></div>
+                </div>
+                <div class="d1" id="d5">
+                    <p><b><label class="ll">Q5 : </label></b><pre class="Q5">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o51">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o52">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o53">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o54">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a5"></label></div>
+                </div>
+                <div class="d1" id="d6">
+                    <p><b><label class="ll">Q6 : </label></b><pre class="Q6">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o61">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o62">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o63">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o64">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a6"></label></div>
+                </div>
+                <div class="d1" id="d7">
+                    <p><b><label class="ll">Q7 : </label></b><pre class="Q7">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o71">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o72">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o73">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o74">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a7"></label></div>
+                </div>
+                <div class="d1" id="d8">
+                    <p><b><label class="ll">Q8 : </label></b><pre class="Q8">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o81">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o82">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o83">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o84">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a8"></label></div>
+                </div>
+                <div class="d1" id="d9">
+                    <p><b><label class="ll">Q9 : </label></b><pre class="Q9">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o91">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o92">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o93">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o94">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a9"></label></div>
+                </div>
+                <div class="d1" id="d10">
+                    <p><b><label class="ll">Q10 : </label></b><pre class="Q10">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o101">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o102">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o103">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o104">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a10"></label></div>
+                </div>
+                <div class="d1" id="d11">
+                    <p><b><label class="ll">Q11 : </label></b><pre class="Q11">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o111">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o112">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o113">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o114">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a11"></label></div>
+                </div>
+                <div class="d1" id="d12">
+                    <p><b><label class="ll">Q12 : </label></b><pre class="Q12">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o121">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o122">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o123">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o124">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a12"></label></div>
+                </div>
+                <div class="d1" id="d13">
+                    <p><b><label class="ll">Q13 : </label></b><pre class="Q13">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o131">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o132">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o133">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o134">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a13"></label></div>
+                </div>
+                <div class="d1" id="d14">
+                    <p><b><label class="ll">Q14 : </label></b><pre class="Q14">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o141">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o142">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o143">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o144">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a14"></label></div>
+                </div>
+                <div class="d1" id="d15">
+                    <p><b><label class="ll">Q15 : </label></b><pre class="Q15">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o151">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o152">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o153">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o154">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a15"></label></div>
+                </div>
+                <div class="d1" id="d16">
+                    <p><b><label class="ll">Q16 : </label></b><pre class="Q16">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o161">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o162">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o163">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o164">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a6"></;></div>
+                </div>
+                <div class="d1" id="d17">
+                    <p><b><label class="ll">Q17 : </label></b><pre class="Q17">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o171">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o172">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o173">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o174">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a17"></label></div>
+                </div>
+                <div class="d1" id="d18">
+                    <p><b><label class="ll">Q18 : </label></b><pre class="Q18">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o181">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o182">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o183">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o184">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a18"></label></div>
+                </div>
+                <div class="d1" id="d19">
+                    <p><b><label class="ll">Q19 : </label></b><pre class="Q19">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o191">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o192">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o193">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o194">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a19"></label></div>
+                </div>
+                <div class="d1" id="d20">
+                    <p><b><label class="ll">Q20 : </label></b><pre class="Q20">What is python</pre></p>
+                    <div id="f1"><b>A. &nbsp;</b> &nbsp; <label class="o201">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f2"><b>B. &nbsp;</b> &nbsp; <label class="o202">Welcome to Rays Edutech pvt. ltd.</label></div><br><br id="br1"><br id="br1">
+                    <div id="f3"><b>C. &nbsp;</b> &nbsp; <label class="o203">Welcome to Rays Edutech pvt. ltd.</label></div> &nbsp; &nbsp; <div id="f4"><b>D. &nbsp;</b> &nbsp; <label class="o204">Welcome to Rays Edutech pvt. ltd.</label></div><br><br>
+                    <div><b>Correct &nbsp; Answer : </b><label class="a20"></label></div>
+                </div>
+            </div>
+        </div>
+        <!-- ---------Footer-------  -->
+        <footer>
+            <ul class="social">
+                <li><a href=""><i class="fa-brands fa-facebook" title="Facebook"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-instagram" title="Instagram"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-twitter" title="Twitter"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-youtube" title="Youtube"></i></a></li>
+            </ul>
+            <ul class="ftr-box">
+                <li> <h3>Our Services</h3><br>
+                    <h4>Technical Training</h4><br>
+                    <h4>Web Development</h4><br>
+                    <h4>App Development</h4>
+                </li>
+                <li>
+                    <h3>Quick Links</h3><br>
+                    <h4><a href="">Home</a></h4><br>
+                    <h4><a href="">Services</a></h4><br>
+                    <h4><a href="">Internship</a></h4><br>
+                    <h4><a href="">About Us</a></h4><br>
+                </li>
+                <li>
+                    <div>
+                        <h3>Contact Us</h3><br>
+                        <div class="p">2nd Floor, Mithulok, West Boring Canal Road, Khetan Lane, Near Bharat Petrol Pump, Beside
+                            Senco
+                            Gold & Diamonds, Patna, Bihar- 800001</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.6987966567876!2d85.11724797517394!3d25.614923214655015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58ee6d975d47%3A0xbc5045cc2b8ae11c!2sRays%20Edutech%20Pvt.%20Ltd!5e0!3m2!1sen!2sin!4v1698580783201!5m2!1sen!2sin"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </li>
+            </ul>
+            <p class="ftr-p">&#169;Rays Edutech Pvt Ltd</p>
+        </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+        // ############################################################ Test ##################################################################
+        var a1;var a2;var a3;var a4;var a5;var a6;var a7;var a8;var a9;var a10;var a11;var a12;var a13;var a14;var a15;var a16;var a17;var a18;var a19;var a20;
+        $(document).ready(function(){
+          a=localStorage.getItem('sub').trim()
+          b=localStorage.getItem('topic').trim()
+          $('#l1').html(a)
+          $('#l2').html(b)
+          $('#a1').css('background-color','yellow')
+          $.ajax({
+            url:'contact.py',
+            method:'post',
+            data:{
+              t1:'load',
+              t2:a,
+              t3:b
+            },
+            success:function(data){
+                if(data==0){
+                    $('body').html('<h1>Something went Wrong!</h1>')
+                    $('body').css({'font-size':'3rem','text-align':'center','margin-top':'15%','color':'red'})
+                }
+                else{
+              d=data.split(',,,,,')
+              var q1=d[0].split(',,,,')
+              var q2=d[1].split(',,,,')
+              var q3=d[2].split(',,,,')
+              var q4=d[3].split(',,,,')
+              var q5=d[4].split(',,,,')
+              var q6=d[5].split(',,,,')
+              var q7=d[6].split(',,,,')
+              var q8=d[7].split(',,,,')
+              var q9=d[8].split(',,,,')
+              var q10=d[9].split(',,,,')
+              var q11=d[10].split(',,,,')
+              var q12=d[11].split(',,,,')
+              var q13=d[12].split(',,,,')
+              var q14=d[13].split(',,,,')
+              var q15=d[14].split(',,,,')
+              var q16=d[15].split(',,,,')
+              var q17=d[16].split(',,,,')
+              var q18=d[17].split(',,,,')
+              var q19=d[18].split(',,,,')
+              var q20=d[19].split(',,,,')
+              $('.Q1').html(q1[2]);$('.Q2').html(q2[2]);$('.Q3').html(q3[2]);$('.Q4').html(q4[2]);$('.Q5').html(q5[2]);
+              $('.Q6').html(q6[2]);$('.Q7').html(q7[2]);$('.Q8').html(q8[2]);$('.Q9').html(q9[2]);$('.Q10').html(q10[2]);
+              $('.Q11').html(q11[2]);$('.Q12').html(q12[2]);$('.Q13').html(q13[2]);$('.Q14').html(q14[2]);$('.Q15').html(q15[2]);
+              $('.Q16').html(q16[2]);$('.Q17').html(q17[2]);$('.Q18').html(q18[2]);$('.Q19').html(q19[2]);$('.Q20').html(q20[2]);
+              a1=q1[3].trim();a2=q2[3].trim();a3=q3[3].trim();a4=q4[3].trim();a5=q5[3].trim();
+              a6=q6[3].trim();a7=q7[3].trim();a8=q8[3].trim();a9=q9[3].trim();a10=q10[3].trim();
+              a11=q11[3].trim();a12=q12[3].trim();a13=q13[3].trim();a14=q14[3].trim();a15=q15[3].trim();
+              a16=q16[3].trim();a17=q17[3].trim();a18=q18[3].trim();a19=q19[3].trim();a20=q20[3].trim();
+              o1=q1[4].split(',,,');o2=q2[4].split(',,,');o3=q3[4].split(',,,');o4=q4[4].split(',,,');o5=q5[4].split(',,,');
+              o6=q6[4].split(',,,');o7=q7[4].split(',,,');o8=q8[4].split(',,,');o9=q9[4].split(',,,');o10=q10[4].split(',,,');
+              o11=q11[4].split(',,,');o12=q12[4].split(',,,');o13=q13[4].split(',,,');o14=q14[4].split(',,,');o15=q15[4].split(',,,');
+              o16=q16[4].split(',,,');o17=q17[4].split(',,,');o18=q18[4].split(',,,');o19=q19[4].split(',,,');o20=q20[4].split(',,,');
+              $('.o21').html(o2[0]);$('.o22').html(o2[1]);$('.o23').html(o2[2]);$('.o24').html(o2[3]);
+              $('.o11').html(o1[0]);$('.o12').html(o1[1]);$('.o13').html(o1[2]);$('.o14').html(o1[3]);
+              $('.o31').html(o3[0]);$('.o32').html(o3[1]);$('.o33').html(o3[2]);$('.o34').html(o3[3]);
+              $('.o41').html(o4[0]);$('.o42').html(o4[1]);$('.o43').html(o4[2]);$('.o44').html(o4[3]);
+              $('.o51').html(o5[0]);$('.o52').html(o5[1]);$('.o53').html(o5[2]);$('.o54').html(o5[3]);
+              $('.o61').html(o6[0]);$('.o62').html(o6[1]);$('.o63').html(o6[2]);$('.o64').html(o6[3]);
+              $('.o71').html(o7[0]);$('.o72').html(o7[1]);$('.o73').html(o7[2]);$('.o74').html(o7[3]);
+              $('.o81').html(o8[0]);$('.o82').html(o8[1]);$('.o83').html(o8[2]);$('.o84').html(o8[3]);
+              $('.o91').html(o9[0]);$('.o92').html(o9[1]);$('.o93').html(o9[2]);$('.o94').html(o9[3]);
+              $('.o101').html(o10[0]);$('.o102').html(o10[1]);$('.o103').html(o10[2]);$('.o104').html(o10[3]);
+              $('.o111').html(o11[0]);$('.o112').html(o11[1]);$('.o113').html(o11[2]);$('.o114').html(o11[3]);
+              $('.o121').html(o12[0]);$('.o122').html(o12[1]);$('.o123').html(o12[2]);$('.o124').html(o12[3]);
+              $('.o131').html(o13[0]);$('.o132').html(o13[1]);$('.o133').html(o13[2]);$('.o134').html(o13[3]);
+              $('.o141').html(o14[0]);$('.o142').html(o14[1]);$('.o143').html(o14[2]);$('.o144').html(o14[3]);
+              $('.o151').html(o15[0]);$('.o152').html(o15[1]);$('.o153').html(o15[2]);$('.o154').html(o15[3]);
+              $('.o161').html(o16[0]);$('.o162').html(o16[1]);$('.o163').html(o16[2]);$('.o164').html(o16[3]);
+              $('.o171').html(o17[0]);$('.o172').html(o17[1]);$('.o173').html(o17[2]);$('.o174').html(o17[3]);
+              $('.o181').html(o18[0]);$('.o182').html(o18[1]);$('.o183').html(o18[2]);$('.o184').html(o18[3]);
+              $('.o191').html(o19[0]);$('.o192').html(o19[1]);$('.o193').html(o19[2]);$('.o194').html(o19[3]);
+              $('.o201').html(o20[0]);$('.o202').html(o20[1]);$('.o203').html(o20[2]);$('.o204').html(o20[3]);
+              $('#r11').attr('value',o1[0]);$('#r12').attr('value',o1[1]);$('#r13').attr('value',o1[2]);$('#r14').attr('value',o1[3]);
+              $('#r21').attr('value',o2[0]);$('#r22').attr('value',o2[1]);$('#r23').attr('value',o2[2]);$('#r24').attr('value',o2[3]);
+              $('#r31').attr('value',o3[0]);$('#r32').attr('value',o3[1]);$('#r33').attr('value',o3[2]);$('#r34').attr('value',o3[3]);
+              $('#r41').attr('value',o4[0]);$('#r42').attr('value',o4[1]);$('#r43').attr('value',o4[2]);$('#r44').attr('value',o4[3]);
+              $('#r51').attr('value',o5[0]);$('#r52').attr('value',o5[1]);$('#r53').attr('value',o5[2]);$('#r54').attr('value',o5[3]);
+              $('#r61').attr('value',o6[0]);$('#r62').attr('value',o6[1]);$('#r63').attr('value',o6[2]);$('#r64').attr('value',o6[3]);
+              $('#r71').attr('value',o7[0]);$('#r72').attr('value',o7[1]);$('#r73').attr('value',o7[2]);$('#r74').attr('value',o7[3]);
+              $('#r81').attr('value',o8[0]);$('#r82').attr('value',o8[1]);$('#r83').attr('value',o8[2]);$('#r84').attr('value',o8[3]);
+              $('#r91').attr('value',o9[0]);$('#r92').attr('value',o9[1]);$('#r93').attr('value',o9[2]);$('#r94').attr('value',o9[3]);
+              $('#r101').attr('value',o10[0]);$('#r102').attr('value',o10[1]);$('#r103').attr('value',o10[2]);$('#r104').attr('value',o10[3]);
+              $('#r111').attr('value',o11[0]);$('#r112').attr('value',o11[1]);$('#r113').attr('value',o11[2]);$('#r114').attr('value',o11[3]);
+              $('#r121').attr('value',o12[0]);$('#r122').attr('value',o12[1]);$('#r123').attr('value',o12[2]);$('#r124').attr('value',o12[3]);
+              $('#r131').attr('value',o13[0]);$('#r132').attr('value',o13[1]);$('#r133').attr('value',o13[2]);$('#r134').attr('value',o13[3]);
+              $('#r141').attr('value',o14[0]);$('#r142').attr('value',o14[1]);$('#r143').attr('value',o14[2]);$('#r144').attr('value',o14[3]);
+              $('#r151').attr('value',o15[0]);$('#r152').attr('value',o15[1]);$('#r153').attr('value',o15[2]);$('#r154').attr('value',o15[3]);
+              $('#r161').attr('value',o16[0]);$('#r162').attr('value',o16[1]);$('#r163').attr('value',o16[2]);$('#r164').attr('value',o16[3]);
+              $('#r171').attr('value',o17[0]);$('#r172').attr('value',o17[1]);$('#r173').attr('value',o17[2]);$('#r174').attr('value',o17[3]);
+              $('#r181').attr('value',o18[0]);$('#r182').attr('value',o18[1]);$('#r183').attr('value',o18[2]);$('#r184').attr('value',o18[3]);
+              $('#r191').attr('value',o19[0]);$('#r192').attr('value',o19[1]);$('#r193').attr('value',o19[2]);$('#r194').attr('value',o19[3]);
+              $('#r201').attr('value',o20[0]);$('#r202').attr('value',o20[1]);$('#r203').attr('value',o20[2]);$('#r204').attr('value',o20[3]);
+
+              $('.a1').html(a1);
+              $('.a2').html(a2);
+              $('.a3').html(a3);
+              $('.a4').html(a4);
+              $('.a5').html(a5);
+              $('.a6').html(a6);
+              $('.a7').html(a7);
+              $('.a8').html(a8);
+              $('.a9').html(a9);
+              $('.a10').html(a10);
+              $('.a11').html(a11);
+              $('.a12').html(a12);
+              $('.a13').html(a13);
+              $('.a14').html(a14);
+              $('.a15').html(a15);
+              $('.a16').html(a16);
+              $('.a17').html(a17);
+              $('.a18').html(a18);
+              $('.a19').html(a19);
+              $('.a20').html(a20);
+            }
+            }
+          })
+        })
+        var butt=1;
+        function cl(t,l){
+            $('#question').children().hide();
+            $(t).show();
+            a=$(l).val()
+            b=$('input[name="a'+a+'"]:checked').val()
+            if (b==undefined)
+                $(l).css('background-color','yellow')
+            butt=parseInt(a);
+            $('#pre,#post').show()
+            if(butt==20)
+                $('#post').hide()
+            else if(butt==1)
+                $('#pre').hide()
+        }
+        $('#pre').click(function(){
+            butt=String(butt-1);
+            $('#a'+butt).click()
+        })
+        $('#post').click(function(){
+            butt=String(butt+1);
+            $('#a'+butt).click()
+        })
+        $('#question input').click(function(){
+            a=$(this).attr('name')
+            $('#'+a).css({'background-color':'green','color':'white'})
+        })
+        // ######################################################### r_ansult ###############################################################
+        $('#sub_tst').click(function(){
+            var na_q=0;
+            var r_ans=0;
+            r1=$('input[name="a1"]:checked').val()
+                if (r1!=undefined){
+                    x=$('input[name="a1"]:checked').parent('div').attr('id');
+                    r1=r1.trim()
+                    if(r1==a1){
+                        r_ans++
+                        $('#d1 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d1 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r2=$('input[name="a2"]:checked').val()
+                if (r2!=undefined){
+                    x=$('input[name="a2"]:checked').parent('div').attr('id');
+                    r2=r2.trim()
+                    if(r2==a2){
+                        r_ans++
+                        $('#d2 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d2 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r3=$('input[name="a3"]:checked').val()
+                if (r3!=undefined){
+                    x=$('input[name="a3"]:checked').parent('div').attr('id');
+                    r3=r3.trim()
+                    if(r3==a3){
+                        r_ans++
+                        $('#d3 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d3 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r4=$('input[name="a4"]:checked').val()
+                if (r4!=undefined){
+                    x=$('input[name="a4"]:checked').parent('div').attr('id');
+                    r4=r4.trim()
+                    if(r4==a4){
+                        r_ans++
+                        $('#d4 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d4 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r5=$('input[name="a5"]:checked').val()
+                if (r5!=undefined){
+                    x=$('input[name="a5"]:checked').parent('div').attr('id');
+                    r5=r5.trim()
+                    if(r5==a5){
+                        r_ans++
+                        $('#d5 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d5 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r6=$('input[name="a6"]:checked').val()
+                if (r6!=undefined){
+                    x=$('input[name="a6"]:checked').parent('div').attr('id');
+                    r6=r6.trim()
+                    if(r6==a6){
+                        r_ans++
+                        $('#d6 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d6 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r7=$('input[name="a7"]:checked').val()
+                if (r7!=undefined){
+                    x=$('input[name="a7"]:checked').parent('div').attr('id');
+                    r7=r7.trim()
+                    if(r7==a7){
+                        r_ans++
+                        $('#d7 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d7 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r8=$('input[name="a8"]:checked').val()
+                if (r8!=undefined){
+                    x=$('input[name="a8"]:checked').parent('div').attr('id');
+                    r8=r8.trim()
+                    if(r8==a8){
+                        r_ans++
+                        $('#d8 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d8 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r9=$('input[name="a9"]:checked').val()
+                if (r9!=undefined){
+                    x=$('input[name="a9"]:checked').parent('div').attr('id');
+                    r9=r9.trim()
+                    if(r9==a9){
+                        r_ans++
+                        $('#d9 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d9 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r10=$('input[name="a10"]:checked').val()
+                if (r10!=undefined){
+                    x=$('input[name="a10"]:checked').parent('div').attr('id');
+                    r10=r10.trim()
+                    if(r10==a10){
+                        r_ans++
+                        $('#d10 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d10 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r11=$('input[name="a11"]:checked').val()
+                if (r11!=undefined){
+                    x=$('input[name="a11"]:checked').parent('div').attr('id');
+                    r11=r11.trim()
+                    if(r11==a11){
+                        r_ans++
+                        $('#d11 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d11 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r12=$('input[name="a12"]:checked').val()
+                if (r12!=undefined){
+                    x=$('input[name="a12"]:checked').parent('div').attr('id');
+                    r12=r12.trim()
+                    if(r12==a12){
+                        r_ans++
+                        $('#d12 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d12 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r13=$('input[name="a13"]:checked').val()
+                if (r13!=undefined){
+                    x=$('input[name="a13"]:checked').parent('div').attr('id');
+                    r13=r13.trim()
+                    if(r13==a13){
+                        r_ans++
+                        $('#d13 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d13 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r14=$('input[name="a14"]:checked').val()
+                if (r14!=undefined){
+                    x=$('input[name="a14"]:checked').parent('div').attr('id');
+                    r14=r14.trim()
+                    if(r14==a14){
+                        r_ans++
+                        $('#d14 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d14 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r15=$('input[name="a15"]:checked').val()
+                if (r15!=undefined){
+                    x=$('input[name="a15"]:checked').parent('div').attr('id');
+                    r15=r15.trim()
+                    if(r15==a15){
+                        r_ans++
+                        $('#d15 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d15 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r16=$('input[name="a16"]:checked').val()
+                if (r16!=undefined){
+                    x=$('input[name="a16"]:checked').parent('div').attr('id');
+                    r16=r16.trim()
+                    if(r16==a16){
+                        r_ans++
+                        $('#d16 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d16 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r17=$('input[name="a17"]:checked').val()
+                if (r17!=undefined){
+                    x=$('input[name="a17"]:checked').parent('div').attr('id');
+                    r17=r17.trim()
+                    if(r17==a17){
+                        r_ans++
+                        $('#d17 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d17 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r18=$('input[name="a18"]:checked').val()
+                if (r18!=undefined){
+                    x=$('input[name="a18"]:checked').parent('div').attr('id');
+                    r18=r18.trim()
+                    if(r18==a18){
+                        r_ans++
+                        $('#d18 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d18 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r19=$('input[name="a19"]:checked').val()
+                if (r19!=undefined){
+                    x=$('input[name="a19"]:checked').parent('div').attr('id');
+                    r19=r19.trim()
+                    if(r19==a19){
+                        r_ans++
+                        $('#d19 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d19 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+            r20=$('input[name="a20"]:checked').val()
+                if (r20!=undefined){
+                    x=$('input[name="a20"]:checked').parent('div').attr('id');
+                    r20=r20.trim()
+                    if(r20==a20){
+                        r_ans++
+                        $('#d20 #'+x).css('background-color','rgb(125, 226, 125)')
+                    }
+                    else
+                        $('#d20 #'+x).css({'background-color':'rgb(241, 60, 60)','color':'white'})
+                }
+                else
+                    na_q++
+                a_ans=20-parseInt(na_q)
+                w_ans=parseInt(a_ans)-parseInt(r_ans)
+                $('#main1').hide();
+                $('#main2').show();
+                $('#resl1').html(a_ans)
+                $('#resl2').html(na_q)
+                $('#resl3').html(r_ans)
+                $('#resl4').html(w_ans)
+        })
+        // ------------------------------------------ Timer ---------------------------------------
+        const FULL_DASH_ARRAY = 283;
+        const WARNING_THRESHOLD = 10;
+        const ALERT_THRESHOLD = 5;
+
+        const COLOR_CODES = {
+        info: {
+            color: "green",
+            threshold:FULL_DASH_ARRAY
+        },
+        warning: {
+            color: "orange",
+            threshold: WARNING_THRESHOLD
+        },
+        alert: {
+            color: "red",
+            threshold: ALERT_THRESHOLD
+        }
+        };
+
+        const TIME_LIMIT =10;
+        let timePassed = 0;
+        let timeLeft = TIME_LIMIT;
+        let timerInterval = null;
+        let remainingPathColor = COLOR_CODES.info.color;
+
+        document.getElementById("top2").innerHTML = `
+        <div class="base-timer">
+        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <g class="base-timer__circle">
+            <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+            <path
+                id="base-timer-path-remaining"
+                stroke-dasharray="283"
+                class="base-timer__path-remaining ${remainingPathColor}"
+                d="
+                M 50, 50
+                m -45, 0
+                a 45,45 0 1,0 90,0
+                a 45,45 0 1,0 -90,0
+                "
+            ></path>
+            </g>
+        </svg>
+        <span id="base-timer-label" class="base-timer__label">${formatTime(
+            timeLeft
+        )}</span>
+        </div>
+        `;
+
+        startTimer();
+
+        function onTimesUp() {
+        clearInterval(timerInterval);
+        }
+
+        function startTimer() {
+        timerInterval = setInterval(() => {
+            timePassed = timePassed += 1;
+            timeLeft = TIME_LIMIT - timePassed;
+            document.getElementById("base-timer-label").innerHTML = formatTime(
+            timeLeft
+            );
+            setCircleDasharray();
+            setRemainingPathColor(timeLeft);
+
+            if (timeLeft === 0) {
+            onTimesUp();
+            $('#sub_tst').click();
+            }
+        }, 1000);
+        }
+
+        function formatTime(time) {
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+
+        if (seconds < 10) {
+            seconds = `0${seconds}`;
+        }
+        if(minutes < 10){
+            minutes = `0`+`${minutes}`;
+        }
+
+        return `${minutes}:${seconds}`;
+        }
+
+        function setRemainingPathColor(timeLeft) {
+        const { alert, warning, info } = COLOR_CODES;
+        if (timeLeft <= alert.threshold) {
+            document
+            .getElementById("base-timer-path-remaining")
+            .classList.remove(warning.color);
+            document
+            .getElementById("base-timer-path-remaining")
+            .classList.add(alert.color);
+        } else if (timeLeft <= warning.threshold) {
+            document
+            .getElementById("base-timer-path-remaining")
+            .classList.remove(info.color);
+            document
+            .getElementById("base-timer-path-remaining")
+            .classList.add(warning.color);
+        }
+        }
+
+        function calculateTimeFraction() {
+        const rawTimeFraction = timeLeft / TIME_LIMIT;
+        return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+        }
+
+        function setCircleDasharray() {
+        const circleDasharray = `${(
+            calculateTimeFraction() * FULL_DASH_ARRAY
+        ).toFixed(0)} 283`;
+        document
+            .getElementById("base-timer-path-remaining")
+            .setAttribute("stroke-dasharray", circleDasharray);
+        }
+        // ------------------------------------------ Timer ---------------------------------------
+    </script>
+    <script>
+        $(document).ready(function () {
+            var a = 0;
+            $('.fa-bars').click(function () {
+                if (a == 0) {
+                    $('.nav').css({ 'right': '0rem', 'transition': '.3s all linear' })
+                    a = 1;
+                }
+                else if (a == 1) {
+                    $('.nav').css({ 'right': '-21rem', 'transition': '.3s all linear' })
+                    a = 0;
+                }
+            })
+
+        });
+    </script>
+</body>
+
+</html>

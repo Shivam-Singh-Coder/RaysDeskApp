@@ -1,0 +1,162 @@
+html{
+    font-size: 10px;
+}
+#main1 *{
+    padding: .5rem;
+}
+#h1{
+    text-align: center;
+    font-size: 4rem;
+    margin-top: 2rem;
+}
+#test{
+    background-color: #EBEDEE;
+    height: auto;
+    width: 30%;
+    margin-top: 2rem;
+    box-shadow: 0px 0px 10px gray;
+    font-size: 2rem;
+    padding-left: 3rem;
+    line-height: 2rem;
+    float: left;
+    margin-left: 0%;
+}
+#test div{
+    line-height: 3rem;
+}
+#test p{
+    cursor: pointer;
+}
+#test i{
+    font-size: 2rem;
+}
+#test li{
+    cursor: pointer;
+    color: blue;
+    line-height: 1rem;
+    margin-left: 2rem;
+}
+#h21{
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+#main{
+    height:57rem;
+    width: 60%;
+    margin: 2rem 0 0 0;
+    float:right;
+}
+#quiz{
+    background-color: #EBEDEE;
+    height:32rem;
+    width: 100%;
+    box-shadow: 0px 0px 10px gray;
+    font-size: 2rem;
+    border: .01rem solid #EBEDEE;
+    border-radius: .5rem;
+}
+#quiz p{
+    margin-left: 5rem;
+}
+#quiz h2{
+    margin-left: 5rem;
+}
+#quiz i{
+    color:blue;
+    position: absolute;
+    font-size: 2rem;
+}
+#notice{
+    background-color: #EBEDEE;
+    height:21rem;
+    width: 100%;
+    margin-top: 2rem;
+    box-shadow: 0px 0px 10px gray;
+    padding: 1rem 0 2rem 0;
+    border-radius: .5rem;
+    border: .01rem solid #EBEDEE;
+    padding-bottom: 2rem;
+}
+#notice h2{
+    color: red;
+    font-size: 2.5rem;
+    margin-left: 5rem;
+}
+#notice li{
+    font-size: 2rem;
+    margin-left: 5rem;
+    line-height: 3.5rem;
+}
+#manu{
+    font-size: 4rem;
+    position: absolute;
+    cursor: pointer;
+    visibility: hidden;
+    margin: 1rem 0 0 85%;
+}
+#manu hr{
+    height: .2rem;
+    background-color: black;
+}
+#b1{
+    float: right;
+    margin-right: 2rem;
+    margin-top: -18rem;
+    height: 3.5rem;
+    width: 12rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+    font-size: 1.8rem;
+}
+#c,#cpp,#java,#python,#html,#css,#js,#php{
+    height: auto;
+    /* border: .1rem solid black; */
+}
+@media (max-width:998px) {
+    html{
+        font-size: 55%;
+    }
+    .xyz{
+        transform: translate(0%);
+    }
+}
+@media (max-width:768px) {
+    html{
+        font-size: 45%;
+    }
+    #manu{
+        visibility: visible;
+    }
+    #test{
+        position: absolute;
+        margin-top: 0rem;
+        width: auto;
+        padding-right: 3rem;
+        z-index: 1;
+    }
+    .xyz{
+        transform: translate(-120%);
+    }
+    #main{
+        float: none;
+        width: 100%;
+        margin-top: 7rem;
+    }
+    #quiz,#notice{
+        height: auto;
+        position: relative;
+    }
+    #b1{
+        float:none;
+    }
+    #p2{
+        margin-top: 4rem;
+        text-align: center;
+    }
+    #f1,#f2{
+        display: block;
+    }
+}

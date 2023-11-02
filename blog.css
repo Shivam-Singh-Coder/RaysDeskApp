@@ -1,0 +1,310 @@
+a {
+    text-decoration: none;
+}
+
+/* html {
+    font-size: 10px;
+} */
+
+#topic {
+    font-family: sans-serif;
+    font-size: 2rem;
+    width: 100%;
+    font-size: 2.5rem;
+    height: 8rem;
+    overflow: hidden;
+    user-select: none;
+}
+
+#blogs {
+    margin-top: 2rem;
+    border: 2px solid rgb(64, 102, 226);
+    width: 100%;
+}
+
+#p1 {
+    background-image: linear-gradient(135deg, #FFFEFF 10%, #D7FFFE 100%);
+    width: 70%;
+    height: 25rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+}
+
+#p1:nth-of-type(even) {
+    margin-left: 30%;
+    background-image: linear-gradient(135deg, #D7FFFE 10%, #FFFEFF 100%);
+}
+
+#para {
+    width: 100%;
+    height: 5.5rem;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    color: gray;
+    word-wrap: break-word;
+    overflow: hidden;
+    user-select: none;
+}
+
+.custom-btn {
+    width: 10rem;
+    height: 3rem;
+    color: #fff;
+    border-radius: 0.3rem;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+    font-size: 1.5rem;
+}
+
+.btn-2 {
+    background: #004dff;
+    background: linear-gradient(0deg, #004dff 0%, #004dff 100%);
+    border: none;
+}
+
+.btn-2:before {
+    height: 0%;
+    width: 2px;
+}
+
+.btn-2:hover {
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
+        -4px -4px 6px 0 rgba(116, 125, 136, .5),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
+.author,
+.Publish {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    font-family: sans-serif;
+    color: gray;
+    font-size: 1.5rem;
+    padding: 0.4rem;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.slider {
+    display: flex;
+    gap: 1rem;
+    border: solid 2px rgb(54, 238, 115);
+    /* width: 600%; */
+    width: auto;
+    height: 42rem;
+    padding: 0.8rem;
+}
+.anm {
+    border: solid 2px red;
+    height: 40rem;
+    width: 150rem;
+    border-radius: 0.5rem;
+    position: relative;
+}
+.slider div img {
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+#sp {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+#x,
+#y {
+    float: left;
+    width: 30%;
+}
+#y {
+    float: right;
+    width: 68%;
+    margin-left: 1rem;
+}
+#p1:nth-of-type(even) #x {
+    float: right;
+}
+#p1:nth-of-type(even) #y {
+    float: left;
+}
+#img1 {
+    border-radius: 0.4rem;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 40px;
+    border: none;
+    outline: none;
+    background: none;
+    color: rgb(182, 180, 180);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#btn {
+    position: relative;
+    text-align: center;
+}
+
+#btn button {
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+    border: none;
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: #779cf3;
+    color: #fff;
+    transition: 0.5s;
+}
+
+#myBtn:hover {
+    background-color: #555;
+}
+
+#btn button:hover {
+    background-color: #555;
+    transform: scale((1.25));
+}
+
+@media (max-width:968px) {
+    html {
+        font-size: 55%;
+    }
+
+    #p1 {
+        width: 80%;
+        margin: auto;
+    }
+
+    #p1:nth-of-type(even) {
+        margin-left: 10%;
+    }
+}
+
+@media (max-width:768px) {
+    html {
+        font-size: 35%;
+    }
+
+    #p1 {
+        width: 95%;
+        margin: auto;
+    }
+
+    #p1:nth-of-type(even) {
+        margin-left: 2.5%;
+    }
+
+    #sp {
+        font-size: 170%;
+    }
+    /* .slider{
+        height: 67rem;
+    }
+    .anm{
+        width: 70rem;
+        height: 65rem;
+    } */
+    .author,.Publish{
+        font-size: 0.5rem;
+    }
+}
+
+#sld_img,
+#sp {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#sp:hover {
+    color: rgb(241, 140, 6);
+}
+
+#sld_img:hover,#img1:hover {
+    transform: scale(1.025);
+}
+/* ---Shubham Bhai */
+.batch-box {
+    max-width: 100%;
+    height: 30rem;
+    margin: 5rem auto;
+    /* border: 2px solid black; */
+
+}
+
+.batch {
+    border: 2px solid black;
+    height: auto;
+}
+
+.batch .items {
+    width: 25rem;
+    height: auto;
+    margin-left: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: .8rem;
+    padding: 1.5rem;
+    border: .2rem solid #111;
+}
+
+.item-img {
+    width: 100%;
+    height: 15rem;
+}
+
+.batch a,
+img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.batch .slick-slide {
+    margin: 1.5rem;
+
+}
+
+
+.slick-dots li.slick-active button:before {
+    color: #452bc5;
+}
+
+.slick-dots li button:before {
+    font-size: 1.2rem;
+}
+
+.slick-next:before,
+.slick-prev:before {
+    color: #452bc5;
+    font-size: 2.4rem;
+}

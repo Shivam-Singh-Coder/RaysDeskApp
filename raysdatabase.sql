@@ -288,6 +288,26 @@ CREATE TABLE `video_details` (
 insert into automatic values(
   'A',0,0,'A',0,0,'A'
 );
+CREATE TABLE rays_intern_apply (
+  sn int not NULL AUTO_INCREMENT,
+  name varchar(200),
+  mo_no varchar(200),
+  email varchar(200),
+  resume longblob,
+  position varchar(200),
+  mode varchar(200),
+  PRIMARY KEY (sn)
+);
+CREATE TABLE rays_job_apply (
+  sn int not NULL AUTO_INCREMENT,
+  name varchar(200),
+  mo_no varchar(200),
+  email varchar(200),
+  resume longblob,
+  position varchar(200),
+  mode varchar(200),
+  PRIMARY KEY (sn)
+);
 insert into state values(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 insert into state1 values('Bihar','Araria,Arwal,Aurangabad,Banka,Begusarai,Bhagalpur,Bhojpur,Buxar,Darbhanga,East Champaran(Motihari),Gaya,Gopalganj,Jamui,Jehanabad,Kaimur(Bhabua),Katihar,Khagaria,Kishanganj,Lakhisarai,Madhepura,Madhubani,Munger(Monghyr),Muzaffarpur,Nalanda,Nawada,Patna,Purnia(Purnea),Rohtas,Saharsa,Samastipur,Saran,Sheikhpura,Sheohar,Sitamarhi,Siwan,Supaul,Vaishali,West Champaran(Bettiah)')
 ;

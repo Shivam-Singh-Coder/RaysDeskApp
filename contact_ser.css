@@ -1,0 +1,45 @@
+html{
+    font-size: 10px
+}
+#d2{
+    margin-top: 5rem;
+    height: 65rem;
+    width: 90%;
+    border: 1px solid black;
+    font-size: 2rem;
+    overflow-y: auto;
+    margin-left:5%;
+}
+table,tr,th,td{
+    border: 1px solid black;
+    border-collapse: collapse ;
+}
+table{
+    width: 100%;
+    background-color: white;
+    font-size: 2rem;
+}
+th{
+    position: sticky;
+    top: 0px;
+    background-color: lightgray;
+}
+tr{
+    height: 3.5rem;
+}
+#th1{
+    width: 12%;
+}
+#th2{
+    width: 40%;
+}
+td{
+    text-align: center;
+}
+textarea{
+    /* height: auto; */
+    width: 500px;
+    resize: none;
+    border: none;
+    outline: none;
+}

@@ -1,0 +1,165 @@
+html{
+    font-size: 10px;
+}
+#main{
+    height: auto;
+    width: auto;
+}
+#top{
+    height: 15rem;
+    box-shadow: 0px 0px 10px gray;
+}
+#top1,#top2{
+    height: 100%;
+    float: left;
+}
+#top1{
+    font-size: 2.5rem;
+    padding-left: 3rem;
+    width: 60%;
+}
+#top2{
+    float: right;
+    width: 30%;
+    text-align: right;
+}
+#question,.d1{
+    height: auto;
+    margin-top: 3rem;
+    padding: 3rem 3rem 5rem 3rem;
+    font-size: 2.2rem;
+    box-shadow: 0px 0px 10px gray;
+    width: 60%;
+    margin-left:20%;
+}
+#num{
+    margin-top: 3rem;
+    padding: 3rem;
+    box-shadow: 0px 0px 10px gray;
+    width: 60%;
+    margin-left:20%;
+}
+#num input{
+    margin:0rem 0 1rem 0;
+    cursor: pointer;
+}
+#f1,#f3{
+    width: 45%;
+    float: left;
+    border-radius: .5rem;
+}
+#f2,#f4{
+    width: 45%;
+    float: right;
+    border-radius: .5rem;
+}
+#question input,#question label{
+    cursor: pointer;
+}
+#sub_tst{
+    height: 3rem;
+    width: 15rem;
+    font-size: medium;
+    border-radius: 1rem;
+}
+#res1{
+    box-shadow: 0px 0px 10px gray;
+    font-size: 2rem;
+    padding: 1rem 2rem 1rem 2rem;
+        text-align: center;
+}
+pre{
+    margin-left: 6rem;
+}
+.ll{
+    position: absolute;
+}
+/* ------------------------------------ Timer ----------------------------------------- */
+.base-timer {
+    position: relative;
+    margin-left: 20%;
+    margin-top: 5%;
+    width: 100px;
+    height: 100px;
+}
+
+.base-timer__svg {
+    transform: scaleX(-1);
+}
+
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+.base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+}
+
+.base-timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+}
+
+.base-timer__path-remaining.green {
+    color: rgb(65, 184, 131);
+}
+
+.base-timer__path-remaining.orange {
+    color: orange;
+}
+
+.base-timer__path-remaining.red {
+    color: red;
+}
+
+.base-timer__label {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+/* ------------------------------------ Timer ----------------------------------------- */
+@media (max-width:998px) {
+    html{
+        font-size: 55%;
+    }
+    #question,#num,.d1{
+        width: 80%;
+        margin-left:7%;
+    }
+
+}
+@media (max-width:768px) {
+    html{
+        font-size: 45%;
+    }
+    #question,#num,.d1{
+        width:auto;
+        margin-left: 0;
+    }
+    .d1{
+        width:auto;
+    }
+    /* #question{
+        height: ;
+    } */
+    #br1{
+        display: none;
+    }
+    #f1,#f2,#f3,#f4{
+        float: none;
+        width: auto;
+        /* background-color: rgb(241, 60, 60); */
+    }
+}

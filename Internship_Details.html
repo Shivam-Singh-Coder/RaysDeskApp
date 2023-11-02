@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internship Details</title>
+  <link rel="icon" href="REPL_t-shirt_logo.png" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 10px;
+    }
+
+    body {
+      background: #b3e5f3;
+    }
+
+    h2 {
+      font-size: 3rem;
+      margin: 15px 0;
+      color: #333;
+      display: flex;
+      justify-content: end;
+      border-bottom: 2px solid #00bfa6;
+      height: 3.6rem;
+    }
+
+    #container {
+      width: 100%;
+      margin: auto;
+      background: #b3e5f3;
+    }
+
+    #avatar {
+      position: relative;
+      left: -10rem;
+      font-size: 3rem;
+      text-align: center;
+      letter-spacing: 0.2rem;
+      color: #fff;
+    }
+
+    #d3 {
+      width: 80%;
+      margin: auto;
+      border-radius: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      margin-bottom: 1rem;
+    }
+
+    #d3top {
+      width: 100%;
+      display: flex;
+      height: 7rem;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .service #d3 {
+      width: 98%;
+      margin-bottom: 1rem;
+    }
+    .entry #d3{
+      width: 95%;
+    }
+    .btn {
+      border-radius: 25px;
+      padding: 1rem 2rem;
+      font-size: 2rem;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      background-size: 200%;
+      transition: 0.5s;
+      font-weight: bold;
+      box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5),
+        0px 5px 5px -1px rgba(58, 125, 233, 0.25),
+        inset 4px 4px 8px rgba(175, 230, 255, 0.5),
+        inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+    }
+
+    .btn:hover {
+      background-position: right;
+    }
+
+    .btni {
+      color: #dffbfcf8;
+    }
+
+    #sub {
+      background-image: linear-gradient(325deg,
+          rgb(27, 135, 108) 0%,
+          rgb(7, 182, 141) 55%,
+          rgb(0, 128, 117) 90%);
+    }
+
+    #res,
+    #ref {
+      background-image: linear-gradient(325deg,
+          rgb(152, 44, 60) 0%,
+          rgb(244, 23, 93) 55%,
+          rgb(239, 91, 160) 90%);
+    }
+    .tbl {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    .tbl thead {
+      background: #00bfa6;
+      color: #fff;
+    }
+
+    .tbl thead tr th {
+      font-size: 2rem;
+      padding: 0.8rem;
+      letter-spacing: 0.2rem;
+      text-align: center;
+      border: 1px solid #aab7b8;
+    }
+
+    .tbl tbody tr td {
+      font-size: 1.5rem;
+      letter-spacing: 0.2rem;
+      font-weight: normal;
+      text-align: center;
+      border: 1px solid #aab7b8;
+      padding: 0.8rem;
+    }
+
+    .tbl tr:hover td {
+      background: rgb(244, 222, 251);
+      color: #110814;
+      transition: all 0.3s ease-in;
+      cursor: pointer;
+    }
+
+
+    #btn_edit:hover,#btn_trash:hover {
+      transform: scale(1.5);
+      transition: 0.3s;
+    }
+
+    #ser_bt {
+      background-image: linear-gradient(325deg,
+          rgb(27, 135, 108) 0%,
+          rgb(7, 182, 141) 55%,
+          rgb(0, 128, 117) 90%);
+    }
+
+    .button-box {
+      position: relative;
+      right: -10rem;
+      border-radius: 30px;
+      background-color: #00bfa6;
+      border: 1.5px solid #555;
+    }
+
+    .toggle-btn {
+      padding: 1rem 3rem;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      outline: none;
+      position: relative;
+      text-align: center;
+      transition: 0.5s;
+    }
+
+    #btn {
+      left: 0;
+      top: 0;
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background: #fff;
+      border-radius: 30px;
+      transition: 0.1s;
+    }
+
+    #table,
+    #table1 {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      margin: auto;
+    }
+
+    #table td,
+    #table1 td {
+      position: relative;
+      width: 50%;
+      height: 10rem;
+      border: solid 1px red;
+    }
+    #table1 td{
+      width: 20%;
+    }
+    #table input,#table textarea,
+    #table select,
+    #table1 input,
+    #table1 select {
+      font-size: 2rem;
+      border-radius: 0.4rem;
+      padding: 1rem 3rem;
+      width: 80%;
+      border: 2px solid #1b7497;
+      color: #1b7497;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      outline: none;
+      background: none;
+      resize: none;
+    }
+    #table1 select {
+      text-align: center;
+      width: 90%;
+      font-size: 1.6rem;
+    }
+    #table1 input{
+      width: 90%;
+    }
+    #table label,
+    #table1 label {
+      position: absolute;
+      font-size: 1.7rem;
+      font-weight: bold;
+      left: 15%;
+      top: 1.6rem;
+      font-family: Arial, Helvetica, sans-serif;
+      background: white;
+      z-index: 1;
+      /* visibility: hidden; */
+    }
+
+    #table span,#table1 span {
+      position: absolute;
+      color: red;
+      font-size: 2rem;
+      left: 10%;
+    }
+    #avatar:hover {
+      color: black
+    }
+    .tbl_container1{
+      width: 96%;
+      max-height: 26rem;
+      position: relative;
+      overflow: auto;
+      margin: auto;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    #btn_trash {
+      color: red;
+    }
+
+    #btn_edit {
+      color: #1e8449;
+    }
+    .tbl td[data-label='YouTube Url'],.tbl td[data-label='Topic']{
+      padding: 0;
+    }
+    .tbl td[data-label='YouTube Url'] textarea,.tbl td[data-label='Topic'] input{
+      font-size: 1.5rem;
+      text-align: right;
+      border:none;
+      background:none;
+      resize:none;
+      width:100%;
+    }
+    @media (max-width:998px) {
+      html {
+        font-size: 55%;
+      }
+      .tbl_container1{
+        width: 94%;
+        max-height: 100vh;
+      }
+      .tbl thead {
+        display: none;
+      }
+      .tbl {
+        width: 100%;
+      }
+
+      .tbl tr {
+        display: block;
+      }
+
+      .tbl td {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .tbl tr {
+        margin-bottom: 1rem;
+      }
+
+      .tbl tbody tr td {
+        text-align: right;
+        position: relative;
+      }
+
+      .tbl td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        text-align: left;
+        margin-left: 0.5rem;
+      }
+      .tbl td[data-label='YouTube Url'] textarea,.tbl td[data-label='Topic'] input{
+        width: 75%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      html {
+        font-size: 45%;
+      }
+      #table1 {
+        width: 100%;
+      }
+
+      #table1 td {
+        display: block;
+        width: 100%;
+        margin: auto;
+      }
+      #table1 input,
+      #table1 select {
+        font-size: 2rem;
+        padding: 1.5rem 2rem;
+      }
+      #table {
+        width: 100%;
+      }
+
+      #table td {
+        width: 99%;
+        display: block;
+        margin: auto;
+      }
+      #table input,
+      #table select {
+        font-size: 2rem;
+        padding: 1.5rem 2rem;
+      }
+
+      #table label,#table1 label {
+        top: -10%;
+      }
+      #d3{
+        padding-top: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      html {
+        font-size: 35%;
+      }
+
+      #avatar {
+        left: 0;
+      }
+
+      .button-box {
+        right: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <div id="container">
+      <div id="d3top" style="background: #4da9f4;">
+        <a href="dashbord.html">
+          <i class="fas fa-home-user" id="avatar">&nbsp;HOME</i>
+        </a>
+        <div class="button-box" style="justify-self: right;border: none;">
+          <div id="btn"></div>
+          <button type="button" class="toggle-btn" id="rightBtn" onclick="rightClick();">
+            ENTRY
+          </button>
+          <button type="button" class="toggle-btn" id="leftBtn" onclick="leftClick()">
+            SERVICE
+          </button>
+        </div>
+      </div>
+      <div style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          ">
+        <h2>Internship Entry Form</h2>
+      </div>
+      <div class="entry">
+        <div id="d3">
+          <table id="table">
+            <tr>
+              <td>
+                <label>Position</label>
+                <input type="text" list="topic" placeholder="Position" />
+                <datalist id="topic"></datalist><br />
+                <span>jgwrjglwr</span>
+              </td>
+              <td>
+                <label>Duration</label>
+                <input type="text" autocomplete="off" placeholder="Duration" id="dur" style="width: 50%;" />
+                <select id="dur_sel" style="width: 30%;">
+                  <option>Months</option>
+                  <option>Years</option>
+                  <option>Weeks</option>
+                  <option>Days</option>
+                </select>
+                <br /><span>fkgmerlkg</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Mode</label>
+                <select id="mode">
+                  <option>Full Time</option>
+                  <option>Part Time</option>
+                  <option>Work From Home</option>
+                </select><br />
+                <span>jgwrjglwr</span>
+              </td>
+              <td>
+                <label>Stipend Amount</label>
+                <input type="text" autocomplete="off" placeholder="Stipend Amount" /><br />
+                <span>fkgmerlkg</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Location</label>
+                <input type="text" placeholder="Location" /><br />
+                <span>jgwrjglwr</span>
+              </td>
+              <td>
+                <label>Skill Required</label>
+                <input type="text" autocomplete="off" placeholder="Skill Required" /><br />
+                <span>fkgmerlkg</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Start Date</label>
+                <input type="date" /><br />
+                <span>jgwrjglwr</span>
+              </td>
+              <td>
+                <label>End Date</label>
+                <input type="date" /><br />
+                <span>fkgmerlkg</span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <button class="btn" id="sub">
+                  <i class="fas fa-solid- fa-check btni"></i> SUBMIT
+                </button>
+                <button class="btn" id="res" onclick="location.reload();" style="margin-left: 12%;">
+                  <i class="fas fa-broom btni"></i> RESET
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="service" hidden>
+        <div id="d3">
+          <table id="table1">
+            <tr>
+              <td>
+                <label>Position</label>
+                <select id="sel_top">
+                  <option selected disabled value="">--Select Any Position--</option>
+                </select>
+              </td>
+              <td>
+                <label>Mode</label>
+                <select id="sel_top">
+                  <option selected disabled value="">--Select Any Mode--</option>
+                </select>
+              </td>
+              <td>
+                <label>Location</label>
+                <select id="sel_top">
+                  <option selected disabled value="">--Select Any Location--</option>
+                </select>
+              </td>
+              <td>
+                <label>From Date</label>
+                <input type="text" placeholder="Start Date" onfocus="this.type='date';" onblur="this.type='text'" />
+                <br><span></span>
+              </td>
+              <td>
+                <label>To Date</label>
+                <input type="text" placeholder="End Date" onfocus="this.type='date';" onblur="this.type='text'" />
+                <br><span></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5">
+                <button class="btn" id="ser_bt">
+                  <i class="fas fa-search btni"></i> SEARCH
+                </button>
+                <button class="btn" id="ref" style="margin-left: 10%;">
+                  <i class="fas fa-broom btni"></i> REFRESH
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="tbl_container1"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      var flag = true;
+      $(document).ready(() => {
+        vi_topic('#topic');
+        $("#ref").click(function () {
+          $('.tbl_container1').css('border','none')
+          $('#sel_top,#sel_url').val('');
+          $(".tbl_container1").html("");
+          showlabel('#sel_url');
+          $('#sel_top').siblings('label').css('visibility','hidden');
+        });
+        $("#sub").click(function () {
+          flag = true;
+          fl('#top_nm');
+          fl('#you_url');
+          fl('#sel_url');
+          urlcheck('#you_url');
+          if (flag) {
+            if (confirm("ARE YOU REALLY WANT TO INSERT RECORD?"))
+              $.ajax({
+                url: "rays_desk.py",
+                method: "post",
+                data: {
+                  cond: "video_entry",
+                  b1: $("#top_nm").val().trim(),
+                  b2: $("#you_url").val().trim(),
+                  b3: sessionStorage.getItem('u_id').trim()
+                },
+                success: function (data) {
+                  data=data.split('&&')
+                  alert(data[0])
+                  if(data[1]==0)
+                    location.reload()
+                },
+              });
+          }
+        });
+        $('#sel_top').change(()=>{
+          var flag1=true;
+          $('#sel_top').siblings('label').css('visibility','visible');
+          let sel=$("#sel_top").val();
+          let url1=$("#sel_url").val().trim();
+          if(url1!=''){
+            if(!(url1.includes('embed'))){
+              flag1=false;
+              $("#sel_url").siblings('span').text('Please enter embed url!!')
+            }else{
+              $("#sel_url").siblings('span').text('')
+            }
+          }
+          if(flag1){
+            search();
+          }
+        })
+        $('#ser_bt').click(()=>{
+          var flag1=true;
+          let sel=$("#sel_top").val();
+          let url1=$("#sel_url").val().trim();
+          if(url1=='' && sel==null){
+            alert('Please Select Any of them!!');
+            flag1=false;
+          }
+          else if(url1!=''){
+            if(!(url1.includes('embed'))){
+              flag1=false;
+              $("#sel_url").siblings('span').text('Please enter embed url!!')
+            }else{
+              $("#sel_url").siblings('span').text('')
+            }
+          }
+          if(flag1){
+            search();
+          }
+        })
+        $(document).on("click", "#btn_trash", function () {
+          if (confirm("Are you really want to delete this record!!")) {
+            let del=$(this).closest('tr').children('td').text().split('   ')[1];
+            $.ajax({
+              url: "rays_desk.py",
+              method: "post",
+              data: {
+                cond: "video_del",
+                b1: del
+              },
+              success: function (data) {
+                let dat=data.split('&&&')
+                alert(dat[0]);
+                if(dat[1]==0){
+                  $('.tbl tbody tr').each(function(){
+                    if($(this).find('td:eq(1)').text().trim()==del){
+                      $(this).remove();
+                      return false;
+                    }
+                  })
+                }
+              },
+            });
+          }
+        });
+        $(document).on("keypress", "#inp,textarea", function () {
+          $(this).css('color','green');
+        });
+        $(document).on("click", "#btn_edit", function () {
+          if (confirm("Are You Really want To Update this Record?")) {
+            $.ajax({
+              url: "rays_desk.py",
+              method: "post",
+              data: {
+                cond: "video_upd",
+                b1: $(this).closest("tr").children("td").text().split("   ")[1],
+                b2: $(this).closest("tr").children("td").find('input').val().trim(),
+                b3: $(this).closest("tr").children("td").find('textarea').val().trim()
+              },
+              success: function (data) {
+                alert(data);
+              },
+            });
+          }
+        });
+        $(".entry input").on("keyup", function (event) {
+          if (event.keyCode === 13) {
+            $("#sub").click();
+          }
+        });
+
+        $(".service input").on("keyup", function (event) {
+          if (event.keyCode === 13) {
+            $("#ser_bt").click();
+          }
+        });
+      })
+      function urlcheck(iid){
+        $(iid).keypress(function(a){
+          var x = $(iid).val();
+          const regex = /^(http|https):\/\/[^ "]+$/;
+          if (!regex.test(x)){
+            $(iid).siblings('span').html("Please Enter Embed Code Url!!");
+            $(iid).focus();
+            if(iid=='#you_url')
+              flag=false;
+          }
+          else{
+            if(x.includes('embed'))
+              $(iid).siblings('span').html("");
+            else
+              $(iid).siblings('span').html("Please Enter Embed Code Url!!");
+          }
+        })
+      }
+      function search(){
+        $.ajax({
+              method:'post',
+              url:"rays_desk.py",
+              data:{
+                cond:'video_search',
+                b1:$("#sel_top").val(),
+                b2:$("#sel_url").val().trim()
+              },
+              success:(res)=>{
+                console.log(res)
+                $('.tbl_container1').html(res);
+                $('.tbl_container1').css('border','solid 1px gray');
+              }
+            });
+      }
+      function vi_topic(id){
+        $.ajax({
+          url:'rays_desk.py',
+          method:'post',
+          data:{
+            cond:'video_topic'
+          },
+          success:function(data){
+            if(data!=0){
+              if(id=='#sel_top'){
+                $('#sel_top').find('option').not(':selected[value!=null]').remove();
+                $('#sel_top').append(data);
+              }
+              else
+                $(id).html(data);
+            }
+          }
+        })
+      }
+      function fl(iid) {
+        if(iid=='#sel_url')
+          $(iid).siblings('span').html("");
+        else{
+          if ($(iid).val().trim() == ''){
+              if(iid=='#you_url')
+                $(iid).siblings('span').html("");
+              $(iid).val('*Field is mandatory!!');
+              $(iid).css({ 'color': 'red', 'border': 'solid 1px red' });
+              showlabel(iid)
+              flag = false;
+          }
+          else if ($(iid).val().trim() == '*Field is mandatory!!')
+              flag = false;
+        }
+        if(iid=='#sel_url'||iid=='#you_url'){
+          if($(iid).val().trim()!='*Field is mandatory!!'){
+            if($(iid).val().trim().includes('embed'))
+              $(iid).siblings('span').html("");
+            else
+              $(iid).siblings('span').html("Please Enter Embed Code Url!!");
+          }
+        }
+      }
+      function fg(iid) {
+        $(iid).css({ 'color': '#1b7497', 'border': 'solid 1px #1b7497' });
+          if ($(iid).val().trim() == '*Field is mandatory!!') {
+            $(iid).val('');
+            showlabel(iid)
+          }
+      }
+      function showlabel(iid) {
+        if ($(iid).val().trim() != '')
+          $(iid).siblings("label").css("visibility", "visible");
+        else{
+          $(iid).siblings("label").css("visibility", "hidden");
+          if(iid=='#you_url'||iid=='#sel_url')
+            $(iid).siblings('span').html("");
+        }
+      }
+      function leftClick() {
+        $("#btn").css("left", "50%");
+        $("#leftBtn").css("font-weight", "bold");
+        $("#rightBtn").css("font-weight", "1");
+        $("#leftBtn").css("color", "#0a9894");
+        $("#rightBtn").css("color", "black");
+        $(".entry").hide();
+        $(".service").show();
+        $("h2").text("Internship Service Form");
+        vi_topic('#sel_top')
+      }
+
+      function rightClick() {
+        $("#btn").css("left", "0");
+        $("#rightBtn").css("font-weight", "bold");
+        $("#leftBtn").css("font-weight", "1");
+        $("#rightBtn").css("color", "#0a9894");
+        $("#leftBtn").css("color", "black");
+        $(".entry").show();
+        $(".service").hide();
+        $("h2").text("Internship Entry Form");
+      }
+    </script>
+</body>
+
+</html>
