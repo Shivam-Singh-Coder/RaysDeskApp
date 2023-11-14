@@ -206,7 +206,7 @@
       position: relative;
       width: 50%;
       height: 10rem;
-      border: solid 1px red;
+      /* border: solid 1px red; */
     }
     #table1 td{
       width: 20%;
@@ -244,7 +244,7 @@
       font-family: Arial, Helvetica, sans-serif;
       background: white;
       z-index: 1;
-      /* visibility: hidden; */
+      visibility: hidden;
     }
 
     #table span,#table1 span {
@@ -414,14 +414,18 @@
             <tr>
               <td>
                 <label>Position</label>
-                <input type="text" list="topic" placeholder="Position" />
+                <input type="text" list="topic" placeholder="Position" id="pos" />
                 <datalist id="topic"></datalist><br />
-                <span>jgwrjglwr</span>
+                <span></span>
               </td>
               <td>
                 <label>Salary</label>
-                <input type="text" autocomplete="off" placeholder="Salary" id="dur" />
-                <br /><span>fkgmerlkg</span>
+                <input type="number" autocomplete="off" placeholder="Salary" id="sal" style="width: 50%;" />
+                <select name="" id="sal_sel" style="width: 30%;">
+                  <option>Years</option>
+                  <option>Months</option>
+                </select>
+                <br /><span></span>
               </td>
             </tr>
             <tr>
@@ -433,37 +437,47 @@
                   <option>Full Time</option>
                   <option>Part Time</option>
                 </select><br />
-                <span>jgwrjglwr</span>
+                <span></span>
               </td>
               <td>
                 <label>Skills Req.</label>
-                <input type="text" autocomplete="off" placeholder="Skills Req." /><br />
-                <span>fkgmerlkg</span>
+                <input type="text" autocomplete="off" list="skillreq" placeholder="Skills Req." />
+                <datalist id="skillreq">
+                  <option>HTML,CSS,JavaScript</option>
+                </datalist><br />
+                <span></span>
               </td>
             </tr>
             <tr>
               <td>
                 <label>No. Of Vacancy</label>
-                <input type="text" placeholder="No. Of Vacancy" /><br />
-                <span>jgwrjglwr</span>
+                <input type="number" placeholder="No. Of Vacancy" /><br />
+                <span></span>
               </td>
               <td>
                 <label>Experience</label>
-                <input type="text" autocomplete="off" placeholder="Experience" /><br />
-                <span>fkgmerlkg</span>
+                <input type="number" autocomplete="off" placeholder="Experience" style="width: 50%;" />
+                <select name="" id="" style="width: 30%;">
+                  <option>Years</option>
+                  <option>Months</option>
+                </select><br />
+                <span></span>
               </td>
             </tr>
             <tr>
               <td>
                 <label>Location</label>
-                <input type="text" autocomplete="off" placeholder="Location" />
+                <input type="text" autocomplete="off" list="location" placeholder="Location" />
+                <datalist id="location">
+                  <option>Patna</option>
+                </datalist>
                 <br />
-                <span>fkgmerlkg</span>
+                <span></span>
               </td>
               <td>
-                <label>Closing Date</label>
+                <label style="visibility: visible;">Closing Date</label>
                 <input type="date" /><br />
-                <span>fkgmerlkg</span>
+                <span></span>
               </td>
             </tr>
             <tr>

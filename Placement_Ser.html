@@ -226,14 +226,6 @@
       background: none;
       resize: none;
     }
-    #table1 select {
-      text-align: center;
-      width: 90%;
-      font-size: 1.6rem;
-    }
-    #table1 input{
-      width: 90%;
-    }
     #table label,
     #table1 label {
       position: absolute;
@@ -382,6 +374,9 @@
         right: 0;
       }
     }
+    #sname,#comname,#ser_name{
+      text-transform: capitalize;
+    }
   </style>
 </head>
 
@@ -414,12 +409,12 @@
             <tr>
               <td>
                 <label>Student Name</label>
-                <input type="text" placeholder="Student Name" id="sname" /><br>
+                <input type="text" oninput="showlabel('#sname')" placeholder="Student Name" id="sname" /><br>
                 <span></span>
               </td>
               <td>
                 <label>Package</label>
-                <input type="text" autocomplete="off" placeholder="Package" id="pack" style="width: 50%;" />
+                <input type="text" inputmode="numeric" oninput="showlabel('#pack')" autocomplete="off" placeholder="Package" id="pack" style="width: 50%;" />
                 <select id="packsel" style="width: 30%;">
                   <option selected>Lakh</option>
                   <option>Thousand</option>
@@ -431,7 +426,7 @@
             <tr>
               <td>
                 <label>Company Name</label>
-                <input type="text" list="company" placeholder="Company Name" id="comname" /><br />
+                <input type="text" oninput="showlabel('#comname')" list="company" placeholder="Company Name" id="comname" /><br />
                 <datalist id="company"></datalist><br />
                 <span></span>
               </td>
@@ -444,7 +439,7 @@
             <tr>
               <td>
                 <label>Year</label>
-                <select id="year" style="text-align: center;">
+                <select id="year" style="text-align: center;" onchange="change('#year')">
                   <option selected disabled>--Select Any Year--</option>
                   <option>2023</option>
                   <option>2022</option>
@@ -482,18 +477,18 @@
             <tr>
               <td>
                 <label>Student Name</label>
-                <input type="text" placeholder="Enter Student Name" /><br />
+                <input type="text" oninput="showlabel('#ser_name')" placeholder="Enter Student Name" id="ser_name" /><br />
                 <span></span>
               </td>
               <td>
                 <label>Company Name</label>
-                <select id="sel_top">
+                <select id="ser_cname" style="text-align: center;" onchange="change('#ser_cname')">
                   <option selected disabled value="">--Select Any Company Name--</option>
                 </select>
               </td>
               <td>
                 <label>Year</label>
-                <select id="sel_top">
+                <select id="ser_year" style="text-align: center;" onchange="change('#ser_year')">
                   <option selected disabled value="">--Select Any Year--</option>
                 </select>
               </td>
@@ -644,23 +639,8 @@
           }
         });
       })
-      function urlcheck(iid){
-        $(iid).keypress(function(a){
-          var x = $(iid).val();
-          const regex = /^(http|https):\/\/[^ "]+$/;
-          if (!regex.test(x)){
-            $(iid).siblings('span').html("Please Enter Embed Code Url!!");
-            $(iid).focus();
-            if(iid=='#you_url')
-              flag=false;
-          }
-          else{
-            if(x.includes('embed'))
-              $(iid).siblings('span').html("");
-            else
-              $(iid).siblings('span').html("Please Enter Embed Code Url!!");
-          }
-        })
+      function change(iid){
+        $(iid).siblings('label').css('visibility','visible');
       }
       function search(){
         $.ajax({

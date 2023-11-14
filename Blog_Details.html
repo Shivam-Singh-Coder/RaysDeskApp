@@ -246,7 +246,7 @@
       font-family: Arial, Helvetica, sans-serif;
       background: white;
       z-index: 1;
-      /* visibility: hidden; */
+      visibility: hidden;
     }
 
     #table span,#table1 span {
@@ -287,10 +287,13 @@
     }
     #blg-img{
       width: 20%;
-      height: 10rem;
+      height: 30rem;
       margin-top: 2rem;
     }
-
+    #desc_l{
+      margin-top: 2%;
+      margin-left: -5%;
+    }
     @media (max-width:998px) {
       html {
         font-size: 55%;
@@ -370,9 +373,11 @@
       }
       #table textarea{
         width: 80%;
-        height: 16rem;
+        height: 35rem;
       }
-
+      #desc_l{
+        margin-top: 0%;
+      }
       #table label,#table1 label {
         top: -10%;
       }
@@ -429,47 +434,40 @@
             <tr>
               <td>
                 <label>Topic Name</label>
-                <input type="text" list="topic" placeholder="Topic Name" />
+                <input type="text" oninput="showlabel('#topic')" list="topic" placeholder="Topic Name" id="topic" />
                 <datalist id="topic"></datalist><br />
-                <span>jgwrjglwr</span>
+                <span></span>
               </td>
               <td>
-                <label>Publication Date</label>
-                <input type="date" autocomplete="off" placeholder="Publication Date" /><br />
-                <span>fkgmerlkg</span>
+                <label style="visibility: visible;">Publication Date</label>
+                <input type="date" placeholder="Publication Date" id="pub_dat" /><br />
+                <span></span>
               </td>
             </tr>
-            <tr style=" height: 20rem;">
+            <tr style=" height: 40rem;">
               <td colspan="2">
-                <label>Description</label>
-                <textarea placeholder="Description"></textarea><br>
-                <span>rgrgrw</span>
+                <label id="desc_l">Description</label>
+                <textarea placeholder="Description" id="desc" oninput="showlabel('#desc')"></textarea><br>
+                <span></span>
               </td>
             </tr>
-              <!-- <tr style="border: 2px solid blue;">
-                <td></td>
-              </tr> -->
             <tr>
               <td>
                 <label>Author Name</label>
-                <input type="text" list="topic" placeholder="Author Name" />
-                <datalist id="topic"></datalist><br />
-                <span>grwgwg</span>
+                <input type="text" oninput="showlabel('#auth')" list="author" id="auth" placeholder="Author Name" />
+                <datalist id="author"></datalist><br />
+                <span></span>
               </td>
               <td>
-                <label>Blog Image</label>
+                <label style="visibility: visible;">Blog Image</label>
                 <input id="img-cng" type="file" /><br />
-                <span>grwgrwgw</span>
+                <span></span>
               </td>
             </tr>
-            <tr  style="">
+            <tr style=" height: 40rem;display: none;" id="blg-tr">
               <td colspan="2" style="position: relative;display: none;" id="img-tr">
                 <label style="position: absolute; top: 1rem;">Blog Image</label>
-                <input type="image" src="py.jpg" alt="" id="blg-img" >
-                <!-- <div style="width: 50%;height: 2rem; border: 1px solid pink;" >
-                  <img src="certi-removebg-preview.png" alt="Blog Image" style="height: 100%;">
-                </div> -->
-                <!-- <span>gwrgwgwgw</span> -->
+                <input type="image" src="" alt="Blog Image" id="blg-img" >
               </td>
             </tr>
             <tr>
@@ -497,12 +495,12 @@
               </td>
               <td>
                 <label>From Date</label>
-                <input type="text" placeholder="Publication Start Date" onfocus="this.type='date';" onblur="this.type='text'" />
+                <input type="text" id="from" placeholder="Publication Start Date" onfocus="this.type='date';" onblur="this.type='text'" />
                 <br><span></span>
               </td>
               <td>
                 <label>To Date</label>
-                <input type="text" placeholder="Publication End Date" onfocus="this.type='date';" onblur="this.type='text'" />
+                <input type="text" id="to" placeholder="Publication End Date" onfocus="this.type='date';" onblur="this.type='text'" />
                 <br><span></span>
               </td>
             </tr>
@@ -524,11 +522,30 @@
     <script>
       var flag = true;
       $(document).ready(() => {
+        dat();
         $('#img-cng').change(function(){
-          $('#img-tr').css({'display':'block','width':'200%'})
-
-        })
-        vi_topic('#topic');
+          let imgPath = this.value;
+          let ext = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+          if (ext == "gif" || ext=="jpg" || ext=="png"|| ext=="jpeg"){
+            readURL(this);
+          }else{
+            alert("Please select image file only.");
+            $(this).val('');
+            $("#blg-img").attr('src','');
+            $('#img-tr,#blg-tr').css({'display':'none'})
+          }
+        });
+        
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+              $('#blg-img').attr('src',e.target.result);
+              $('#img-tr,#blg-tr').css({'display':'block'})
+            };
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
         $("#ref").click(function () {
           $('.tbl_container1').css('border','none')
           $('#sel_top,#sel_url').val('');
@@ -538,20 +555,22 @@
         });
         $("#sub").click(function () {
           flag = true;
-          fl('#top_nm');
-          fl('#you_url');
-          fl('#sel_url');
-          urlcheck('#you_url');
+          // fl('#top_nm');
+          // fl('#you_url');
+          // fl('#sel_url');
           if (flag) {
             if (confirm("ARE YOU REALLY WANT TO INSERT RECORD?"))
               $.ajax({
-                url: "rays_desk.py",
+                url: "blogs.py",
                 method: "post",
                 data: {
-                  cond: "video_entry",
-                  b1: $("#top_nm").val().trim(),
-                  b2: $("#you_url").val().trim(),
-                  b3: sessionStorage.getItem('u_id').trim()
+                  cond: "inst",
+                  b1: $("#topic").val().trim(),
+                  b2: $("#pub_dat").val().trim(),
+                  b3: $("#desc").val().trim(),
+                  b4: $("#auth").val().trim(),
+                  b5: $("#blg-img").attr('src'),
+                  b6: sessionStorage.getItem('u_id').trim()
                 },
                 success: function (data) {
                   data=data.split('&&')
@@ -562,23 +581,6 @@
               });
           }
         });
-        $('#sel_top').change(()=>{
-          var flag1=true;
-          $('#sel_top').siblings('label').css('visibility','visible');
-          let sel=$("#sel_top").val();
-          let url1=$("#sel_url").val().trim();
-          if(url1!=''){
-            if(!(url1.includes('embed'))){
-              flag1=false;
-              $("#sel_url").siblings('span').text('Please enter embed url!!')
-            }else{
-              $("#sel_url").siblings('span').text('')
-            }
-          }
-          if(flag1){
-            search();
-          }
-        })
         $('#ser_bt').click(()=>{
           var flag1=true;
           let sel=$("#sel_top").val();
@@ -624,7 +626,7 @@
             });
           }
         });
-        $(document).on("keypress", "#inp,textarea", function () {
+        $(document).on("keypress", "#inp", function () {
           $(this).css('color','green');
         });
         $(document).on("click", "#btn_edit", function () {
@@ -656,24 +658,6 @@
           }
         });
       })
-      function urlcheck(iid){
-        $(iid).keypress(function(a){
-          var x = $(iid).val();
-          const regex = /^(http|https):\/\/[^ "]+$/;
-          if (!regex.test(x)){
-            $(iid).siblings('span').html("Please Enter Embed Code Url!!");
-            $(iid).focus();
-            if(iid=='#you_url')
-              flag=false;
-          }
-          else{
-            if(x.includes('embed'))
-              $(iid).siblings('span').html("");
-            else
-              $(iid).siblings('span').html("Please Enter Embed Code Url!!");
-          }
-        })
-      }
       function search(){
         $.ajax({
               method:'post',
@@ -708,6 +692,11 @@
             }
           }
         })
+      }
+      function dat(){
+        let dat=new Date().toLocaleDateString('en-CA');
+        $('#pub_dat').val(dat);
+        $('#pub_dat,#to,#from').attr('max',dat);
       }
       function fl(iid) {
         if(iid=='#sel_url')

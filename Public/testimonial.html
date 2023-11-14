@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTIMONIAL</title>
+    <link rel="icon" href="REPL_t-shirt_logo.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2c21330576.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Rays Edutech Pvt. Ltd.</title>
+    <link rel="icon" href="rayslogo.jpg">
+    <link rel="stylesheet" href="rays_head7.css">
+    <link rel="stylesheet" href="rays-footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        /* =======HEADER======== */
+
+        header {
+            background: rgba(55, 81, 126, 1);
+            height: 10rem;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            /* border: 2px solid red; */
+            z-index: 2;
+        }
+
+        .logo {
+            width: 38rem;
+            height: 90%;
+            /* border: 2px solid red; */
+            position: relative;
+            /* display: flex; */
+        }
+
+        .logo img {
+            /* background-color: #fff; */
+            border-radius: 50%;
+            position: absolute;
+            top: 1rem;
+            left: 1%;
+            width: 13.5%;
+            height: 55%;
+        }
+
+        .nav {
+            /* border: 2px solid red; */
+            width: 68%;
+            height: 80%;
+            position: absolute;
+            right: 3rem;
+            /* background: rgba(55, 81, 126, 1); */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .rays {
+            color: #fff;
+            /* border: 2px solid red; */
+            position: absolute;
+            top: 25%;
+            left: 7rem;
+            font-size: 3rem;
+            font-family: cursive;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .nav-list {
+            position: absolute;
+            top: 1.5rem;
+            padding-top: 1rem;
+            right: 0;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* height: 3rem; */
+            /* border: 2px solid green; */
+
+        }
+
+        .nav-list li {
+            display: inline-block;
+            /* list-style: none; */
+            font-size: 1.5rem;
+            font-weight: bold;
+            /* border: 2px solid black; */
+            position: relative;
+            min-width: 15rem;
+            height: 3rem;
+            text-align: center;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 5rem;
+            left: -3rem;
+            background: rgba(55, 81, 126, 0.9);
+            width: 20rem;
+            line-height: 3rem;
+            border-top: 4px groove #fff;
+            visibility: hidden;
+            /* opacity: 0; */
+        }
+
+        .submenu li {
+            display: block;
+            text-align: left;
+            padding-left: .5rem;
+        }
+
+
+        .nav-list li a {
+            color: #fff;
+            letter-spacing: .1rem;
+        }
+
+        .nav-list .menu:hover .submenu {
+            /* opacity: 1; */
+            visibility: visible;
+            top: 3rem;
+            transition: all .2s linear;
+        }
+
+        .menu:hover .a i {
+            rotate: 180deg;
+        }
+
+        .fa-bars {
+            position: absolute;
+            right: 3rem;
+            font-size: 3rem;
+            color: #fff;
+            display: none;
+        }
+
+        /* =======SIDEBAR======== */
+        .side-bar {
+            position: fixed;
+            /* float: right; */
+            top: 10rem;
+            width: 5rem;
+            min-height: 100vh;
+            /* box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; */
+            /* background: #0A7197; */
+            background: rgba(55, 81, 126, 1);
+            z-index: 5;
+            /* visibility: hidden; */
+        }
+
+        .side-bar .lists {
+            position: absolute;
+            display: block;
+            width: 100%;
+            top: 2rem;
+            /* border: 2px solid pink; */
+        }
+
+        .side-bar .lists li {
+            list-style: none;
+            position: relative;
+            display: block;
+            width: 100%;
+            right: 35%;
+            margin-bottom: 4rem;
+            /* border: 2px solid black; */
+        }
+
+        .lists li a {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            width: 100%;
+            color: #fff;
+            font-size: 2rem;
+            transition: .5s ease;
+            /* border: 2px solid #fff; */
+        }
+
+        .lists li a .icon {
+            position: relative;
+            display: block;
+        }
+
+        .side-bar .lists li a .icon .fa {
+            font-size: 2rem;
+        }
+
+        .side-bar .lists li a:hover .icons {
+            color: black;
+        }
+
+        .side-bar .lists li a .tooltip {
+            position: absolute;
+            left: 4rem;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 1rem;
+            letter-spacing: .1rem;
+            padding: .6rem .8rem;
+            background: rgba(5, 116, 185, 0.989);
+            pointer-events: none;
+            transform: translateY(-15%) translateX(0rem);
+            border-radius: .4rem;
+            transition: .3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 5;
+            box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+        }
+
+        .side-bar .lists li:hover a .tooltip {
+            transform: translateY(-15%) translateX(1rem);
+            visibility: visible;
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .side-bar .lists li a .tooltip::before {
+            content: '';
+            position: absolute;
+            width: .6rem;
+            height: .6rem;
+            background: rgba(5, 116, 185, 0.989);
+            transform: rotate(45deg);
+            left: -.3rem;
+            z-index: 5;
+        }
+
+        .main-container {
+            width: 100%;
+            width: calc(100%-5rem);
+            float: right;
+            /* margin: auto; */
+            margin-top: 6rem;
+            max-height: 800vh;
+            border: 2px solid red;
+            padding-left: 5rem;
+            position: relative;
+        }
+
+        .card-box,
+        .card-box1 {
+            border: 2px solid red;
+            width: 100%;
+            height: 125vh;
+            margin-top: 13rem;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 3rem;
+            padding-top:5rem ;
+            justify-content: space-evenly;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            background: #a4c4c3;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        .card-box1 {
+            background: #61b386;
+        }
+
+        .card {
+            width: 30rem;
+            height: 30rem;
+            /* border: 2px solid blue; */
+            position: relative;
+            overflow: hidden;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+
+        .head {
+            width: 100%;
+            height: 55%;
+            left: auto;
+            top: -35%;
+            /* left: 7.5%; */
+            background-color: red;
+            /* border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%; */
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .vid {
+            width: 50%;
+            height: 30%;
+            background: #fff;
+            /* border: 2px solid green; */
+            position: absolute;
+            top: 12%;
+            left: 25%;
+            cursor: pointer;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+
+        .vid iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .vid img {
+            z-index: 111;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #fff;
+        }
+
+        .vid .fa-youtube {
+            position: absolute;
+            z-index: 1111;
+            font-size: 3rem;
+            bottom: 0;
+            /* margin: 12% 40%; */
+            color: red;
+            opacity: .8;
+        }
+
+        .name {
+            margin-top: 45%;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #680212;
+            position: relative;
+        }
+
+        .desp {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .details {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            text-align: justify;
+            margin-left: 2.5%;
+
+        }
+
+        .card-cancel {
+            position: absolute;
+            right: 0;
+            font-size: 3rem;
+            z-index: 1;
+            color: red;
+            display: none;
+            cursor: pointer;
+        }
+
+        .h1 {
+            position: absolute;
+            text-align: center;
+            /* border: 2px solid red; */
+            width: 100%;
+            font-size: 3rem;
+            color: #ae072e;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+        .h1::after {
+            content: '';
+            width: 10rem;
+            height: 2rem;
+            background-color: #023c68;
+        }
+
+        .btn1,
+        .btn2 {
+            padding: .5rem 1rem;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: .4rem;
+            left: 47%;
+            color: #fff;
+            position: absolute;
+            z-index: 1000;
+            background: #033279;
+            bottom: 0;
+        }
+                /* -------Footer------- */
+                footer {
+            height: 30rem;
+            margin-top: 10rem;
+            background: rgba(55, 81, 126, 1);
+            padding: 2rem 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .social,
+        .ftr-links {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social .ftr-links li {
+            list-style: none;
+        }
+        li{
+            list-style: none;
+        }
+
+        .social li a,
+        .ftr-links li a {
+            font-size: 2rem;
+            color: #fff;
+            margin: 0 1rem;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+        footer .social li a:hover {
+            transform: translateY(-1rem);
+            /* color: #3586ff; */
+
+        }
+
+        .ftr-p {
+            color: #fff;
+            font-size: 2rem;
+            letter-spacing: .1rem;
+            margin-top: 1.5rem;
+        }
+        @media(max-width:1010px) {
+            html {
+                font-size: 55%;
+            }
+
+            .nav {
+                position: absolute;
+                right: -20rem;
+                top: 10rem;
+                width: 20rem;
+                min-height: 100vh;
+                flex-direction: column;
+                background: rgba(55, 81, 126, 0.8);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                min-height: 20rem;
+            }
+
+            .nav-list>li {
+                width: 100%;
+                height: 4rem;
+                padding-top: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .submenu {
+                /* visibility: visible; */
+                left: -24rem;
+                top: 1rem;
+                width: 24rem;
+            }
+
+            .nav-list .menu:hover {
+                border-top-left-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                background-color: rgba(0, 0, 150, 0.5);
+            }
+
+            .nav-list .menu:hover .submenu {
+                left: -24rem;
+                top: 0rem;
+                transition: all .2s linear;
+            }
+
+            .submenu li {
+                padding-left: 1rem;
+                min-height: 3rem;
+                transition: .2s all ease-in-out;
+            }
+
+            .submenu li:hover {
+                font-weight: bolder;
+            }
+
+            .fa-bars {
+                display: block;
+                cursor: pointer;
+            }
+
+        }
+
+        @media(max-width:998px){
+            html{
+                font-size: 55%;
+            }
+            .card-box,
+        .card-box1{
+            grid-template-columns: auto auto;
+        }
+        }
+        @media(max-width:768px){
+            html{
+                font-size: 45%;
+            }
+            .card-box,
+        .card-box1{
+            grid-template-columns: auto;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <img src="logo.png" alt="" onclick="location.href='homepage.html'">
+            <h2 class="rays" onclick="location.href='homepage.html'" style="cursor: pointer;">Rays Edutech Pvt. Ltd.</h2>
+            </a>
+        </h1>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="homepage.html">HOME</a></li>
+                <li class="menu"><a style="cursor: pointer;" class="a">SERVICES&nbsp;<i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="submenu">
+                        <li class="menu_item"><a href="Test_Language.html">Online Test</a></li>
+                        <li class="menu_item"><a href="Workshop.html">Workshop</a></li>
+                        <li class="menu_item"><a href="Web_Python.html">Web Development</a></li>
+                        <li class="menu_item"><a href="Web_Python.html">App Development</a></li>
+                    </ul>
+                </li>
+                <li class="menu"><a style="cursor: pointer;" class="a">TRAINING&nbsp;<i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="submenu">
+                        <li class="menu_item"><a href="All_Course.html">Course</a></li>
+                        <li class="menu_item"><a href="Project_Training.html">Project Training</a></li>
+                        <li class="menu_item"><a href="Project_Training.html">Industrial Training</a></li>
+                    </ul>
+                </li>
+                <li><a href="Internship.html">INTERNSHIP</a></li>
+                <li class="menu"><a style="cursor: pointer;" class="a">MORE&nbsp;<i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="submenu">
+                        <li class="menu_item"><a href="Carear.html"><strong>We are hiring</strong>
+                            </a></li>
+                        <li class="menu_item"><a href="Placement.html"><strong>Our placed students</strong>
+                                <hr>
+                            </a></li><br>
+                        <li class="menu_item"><a href="testimonial.html">Student Testimonials</a></li>
+                        <li class="menu_item"><a href="Blog.html">Blogs</a></li>
+                        <li class="menu_item"><a href="Certificate_Verification.html">Certificate Verification</a></li>
+                        <li class="menu_item"><a href="About_Us.html">About Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <i class="fa-solid fa-bars"></i>
+    </header>
+    <!-- -------SIDEBAR------  -->
+    <div class="side-bar">
+        <ul class="lists">
+            <li>
+                <a href="homepage.html">
+                    <span class="icons"><i class="fa fa-home"></i></span>
+                    <span class="tooltip">HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="Web_Python.html">
+                    <span class="icons"><i class="fa-solid fa-code"></i></span>
+                    <span class="tooltip">DEVELOPMENT</span>
+                </a>
+            </li>
+            <li>
+                <a href="Placement.html">
+                    <span class="icons"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <span class="tooltip">PLACED STUDENTS</span>
+                </a>
+            </li>
+            <li>
+                <a href="Blog.html">
+                    <span class="icons"><i class="fa-brands fa-blogger-b"></i></span>
+                    <span class="tooltip">BLOGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="Test_Language.html">
+                    <span class="icons"><i class="fa-solid fa-laptop-file"></i></span>
+                    <span class="tooltip">ONLINE TEST</span>
+                </a>
+            </li>
+            <li>
+                <a href="Project_Training.html">
+                    <span class="icons"><i class="fa-solid fa-laptop-code"></i></span>
+                    <span class="tooltip">PROJECT TRAINING</span>
+                </a>
+            </li>
+            <li>
+                <a href="Workshop.html">
+                    <span class="icons"><i class="fa-solid fa-building"></i></span>
+                    <span class="tooltip">WORKSHOP</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container-f1 main-container">
+        <h1
+            style="margin-top: 5rem;text-align: center; font-size: 6rem;font-family:Verdana, Geneva, Tahoma, sans-serif;font-weight: bolder;color: #033279;">
+            TESTIMONIAL</h1>
+        <main class="card-box">
+            <h1 class="h1">Placed Students Testimonials</h1>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #023c68;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #24a2a0;"></span>
+                <span class="vid">
+                    <img src="logo.png" alt="" style="width: 100%; height: 100%;" class="photo">
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #32ba71;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #023c68;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #24a2a0;"></span>
+                <span class="vid">
+                    <img src="logo.png" alt="" style="width: 100%; height: 100%;" class="photo">
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #32ba71;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #023c68;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #24a2a0;"></span>
+                <span class="vid">
+                    <img src="logo.png" alt="" style="width: 100%; height: 100%;" class="photo">
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #32ba71;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #023c68;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #24a2a0;"></span>
+                <span class="vid">
+                    <img src="logo.png" alt="" style="width: 100%; height: 100%;" class="photo">
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #32ba71;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <button class="btn1">Show More..</button>
+        </main>
+        <main class="card-box1" style="margin-top: 10rem;">
+            <h1 class="h1">Our Students Testimonials</h1>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #023c68;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube icon"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #24a2a0;"></span>
+                <span class="vid">
+                    <img src="logo.png" alt="" style="width: 100%; height: 100%;" class="photo">
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #32ba71;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #023c68;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #24a2a0;"></span>
+                <span class="vid">
+                    <img src="logo.png" alt="" style="width: 100%; height: 100%;" class="photo">
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #32ba71;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #023c68;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #24a2a0;"></span>
+                <span class="vid">
+                    <img src="logo.png" alt="" style="width: 100%; height: 100%;" class="photo">
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #32ba71;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #023c68;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #24a2a0;"></span>
+                <span class="vid">
+                    <img src="logo.png" alt="" style="width: 100%; height: 100%;" class="photo">
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <div class="card">
+                <i class="fa fa-times card-cancel"></i>
+                <span class="head" style="background: #32ba71;"></span>
+
+                <span class="vid">
+                    <i class="fa-brands fa-youtube"></i>
+                    <img src="logo.png" alt="" id="imgs">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cxZMWzubZdE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </span>
+                <p class="name">Shubham</p>
+                <article class="desp">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, iure ratione. Sint nostrum ipsam
+                    in perspiciatis iure, dolorem quidem harum consequuntur, nihil pariatur fugiat enim beatae at
+                    voluptates, fugit consequatur.
+                </article>
+                <p class="details">
+                    <span><b>MBA-</b> Business Analytics, 2023-23</span><br>
+                    <span><b>Placed In:</b>EY Global Delivery Services </span>
+                </p>
+            </div>
+            <button class="btn2">Show More..</button>
+        </main>
+        <footer>
+            <div class="waves">
+                <div class="wave" id="wave1"></div>
+                <div class="wave" id="wave2"></div>
+                <div class="wave" id="wave3"></div>
+                <div class="wave" id="wave4"></div>
+            </div>
+            <ul class="social">
+                <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-youtube youtube"></i></a></li>
+            </ul>
+
+            <ul class="ftr-links">
+                <li><a href="">Home</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="">Internship</a></li>
+            </ul>
+            <p class="ftr-p">&#169;Rays Edutech Pvt Ltd</p>
+        </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(".vid").hover(function () {
+            $(this).css({ "width": "80%", "height": "40%", "left": "10%", "transition": ".5s", "top": "5%", "background": "none" })
+            $(this).parent().children().css('display', 'block')
+            $(this).children('img').css('scale', '0')
+            $(this).children('i').css('scale', '0')
+            $(this).children('.photo').css('scale', '1')
+        })
+        $('.card-cancel').click(function () {
+            $(this).css('display', 'none')
+            $(this).siblings(".vid").css({ "width": "50%", "height": "30%", "left": "25%", "top": "12%" })
+            $(this).siblings().children('img').css('scale', '1')
+            // $('.fa-play').css('scale','1')
+            $(this).siblings('.vid').children('i').css('scale', '1')
+        })
+        $('iframe[src*="https://www.youtube.com/embed/"]').addClass("youtube-iframe");
+
+        $(".card-cancel").click(function () {
+            $(this).siblings().children('iframe').each(function (index) {
+                $(this).attr('src', $(this).attr('src'));
+                return false;
+            });
+        });
+
+        // var a=0;
+        var a = $('.card-box').val();
+        var b = $('.card-box1').val();
+        $('.btn1').click(function () {
+            // alert('ok')
+            if (a == 0) {
+                $('.card-box').css({ 'height': '270vh', 'transition': '.5s' });
+                $(this).html('Show Less..')
+                a = 1;
+            }
+            else if (a == 1) {
+                $('.card-box').css({ 'height': '125vh', 'transition': '.5s' });
+                $(this).html('Show More..')
+                a = 0;
+            }
+        })
+        $('.btn2').click(function () {
+            if (b == 0) {
+                $('.card-box1').css({ 'height': '270vh', 'transition': '.5s' });
+                $(this).html('Show Less..')
+                b = 1;
+            }
+            else if (b == 1) {
+                $('.card-box1').css({ 'height': '125vh', 'transition': '.5s' });
+                $(this).html('Show More..')
+                b = 0;
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

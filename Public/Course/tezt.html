@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Scrolling</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    /* Add some styles for better visualization */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <ul id="itemList">
+    <li data-scroll-target="item1">Item 1</li>
+    <li data-scroll-target="item2">Item 2</li>
+    <li data-scroll-target="item3">Item 3</li>
+    <!-- Add more items as needed -->
+  </ul>
+
+  <div id="item1">Content for Item 1</div>
+  <div id="item2">Content for Item 2</div>
+  <div id="item3">Content for Item 3</div>
+  <!-- Add more content divs as needed -->
+
+  <script>
+    $(document).ready(function () {
+      // Handle click event on list items
+      $('#itemList li').on('click', function () {
+        // Get the target ID from the data attribute
+        var targetId = $(this).data('scroll-target');
+
+        // Scroll to the target element
+        $('html, body').animate({
+          scrollTop: $('#' + targetId).offset().top
+        }, 1000); // Adjust the animation speed as needed
+      });
+    });
+  </script>
+
+</body>
+</html>

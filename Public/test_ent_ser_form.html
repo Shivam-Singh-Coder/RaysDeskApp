@@ -1,0 +1,540 @@
+<html>
+    <head>
+        <style>
+            html{
+                font-size: 10px;
+            }
+            body{
+                background-color: antiquewhite;
+            }
+            #b1{
+                height: 3.7rem;
+                width: 30rem;
+                border: .2rem solid black;
+                margin: auto;
+                text-align: center;
+                border-radius: 5rem;
+                cursor: pointer;
+            }
+            #b1 button{
+                font-size: 2.5rem;
+                border: none;
+                height: 100%;
+                width: 100%;
+                border-radius:5rem;
+                cursor: pointer;
+            }
+            #main{
+                height: auto;
+                width: 100%;
+                overflow:hidden;
+            }
+            #e_f,#s_f{
+                transition: .3s linear;
+                height: 63rem;
+                width: 99%;
+                margin-top: 2rem;
+                border: .1rem solid rgb(41, 36, 36);
+                position: relative;
+            }
+            #s_f{
+                margin-left: 100%;
+            }
+            h1{
+                font-size: 3rem;
+                text-align: center;
+            }
+            #tab1{
+                width: 80%;
+                margin-left: 10%;
+
+            }
+            #td1{
+                width: 40%;
+            }
+            #td2{
+                width: 20%;
+            }
+            input,textarea,select{
+                width: 100%;
+                height: 4rem;
+                font-size: 1.8rem;
+                padding-left: 1rem;
+                border-radius: .5rem;
+                /* border: none;
+                outline: none; */
+            }
+            select{
+                text-align: center;
+            }
+            textarea{
+                padding: .5rem;
+                height: 8rem;
+                resize: none;
+            }
+            #xls{
+                size: 2rem;
+            }
+            #l3,#l4,#l5,#l6,#l7,#l8{
+                position: absolute;
+                font-size: 1.8rem;
+                margin: 9px 0 0 3rem;
+                background:linear-gradient(to bottom,antiquewhite 50%,white 50%);
+                border-radius: .5rem;
+                visibility:hidden;
+            }
+            #l1,#l2{
+                position: absolute;
+                color: red;
+                margin-left: 5%;
+                font-size: 2rem;
+            }
+            #b3,#b2,#b4,#b5,#b6,#b7{
+                width: 17%;
+                border-radius: 2rem;
+                cursor: pointer;
+                background-color: green;
+                color: white;
+            }
+            #b3,#b5,#b7{
+                margin-left: 10%;
+                background-color: red;
+            }
+            #b6,#b7{
+                width: 12%;
+            }
+            #search{
+                height: 40rem;
+            }
+            #tab3,#tab3 th,#tab3 td{
+                border: .1rem solid black;
+                border-collapse:collapse ;
+            }
+            #tab3 tr{
+                height: 4rem;
+            }
+            #tab3 input{
+                height: 18px;
+                width: 18px;
+                cursor: pointer;
+            }
+            #tab3{
+                width: 99%;
+                font-size: 2rem;
+                text-align: center;
+            }
+            #sticky{
+                position: sticky;
+                top: 0;
+                background-color: white;
+            }
+            @media (max-width:998px) {
+                html{
+                    font-size: 55%;
+                }
+            }
+            @media (max-width:768px) {
+                html{
+                    font-size: 45%;
+                }
+                #tab1{
+                    width: 90%;
+                    margin-left: 5%;
+                }
+                #td1{
+                    width: 45%;
+                }
+                #td2{
+                    width: 10%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <!-- <div></div> -->
+            <div id="b1"><button id="b11">Click for Service Form</button></div>
+            <div id="e_f">
+                <h1><b>ENTRY &nbsp;&nbsp; FORM</b></h1>
+                <form>
+                    <table id="tab1">
+                        <tr>
+                            <td id="td1"><select id="t1" onfocusout="ch2('#t1','#l1')" onfocus="ch3('#t1','#l1')">
+                                <option value="" selected disabled>-------- Subject --------</option>
+                                <option value="C">C</option>
+                                <option value="CPP">CPP</option>
+                                <option value="JAVA">JAVA</option>
+                                <option value="PYTHON">PYTHON</option>
+                                <option value="HTML">HTML</option>
+                                <option value="CSS">CSS</option>
+                                <option value="JAVASCRIPT">JAVASCRIPT</option>
+                                <option value="PHP">PHP</option>
+                            </select><br><label id="l1"></label></td>
+                            <td id="td2"></td>
+                            <td id="td1"><select id="t2" onfocusout="ch2('#t2','#l2')" onfocus="ch3('#t2','#l2')">
+                                <option value="" selected disabled>-------- Topic --------</option>
+                                <option value="Basic And Instructions">Basic And Instructions</option>
+                                <option value="Operator And Exprence">Operator And Exprence</option>
+                                <option value="Control Statement">Control Statement</option>
+                                <option value="Pointer And Array">Pointer And Array</option>
+                                <option value="Function">Function</option>
+                            </select><br><label id="l2"></label></td>
+                        </tr>
+                        <tr>
+                            <td><label id="l3">Question</label><br><textarea id="t3" placeholder="Question" oninput="la('#l3','#t3')" onfocusout="ch('#t3')" onfocus="ch1('#t3')"></textarea></td>
+                            <td></td>
+                            <td><label id="l4">Answer</label><br><input type="text" id="t4" placeholder="Answer" oninput="la('#l4','#t4')" onfocusout="ch('#t4')" onfocus="ch1('#t4')"></td>
+                        </tr>
+                        <tr>
+                            <td><labelv id="l5">Option 1</labelv><br><input type="text" id="t5" placeholder="Option-1" oninput="la('#l5','#t5')" onfocusout="ch('#t5')" onfocus="ch1('#t5')"></td>
+                            <td></td>
+                            <td><labelv id="l6">Option 2</labelv><br><input type="text" id="t6" placeholder="Option-2" oninput="la('#l6','#t6')" onfocusout="ch('#t6')" onfocus="ch1('#t6')"></td>
+                        </tr>
+                        <tr>
+                            <td><labelv id="l7">Option 3</labelv><br><input type="text" id="t7" placeholder="Option-3" oninput="la('#l7','#t7')" onfocusout="ch('#t7')" onfocus="ch1('#t7')"></td>
+                            <td></td>
+                            <td><labelv id="l8">Option 4</labelv><br><input type="text" id="t8" placeholder="Option-4" oninput="la('#l8','#t8')" onfocusout="ch('#t8')" onfocus="ch1('#t8')"></td>
+                        </tr>
+                        <tr>
+                            <td><br><input type="file" accept=".xlsx" title="Select File" id="xls" onchange="xl1('#xls')"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;"><br><input type="button" value="Submit" id="b2"><input type="button" value="Reset" id="b3"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div id="s_f" hidden>
+                <h1><b>SERVICE &nbsp;&nbsp; FORM</b></h1>
+                <form>
+                    <table id="tab1">
+                        <tr>
+                            <td id="td1"><select id="s1"><option selected disabled value="">-------- Select Subject --------</option></select></td>
+                            <td id="td2"></td>
+                            <td id="td1"><select id="s2"><option selected disabled value="">-------- Select Topic --------</option></select></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;"><br><br><input type="button" value="Search" id="b4"><input type="button" value="Reset" id="b5"></td>
+                        </tr>
+                    </table>
+                </form>
+                <div id="search">
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <script>
+            // --------------------------------------------- Hide Show --------------------------------------------
+            var b1=0;
+            $('#b1').click(function(){
+                if(b1==0){
+                    $('#s_f').show();
+                    $('#e_f').hide();
+                    $('#b11').html('Click for Entry Form');
+                    $('#s_f').animate(
+                        { left:'-100%'}
+                    );
+                    $('#e_f').animate(
+                        {left:'-100%'}
+                    );
+                    b1=1;
+                }
+                else{
+                    $('#e_f').show();
+                    $('#s_f').hide();
+                    $('#b11').html('Click for Service Form');
+                    $('#e_f').animate(
+                        { left:'0%'}
+                    );
+                    $('#s_f').animate(
+                        {left:'100%'}
+                    );
+                    b1=0;
+                }
+            });
+            function la(l,t){
+                a=$(t).val().trim()
+                    if(a=='')
+                        $(l).css('visibility','hidden');
+                    else
+                        $(l).css('visibility','visible');
+            }
+            // -------------------------------------------------------------------------------------------------------
+            // ############################################### Entry #################################################
+            // ----------------------------------------------- Validation --------------------------------------------
+            var flag=true
+            function ch(t){
+                var a=$(t).val();
+                if (a.trim().length==0)
+                {
+                    $(t).val('*Field is mandatory!');
+                    $(t).css({'border':'2px solid red','color':'red'});
+                    flag=false
+                }
+                else if(a=="*Field is mandatory!")
+                    flag=false
+            }
+            function ch1(t){
+                var a=$(t).val()
+                if(a=="*Field is mandatory!"){
+                    $(t).val('');
+                }
+                    $(t).css({'border':'1px solid black','color':'black'});
+            };
+            function ch2(t,l){
+                if($(t).val()==null){
+                    flag=false;
+                    $(t).css('border','2px solid red')
+                    $(l).html('Select any one!')
+                }
+            }
+            function ch3(t,l){
+                $(t).css('border','1px solid black')
+                $(l).html('')
+            }
+            $('input,textarea').keypress(function(a){
+                if(a.which==32 && a.target.selectionStart==0)
+                    return false
+            })
+            // --------------------------------------------------------------------------------------------------------
+            // ------------------------------------------------ Submit -----------------------------------------------
+            var excel
+            function xl1(x){
+                var a=new FileReader();
+                a.readAsDataURL($(x)[0].files[0]);
+                a.onload = function (e) {
+                excel=e.target.result;
+                cls()
+                };
+            }
+
+            $('#b2').click(function(){
+                flag=true
+                if(excel){
+                    ch2('#t1','#l1')
+                    ch2('#t2','#l2')
+                    if(flag)
+                        $.ajax({
+                            url:'contact.py',
+                            method:'post',
+                            data:{
+                                t1:'exlup',
+                                t2:$('#t1').val(),
+                                t3:$('#t2').val(),
+                                t4:excel
+                            },
+                            success:function(data){
+                                alert(data)
+                                $('#xls').val('')
+                                cls()
+                                excel=''
+                            }
+                        })
+                    else
+                        alert('Please fill Subject and topic!')
+                }
+                else{
+                    ch('#t3')
+                    ch('#t4')
+                    ch('#t5')
+                    ch('#t6')
+                    ch('#t7')
+                    ch('#t8')
+                    ch2('#t1','#l1')
+                    ch2('#t2','#l2')
+                    if(flag){
+                        a=$('#t1').val()
+                        b=$('#t2').val()
+                        c=$('#t3').val()
+                        d=$('#t4').val()
+                        e=$('#t5').val()
+                        f=$('#t6').val()
+                        g=$('#t7').val()
+                        h=$('#t8').val()
+                        $.ajax({
+                            url:'contact.py',
+                            method:'post',
+                            data:{
+                                t1:'ent',
+                                t2:a,
+                                t3:b,
+                                t4:c,
+                                t5:d,
+                                t6:e,
+                                t7:f,
+                                t8:g,
+                                t9:h
+                            },
+                            success:function(data){
+                                alert(data)
+                                cls()
+                            }
+                        })
+                    }
+                    else
+                        alert("All field is required!")
+
+                }
+            })
+            $('#t4,#t5,#t6,#t7,#t8').on('keydown',function(a){
+                if(a.which==13)
+                    $('#b2').click()
+            })
+            function cls(){
+                $('#t3').val('')
+                $('#t4').val('')
+                $('#t5').val('')
+                $('#t6').val('')
+                $('#t7').val('')
+                $('#t8').val('')
+                ch1('#t3')
+                ch1('#t4')
+                ch1('#t5')
+                ch1('#t6')
+                ch1('#t7')
+                ch1('#t8')
+                ch3('#t1','#l1')
+                ch3('#t2','#l2')
+                $('#l8,#l3,#l4,#l5,#l6,#l7').css('visibility','hidden')
+            }
+            $('#b3').click(function(){
+                cls()
+            })
+            // ############################################ Service ####################################################
+            $('#b11').click(function(){
+                if(b1==0){
+                    $('#search').html('')
+                    $('#s2').html('<option selected disabled value="">-------- Select Topic --------</option>')
+                    $.ajax({
+                        url:'contact.py',
+                        method:'post',
+                        data:{
+                            t1:'testload'
+                        },
+                        success:function(data){
+                            $('#s1').html('<option selected disabled value="">-------- Select Subject --------</option>')
+                            $('#s1').append(data)
+                        }
+                    })
+                }
+                else{
+                    cls()
+                    $('#t1').val(null)
+                    $('#t2').val(null)
+                }
+            })
+            $('#s1').on('change',function(){
+                a=$(this).val()
+                $.ajax({
+                    url:'contact.py',
+                    method:'post',
+                    data:{
+                        t1:'testload1',
+                        t2:a
+                    },
+                    success:function(data){
+                        $('#s2').html('<option selected disabled value="">-------- Select Topic --------</option>')
+                        $('#s2').append(data)
+                    }
+                })
+            })
+            // -------------------------------------- Search -----------------------------------------------------
+            $('#b4').click(function(){
+                $('#b5').prop('disabled',false)
+                a=$('#s1').val();
+                b=$('#s2').val();
+                if(a!=null)
+                    if(b!=null)
+                        $.ajax({
+                            url:'contact.py',
+                            method:'post',
+                            data:{
+                                t1:'testsearch',
+                                t2:a,
+                                t3:b
+                            },
+                            success:function(data){
+                                if(data==1){
+                                    $('#search').html('')
+                                    alert("Record not found!")
+                                }
+                                else
+                                    $('#search').html(data)
+                            }
+                        })
+                    else
+                        alert("Plese select Topic!")
+                else
+                    alert("Plese select Subject!")
+            })
+            $('#b5').click(function(){
+                $('#search').html('')
+                $('#s2').html('<option selected disabled value="">-------- Select Topic --------</option>')
+                $('#s1').val(null)
+                $(this).prop('disabled',true)
+            })
+            // ----------------------------------------------------------------------------------------------
+            $(document).on('blur','#e',function(){
+                a=$(this).text()
+                $(this).text(a+"   ")
+            });
+            $(document).on('focus','#e',function(){
+                a=$(this).text().trim()
+                $(this).text(a)
+            });
+            // ------------------------------------------------- Update ---------------------------------------------
+            $(document).on('click','#b6',function(){
+                var cell = $("input[name='a']:checked").closest('tr').children("td").text().split('   ');
+                if(cell[0]=='')
+                    alert('Please select any row!')
+                else{
+                    var log=confirm("Are you sure want to update this!")
+                    if(log)
+                    $.ajax({
+                        url:'contact.py',
+                        method:'post',
+                        data:{
+                            t1:'testup',
+                            t2:cell[1],
+                            t3:cell[2],
+                            t4:cell[3],
+                            t5:cell[4],
+                            t6:cell[5],
+                            t7:cell[6],
+                            t8:cell[7],
+                            t9:cell[8],
+                            t10:cell[0]
+                        },
+                        success:function(data){
+                            alert(data)
+                        }
+                    })
+                }
+            })
+            // ------------------------------------------------- Delete ---------------------------------------------
+            $(document).on('click','#b7',function(){
+                var cell = $("input[name='a']:checked").closest('tr').children("td").text().split('   ');
+                if(cell[0]=='')
+                    alert('Please select any row!')
+                else{
+                    var log=confirm("Are you sure want to delete this!")
+                    if(log)
+                    $.ajax({
+                        url:'contact.py',
+                        method:'post',
+                        data:{
+                            t1:'testdl',
+                            t2:cell[0]
+                        },
+                        success:function(data){
+                            alert(data)
+                            $("input[name='a']:checked").closest('tr').remove()
+                        }
+                    })
+                }
+            })
+        </script>
+    </body>
+</html>

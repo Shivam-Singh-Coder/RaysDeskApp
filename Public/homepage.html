@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rays Edutech Pvt. Ltd.</title>
+    <link rel="icon" href="REPL_t-shirt_logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- -----bootstrap cdn------  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- ----pulse animation---  -->
+    <link rel="stylesheet" href="pulse.css">
+    <link rel="stylesheet" href="sidebar.css">
+
+    <!-- ---------Image Corausel------  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- slick slider  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            background: rgba(55, 81, 126, 1);
+        }
+
+        header {
+            background: rgba(42, 63, 99, 1);
+            height: 10rem;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 38rem;
+            height: 90%;
+            /* border: 2px solid red; */
+            position: relative;
+            /* display: flex; */
+        }
+
+        .logo img {
+            /* background-color: #fff; */
+            border-radius: 50%;
+            position: absolute;
+            top: 1rem;
+            left: 1%;
+            width: 13.5%;
+            height: 55%;
+        }
+
+        .nav {
+            /* border: 2px solid red; */
+            width: 68%;
+            height: 80%;
+            position: absolute;
+            right: 3rem;
+            /* background: rgba(55, 81, 126, 1); */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .rays {
+            color: #fff;
+            /* border: 2px solid red; */
+            position: absolute;
+            top: 25%;
+            left: 7rem;
+            font-size: 3rem;
+            font-family: cursive;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .nav-list {
+            position: absolute;
+            top: 1.5rem;
+            padding-top: 1rem;
+            right: 1.5rem;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* height: 3rem; */
+            /* border: 2px solid green; */
+
+        }
+
+        .nav-list li {
+            display: inline-block;
+            /* list-style: none; */
+            font-size: 1.5rem;
+            font-weight: bold;
+            /* border: 2px solid black; */
+            position: relative;
+            min-width: 15rem;
+            height: 3rem;
+            text-align: center;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 5rem;
+            left: -10rem;
+            background: rgba(55, 81, 126, 1);
+            min-width: 20rem;
+            line-height: 3rem;
+            border-top: 4px groove #fff;
+            visibility: hidden;
+            padding: 0 1rem;
+            /* opacity: 0; */
+        }
+
+        .submenu li {
+            display: block;
+            text-align: left;
+            padding-left: .5rem;
+        }
+
+
+        .nav-list li a {
+            color: #fff;
+            letter-spacing: .1rem;
+        }
+
+        .nav-list .menu:hover .submenu {
+            /* opacity: 1; */
+            visibility: visible;
+            top: 3rem;
+            transition: all .2s linear;
+        }
+
+        .menu:hover .a i {
+            rotate: 180deg;
+        }
+
+        .fa-bars {
+            position: absolute;
+            right: 3rem;
+            font-size: 3rem;
+            color: #fff;
+            display: none;
+        }
+
+        /* -----animation and links----- */
+        .ani-box {
+            width: 100%;
+            min-height: 80vh;
+            /* background: #37517e;     */
+            /* background: rgba(55, 81, 126, 1); */
+            position: relative;
+            z-index: 1;
+            padding-top: 10rem;
+            display: flex;
+            justify-content: space-evenly;
+
+
+        }
+
+        .ani-box section {
+            width: 50%;
+            min-height: 50rem;
+            /* border: 2px solid #fff; */
+            position: relative;
+        }
+
+        .edu-link {
+            width: 45% !important;
+            position: absolute;
+            padding-bottom: 2rem;
+            /* border: 2px solid #fff; */
+            /* margin-top: 1rem; */
+            display: flex;
+            flex-direction: column;
+            background: rgba(42, 63, 99, 1);
+        }
+
+
+        .links {
+            width: 80%;
+            /* height: 80%; */
+            /* border: 2px solid red; */
+            margin: auto;
+            list-style: none;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: #4d6b9e;
+            /* border-top-left-radius: 5rem;
+            border-bottom-right-radius: 5rem; */
+            /* border-radius: .5rem; */
+
+        }
+
+
+        .edu-title {
+            font-size: 2.1rem;
+            color: #fff;
+            font-weight: bold;
+            /* margin-left: 2rem; */
+        }
+        .edu-title:hover{
+            color: black;
+        }
+        .links .desc {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .links .btn1 {
+            background-color: gold;
+            border: none;
+            outline: none;
+            padding: .5rem;
+            border-radius: .5rem;
+            margin-top: 1rem;
+            /* position: relative; */
+            cursor: pointer;
+            float: right;
+        }
+
+
+
+        .main-container {
+            width: 100%;
+            width: calc(100%-5rem);
+            float: right;
+            margin: auto;
+            margin-top: 2rem;
+            max-height: 800vh;
+            /* border: 2px solid red; */
+            padding-left: 5rem;
+            position: relative;
+        }
+
+        /* -------image carousel----- */
+        .carousel {
+            border-top: 3px solid gold;
+            border-bottom: 1.5px solid gold;
+            height: 40rem;
+            width: 100%;
+            margin-bottom: 2rem;
+            background: #fff;
+            /* float: right; */
+        }
+
+        .carousel-inner {
+            width: 100%;
+            height: 80%;
+        }
+
+        .carousel-inner img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .d-block {
+            height: 100%;
+        }
+
+
+        /* --------Batch slier-------  */
+        .heading {
+            text-align: center;
+            /* border: 2px solid red; */
+            font-size: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .heading::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            display: block;
+            width: 30rem;
+            height: .8rem;
+            background-color: #1232f6;
+            border-bottom-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+        }
+
+        .batch-box {
+            width: 100%;
+            float: right;
+            height: 53rem;
+            border-top: 3px solid gold;
+            border-bottom: 1.5px solid gold;
+            height: 40rem;
+            width: 100%;
+            position: relative;
+            /* margin-top: 2rem; */
+            background: #fff;
+
+        }
+
+        .batch {
+            /* border: 2px solid black; */
+            width: 100%;
+            height: auto;
+            float: right;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* position: relative; */
+        }
+
+        .batch .items {
+            width: 25rem;
+            height: auto;
+            margin-left: 3rem;
+            margin-right: 3rem;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: .8rem;
+            padding: 1.5rem;
+            /* border: .2rem solid #111; */
+        }
+
+        .item-img {
+            width: 100%;
+            height: 15rem;
+        }
+
+        .batch a,
+        img {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .time {
+            width: 100%;
+            height: 3rem;
+            background-color: #452bc5;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: .5rem 0 0 1rem;
+            letter-spacing: .2rem;
+        }
+
+        .details {
+            width: 100%;
+            height: auto;
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .p2 {
+            font-size: 1rem;
+            color: #434141;
+        }
+
+
+        .batch .slick-slide {
+            margin: 1.5rem;
+
+        }
+
+        .slick-dots {
+            position: absolute;
+            bottom: -1rem;
+        }
+
+        .slick-dots li.slick-active button:before {
+            color: #452bc5;
+        }
+
+        .slick-dots li button:before {
+            font-size: 1.2rem;
+        }
+
+
+        .slick-next:before,
+        .slick-prev:before {
+            color: #452bc5;
+            font-size: 2.4rem;
+            position: absolute;
+            /* top: -5rem; */
+        }
+
+        .slick-next {
+            right: 2rem;
+        }
+
+        .slick-prev {
+            left: -1rem;
+        }
+
+        /* --------Counters------ */
+        .cnt {
+            width: 100%;
+            height: 40rem;
+            border-top: 3px solid gold;
+            border-bottom: 1.5px solid gold;
+            position: relative;
+            overflow: hidden;
+            top: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background: linear-gradient(rgba(40, 58, 90, 0.7), rgba(40, 58, 90, 0.7)), url(logo.png) fixed center center no-repeat;
+            background-color: #fff;
+        }
+
+        .inner-cnt {
+            width: 20rem;
+            height: 20rem;
+            /* border: .2rem solid blue; */
+            text-align: center;
+            color: #000a00;
+            background: rgba(0, 0, 0, 0.3);
+            border-top-right-radius: 10rem;
+            border-bottom-left-radius: 10rem;
+            position: relative;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+        }
+
+        .counter-box {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: #fff;
+            padding: 0 4rem;
+            border-radius: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+
+        .counter-box i {
+            font-size: 2rem;
+            font-weight: 9000;
+        }
+
+        .counter-box span {
+            display: inline-block;
+            font-size: 2rem;
+        }
+
+        /* ---------Testimonial---------- */
+
+        .test {
+            /* position: relative; */
+            margin-top: 4rem;
+            width: auto;
+            min-height: 35rem;
+            background-color: #fff;
+            border-top: 3px solid gold;
+            border-bottom: 1.5px solid gold;
+        }
+
+        .test-box {
+            /* position: absolute; */
+            /* border: 2px solid red; */
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .test .slick-next,
+        .slick-prev {
+            position: absolute;
+        }
+
+        /* .test-box .batch {
+            border: 5px solid green;
+        } */
+
+        .test .items {
+            /* margin-top: 8rem; */
+            width: 25rem !important;
+            height: 80%;
+            /* border: 5px solid black; */
+        }
+
+        .test p {
+            /* text-wrap: wrap;
+            width: 50%;
+            margin: 0 auto;
+            border: 2px solid red; */
+            text-align: center;
+        }
+
+        .test .item-img {
+            width: 15rem;
+            height: 15rem;
+            border-radius: 50%;
+            margin: auto;
+            /* border: 2px solid gray; */
+        }
+
+        .test .item-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .test .details {
+            text-align: left;
+        }
+
+        /* --------Logo Slider------  */
+        .logo-slider {
+            margin-top: 2rem;
+            height: 30rem;
+            background-color: #fff;
+            border-top: 3px solid gold;
+            border-bottom: 1.5px solid gold;
+            /* position: absolute;
+            top: 20rem; */
+            overflow: hidden;
+            padding: 2rem 0;
+            white-space: nowrap;
+        }
+
+        .l-slide {
+            display: inline-block;
+            animation: 12s move infinite linear;
+        }
+
+        .l-slide img {
+            height: 15rem;
+            width: 20rem;
+            margin: 0 5rem;
+
+        }
+
+        @keyframes move {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* -------Footer------- */
+        footer {
+            position: relative;
+            margin-top: 10rem;
+            /* min-height: 30rem; */
+            border-top: 3px solid gold;
+            /* background: rgba(42, 63, 99, 1);
+            color: #fff; */
+            background-color: whitesmoke;
+            padding: 2rem 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .ftr-box{
+            /* border: 1px solid black; */
+            width: 100%;
+            min-height: 20rem;
+            /* position: relative; */
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 5rem;
+
+            
+        }
+        .ftr-box li{
+            /* display: inline-block; */
+            width: 22%;
+            /* border: 1px solid red; */
+            height: 100%;
+            /* position: absolute; */
+            top: 0;
+            text-align: center;
+        }
+        .ftr-box li iframe{
+            width: 100%;
+        }
+        .ftr-box li a{
+            text-decoration: none;
+            color: black;
+        }
+        .ftr-box h3{
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+
+        li {
+            list-style-type: none;
+        }
+        .p{
+            font-size: 1.5rem;
+        }
+
+
+        .social,
+        .ftr-links {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+
+
+        .social li a {
+            font-size: 2rem;
+            color: #333;
+            margin: 0 1rem;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+
+        footer .social li a:hover {
+            transform: translateY(-1rem);
+            /* color: #3586ff; */
+
+        }
+
+        .ftr-p {
+            background-color: #333;
+            color: #fff;
+            font-size: 2rem;
+            width: 100%;
+            letter-spacing: .1rem;
+            line-height: 4rem;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+        }
+        .ser-tab {
+            width: 70rem;
+            position: absolute;
+            top: 5rem;
+            left: -30rem;
+            /* border: 2px solid red; */
+            background: rgba(55, 81, 126, 1);
+            border-top: 4px groove #fff;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .ser-tab th {
+            font-size: 2rem;
+            color: #fff;
+            position: relative;
+            letter-spacing: .1rem;
+        }
+
+        .ser-tab th::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: .2rem;
+            bottom: 0;
+            left: 30%;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .ser-tab td {
+            height: 4rem;
+        }
+
+        .ser-tab td a {
+            letter-spacing: .1rem;
+        }
+
+        .menu:hover .ser-tab {
+            opacity: 1;
+            visibility: visible;
+            top: 3rem;
+            transition: .3s;
+        }
+        @media(max-width:1151px) {
+            .rays {
+                font-size: 2rem;
+                top: 30%;
+            }
+        }
+
+        @media(max-width:1269px) {
+            html {
+                font-size: 55%;
+            }
+
+            .nav {
+                position: absolute;
+                right: -20rem;
+                top: 10rem;
+                width: 20rem;
+                min-height: 100vh;
+                flex-direction: column;
+                background: rgba(55, 81, 126, 1);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                min-height: 20rem;
+            }
+
+            .nav-list>li {
+                width: 100%;
+                height: 4rem;
+                padding-top: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .submenu {
+                /* visibility: visible; */
+                left: -24rem;
+                top: 1rem;
+                width: 24rem;
+            }
+            
+            .ser-tab {
+                left: -70rem;
+                top: 1rem;
+            }
+
+            .nav-list .menu:hover .ser-tab {
+                top: 0rem;
+                transition: all .2s linear;
+            }
+            .nav-list .menu:hover {
+                border-top-left-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                background-color: rgba(0, 0, 150, 0.5);
+            }
+
+            .nav-list .menu:hover .submenu {
+                left: -24rem;
+                top: 0rem;
+                transition: all .2s linear;
+            }
+
+            .submenu li {
+                padding-left: 1rem;
+                min-height: 3rem;
+                transition: .2s all ease-in-out;
+            }
+
+            .submenu li:hover {
+                font-weight: bolder;
+            }
+
+            .fa-bars {
+                display: block;
+                cursor: pointer;
+            }
+
+        }
+
+
+        @media(max-width:866px) {
+            html {
+                font-size: 45%;
+            }
+
+            .ani-box {
+                flex-direction: column;
+                padding-left: 5%;
+            }
+
+            .ani-box section {
+                /* display: block; */
+                width: 100% !important;
+                background: rgba(55, 81, 126, 1);
+            }
+
+            .pulse {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .edu-link {
+                margin-top: 1rem;
+            }
+
+        }
+
+        @media(max-width:768px) {
+            html {
+                font-size: 45%;
+            }
+
+            /* .main-container{
+                width: 94%;
+            } */
+        }
+
+        @media(max-width:600px) {
+            html {
+                font-size: 35%;
+            }
+
+            /* .main-container{
+                width: 93%;
+            } */
+            .side-bar .lists {
+                height: 100vh;
+            }
+
+            .side-bar .lists li {
+                margin-top: 6vh;
+            }
+
+            footer {
+                min-height: 50rem;
+            }
+
+            .ftr-box{
+                /* flex-direction: column; */
+                display: grid;
+                /* border: 2px solid green; */
+                grid-template-columns: auto auto ;
+                justify-content:unset;
+            }
+            .ftr-box li{
+                /* display: block; */
+                width: 25rem;
+                /* border: 2px solid red; */
+            }
+            
+            .p{
+                font-size: 2rem;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <img src="logo.png" alt="" onclick="location.href='homepage.html'">
+            <h2 class="rays" onclick="location.href='homepage.html'" style="cursor: pointer;">Rays Edutech Pvt. Ltd.
+            </h2>
+            </a>
+        </h1>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="homepage.html">HOME</a></li>
+                <li class="menu"><a style="cursor: pointer;" class="a sr">SERVICES&nbsp;<i
+                            class="fa-solid fa-angle-down"></i></a>
+                    <table class="ser-tab">
+                        <tr>
+                            <th>Training</th>
+                            <th>Development</th>
+                            <th>Workshop</th>
+                            <th>Internship</th>
+                        </tr>
+                        <tr>
+                            <td><a href="All_Course.html">Courses</a></td>
+                            <td><a href="Web_Python.html">Web Development</a></td>
+                            <td><a href="Workshop.html">School</a></td>
+                            <td><a href="Internship.html">Technical</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Project Training</a></td>
+                            <td><a href="">App Development</a></td>
+                            <td><a href="Workshop.html">College</a></td>
+                            <td><a href="Internship.html">Non-technical</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Industrial Training</a></td>
+                            <td><a href="Web_Python.html">Custom Software</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Summer Training</a></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="menu"><a style="cursor: pointer;" class="a" href="Test_Language.html">ONLINE TEST</a>
+
+                </li>
+                <!-- <li><a href="Internship.html">INTERNSHIP</a></li> -->
+                <li class="menu"><a style="cursor: pointer;" class="a" href="Blog.html">BLOG</a>
+                </li>
+                <li><a href="Carear.html">CAREER</a></li>
+                <li class="menu"><a style="color: #fff; cursor: pointer;">MORE&nbsp;<i
+                            class="fa-solid fa-angle-down"></i></a>
+                    <ul class="submenu">
+                        <li class="menu_item"><a href="Certificate_Verification.html">Certificate Verification</a></li>
+                        <li class="menu_item"><a href="testimonial.html">Testimonials</a></li>
+                        <li class="menu_item"><a href="Placement.html">Our Placement</a></li>
+                        <li class="menu_item"><a href="Gallery.html">Gallery/Activities</a></li>
+                        <li class="menu_item"><a href="About_Us.html">About Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <i class="fa-solid fa-bars"></i>
+    </header>
+    <!-- ---------Animation and links-----------  -->
+    <div class="ani-box">
+        <section>
+            <div class="pulse">
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+                <div class="center-img"></div>
+                <div class="circle">
+                    <div class="s1"></div>
+                    <div class="s2"></div>
+                    <div class="s3"></div>
+                    <div class="s4"></div>
+                    <div class="s5"></div>
+                    <div class="s6"></div>
+                    <div class="s7"></div>
+                    <div class="s8"></div>
+                    <div class="s9"></div>
+                    <div class="s10"></div>
+                </div>
+            </div>
+        </section>
+        <section class="edu-link">
+
+            <div class="links"><a href="Project_Training.html" class="edu-title">Training</a>
+                <div class="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae quos explicabo
+                    sunt libero repellendus
+                    <div><button class="btn1" onclick="location.href='Project_Training.html'">See More</button></div>
+                </div>
+
+            </div>
+            <div class="links" style="margin-top: 2rem;"><a href="Web_Python.html" class="edu-title">Development</a>
+                <div class="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae quos explicabo
+                    sunt libero repellendus
+                    <div><button class="btn1" onclick="location.href='Web_Python.html'">See More</button></div>
+                </div>
+            </div>
+            <div class="links" style="margin-top: 2rem;"><a href="Internship.html" class="edu-title">Internship</a>
+                <div class="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae quos explicabo
+                    sunt libero repellendus
+                    <div><button class="btn1" onclick="location.href='Internship.html'">See More</button></div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <marquee behavior="scroll" direction="left" width="100%"
+        style="position: relative;top: 2rem; font-size: 1.5rem; font-weight: bold; background: #fff; border-top: 4px solid gold; margin-bottom: 2rem;line-height: 4rem;">
+        <img src="announce.jpg" alt="" style="width: 3rem;height: 2rem;"> Lorem
+        ipsum dolor sit amet consectetur adipisicing elit.
+    </marquee>
+    <!-- <div style="height: 2rem; background: #fff;border-top: 4px solid gold;"></div> -->
+
+    <!-- -------SIDEBAR------  -->
+    <div class="side-bar">
+        <ul class="lists">
+            <li>
+                <a href="homepage.html">
+                    <span class="icons"><i class="fa fa-home"></i></span>
+                    <span class="tooltip">HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="Web_Python.html">
+                    <span class="icons"><i class="fa-solid fa-code"></i></span>
+                    <span class="tooltip">DEVELOPMENT</span>
+                </a>
+            </li>
+            <li>
+                <a href="Placement.html">
+                    <span class="icons"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <span class="tooltip">PLACED STUDENTS</span>
+                </a>
+            </li>
+            <li>
+                <a href="Blog.html">
+                    <span class="icons"><i class="fa-brands fa-blogger-b"></i></span>
+                    <span class="tooltip">BLOGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="Test_Language.html">
+                    <span class="icons"><i class="fa-solid fa-laptop-file"></i></span>
+                    <span class="tooltip">ONLINE TEST</span>
+                </a>
+            </li>
+            <li>
+                <a href="Project_Training.html">
+                    <span class="icons"><i class="fa-solid fa-laptop-code"></i></span>
+                    <span class="tooltip">PROJECT TRAINING</span>
+                </a>
+            </li>
+            <li>
+                <a href="Workshop.html">
+                    <span class="icons"><i class="fa-solid fa-building"></i></span>
+                    <span class="tooltip">WORKSHOP</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- --------carousel------  -->
+
+    <div class="main-container">
+        <div style="margin-bottom: 2rem;border-top: 3px solid gold;"><img src="imag.jpg" alt=""></div>
+
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+            <P class="heading">OUR ACTIVITIES</p>
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="bnr1.jpg" alt="Los Angeles" class="d-block" style="width:100%">
+                </div>
+                <div class="carousel-item">
+                    <img src="bnr2.jpg" alt="Chicago" class="d-block" style="width:100%">
+                </div>
+                <div class="carousel-item">
+                    <img src="bnr3.jpg" alt="New York" class="d-block" style="width:100%">
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- ---------New batch--------  -->
+
+        <div class="batch-box ">
+            <p class="heading">UP COMING BATCHES</p>
+            <div class="container-fluid batch">
+                <div class="items">
+                    <a href="">
+                        <div class="item-img"><img src="python.jpg" alt=""></div><br>
+                        <div class="time">
+                            <i class="fa-regular fa-clock"></i> <span>Batch closes in 2 days </span>
+                        </div>
+                        <p class="details">wprpoj perfk gettite</p>
+                        <p class="p2">8 Months| 5+ Projects| <br>Designed for Freshers</p>
+
+                    </a>
+                </div>
+                <div class="items">
+                    <a href="">
+                        <div class="item-img"><img src="newb.jpg" alt=""></div><br>
+                        <div class="time">
+                            <i class="fa-regular fa-clock"></i> <span>Batch closes in 2 days </span>
+                        </div>
+                        <p class="details">wprpoj perfk gettite</p>
+                        <p class="p2">8 Months| 5+ Projects| <br>Designed for Freshers</p>
+                    </a>
+                </div>
+                <div class="items">
+                    <a href="">
+                        <div class="item-img"><img src="tally.jpg" alt=""></div><br>
+                        <div class="time">
+                            <i class="fa-regular fa-clock"></i> <span>Batch closes in 2 days </span>
+                        </div>
+                        <p class="details">wprpoj perfk gettite</p>
+                        <p class="p2">8 Months| 5+ Projects| <br>Designed for Freshers</p>
+                    </a>
+                </div>
+                <div class="items">
+                    <a href="">
+                        <div class="item-img"><img src="java.jpg" alt=""></div><br>
+                        <div class="time">
+                            <i class="fa-regular fa-clock"></i> <span>Batch closes in 2 days </span>
+                        </div>
+                        <p class="details">wprpoj perfk gettite</p>
+                        <p class="p2">8 Months| 5+ Projects| <br>Designed for Freshers</p>
+                    </a>
+                </div>
+                <div class="items">
+                    <a href="">
+                        <div class="item-img"><img src="android.jpg" alt=""></div><br>
+                        <div class="time">
+                            <i class="fa-regular fa-clock"></i> <span>Batch closes in 2 days </span>
+                        </div>
+                        <p class="details">wprpoj perfk gettite</p>
+                        <p class="p2">8 Months| 5+ Projects| <br>Designed for Freshers</p>
+                    </a>
+                </div>
+                <div class="items">
+                    <a href="">
+                        <div class="item-img"><img src="cyber.jpg" alt=""></div><br>
+                        <div class="time">
+                            <i class="fa-regular fa-clock"></i> <span>Batch closes in 2 days </span>
+                        </div>
+                        <p class="details">wprpoj perfk gettite</p>
+                        <p class="p2">8 Months| 5+ Projects| <br>Designed for Freshers</p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- --------counter-------  -->
+
+        <div class="cnt container-fluid">
+            <div class="inner-cnt">
+                <div class="counter-box">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <h2 class="counter">25</h2>
+                    <h4>TECHNOLGIES</h4>
+                </div>
+            </div>
+            <div class="inner-cnt">
+                <div class="counter-box">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h2 class="counter">15</h2>
+                    <h4>EXPERIENCED TRAINERS</h4>
+                </div>
+            </div>
+            <div class="inner-cnt">
+                <div class="counter-box">
+                    <i class="fa-solid fa-laptop"></i>
+                    <h2 class="counter">10000</h2>
+                    <h4>STUDENTS TRAINED</h4>
+                </div>
+            </div>
+            <div class="inner-cnt">
+                <div class="counter-box">
+                    <i class="fa-solid fa-laptop"></i>
+                    <h2 class="counter">800</h2>
+                    <h4>CLASSES PROVIDED</h4>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ------------Testimonial-----------  -->
+        <div class="container-fluid test">
+            <p class="heading">OUR PLACED STUDENTS </p>
+            <div class="test-box">
+
+                <div class="container-fluid batch">
+                    <div class="items">
+                        <a href="">
+                            <div class="item-img"><img src="py.jpg" alt=""></div>
+                            <p class="details"><strong>Mr. Shivam Singh </strong><br>
+                                <b>Rays Edutech Pvt. Ltd</b><br>
+                                <b>Package - 10LPA</b>
+                            </p>
+
+                        </a>
+                    </div>
+                    <div class="items">
+                        <a href="">
+                            <div class="item-img"><img src="react.jpg" alt=""></div>
+                            <p class="details"><strong>Mr. Shivam Singh </strong><br>
+                                <b>Rays Edutech Pvt. Ltd</b><br>
+                                <b>Package - 10LPA</b>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="items">
+                        <a href="">
+                            <div class="item-img"><img src="node.jpg" alt=""></div>
+                            <p class="details"><strong>Mr. Shivam Singh </strong><br>
+                                <b>Rays Edutech Pvt. Ltd</b><br>
+                                <b>Package - 10LPA</b>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="items">
+                        <a href="">
+                            <div class="item-img"><img src="java.jpg" alt=""></div>
+                            <p class="details"><strong>Mr. Shivam Singh </strong><br>
+                                <b>Rays Edutech Pvt. Ltd</b><br>
+                                <b>Package - 10LPA</b>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="items">
+                        <a href="">
+                            <div class="item-img"><img src="android.jpg" alt=""></div>
+                            <p class="details"><strong>Mr. Shivam Singh </strong><br>
+                                <b>Rays Edutech Pvt. Ltd</b><br>
+                                <b>Package - 10LPA</b>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="items">
+                        <a href="">
+                            <div class="item-img"><img src="mongoDB.jpg" alt=""></div>
+                            <p class="details"><strong>Mr. Shivam Singh </strong><br>
+                                <b>Rays Edutech Pvt. Ltd</b><br>
+                                <b>Package - 10LPA</b>
+                            </p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ------logo slider------  -->
+        <div class="container-fluid logo-slider">
+            <p class="heading">TIE UP COMPANIES</p>
+            <div class="l-slide">
+                <img src="l1.jpg" alt="">
+                <img src="l2.jpg" alt="">
+                <img src="l3.jpg" alt="">
+                <img src="l4.jpg" alt="">
+                <img src="l5.jpg" alt="">
+                <img src="l6.jpg" alt="">
+                <img src="l3.jpg" alt="">
+                <img src="l5.jpg" alt="">
+            </div>
+            <div class="l-slide">
+                <img src="l1.jpg" alt="">
+                <img src="l2.jpg" alt="">
+                <img src="l3.jpg" alt="">
+                <img src="l4.jpg" alt="">
+                <img src="l5.jpg" alt="">
+                <img src="l6.jpg" alt="">
+                <img src="l3.jpg" alt="">
+                <img src="l5.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- ---------Footer-------  -->
+        <footer>
+            <ul class="social">
+                <li><a href=""><i class="fa-brands fa-facebook" title="Facebook"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-instagram" title="Instagram"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-twitter" title="Twitter"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-youtube" title="Youtube"></i></a></li>
+            </ul>
+            <ul class="ftr-box">
+                <li> <h3>Our Services</h3><br>
+                    <h4>Technical Training</h4><br>
+                    <h4>Web Development</h4><br>
+                    <h4>App Development</h4>
+                </li>
+                <li>
+                    <h3>Quick Links</h3><br>
+                    <h4><a href="">Home</a></h4><br>
+                    <h4><a href="">Services</a></h4><br>
+                    <h4><a href="">Internship</a></h4><br>
+                    <h4><a href="">About Us</a></h4><br>
+                </li>
+                <li>
+                    <div>
+                        <h3>Contact Us</h3><br>
+                        <div class="p">2nd Floor, Mithulok, West Boring Canal Road, Khetan Lane, Near Bharat Petrol Pump, Beside
+                            Senco
+                            Gold & Diamonds, Patna, Bihar- 800001</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.6987966567876!2d85.11724797517394!3d25.614923214655015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58ee6d975d47%3A0xbc5045cc2b8ae11c!2sRays%20Edutech%20Pvt.%20Ltd!5e0!3m2!1sen!2sin!4v1698580783201!5m2!1sen!2sin"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- <div class="ftr-box">
+                <div class="f-one">
+                   
+                </div>
+                <div class="f-two">
+                    
+                </div>
+                <div class="f-three" style="display: flex;">
+                    
+                </div>
+            </div> -->
+            <p class="ftr-p">&#169;Rays Edutech Pvt Ltd</p>
+        </footer>
+    </div>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            var a = 0;
+            $('.fa-bars').click(function () {
+                if (a == 0) {
+                    $('.nav').css({ 'right': '0rem', 'transition': '.3s all linear' })
+                    a = 1;
+                }
+                else if (a == 1) {
+                    $('.nav').css({ 'right': '-21rem', 'transition': '.3s all linear' })
+                    a = 0;
+                }
+            })
+
+        })
+
+        // ===============SIDEBAR TOGGLE================== 
+        function toggle() {
+
+        }
+
+        // $(document).ready(function () {
+        //     var head = $('header');
+        //     var sidebar = $('.side-bar');
+        //     var scrolling = 11;
+        //     // var side = 600;
+        //     $(window).scroll(function () {
+        //         if ($(this).scrollTop() >= scrolling) {
+        //             head.css({ 'background-color': 'rgba(55,81,126,0.8)', 'transition': '.5s linear', 'box-shadow': 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;' });
+        //         }
+        //         else if ($(this).scrollTop() <= scrolling) {
+        //             head.css({ 'background-color': 'rgba(55,81,126,1)' });
+        //         }
+        //         // if($(this).scrollTop()>=side){
+        //         //     sidebar.css({'visibility':'visible','transition':'0.5s all'})
+        //         // }else{
+        //         //     sidebar.css({'visibility':'hidden'})
+        //         // }
+        //     })
+        // })
+
+        // -------Batch Slider-------
+
+        $('.batch').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            // dots: true,
+            arrows: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            infinite: true,
+            variableWidth: true,
+            variableHeight: true,
+            mobileFirst: true,
+            responsive: [
+                {
+                    breakpoint: 998,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true,
+                        centerMode: false
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        initialSlide: 1,
+                        dots: false,
+                        centerMode: true
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                
+                }]
+        });
+
+        // -----counter-------
+        $(document).ready(function () {
+            $(".counter").each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+
+                }, {
+
+                    duration: 5500,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now) + "+");
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>

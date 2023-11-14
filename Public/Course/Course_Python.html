@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- -----bootstrap cdn------  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- ----pulse animation---  -->
+    <link rel="stylesheet" href="pulse.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="course_c.css">
+
+    <!-- ---------Image Corausel------  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- slick slider  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        /* body {
+            background: rgba(55, 81, 126, 1);
+        } */
+
+        header {
+            background: rgba(42, 63, 99, 1);
+            height: 10rem;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 38rem;
+            height: 90%;
+            /* border: 2px solid red; */
+            position: relative;
+            /* display: flex; */
+        }
+
+        .logo img {
+            /* background-color: #fff; */
+            border-radius: 50%;
+            position: absolute;
+            top: 1rem;
+            left: 1%;
+            width: 13.5%;
+            height: 55%;
+        }
+
+        .nav {
+            /* border: 2px solid red; */
+            width: 68%;
+            height: 80%;
+            position: absolute;
+            right: 3rem;
+            /* background: rgba(55, 81, 126, 1); */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .rays {
+            color: #fff;
+            /* border: 2px solid red; */
+            position: absolute;
+            top: 25%;
+            left: 7rem;
+            font-size: 3rem;
+            font-family: cursive;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .nav-list {
+            position: absolute;
+            top: 1.5rem;
+            padding-top: 1rem;
+            right: 1.5rem;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* height: 3rem; */
+            /* border: 2px solid green; */
+
+        }
+
+        .nav-list li {
+            display: inline-block;
+            /* list-style: none; */
+            font-size: 1.5rem;
+            font-weight: bold;
+            /* border: 2px solid black; */
+            position: relative;
+            min-width: 15rem;
+            height: 3rem;
+            text-align: center;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 5rem;
+            left: -10rem;
+            padding: 0 1rem;
+            background: rgba(55, 81, 126, 1);
+            min-width: 20rem;
+            line-height: 3rem;
+            border-top: 4px groove #fff;
+            visibility: hidden;
+            /* opacity: 0; */
+        }
+
+        .submenu li {
+            display: block;
+            text-align: left;
+            padding-left: .5rem;
+        }
+
+
+        .nav-list li a {
+            color: #fff;
+            letter-spacing: .1rem;
+        }
+
+        .nav-list .menu:hover .submenu {
+            /* opacity: 1; */
+            visibility: visible;
+            top: 3rem;
+            transition: all .2s linear;
+        }
+
+        .menu:hover .a i {
+            rotate: 180deg;
+        }
+
+        .fa-bars {
+            position: absolute;
+            right: 3rem;
+            font-size: 3rem;
+            color: #fff;
+            display: none;
+        }
+
+
+
+
+        .main-container {
+            width: 100%;
+            width: calc(100%-5rem);
+            float: right;
+            margin: auto;
+            margin-top: 2rem;
+            min-height: 100vh;
+            max-height: 800vh;
+            /* border: 2px solid red; */
+            padding-left: 5rem;
+            position: relative;
+            /* border: 2px solid red; */
+            /* border: 2px solid red; */
+        }
+
+
+
+
+
+
+
+
+
+        /* -------Footer------- */
+        footer {
+            position: relative;
+            bottom: 0;
+            margin-top: 10rem;
+            /* min-height: 30rem; */
+            border-top: 3px solid gold;
+            /* background: rgba(42, 63, 99, 1);
+            color: #fff; */
+            background-color: whitesmoke;
+            padding: 2rem 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .ftr-box {
+            /* border: 1px solid black; */
+            width: 100%;
+            min-height: 20rem;
+            /* position: relative; */
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 5rem;
+
+
+        }
+
+        .ftr-box li {
+            /* display: inline-block; */
+            width: 22%;
+            /* border: 1px solid red; */
+            height: 100%;
+            /* position: absolute; */
+            top: 0;
+            text-align: center;
+        }
+
+        .ftr-box li iframe {
+            width: 100%;
+        }
+
+        .ftr-box li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .ftr-box h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+
+        li {
+            list-style-type: none;
+        }
+
+        .p {
+            font-size: 1.5rem;
+        }
+
+
+        .social,
+        .ftr-links {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+
+
+        .social li a {
+            font-size: 2rem;
+            color: #333;
+            margin: 0 1rem;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+
+        footer .social li a:hover {
+            transform: translateY(-1rem);
+            /* color: #3586ff; */
+
+        }
+
+        .ftr-p {
+            background-color: #333;
+            color: #fff;
+            font-size: 2rem;
+            width: 100%;
+            letter-spacing: .1rem;
+            line-height: 4rem;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+        }
+        .ser-tab{
+            width: 70rem;
+            position: absolute;
+            top: 5rem;
+            left: -30rem;
+            /* border: 2px solid red; */
+            background: rgba(55, 81, 126, 1);
+            border-top:4px groove #fff ;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .ser-tab th{
+            font-size: 2rem;
+            color: #fff;
+            position: relative;
+            letter-spacing: .1rem;
+        }
+        .ser-tab th::after{
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: .2rem;
+            bottom: 0;
+            left: 30%;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+        .ser-tab td{
+            height: 4rem;
+        }
+        .ser-tab td a{
+            letter-spacing: .1rem;
+        }
+        .menu:hover .ser-tab{
+            opacity: 1;
+            visibility: visible;
+            top: 3rem;
+            transition: .3s;
+        }    
+
+        @media(max-width:1151px) {
+            .rays {
+                font-size: 2rem;
+                top: 30%;
+            }
+        }
+
+        @media(max-width:1269px) {
+            html {
+                font-size: 55%;
+            }
+
+            .nav {
+                position: absolute;
+                right: -20rem;
+                top: 10rem;
+                width: 20rem;
+                min-height: 100vh;
+                flex-direction: column;
+                background: rgba(55, 81, 126, 1);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                min-height: 20rem;
+            }
+
+            .nav-list>li {
+                width: 100%;
+                height: 4rem;
+                padding-top: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .submenu {
+                /* visibility: visible; */
+                left: -24rem;
+                top: 1rem;
+                width: 24rem;
+            }
+            .ser-tab{
+                left:-70rem ;
+                top: 1rem;
+            }
+            .nav-list .menu:hover .ser-tab{
+                top: 0rem;
+                transition: all .2s linear;
+            }
+
+            .nav-list .menu:hover {
+                border-top-left-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                background-color: rgba(0, 0, 150, 0.5);
+            }
+
+            .nav-list .menu:hover .submenu {
+                left: -24rem;
+                top: 0rem;
+                transition: all .2s linear;
+            }
+
+            .submenu li {
+                padding-left: 1rem;
+                min-height: 3rem;
+                transition: .2s all ease-in-out;
+            }
+
+            .submenu li:hover {
+                font-weight: bolder;
+            }
+
+            .fa-bars {
+                display: block;
+                cursor: pointer;
+            }
+
+            .d1, .d3{
+                position: absolute;
+                width: 25rem;
+                z-index: 111;
+                background-color: #fff;
+            }
+           
+           
+            
+            #main{
+                justify-content: center;
+                overflow: hidden;
+            }
+            .d2{
+                width: 82%;
+                margin-left: 0;
+            }
+            .d1{
+                left: -30rem;
+                border-right: solid 1px gainsboro;
+                z-index: 1;
+            }
+            .d3{
+                right: -35rem;
+                border-left: solid 1px gainsboro;
+            }
+            .d1-i1, .d1-i2{
+                display: block;
+                z-index: 11;
+            }
+            .d1-i1{
+                left: 1rem;
+            }
+            .d1-i2{
+                right: 1rem;
+            }
+
+        }
+
+
+        @media(max-width:866px) {
+            html {
+                font-size: 45%;
+            }
+
+
+        }
+
+        @media(max-width:768px) {
+            html {
+                font-size: 45%;
+            }
+            .ser-tab td  a  {
+                width: 100%;
+                float: left;
+                padding-left: .5rem;
+        }
+
+        }
+
+        @media(max-width:600px) {
+            html {
+                font-size: 35%;
+            }
+
+            .side-bar .lists {
+                height: 100vh;
+            }
+
+            .side-bar .lists li {
+                margin-top: 6vh;
+            }
+
+            footer {
+                min-height: 50rem;
+            }
+
+            .ftr-box {
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-content: unset;
+            }
+
+            .ftr-box li {
+                width: 25rem;
+            }
+
+            .p {
+                font-size: 2rem;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">
+            <img src="logo.png" alt="" onclick="location.href='homepage.html'">
+            <h2 class="rays" onclick="location.href='homepage.html'" style="cursor: pointer;">Rays Edutech Pvt. Ltd.
+            </h2>
+            </a>
+        </h1>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="homepage.html">HOME</a></li>
+                <li class="menu"><a style="cursor: pointer;" class="a sr">SERVICES&nbsp;<i
+                            class="fa-solid fa-angle-down"></i></a>
+                    <table class="ser-tab">
+                        <tr>
+                            <th>Training</th>
+                            <th>Development</th>
+                            <th>Workshop</th>
+                            <th>Internship</th>
+                        </tr>
+                        <tr>
+                            <td><a href="All_Course.html">Courses</a></td>
+                            <td><a href="Web_Python.html">Web Development</a></td>
+                            <td><a href="Workshop.html">School</a></td>
+                            <td><a href="Internship.html">Technical</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Project Training</a></td>
+                            <td><a href="">App Development</a></td>
+                            <td><a href="Workshop.html">College</a></td>
+                            <td><a href="Internship.html">Non-technical</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Industrial Training</a></td>
+                            <td><a href="Web_Python.html">Custom Software</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Summer Training</a></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="menu"><a style="cursor: pointer;" class="a" href="Test_Language.html">ONLINE TEST</a>
+
+                </li>
+                <!-- <li><a href="Internship.html">INTERNSHIP</a></li> -->
+                <li class="menu"><a style="cursor: pointer;" class="a" href="Blog.html">BLOG</a>
+                </li>
+                <li><a href="Carear.html">CAREER</a></li>
+                <li class="menu"><a style="color: #fff; cursor: pointer;">MORE&nbsp;<i
+                            class="fa-solid fa-angle-down"></i></a>
+                    <ul class="submenu">
+                        <li class="menu_item"><a href="Certificate_Verification.html">Certificate Verification</a></li>
+                        <li class="menu_item"><a href="testimonial.html">Testimonials</a></li>
+                        <li class="menu_item"><a href="Placement.html">Our Placement</a></li>
+                        <li class="menu_item"><a href="Gallery.html">Gallery/Activities</a></li>
+                        <li class="menu_item"><a href="About_Us.html">About Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <i class="fa-solid fa-bars"></i>
+    </header>
+    <!-- -------SIDEBAR------  -->
+    <div class="side-bar">
+        <ul class="lists">
+            <li>
+                <a href="homepage.html">
+                    <span class="icons"><i class="fa fa-home"></i></span>
+                    <span class="tooltip">HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="Web_Python.html">
+                    <span class="icons"><i class="fa-solid fa-code"></i></span>
+                    <span class="tooltip">DEVELOPMENT</span>
+                </a>
+            </li>
+            <li>
+                <a href="Placement.html">
+                    <span class="icons"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <span class="tooltip">PLACED STUDENTS</span>
+                </a>
+            </li>
+            <li>
+                <a href="Blog.html">
+                    <span class="icons"><i class="fa-brands fa-blogger-b"></i></span>
+                    <span class="tooltip">BLOGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="Test_Language.html">
+                    <span class="icons"><i class="fa-solid fa-laptop-file"></i></span>
+                    <span class="tooltip">ONLINE TEST</span>
+                </a>
+            </li>
+            <li>
+                <a href="Project_Training.html">
+                    <span class="icons"><i class="fa-solid fa-laptop-code"></i></span>
+                    <span class="tooltip">PROJECT TRAINING</span>
+                </a>
+            </li>
+            <li>
+                <a href="Workshop.html">
+                    <span class="icons"><i class="fa-solid fa-building"></i></span>
+                    <span class="tooltip">WORKSHOP</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-container">
+        <div style="margin-top: 7.9rem;" id="main">
+            <div class="d1">
+                <h2>Courses</h2>
+                <ul style="cursor: pointer;background-color: #fff;">
+                    <li><a href="Course_C.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;C Language</a></li>
+                    <li><a href="Course_C++.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;C++</a></li>
+                    <li><a href="Course_Python.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Python</a></li>
+                    <li><a href="Course_Oracle.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Oracle</a></li>
+                    <li><a href="Course_Java.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Java Training</a></li>
+                    <li><a href="Course_PHP.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Php Training</a></li>
+                    <li><a href="Course_DS.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Data Structure</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Android Developement</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Web Developement</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;HTML</a></li>
+                    <li><a href="Course_CSS.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;CSS</a></li>
+                    <li><a href="Course_JavaScript.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;JavaScript</a></li>
+                    <li><a href="Course_jQuery.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;jQuery</a></li>
+                    <li><a href="Course_Reactjs.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;React.js</a></li>
+                    <li><a href="Course_Nodejs.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Node.js</a></li>
+                    <li><a href="Course_Expressjs.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Express.js</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;DCA</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;DTP</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Tally Prime</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;ADCAT</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;ADCA</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;DCA</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Cyber Security</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Data Science</a></li>
+                    <li><a href="Course_Algorithm.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Algorithm</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;DBMS</a></li>
+                    <li><a href="Course_MySQL.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;MySQL</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;SQL</a></li>
+                    <li><a href="Course_SQLITE.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;SQLITE</a></li>
+                    <li><a href="Course_MongoDb.html"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;MongoDb</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Django</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Unix/Linux</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Networking</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;CO</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;COA</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;ADOA</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;Advance Excel</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;TDS & Payroll</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;GST</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;TAT</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;C#.Net</a></li>
+                    <li><a href=""><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;ASP.Net</a></li>
+                    <li><a href="" style="border: none;"><i class="fa-regular fa-hand-pointer fa-fade"
+                                style="color: #2a3f63;rotate: 90deg;"></i>&nbsp;SQL Server</a></li>
+                </ul>
+            </div>
+            <div class="d2">
+                <div class="d2-box">
+                    <img src="bnr1.jpg" alt="" style="width: 100%;height: 100%;">
+                </div>
+                <div style="border: solid 1px rgba(42, 63, 99, 1);margin-top: 0.5rem;border-radius: 0.2rem;padding: 0.5rem;">
+                    <h2><b><u>Python</u></b></h2>
+                    <p>Python is a versatile, high-level, and interpreted programming language known for its simplicity, readability, and extensive standard library. It was created by Guido van Rossum and first released in 1991. Python emphasizes code readability and uses a clean syntax, which makes it easier to write and understand compared to other programming languages.</p>
+                    <table class="tbl-cr">
+                        <thead>
+                            <th>Course Name</th>
+                            <th>Date & Time</th>
+                            <th>Take Demos</th>
+                        </thead>
+                        <tbody>
+                            <td>C</td>
+                            <td>18/10/2023 10:50PM</td>
+                            <td><a>View Details</a></td>
+                        </tbody>
+                    </table><br>
+                    <h1><b>Where it is used?</b></h1>
+                    <p>The various areas of python use are given below:</p>
+                    <ul class="ul">
+                        <li class="lst-one">Data Science & Data Mining</li>
+                        <li class="lst-one">Desktop Application</li>
+                        <li class="lst-one">Web Application</li>
+                        <li class="lst-one">Machine Learning</li>
+                        <li class="lst-one">Mobile Application</li>
+                        <li class="lst-one">Artificial Intelligence</li>
+                        <li class="lst-one">Enterprise Application</li>
+                        <li class="lst-one">Speech Recognition</li>
+                        <li class="lst-one">IOT Applications and Many More….</li>
+                    </ul>
+                    <h1><b>Real Life Industry uses of Python</b></h1>
+                    <ul class="ul">
+                        <li class="lst-one1">NASA, IBM, Intel, Netflix, Facebook use Python.</li>
+                        <li class="lst-one1">Most liked video sharing platform YouTube is also coded and built using Python.</li>
+                        <li class="lst-one1">Instagram is developed using Python.</li>
+                        <li class="lst-one1">The very famous and most played games like Battlefield 2, Pac-Man, Civilization IV are coded using Python.</li>
+                        <li class="lst-one1">The famous AI tool ChatGpt is developed using python.</li>
+                    </ul>
+                    <h1><b>WHY REPL?</b></h1>
+                    <ul class="ul">
+                        <li class="lst-one1">Life time validity (enroll one time and revise many times)</li>
+                        <li class="lst-one1">Interaction with the best faculty and Industry Experts</li>
+                        <li class="lst-one1">Small Batches to focus on each student</li>
+                        <li class="lst-one1">We focus on both theoretical and practical approaches in a parallel way.</li>
+                        <li class="lst-one1">You will be given the opportunity to work on a live project.</li>
+                        <li class="lst-one1">Outdoor activities to boost your confidence.</li>
+                        <li class="lst-one1">Presentation in class by the students.</li>
+                    </ul>
+                    <h1><b>Our Key Features:</b></h1>
+                    <ul class="ul">
+                        <li class="lst-one2">Good Quality Material Notes</li>
+                        <li class="lst-one2">Smart Classes Available</li>
+                        <li class="lst-one2">Online  Test</li>
+                        <li class="lst-one2">Chapter wise Assignments</li>
+                        <li class="lst-one2">Offline And Online Classes</li>
+                        <li class="lst-one2">Recorded class on Rays App</li>
+                        <li class="lst-one2">Eminent faculties of the IT Industry( Amazon, Wal-Mart, Oracle, Microsoft..)</li>
+                        <li class="lst-one2">Fully AC and Wi-Fi Campus.</li>
+                    </ul>
+                    <h1><b>Syllabus</b></h1>
+                    <!-- #syllabus -->
+                    <div>
+                        <div class="topic">
+                            <h3>
+                                <button class="but">Introduction to C Language<i class="fa-solid fa-caret-up" style="float: right;color: blue;"></i></button>
+                            </h3>
+                            <div class="t-one" style="display: block;">
+                                <div style="width: 100%;">
+                                    <ul class="t-ul">
+                                        <li>About C Language</li>
+                                        <li>Advantages of C Language</li>
+                                        <li>Disadvantages of C Language</li>
+                                        <li>A Sample Program in C Language</li>
+                                        <li>Elements of the Sample Program</li>
+                                        <li>Editing, Compiling, Linking and Execution</li>
+                                        <li>Problems related to plateform</li>
+                                        <li>Problems related to application</li>
+                                        <li>Important Points regarding a C Program</li>
+                                        <li>Some inbuilt functions
+                                            kbhit(), delay(), sleep(), getch(), getche()
+                                            system(), sound(), nosound()</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d3">
+                
+            </div>
+            <i class="fa-solid fa-arrow-right d1-i1"></i>
+            <i class="fa-solid fa-arrow-left d1-i2"></i>
+        </div>
+        <!-- ---------Footer-------  -->
+        <footer>
+            <ul class="social">
+                <li><a href=""><i class="fa-brands fa-facebook" title="Facebook"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-instagram" title="Instagram"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-twitter" title="Twitter"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-youtube" title="Youtube"></i></a></li>
+            </ul>
+            <ul class="ftr-box">
+                <li>
+                    <h3>Our Services</h3><br>
+                    <h4>Technical Training</h4><br>
+                    <h4>Web Development</h4><br>
+                    <h4>App Development</h4>
+                </li>
+                <li>
+                    <h3>Quick Links</h3><br>
+                    <h4><a href="">Home</a></h4><br>
+                    <h4><a href="">Services</a></h4><br>
+                    <h4><a href="">Internship</a></h4><br>
+                    <h4><a href="">About Us</a></h4><br>
+                </li>
+                <li>
+                    <div>
+                        <h3>Contact Us</h3><br>
+                        <div class="p">2nd Floor, Mithulok, West Boring Canal Road, Khetan Lane, Near Bharat Petrol
+                            Pump, Beside
+                            Senco
+                            Gold & Diamonds, Patna, Bihar- 800001</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.6987966567876!2d85.11724797517394!3d25.614923214655015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58ee6d975d47%3A0xbc5045cc2b8ae11c!2sRays%20Edutech%20Pvt.%20Ltd!5e0!3m2!1sen!2sin!4v1698580783201!5m2!1sen!2sin"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </li>
+            </ul>
+            <p class="ftr-p">&#169;Rays Edutech Pvt. Ltd.</p>
+        </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.d1 ul li').each(function(){
+                if($(this).text().trim()==$('.d2').children('div').children('h2').first().text().trim()){
+                    $(this).children('a').css({'background':'rgba(42, 63, 99)','border-radius':'0.5rem','color':'white'})
+                    $(this).children('a').children('i').css({'color':'white'})
+                }
+            })
+            $.ajax({
+                url:'blogs.py',
+                method:'post',
+                data:{
+                    cond:'course_search'
+                },
+                success:function(data){
+                    $('.d3').html(data);
+                }
+            });
+            $('.but').click(function () {
+                $('.but').parent('h3').siblings('div').css('display', 'none');
+                $(this).parent('h3').siblings('div').css('display', 'block');
+                $(this).children('i').attr('class','fa-solid fa-caret-up');
+                $('.but').children('i').attr('class','fa-solid fa-caret-down');
+                $('.but').children('i').css('color','black');
+                $(this).children('i').attr('class','fa-solid fa-caret-up');
+                $(this).children('i').css('color','blue');
+            });
+            $(document).on('click','.pst',function(){
+                sessionStorage.setItem('sn', $(this).children('span').text().trim());
+                window.location.href = "Blog_Head.html"
+            });
+            var a = 0;
+            $('.fa-bars').click(function () {
+                // alert('ok')
+                if (a == 0) {
+                    $('.nav').css({ 'right': '0rem', 'transition': '.3s all linear' })
+                    a = 1;
+                }
+                else if (a == 1) {
+                    $('.nav').css({ 'right': '-21rem', 'transition': '.3s all linear' })
+                    a = 0;
+                }
+            });
+            $('.d1-i1').click(function () {
+
+                if (a == 0) {
+                    $(this).css({'rotate':'180deg','transition':'.5s','left':'26rem'})
+                    $('.d1').css({ 'left': '0', 'transition': '.3s all linear' })
+                    a = 1;
+                }
+                else if (a == 1) {
+                    $(this).css({'rotate':'0deg','transition':'.5s','left':'1rem'})
+                    $('.d1').css({ 'left': '-30rem', 'transition': '.3s all linear' })
+                    a = 0;
+                }
+            });
+            $('.d1-i2').click(function () {
+                if (a == 0) {
+                    $(this).css({'rotate':'180deg','transition':'.5s','right':'27rem'})
+                    $('.d3').css({ 'right': '0', 'transition': '.3s all linear' })
+                    a = 1;
+                }
+                else if (a == 1) {
+                    $(this).css({'rotate':'0deg','transition':'.5s','right':'1rem'})
+                    $('.d3').css({ 'right': '-35rem', 'transition': '.3s all linear' })
+                    a = 0;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

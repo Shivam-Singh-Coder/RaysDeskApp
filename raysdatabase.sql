@@ -308,6 +308,29 @@ CREATE TABLE rays_job_apply (
   mode varchar(200),
   PRIMARY KEY (sn)
 );
+CREATE TABLE `placement` (
+  `sn` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) DEFAULT NULL,
+  `image` longblob,
+  `company` varchar(200) DEFAULT NULL,
+  `package` varchar(200) DEFAULT NULL,
+  `year` varchar(100) DEFAULT NULL,
+  `msg` varchar(4400) DEFAULT NULL,
+  `spic` longblob,
+  PRIMARY KEY (`sn`)
+);
+CREATE TABLE `test` (
+  `sn` int NOT NULL AUTO_INCREMENT,
+  `subject` varchar(5500) DEFAULT NULL,
+  `topic` varchar(5500) DEFAULT NULL,
+  `q` longtext,
+  `a` longtext,
+  `o1` longtext,
+  `o2` longtext,
+  `o3` longtext,
+  `o4` longtext,
+  PRIMARY KEY (`sn`)
+);
 insert into state values(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 insert into state1 values('Bihar','Araria,Arwal,Aurangabad,Banka,Begusarai,Bhagalpur,Bhojpur,Buxar,Darbhanga,East Champaran(Motihari),Gaya,Gopalganj,Jamui,Jehanabad,Kaimur(Bhabua),Katihar,Khagaria,Kishanganj,Lakhisarai,Madhepura,Madhubani,Munger(Monghyr),Muzaffarpur,Nalanda,Nawada,Patna,Purnia(Purnea),Rohtas,Saharsa,Samastipur,Saran,Sheikhpura,Sheohar,Sitamarhi,Siwan,Supaul,Vaishali,West Champaran(Bettiah)')
 ;

@@ -697,12 +697,13 @@
                             alert('Please wait for Approval!')
                         }
                         else {
-                            data = data.split(',,')
-                            sessionStorage.setItem('u_id', $('#t1').val().trim())
-                            sessionStorage.setItem('uname', data[0])
-                            sessionStorage.setItem('bcode', data[1])
-                            sessionStorage.setItem('role', data[2])
-                            window.location.href = 'dashbord.html'
+                            data = data.split(',,');
+                            sessionStorage.setItem('u_id', $('#t1').val().trim());
+                            sessionStorage.setItem('uname', data[0]);
+                            sessionStorage.setItem('bcode', data[1]);
+                            sessionStorage.setItem('role', data[2]);
+                            sessionStorage.setItem('time','0');
+                            window.location.href = 'dashbord.html';
                         }
                     }
                 })
