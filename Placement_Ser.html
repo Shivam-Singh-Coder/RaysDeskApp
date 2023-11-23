@@ -377,6 +377,11 @@
     #sname,#comname,#ser_name{
       text-transform: capitalize;
     }
+    #sname:focus,#pack:focus,#packsel:focus,#comname:focus,
+    #year:focus,#comlogo:focus,#spic:focus,#sub:focus,#res:focus,
+    #ser_name:focus,#ser_cname:focus,#ser_year:focus,#ser_bt:focus,#ref:focus{
+      border: solid 2px black;
+    }
   </style>
 </head>
 
@@ -409,52 +414,45 @@
             <tr>
               <td>
                 <label>Student Name</label>
-                <input type="text" oninput="showlabel('#sname')" placeholder="Student Name" id="sname" /><br>
+                <input type="text" onfocus="fg('#sname')" onfocusout="fl('#sname')" oninput="showlabel('#sname')" placeholder="Student Name" id="sname" /><br>
                 <span></span>
               </td>
               <td>
                 <label>Package</label>
-                <input type="text" inputmode="numeric" oninput="showlabel('#pack')" autocomplete="off" placeholder="Package" id="pack" style="width: 50%;" />
+                <input type="text" onfocus="fg('#pack')" onfocusout="fl('#pack')" inputmode="numeric" oninput="showlabel('#pack')" autocomplete="off" placeholder="Package" id="pack" style="width: 50%;" />
                 <select id="packsel" style="width: 30%;">
-                  <option selected>Lakh</option>
-                  <option>Thousand</option>
-                  <option>Crore</option>
-                </select>
-                <br /><span></span>
+                  <option selected>Lakhs</option>
+                  <option>Thousands</option>
+                  <option>Crores</option>
+                </select><br><span></span>
               </td>
             </tr>
             <tr>
               <td>
                 <label>Company Name</label>
-                <input type="text" oninput="showlabel('#comname')" list="company" placeholder="Company Name" id="comname" /><br />
+                <input type="text" onfocus="fg('#comname')" onfocusout="fl('#comname')" oninput="showlabel('#comname')" list="company" placeholder="Company Name" id="comname" /><br />
                 <datalist id="company"></datalist><br />
                 <span></span>
               </td>
               <td>
-                <label style="visibility: visible;">Company Logo</label>
-                <input type="file" id="comlogo" /><br />
+                <label>Placement Year</label>
+                <select id="year" style="text-align: center;" onchange="change('#year')">
+                  <option selected disabled>--Select Any Year--</option>
+                </select><br />
                 <span></span>
               </td>
             </tr>
             <tr>
               <td>
-                <label>Year</label>
-                <select id="year" style="text-align: center;" onchange="change('#year')">
-                  <option selected disabled>--Select Any Year--</option>
-                  <option>2023</option>
-                  <option>2022</option>
-                  <option>2020</option>
-                  <option>2021</option>
-                  <option>2019</option>
-                  <option>2018</option>
-                  <option>2017</option>
-                  <option>2016</option>
-                </select><br />
+                <label style="visibility: visible;">Company Logo</label>
+                <input type="file" onfocus="fg('#comlogo')" onfocusout="fl('#comlogo')" id="comlogo" accept="image/*" onchange="imgchange('comlogo')"/>
+                <img src="" style="display: none;"><br />
                 <span></span>
               </td>
               <td>
                 <label style="visibility: visible;">Student Pic</label>
-                <input type="file" id="spic" /><br />
+                <input type="file" onfocus="fg('#spic')" onfocusout="fl('#spic')" id="spic" accept="image/*" onchange="imgchange('spic')"/>
+                <img src="" style="display: none;"><br />
                 <span></span>
               </td>
             </tr>
@@ -477,7 +475,7 @@
             <tr>
               <td>
                 <label>Student Name</label>
-                <input type="text" oninput="showlabel('#ser_name')" placeholder="Enter Student Name" id="ser_name" /><br />
+                <input type="text" onfocus="fg('#ser_name')" onfocusout="fl('#ser_name')" oninput="showlabel('#ser_name')" placeholder="Enter Student Name" id="ser_name" /><br />
                 <span></span>
               </td>
               <td>
@@ -511,7 +509,15 @@
     <script>
       var flag = true;
       $(document).ready(() => {
-        vi_topic('#topic');
+        var b=0;
+        for(var a=new Date().getFullYear();b<=10;a--,b++){
+          if(b==0){
+            $('#year').append('<option selected>'+a+'</option>');
+            showlabel('#year')
+          }
+          else
+            $('#year').append('<option>'+a+'</option>');
+        }
         $("#ref").click(function () {
           $('.tbl_container1').css('border','none')
           $('#sel_top,#sel_url').val('');
@@ -521,112 +527,78 @@
         });
         $("#sub").click(function () {
           flag = true;
-          fl('#top_nm');
-          fl('#you_url');
-          fl('#sel_url');
-          urlcheck('#you_url');
+          fl('#sname');
+          fl('#pack');
+          fl('#comname');
+          fl('#comlogo');
+          fl('#spic');
           if (flag) {
-            if (confirm("ARE YOU REALLY WANT TO INSERT RECORD?"))
+            if (confirm("ARE YOU REALLY WANT TO INSERT RECORD?")){
               $.ajax({
                 url: "rays_desk.py",
                 method: "post",
                 data: {
-                  cond: "video_entry",
-                  b1: $("#top_nm").val().trim(),
-                  b2: $("#you_url").val().trim(),
-                  b3: sessionStorage.getItem('u_id').trim()
+                  cond: "placement_entry",
+                  b1: $("#sname").val().trim(),
+                  b2: $("#comlogo").siblings('img').attr('src'),
+                  b3: $("#comname").val().trim(),
+                  b4: $("#pack").val().trim()+" "+$("#packsel").val(),
+                  b5: $("#year").val(),
+                  b6: $("#spic").siblings('img').attr('src'),
+                  b7: sessionStorage.getItem('u_id').trim()
                 },
                 success: function (data) {
-                  data=data.split('&&')
-                  alert(data[0])
+                  data=data.split('&&');
+                  alert(data[0]);
                   if(data[1]==0)
-                    location.reload()
-                },
-              });
-          }
-        });
-        $('#sel_top').change(()=>{
-          var flag1=true;
-          $('#sel_top').siblings('label').css('visibility','visible');
-          let sel=$("#sel_top").val();
-          let url1=$("#sel_url").val().trim();
-          if(url1!=''){
-            if(!(url1.includes('embed'))){
-              flag1=false;
-              $("#sel_url").siblings('span').text('Please enter embed url!!')
-            }else{
-              $("#sel_url").siblings('span').text('')
-            }
-          }
-          if(flag1){
-            search();
-          }
-        })
-        $('#ser_bt').click(()=>{
-          var flag1=true;
-          let sel=$("#sel_top").val();
-          let url1=$("#sel_url").val().trim();
-          if(url1=='' && sel==null){
-            alert('Please Select Any of them!!');
-            flag1=false;
-          }
-          else if(url1!=''){
-            if(!(url1.includes('embed'))){
-              flag1=false;
-              $("#sel_url").siblings('span').text('Please enter embed url!!')
-            }else{
-              $("#sel_url").siblings('span').text('')
-            }
-          }
-          if(flag1){
-            search();
-          }
-        })
-        $(document).on("click", "#btn_trash", function () {
-          if (confirm("Are you really want to delete this record!!")) {
-            let del=$(this).closest('tr').children('td').text().split('   ')[1];
-            $.ajax({
-              url: "rays_desk.py",
-              method: "post",
-              data: {
-                cond: "video_del",
-                b1: del
-              },
-              success: function (data) {
-                let dat=data.split('&&&')
-                alert(dat[0]);
-                if(dat[1]==0){
-                  $('.tbl tbody tr').each(function(){
-                    if($(this).find('td:eq(1)').text().trim()==del){
-                      $(this).remove();
-                      return false;
-                    }
-                  })
+                    location.reload();
                 }
-              },
-            });
+              });
+            }
           }
         });
-        $(document).on("keypress", "#inp,textarea", function () {
-          $(this).css('color','green');
-        });
-        $(document).on("click", "#btn_edit", function () {
-          if (confirm("Are You Really want To Update this Record?")) {
-            $.ajax({
-              url: "rays_desk.py",
-              method: "post",
-              data: {
-                cond: "video_upd",
-                b1: $(this).closest("tr").children("td").text().split("   ")[1],
-                b2: $(this).closest("tr").children("td").find('input').val().trim(),
-                b3: $(this).closest("tr").children("td").find('textarea').val().trim()
-              },
-              success: function (data) {
-                alert(data);
-              },
-            });
-          }
-        });
+        // $(document).on("click", "#btn_trash", function () {
+        //   if (confirm("Are you really want to delete this record!!")) {
+        //     let del=$(this).closest('tr').children('td').text().split('   ')[1];
+        //     $.ajax({
+        //       url: "rays_desk.py",
+        //       method: "post",
+        //       data: {
+        //         cond: "video_del",
+        //         b1: del
+        //       },
+        //       success: function (data) {
+        //         let dat=data.split('&&&')
+        //         alert(dat[0]);
+        //         if(dat[1]==0){
+        //           $('.tbl tbody tr').each(function(){
+        //             if($(this).find('td:eq(1)').text().trim()==del){
+        //               $(this).remove();
+        //               return false;
+        //             }
+        //           })
+        //         }
+        //       },
+        //     });
+        //   }
+        // });
+        // $(document).on("click", "#btn_edit", function () {
+        //   if (confirm("Are You Really want To Update this Record?")) {
+        //     $.ajax({
+        //       url: "rays_desk.py",
+        //       method: "post",
+        //       data: {
+        //         cond: "video_upd",
+        //         b1: $(this).closest("tr").children("td").text().split("   ")[1],
+        //         b2: $(this).closest("tr").children("td").find('input').val().trim(),
+        //         b3: $(this).closest("tr").children("td").find('textarea').val().trim()
+        //       },
+        //       success: function (data) {
+        //         alert(data);
+        //       },
+        //     });
+        //   }
+        // });
         $(".entry input").on("keyup", function (event) {
           if (event.keyCode === 13) {
             $("#sub").click();
@@ -639,71 +611,83 @@
           }
         });
       })
+      function imgchange(iid){
+        var fileInput = document.getElementById(iid);
+        var filePath = fileInput.value;
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        if (!allowedExtensions.exec(filePath)) {
+          $("#"+iid).siblings('span').html('Please upload file having extensions .jpeg/.jpg/.png only.');
+          fileInput.value = '';
+          return false;
+        }
+        else{
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $("#"+iid).siblings('img').attr('src',e.target.result);
+            $("#"+iid).siblings('span').html('');
+          };
+          reader.readAsDataURL($("#"+iid)[0].files[0]);
+        }
+      }
       function change(iid){
         $(iid).siblings('label').css('visibility','visible');
       }
-      function search(){
-        $.ajax({
-              method:'post',
-              url:"rays_desk.py",
-              data:{
-                cond:'video_search',
-                b1:$("#sel_top").val(),
-                b2:$("#sel_url").val().trim()
-              },
-              success:(res)=>{
-                console.log(res)
-                $('.tbl_container1').html(res);
-                $('.tbl_container1').css('border','solid 1px gray');
-              }
-            });
-      }
-      function vi_topic(id){
-        $.ajax({
-          url:'rays_desk.py',
-          method:'post',
-          data:{
-            cond:'video_topic'
-          },
-          success:function(data){
-            if(data!=0){
-              if(id=='#sel_top'){
-                $('#sel_top').find('option').not(':selected[value!=null]').remove();
-                $('#sel_top').append(data);
-              }
-              else
-                $(id).html(data);
-            }
-          }
-        })
-      }
+      // function search(){
+      //   $.ajax({
+      //         method:'post',
+      //         url:"rays_desk.py",
+      //         data:{
+      //           cond:'video_search',
+      //           b1:$("#sel_top").val(),
+      //           b2:$("#sel_url").val().trim()
+      //         },
+      //         success:(res)=>{
+      //           console.log(res)
+      //           $('.tbl_container1').html(res);
+      //           $('.tbl_container1').css('border','solid 1px gray');
+      //         }
+      //       });
+      // }
+      // function vi_topic(id){
+      //   $.ajax({
+      //     url:'rays_desk.py',
+      //     method:'post',
+      //     data:{
+      //       cond:'video_topic'
+      //     },
+      //     success:function(data){
+      //       if(data!=0){
+      //         if(id=='#sel_top'){
+      //           $('#sel_top').find('option').not(':selected[value!=null]').remove();
+      //           $('#sel_top').append(data);
+      //         }
+      //         else
+      //           $(id).html(data);
+      //       }
+      //     }
+      //   })
+      // }
       function fl(iid) {
-        if(iid=='#sel_url')
-          $(iid).siblings('span').html("");
+        if(iid=='#comlogo' || iid=='#spic'){
+          if($(iid).val()==''){
+            $(iid).siblings('span').html("Please select a file!");
+            flag=false;
+          }
+        }
         else{
-          if ($(iid).val().trim() == ''){
-              if(iid=='#you_url')
-                $(iid).siblings('span').html("");
+          if ($(iid).val().trim() == '' && iid!='#ser_name'){
               $(iid).val('*Field is mandatory!!');
-              $(iid).css({ 'color': 'red', 'border': 'solid 1px red' });
+              $(iid).css({ 'color': 'red', 'border': 'solid 2px red' });
               showlabel(iid)
               flag = false;
           }
           else if ($(iid).val().trim() == '*Field is mandatory!!')
               flag = false;
         }
-        if(iid=='#sel_url'||iid=='#you_url'){
-          if($(iid).val().trim()!='*Field is mandatory!!'){
-            if($(iid).val().trim().includes('embed'))
-              $(iid).siblings('span').html("");
-            else
-              $(iid).siblings('span').html("Please Enter Embed Code Url!!");
-          }
-        }
       }
       function fg(iid) {
-        $(iid).css({ 'color': '#1b7497', 'border': 'solid 1px #1b7497' });
-          if ($(iid).val().trim() == '*Field is mandatory!!') {
+        $(iid).css({ 'color': '#1b7497', 'border': 'solid 2px #1b7497' });
+          if ($(iid).val().trim() == '*Field is mandatory!!' && iid!='#ser_name') {
             $(iid).val('');
             showlabel(iid)
           }
@@ -713,8 +697,6 @@
           $(iid).siblings("label").css("visibility", "visible");
         else{
           $(iid).siblings("label").css("visibility", "hidden");
-          if(iid=='#you_url'||iid=='#sel_url')
-            $(iid).siblings('span').html("");
         }
       }
       function leftClick() {

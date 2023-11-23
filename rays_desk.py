@@ -724,43 +724,43 @@ try:
                     print('</div>')
         else:
             print("10")
-    elif(d=='searchrec'):
-        t1=f.getvalue('t1')
-        if(t1=='0'):
-            url="select * from blogs order by sn desc limit 5"
-            t.execute("select count(sn) from blogs order by sn desc;")
-        else:
-            url="select * from blogs where sn<"+t1+" order by sn desc limit 5"
-            t.execute("select count(sn) from blogs where sn<"+t1+" order by sn desc;")
-        rs1=t.fetchall()
-        t.execute(url)
-        rs=t.fetchall()
-        if(rs!=[]):
-            kk=0
-            for a in rs:
-                kk=str(a[0])
-                print('<div id="p1"><div id="x"><img src="' + a[3].decode() + '" alt="Blogs Pic" id="img1"></div><div id="y"><p id="topic">' + a[1] + '</p><hr id="hr1"><p id="para">' + a[2] + '</p><input class="custom-btn btn-2" type="button" value="Read More" id="but"><label class="author" for="">Author: ' + a[4] + '</label><label class="Publish" for="">Publish Date: ' +str(a[5]) + '</label><span id="span" hidden>' +str(a[0])+ '</span></div></div><hr>')
-            if(rs1[0][0]>5):
-                print('<div id="btn"><button><i class="fas fa-chevron-circle-down" style="font-size:2rem;"></i>&nbsp;&nbsp;VIEW MORE</button></div>')
-            print(",,,,"+kk)
-            # print(len(rs))
-            # for k in range(len(rs)):
-            #     for i in rs[k]:
-            #         print(i,',,,')
-            #     print("&:;")
-        else:
-            a=0
-            print(a)
-    elif(d=='searchall'):
-        url="select sn,image,headline from blogs order by sn desc limit 6"
-        t.execute(url)
-        rs=t.fetchall()
-        if(rs!=[]):
-            for a in rs:
-                print('<div class="anm"><img id="sld_img" src="'+a[1].decode()+'" alt=""><br><div id="sp"><span>'+a[2]+'</span><label>'+str(a[0])+'</label></div></div>')
-        else:
-            # a=0
-            print(0)
+    # elif(d=='searchrec'):
+    #     t1=f.getvalue('t1')
+    #     if(t1=='0'):
+    #         url="select * from blogs order by sn desc limit 5"
+    #         t.execute("select count(sn) from blogs order by sn desc;")
+    #     else:
+    #         url="select * from blogs where sn<"+t1+" order by sn desc limit 5"
+    #         t.execute("select count(sn) from blogs where sn<"+t1+" order by sn desc;")
+    #     rs1=t.fetchall()
+    #     t.execute(url)
+    #     rs=t.fetchall()
+    #     if(rs!=[]):
+    #         kk=0
+    #         for a in rs:
+    #             kk=str(a[0])
+    #             print('<div id="p1"><div id="x"><img src="' + a[3].decode() + '" alt="Blogs Pic" id="img1"></div><div id="y"><p id="topic">' + a[1] + '</p><hr id="hr1"><p id="para">' + a[2] + '</p><input class="custom-btn btn-2" type="button" value="Read More" id="but"><label class="author" for="">Author: ' + a[4] + '</label><label class="Publish" for="">Publish Date: ' +str(a[5]) + '</label><span id="span" hidden>' +str(a[0])+ '</span></div></div><hr>')
+    #         if(rs1[0][0]>5):
+    #             print('<div id="btn"><button><i class="fas fa-chevron-circle-down" style="font-size:2rem;"></i>&nbsp;&nbsp;VIEW MORE</button></div>')
+    #         print(",,,,"+kk)
+    #         # print(len(rs))
+    #         # for k in range(len(rs)):
+    #         #     for i in rs[k]:
+    #         #         print(i,',,,')
+    #         #     print("&:;")
+    #     else:
+    #         a=0
+    #         print(a)
+    # elif(d=='searchall'):
+    #     url="select sn,image,headline from blogs order by sn desc limit 6"
+    #     t.execute(url)
+    #     rs=t.fetchall()
+    #     if(rs!=[]):
+    #         for a in rs:
+    #             print('<div class="anm"><img id="sld_img" src="'+a[1].decode()+'" alt=""><br><div id="sp"><span>'+a[2]+'</span><label>'+str(a[0])+'</label></div></div>')
+    #     else:
+    #         # a=0
+    #         print(0)
     elif(d=='job_apply'):
         d2=f.getvalue('t2').title()
         d3=f.getvalue('t3')
@@ -776,31 +776,31 @@ try:
         t.execute(url,(d2,d3,d4,d5,d6,d7))
         con.commit()
         print('Thanks for apply!\nOur team will Contact You soon')
-    elif(d=='blogsn'):
-        t1=f.getvalue('t1')
-        t2=f.getvalue('t2')
-        t.execute("select sn,pub_date,image,headline from blogs where pub_date<='"+t1+"' and sn not in("+t2+") order by sn desc limit 3;")
-        rs=t.fetchall()
-        if(rs!=[]):
-            for a in rs:
-                print('<div id="bot_dv"><div id="img1"><img src="'+a[2].decode()+'" alt="" style="width: 100%;height: 100%;"></div><hr><span id="l">'+a[3]+'</span><hr><span id="dt">'+str(a[1])+'</span><span style="color:red;" hidden id="sn">'+str(a[0])+'</span></div>')
-        else:
-            t.execute("select sn,pub_date,image,headline from blogs where pub_date<=current_date() and sn not in("+t2+") order by sn desc limit 3;")
-            rs=t.fetchall()
-            if(rs!=[]):
-                for a in rs:
-                    print('<div id="bot_dv"><div id="img1"><img src="'+a[2].decode()+'" alt="" style="width: 100%;height: 100%;"></div><hr><span id="l">'+a[3]+'</span><hr><span id="dt">'+str(a[1])+'</span><span style="color:red;" hidden id="sn">'+str(a[0])+'</span></div>')
-    elif(d=='blogelse'):
-        sn=f.getvalue('t1')
-        t.execute("select * from blogs where sn=%s"%(sn))
-        rs=t.fetchall()
-        if(rs!=[]):
-            for a in rs:
-                for i in a:
-                    print(i,',,,')
-        else:
-            a=0
-            print(a)
+    # elif(d=='blogsn'):
+    #     t1=f.getvalue('t1')
+    #     t2=f.getvalue('t2')
+    #     t.execute("select sn,pub_date,image,headline from blogs where pub_date<='"+t1+"' and sn not in("+t2+") order by sn desc limit 3;")
+    #     rs=t.fetchall()
+    #     if(rs!=[]):
+    #         for a in rs:
+    #             print('<div id="bot_dv"><div id="img1"><img src="'+a[2].decode()+'" alt="" style="width: 100%;height: 100%;"></div><hr><span id="l">'+a[3]+'</span><hr><span id="dt">'+str(a[1])+'</span><span style="color:red;" hidden id="sn">'+str(a[0])+'</span></div>')
+    #     else:
+    #         t.execute("select sn,pub_date,image,headline from blogs where pub_date<=current_date() and sn not in("+t2+") order by sn desc limit 3;")
+    #         rs=t.fetchall()
+    #         if(rs!=[]):
+    #             for a in rs:
+    #                 print('<div id="bot_dv"><div id="img1"><img src="'+a[2].decode()+'" alt="" style="width: 100%;height: 100%;"></div><hr><span id="l">'+a[3]+'</span><hr><span id="dt">'+str(a[1])+'</span><span style="color:red;" hidden id="sn">'+str(a[0])+'</span></div>')
+    # elif(d=='blogelse'):
+    #     sn=f.getvalue('t1')
+    #     t.execute("select * from blogs where sn=%s"%(sn))
+    #     rs=t.fetchall()
+    #     if(rs!=[]):
+    #         for a in rs:
+    #             for i in a:
+    #                 print(i,',,,')
+    #     else:
+    #         a=0
+    #         print(a)
 # print(datetime.strptime('2023-07-22', '%Y-%m-%d').strftime('%d %b %Y'))
     #############Course Details###################
     elif(d=='ins_course'):
@@ -873,6 +873,12 @@ try:
         t.execute('delete from course where cid="'+d1+'" and bcode="'+d2+'"')
         con.commit()
         print('Successfully Deleted!,,,10')
+    ##### Placement #############
+    elif(d=='placement_entry'):
+        print('jj')
+        t.execute('insert into placement(name,image,company,package,year,spic,uid) values(%s,%s,%s,%s,%s,%s,%s)',(f.getvalue('b1').title(),f.getvalue('b2'),f.getvalue('b3').title(),f.getvalue('b4'),f.getvalue('b5'),f.getvalue('b6'),f.getvalue('b7')))
+        con.commit()
+        print('Successfully Submitted!!&&0')
     elif d=='certgen':
         d1=f.getvalue('t1')
         d2=f.getvalue('t2')

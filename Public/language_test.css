@@ -13,20 +13,21 @@ html{
 }
 #test{
     background-color: #EBEDEE;
-    height: auto;
+    height: 58rem;
     width: 30%;
     margin-top: 2rem;
     box-shadow: 0px 0px 10px gray;
     font-size: 2rem;
-    padding-left: 3rem;
+    padding-left: 1rem;
     line-height: 2rem;
     float: left;
     margin-left: 2%;
-
+    overflow: auto;
+    margin-bottom: 2%;
 }
-#test div{
+/* #test div{
     line-height: 3rem;
-}
+} */
 #test p{
     cursor: pointer;
 }
@@ -36,8 +37,10 @@ html{
 #test li{
     cursor: pointer;
     color: blue;
-    line-height: 1rem;
-    margin-left: 2rem;
+    /* line-height: 2rem; */
+    margin-left: 1rem;
+    list-style-type: disc;
+    /* border: solid 1px red; */
 }
 #h21{
     text-align: center;
@@ -145,15 +148,17 @@ html{
     #test{
         position: absolute;
         margin-top: 0rem;
-        width: auto;
+        width: 70%;
         padding-right: 3rem;
+        /* padding-right: 3rem; */
         z-index: 1;
     }
     .xyz{
         /* transform: translate(-125%,0%); */
         position: absolute;
         /* left: -4rem; */
-        left: -30rem;
+        left: -55rem;
+        /* left: -40rem; */
         /* top: 7.5rem; */
     }
     #main{

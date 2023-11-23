@@ -171,6 +171,7 @@
             color: #fff;
             display: none;
         }
+
         .main-container {
             width: 100%;
             width: calc(100%-5rem);
@@ -183,6 +184,7 @@
             padding-left: 5rem;
             position: relative;
         }
+
         /* -------Footer------- */
         footer {
             position: relative;
@@ -199,7 +201,8 @@
             align-items: center;
             flex-direction: column;
         }
-        .ftr-box{
+
+        .ftr-box {
             /* border: 1px solid black; */
             width: 100%;
             min-height: 20rem;
@@ -208,9 +211,10 @@
             justify-content: space-evenly;
             margin-bottom: 5rem;
 
-            
+
         }
-        .ftr-box li{
+
+        .ftr-box li {
             /* display: inline-block; */
             width: 22%;
             /* border: 1px solid red; */
@@ -219,14 +223,17 @@
             top: 0;
             text-align: center;
         }
-        .ftr-box li iframe{
+
+        .ftr-box li iframe {
             width: 100%;
         }
-        .ftr-box li a{
+
+        .ftr-box li a {
             text-decoration: none;
             color: black;
         }
-        .ftr-box h3{
+
+        .ftr-box h3 {
             font-size: 2.5rem;
             font-weight: bold;
         }
@@ -235,9 +242,11 @@
         li {
             list-style-type: none;
         }
-        .p{
+
+        .p {
             font-size: 1.5rem;
         }
+
         .social,
         .ftr-links {
             position: relative;
@@ -247,6 +256,7 @@
             margin: 1rem 0;
             flex-wrap: wrap;
         }
+
         .social li a {
             font-size: 2rem;
             color: #333;
@@ -274,6 +284,58 @@
             bottom: 0;
         }
 
+        .ser-tab {
+            width: 70rem;
+            height: 30rem;
+            position: absolute;
+            top: 5rem;
+            left: -30rem;
+            /* border: 2px solid red; */
+            background: rgba(55, 81, 126, 1);
+            border-top: 4px groove #fff;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .ser-tab th {
+            font-size: 1.6rem;
+            color: #fff;
+            position: relative;
+            letter-spacing: .1rem;
+            /* border: 2px solid white; */
+            height: 1.5rem !important;
+        }
+
+        .ser-tab th::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: .2rem;
+            bottom: 1rem;
+            left: 30%;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .ser-tab td {
+            height: 2rem;
+            font-size: 1.5rem;
+            /* border: 2px solid red; */
+        }
+
+        .ser-tab td a {
+            letter-spacing: .1rem;
+        }
+
+        .menu:hover .ser-tab {
+            opacity: 1;
+            visibility: visible;
+            top: 3rem;
+            transition: .3s;
+        }
+
+
+
         @media(max-width:1151px) {
             .rays {
                 font-size: 2rem;
@@ -281,7 +343,7 @@
             }
         }
 
-        @media(max-width:1010px) {
+        @media(max-width:1269px) {
             html {
                 font-size: 55%;
             }
@@ -315,6 +377,16 @@
                 top: 1rem;
                 width: 24rem;
             }
+            .ser-tab {
+                left: -70rem;
+                top: 3rem;
+            }
+
+            .nav-list .menu:hover .ser-tab {
+                top: 0rem;
+                transition: all .2s linear;                    
+            }
+
 
             .nav-list .menu:hover {
                 border-top-left-radius: 1rem;
@@ -343,16 +415,34 @@
                 cursor: pointer;
             }
         }
+
         @media(max-width:866px) {
             html {
                 font-size: 45%;
             }
         }
 
+        
+        
         @media(max-width:768px) {
             html {
                 font-size: 45%;
             }
+
+            .ser-tab td a {
+                width: 100%;
+                float: left;
+                padding-left: .5rem;
+            }
+
+            .ser-tab {
+                width: 50rem;
+                left: -50rem;
+                /* top: -1rem; */
+                /* border: 2px solid green; */
+                
+            }
+
         }
 
         @media(max-width:600px) {
@@ -371,67 +461,90 @@
             footer {
                 min-height: 50rem;
             }
-            .ftr-box{
+
+            .ftr-box {
                 /* flex-direction: column; */
                 display: grid;
                 /* border: 2px solid green; */
-                grid-template-columns: auto auto ;
-                justify-content:unset;
+                grid-template-columns: auto auto;
+                justify-content: unset;
             }
-            .ftr-box li{
+
+            .ftr-box li {
                 /* display: block; */
                 width: 25rem;
                 /* border: 2px solid red; */
             }
-            .p{
+
+            .p {
                 font-size: 2rem;
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1 class="logo">
             <img src="logo.png" alt="" onclick="location.href='homepage.html'">
-            <h2 class="rays" onclick="location.href='homepage.html'" style="cursor: pointer;">Rays Edutech Pvt. Ltd.</h2>
+            <h2 class="rays" onclick="location.href='homepage.html'" style="cursor: pointer;">Rays Edutech Pvt. Ltd.
+            </h2>
             </a>
         </h1>
         <nav class="nav">
             <ul class="nav-list">
                 <li><a href="homepage.html">HOME</a></li>
-                <li class="menu"><a style="cursor: pointer;" class="a">SERVICES&nbsp;<i class="fa-solid fa-angle-down"></i></a>
-                    <ul class="submenu">
-                        <li class="menu_item"><a href="Test_Language.html">Online Test</a></li>
-                        <li class="menu_item"><a href="Workshop.html">Workshop</a></li>
-                        <li class="menu_item"><a href="Web_Python.html">Web Development</a></li>
-                        <li class="menu_item"><a href="Web_Python.html">App Development</a></li>
-                    </ul>
+                <li class="menu"><a style="cursor: pointer;" class="a sr">SERVICES&nbsp;<i
+                            class="fa-solid fa-angle-down"></i></a>
+                    <table class="ser-tab">
+                        <tr>
+                            <th>Training</th>
+                            <th>Development</th>
+                            <th>Workshop</th>
+                            <th>Internship</th>
+                        </tr>
+                        <tr>
+                            <td><a href="All_Course.html">Courses</a></td>
+                            <td><a href="Web_Python.html">Web Development</a></td>
+                            <td><a href="Workshop.html">School</a></td>
+                            <td><a href="Internship.html">Technical</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Project Training</a></td>
+                            <td><a href="">App Development</a></td>
+                            <td><a href="Workshop.html">College</a></td>
+                            <td><a href="Internship.html">Non-technical</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Industrial Training</a></td>
+                            <td><a href="Web_Python.html">Custom Software</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Project_Training.html">Summer Training</a></td>
+                        </tr>
+                    </table>
                 </li>
-                <li class="menu"><a style="cursor: pointer;" class="a">TRAINING&nbsp;<i class="fa-solid fa-angle-down"></i></a>
-                    <ul class="submenu">
-                        <li class="menu_item"><a href="All_Course.html">Course</a></li>
-                        <li class="menu_item"><a href="Project_Training.html">Project Training</a></li>
-                        <li class="menu_item"><a href="Project_Training.html">Industrial Training</a></li>
-                    </ul>
+                <li class="menu"><a style="cursor: pointer;" class="a" href="Test_Language.html">ONLINE TEST</a>
+
                 </li>
-                <li><a href="Internship.html">INTERNSHIP</a></li>
-                <li class="menu"><a style="cursor: pointer;" class="a">MORE&nbsp;<i class="fa-solid fa-angle-down"></i></a>
+                <!-- <li><a href="Internship.html">INTERNSHIP</a></li> -->
+                <li class="menu"><a style="cursor: pointer;" class="a" href="Blog.html">BLOG</a>
+                </li>
+                <li><a href="Carear.html">CAREER</a></li>
+                <li class="menu"><a style="color: #fff; cursor: pointer;">MORE&nbsp;<i
+                            class="fa-solid fa-angle-down"></i></a>
                     <ul class="submenu">
-                        <li class="menu_item"><a href="Carear.html"><strong>We are hiring</strong>
-                            </a></li>
-                        <li class="menu_item"><a href="Placement.html"><strong>Our placed students</strong>
-                                <hr>
-                            </a></li><br>
-                        <li class="menu_item"><a href="testimonial.html">Student Testimonials</a></li>
-                        <li class="menu_item"><a href="Blog.html">Blogs</a></li>
                         <li class="menu_item"><a href="Certificate_Verification.html">Certificate Verification</a></li>
+                        <li class="menu_item"><a href="testimonial.html">Testimonials</a></li>
+                        <li class="menu_item"><a href="Placement.html">Our Placement</a></li>
+                        <li class="menu_item"><a href="Gallery.html">Gallery/Activities</a></li>
                         <li class="menu_item"><a href="About_Us.html">About Us</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
-        <i class="fa-solid fa-bars"></i>
-    </header>
+        <i class="fa-solid fa-bars" id="bars"></i>
+    </header>
     <!-- -------SIDEBAR------  -->
     <div class="side-bar">
         <ul class="lists">
@@ -481,83 +594,100 @@
     </div>
     <div class="main-container">
         <div style="margin-top: 10rem;">
+            <div id="placed">
+                <h1>Our Placed Students</h1>
+                <hr>
+                <p>We take pride and are glad to announce that our students have excelled in their careers and are well
+                    placed in various sectors of the industry. Our hearty congratulations to all our placed students.
+                </p>
+            </div>
             <main>
                 <i class="fas fa-quote-left"></i><br><br>
                 <h1>Placed Students in <b>2023</b></h1><br>
                 <p>Our Student's Achievent is our Achievement.</p>
                 <p>These Students Learn Their Courses in Online As Well As Offline Mode.</p><br><br>
-                <div style="display: flex;flex-wrap: wrap;justify-content: center;">
-                    <div id="high">
+                <div style="display: flex;flex-wrap: wrap;justify-content: center; margin-top: 5rem;">
+                    <div id="high" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div class="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                 </div>
                 <div id="low">
-                    <div class="low">
+                    <div class="low" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
-                    <div class="low">
+                    <div class="low" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
-                    <div class="low">
+                    <div class="low" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
-                    <div class="low">
+                    <div class="low" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
-                    <div class="d1 low" hidden>
+                    <div class="d1 low" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
-                    <div class="d1 low" hidden>
+                    <div class="d1 low" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
-                    </div>
-                    <div class="d1 low" hidden>
-                        <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
-                    </div>
-                    <div class="d1 low" hidden>
-                        <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="d1 low" hidden>
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
+                    </div>
+                    <div class="d1 low" hidden>
+                        <img src="rahul.jpg" alt="Img loading..">
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
+                    </div>
+                    <div class="d1 low" hidden>
+                        <img src="rahul.jpg" alt="Img loading..">
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <p id="p"><input type="button" value="More" class="b1"></p>
                 </div>
@@ -567,78 +697,88 @@
                 <h1>Placed Students in <b>2022</b></h1><br>
                 <p>Our Student's Achievent is our Achievement.</p>
                 <p>These Students Learn Their Courses in Online As Well As Offline Mode.</p><br><br>
-                <div style="display: flex;flex-wrap: wrap;justify-content: center;">
-                    <div id="high">
+                <div style="display: flex;flex-wrap: wrap;justify-content: center; margin-top: 5rem;">
+                    <div id="high" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div class="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                 </div>
                 <div id="low">
                     <div class="low">
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="low">
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="low">
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="low">
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
+                    </div>
+                    <div class="d1 low" >
+                        <img src="rahul.jpg" alt="Img loading..">
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
+                    </div>
+                    <div class="d1 low" >
+                        <img src="rahul.jpg" alt="Img loading..">
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="d1 low" hidden>
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="d1 low" hidden>
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="d1 low" hidden>
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
-                    </div>
-                    <div class="d1 low" hidden>
-                        <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
-                    </div>
-                    <div class="d1 low" hidden>
-                        <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <p id="p"><input type="button" value="More" class="b1"></p>
                 </div>
@@ -648,78 +788,88 @@
                 <h1>Placed Students in <b>2021</b></h1><br>
                 <p>Our Student's Achievent is our Achievement.</p>
                 <p>These Students Learn Their Courses in Online As Well As Offline Mode.</p><br><br>
-                <div style="display: flex;flex-wrap: wrap;justify-content: center;">
-                    <div id="high">
+                <div style="display: flex;flex-wrap: wrap;justify-content: center; margin-top: 5rem;">
+                    <div id="high" >
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>  
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div class="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                 </div>
                 <div id="low">
                     <div class="low">
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="low">
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="low">
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="low">
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
+                    </div>
+                    <div class="d1 low" >
+                        <img src="rahul.jpg" alt="Img loading..">
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
+                    </div>
+                    <div class="d1 low" >
+                        <img src="rahul.jpg" alt="Img loading..">
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="d1 low" hidden>
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="d1 low" hidden>
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <div class="d1 low" hidden>
                         <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
-                    </div>
-                    <div class="d1 low" hidden>
-                        <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
-                    </div>
-                    <div class="d1 low" hidden>
-                        <img src="rahul.jpg" alt="Img loading..">
-                        <h2>Puspanjali Kumari</h2>
-                        <p> <i  class="fab fa-apple" ></i> &nbsp;Company : <b>Apple</b><br><br>
-                            <i class="fas fa-hand-holding-usd"></i> <b>99900000/Per annum</b>
-                        </p>
+                        <div id="para-box">
+                            <h3>Name: Puspanjali Kumari</h3>
+                            <h3>Company: <i class="fab fa-apple"></i> <b>Apple</b> </h3>
+                            <h3>Salary: <b>99900000/Annum</b></h3> 
+                        </div>
                     </div>
                     <p id="p"><input type="button" value="More" class="b1"></p>
                 </div>
@@ -728,13 +878,14 @@
         <!-- ---------Footer-------  -->
         <footer>
             <ul class="social">
-                <li><a href=""><i class="fa-brands fa-facebook" title="Facebook"></i></a></li>
-                <li><a href=""><i class="fa-brands fa-instagram" title="Instagram"></i></a></li>
-                <li><a href=""><i class="fa-brands fa-twitter" title="Twitter"></i></a></li>
-                <li><a href=""><i class="fa-brands fa-youtube" title="Youtube"></i></a></li>
+                <li><a href="https://www.facebook.com/rays.edutech/"><i class="fa-brands fa-facebook" title="Facebook" style="color: #0866FF;"></i></a></li>
+                <li><a href="https://www.instagram.com/rayspatna"><i class="fa-brands fa-instagram" title="Instagram" style="color:#E37540;"></i></a></li>
+                <li><a href="https://twitter.com/rayspatna"><i class="fa-brands fa-twitter" title="Twitter" style="color:#1BA9DB;"></i></a></li>
+                <li><a href="https://www.youtube.com/replrahul"><i class="fa-brands fa-youtube" title="Youtube" style="color:#FE0000;"></i></a></li>
             </ul>
             <ul class="ftr-box">
-                <li> <h3>Our Services</h3><br>
+                <li>
+                    <h3>Our Services</h3><br>
                     <h4>Technical Training</h4><br>
                     <h4>Web Development</h4><br>
                     <h4>App Development</h4>
@@ -749,7 +900,8 @@
                 <li>
                     <div>
                         <h3>Contact Us</h3><br>
-                        <div class="p">2nd Floor, Mithulok, West Boring Canal Road, Khetan Lane, Near Bharat Petrol Pump, Beside
+                        <div class="p">2nd Floor, Mithulok, West Boring Canal Road, Khetan Lane, Near Bharat Petrol
+                            Pump, Beside
                             Senco
                             Gold & Diamonds, Patna, Bihar- 800001</div>
                     </div>
@@ -769,17 +921,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script>
-        $('.b1').on('click',function(){
-            a=$(this).attr('value')
-                if(a=='More'){
-                    $(this).attr('value','Less')
-                    // $('.d1').attr('hidden',false)
-                    $(this).parent('p').parent('div').children('.d1').attr('hidden',false)
-                }
-                else{
-                    $(this).attr('value','More')
-                    $(this).parent('p').parent('div').children('.d1').attr('hidden',true)
-                }
+        $('.b1').on('click', function () {
+            let a = $(this).attr('value').trim();
+            if (a == 'More') {
+                $(this).attr('value', 'Less')
+                $(this).css('background-color','rgb(137, 22, 116)')
+                $(this).parent('p').parent('div').children('.d1').attr('hidden', false)
+            }
+            else {
+                $(this).attr('value', 'More')
+                $(this).css('background-color','rgb(22, 95, 137)')
+                $(this).parent('p').parent('div').children('.d1').attr('hidden', true)
+            }
         })
     </script>
     <script>

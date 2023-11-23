@@ -16,75 +16,58 @@ main{
     width: 96%;
     margin:3rem 0 0 2%;
     padding: 5rem;
-    border-radius: 2.5rem;
-    background-color: aliceblue;
+    border-radius: 1rem;
+    background-color: rgb(226, 240, 252);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
 }
 main p{
     font-size: 2rem;
 }
 main #high,main #low div{
     height: 200px;
-    width:396px;
-    background-color: white;
+    width:300px;
+    /* height: 200px;
+    width:396px; */
+    /* background-color: white; */
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius:25px;
-    border:1px solid white;
+    /* border-radius:25px; */
+    /* border:1px solid white; */
     margin:30px 0 0 0;
+}
+#placed{
+    text-align: center;
+    font-size: 2rem;
+    width: 96%;
+    margin: auto;
+}
+#placed h1{
+    font-size: 4rem;
+    font-weight: bold;
+    /* color: rgba(42, 63, 99, 1); */
 }
 main #high,.low{
     margin:auto;
-    /* border: 2px solid blue; */
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
-#high img, .low img{
-    position: absolute;
-    width: 15rem;
-    height: 100%;
-    left: 0;
-}
-#high h2 , .low h2{
-    position: absolute;
-    left: 15.5rem;
-    text-align: left;
-}
-#high p, .low p{
-    /* border: 1px solid red; */
-    width: 60%;
-    display: inline;
-    position: absolute;
-    right: 1%;
-    top: 20%;
-}
-#high p i, .low p i{
-    font-size: 2rem;
-}
+
+
 
 main #low{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    overflow: hidden;
+    gap: 5rem;
+    /* overflow: hidden; */
     position: relative;
-}
-main div img{
-    /* height: 90%;
-    width: 45%;
-    float: left; */
-}
-main div h2{
-    color: #07ac93;
-    font-size: 20px;
-    margin-top:15px;
-}
-main div p{
-    font-size: 14px;
+    margin-top: 7rem;
+    /* border: 2px solid red;  */
 }
 main #p{
     width: 100%;
     text-align: center;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     color: blue;
 }
 main .b1{
@@ -100,6 +83,48 @@ main .b1:hover{
     background-color: rgb(137, 22, 116);
     transition: .5s;
 }
+#high, .low{
+    position: relative;
+    /* border: 2px solid blue; */
+    overflow:visible;
+    border-radius: 1rem;
+    /* background-color: rgb(1, 1, 58); */
+    background-color: rgba(42, 63, 99, 1);
+    color: #fff;
+}
+#high img, .low img{
+    position: absolute;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    border: 5px solid gainsboro;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-110%);
+}
+#high i, .low i{
+    font-size: 2rem;
+}
+#high .para-box{
+    position: absolute;
+    /* border: 2px solid white; */
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+}
+.low #para-box{
+    position: absolute;
+    /* border: 5px solid pink; */
+    bottom: 0;
+    width: 100%;    
+    height: 50%;
+}
+#high h3, .low h3{
+    text-align: center;
+    font-weight: bold;
+    /* border: 2px solid red; */
+}
+
 @media(max-width:998px){
     html {
         font-size: 55%;
@@ -108,5 +133,17 @@ main .b1:hover{
 @media(max-width:768px){
     html {
         font-size: 45%;
+    }
+}
+@media(max-width:600px){
+    #high img, .low img{
+        transform: translate(-50%,-135%);
+    }
+    #high h3, .low h3{
+        font-size: 3rem;
+    }
+    #high img, .low img{
+        width: 20rem;
+        height: 20rem;
     }
 }
